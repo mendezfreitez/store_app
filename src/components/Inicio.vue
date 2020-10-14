@@ -19,7 +19,7 @@
       </Modal>
   </b-container>
 </template>
-
+asdadasdadasdasdsa
 <script>
 import Producto from './Producto'
 import Modal from './Modal'
