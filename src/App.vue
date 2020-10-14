@@ -1,12 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <BarraLateral />
+    <Navegador />
+    <router-view style="margin-top:65px!important;" />
   </div>
 </template>
+
+<script>
+import Navegador from './components/Navegador'
+import BarraLateral from './components/BarraLateral'
+// import SidebarMenu from './components/BarraLateral'
+export default {
+  components:{
+    Navegador,
+    BarraLateral
+  }
+}
+</script>
 
 <style>
 #app {
@@ -28,5 +38,8 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+html,body{
+  background-color: #fff!important;
 }
 </style>
