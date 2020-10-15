@@ -26,7 +26,7 @@ import Modal from './Modal'
 import axios from 'axios'
 import Galeria from './galeria'
 import { mapMutations, mapState } from 'vuex'
-let url = 'http://localhost:3000/';
+let url = 'http://localhost:3000/';somos de calle hay cria y corazon
 export default {
     name:'Inicio',
     components:{
