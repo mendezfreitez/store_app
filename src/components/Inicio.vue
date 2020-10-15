@@ -24,6 +24,7 @@ import Modal from './Modal'
 import axios from 'axios'
 import Galeria from './galeria'
 import { mapMutations, mapState } from 'vuex'
+
 let url = 'http://localhost:3000/';
 export default {
     name:'Inicio',
@@ -100,5 +101,6 @@ export default {
 <style>
  .container{
      margin-top: 15px!important;
+     /* Dosis,sans-serif */
  }
 </style>

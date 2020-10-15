@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import 'typeface-dosis'
 import Navegador from './components/Navegador'
 import BarraLateral from './components/BarraLateral'
 // import SidebarMenu from './components/BarraLateral'
@@ -41,5 +42,10 @@ export default {
 }
 html,body{
   background-color: #fff!important;
+  /* font-family:'Dosis,sans-serif'!important;  */
+}
+@font-face {
+  font-family: Gentium!important;
+  src: url(http://example.com/fonts/Gentium.woff);
 }
 </style>

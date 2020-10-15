@@ -6,14 +6,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueCurrencyFilter from 'vue-currency-filter'
 import Numeric from '../src/ArchivosJavaScript/jquery.numeric-min'
+import 'typeface-dosis'
+import VueSidebarMenu from 'vue-sidebar-menu'
+import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import store from './store'
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(Numeric)
-// Vue.use(numeral)
-// import Vue from 'vue'
-import VueSidebarMenu from 'vue-sidebar-menu'
-import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 Vue.use(VueSidebarMenu)
 Vue.use(VueCurrencyFilter, {
   symbol: 'CLP',
