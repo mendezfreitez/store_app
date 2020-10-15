@@ -14,9 +14,7 @@
               @mostrar-modal="mostrarModal"/>
           </b-col>
       </b-row>
-      <Modal ref="elModal" :tituloModal="unProducto.tituloProducto" :textoModal="unProducto.bodyProducto" :precio="unProducto.precioProducto">
-          
-      </Modal>
+      <Modal ref="elModal" :tituloModal="unProducto.tituloProducto" :textoModal="unProducto.bodyProducto" :precio="unProducto.precioProducto"></Modal>
   </b-container>
 </template>
 
