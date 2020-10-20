@@ -13,7 +13,21 @@
     centered
     >
         <b-container class="mt-3">
-            <b-form @reset="onReset" v-if="show" action="http://localhost:3000/NuevoProducto">
+            <b-form @reset="onReset" v-if="show">
+                <div>
+                  <!-- Styled -->
+                  <b-form-file class="text-left border-bottom-0 mb-3"
+                  id="Imagenes_Array"
+                  accept="image/*"
+                  multiple
+                  :file-name-formatter="formatNames"
+                  v-model="arrayImagenes"
+                  @blur="cambioUnInput"
+                  placeholder="Imágenes Producto"
+                  drop-placeholder="Drop file here..."
+                  ></b-form-file>
+                </div>
+                
                 <b-form-group id="input-group-1">
                     <b-form-input
                     @keydown="cambioUnInput"
@@ -66,20 +80,6 @@
                     ></b-form-input>
                 </b-form-group>
 
-                <div>
-                    <!-- Styled -->
-                    <b-form-file class="text-left border-bottom-0 mb-3"
-                    id="Imagenes_Array"
-                    accept="image/*"
-                    multiple
-                    :file-name-formatter="formatNames"
-                    v-model="arrayImagenes"
-                    @blur="cambioUnInput"
-                    placeholder="Selección imágenes"
-                    drop-placeholder="Drop file here..."
-                    ></b-form-file>
-                </div>
-
                 <!-- <select id="" class="form-control mt-0 border-top-0 rounded-top-0">
                     <option v-for="item in form.nombreImags" :key="item.id">
                     {{ item.name }}
@@ -110,9 +110,10 @@
 </template>
 
 <script>
+import formData from 'form-data'
 import Modal from './Modal'
 import InputFotos from './InputFotos'
-import axios from 'axios' 
+import axios from 'axios'
 import { mapMutations, mapState } from 'vuex';
 let url = 'http://localhost:3000/';
 var arregloImagenes = [];
@@ -130,13 +131,13 @@ export default {
           precio: '',
           cantidad: '',
           nombreImags: '',
-          dataImags: null,
+          // dataImags: null,
           idProducto:''
         },
         arrayImagenes:[],
         show: true,
         activoVer:true,
-        activoBtnRegistrar: true,
+        activoBtnRegistrar: false,
         options: [],
         RegistroEdicion:''
       }
@@ -157,22 +158,32 @@ export default {
     }, 
     methods: {
       ...mapMutations(['updateProductosTodos']),
-      onSubmit(evt) {
-        var datos = this.form;
-        const config = {
-          headers: {'content-type':'application/json'}
-        }
-        axios.post(`${url}NuevoProducto`, datos, config).then(function (resp) {
-          console.log(datos);
-            alert(resp.data);  
-            this.onReset();
+      onSubmit(evt) {        
+
+
+          var datos = this.form;
+          axios.post(`${url}NuevoProducto`, datos, { headers: {'content-type':'application/json'} }).then(function (resp) {
+            // console.log(this.form);
+          alert(resp.data);  
+              // this.onReset();
+              // this.$bvModal.hide('modalProducto');
+
+          var formulario = new formData();
+          var vaina = document.querySelector('#Imagenes_Array').files;
+          for (let t = 0; t < vaina.length; t++) {
+            // console.log(vaina[t].name)
+            formulario.append('imagen', vaina[t])
+          }
+
+          axios.post(`${url}ImagenesNuevoProducto`, formulario, { headers: {'content-type':'multipart/form-data'} }).then(function (resp) {
             this.$bvModal.hide('modalProducto');
-            axios.get(`${url}traerTodos`).then(function(res){
-                // this.productosTodos_ = res.data;
-                // console.log(res.data);
-                this.updateProductosTodos(res.data);
-                // console.log(this.productosTodos_);
-            }.bind(this));
+          }.bind(this));
+          axios.post(`${url}traerTodos`).then(function(res){
+              // this.productosTodos_ = res.data;
+              // console.log(res.data);
+              this.updateProductosTodos(res.data);
+              // console.log(this.productosTodos_);
+          }.bind(this));
         }.bind(this));
       },
       onReset(evt) {
@@ -182,7 +193,7 @@ export default {
         this.form.precio = null
         this.form.cantidad = null
         this.form.nombreImags = null
-        this.form.dataImags = undefined
+        // this.form.dataImags = undefined
         this.activoBtnRegistrar = true
         this.arrayImagenes = []
         this.show = false
@@ -199,7 +210,7 @@ export default {
 
             that.form.dataImags = that.$refs.inputFoto.file;
 
-            console.log(this.arrayImagenes);
+            // console.log(this.arrayImagenes);
 
             const toBase64 = file => new Promise((resolve, reject) => {
               const reader = new FileReader();
@@ -207,7 +218,7 @@ export default {
               reader.onload = () => resolve(reader.result);
               reader.onerror = error => reject(error);
             });
-            console.log(that.arrayImagenes.length);
+            // console.log(that.arrayImagenes.length);
              let eso = this;
             async function convert_Base64(){
               for(var t = 0; t < that.arrayImagenes.length; t++){
@@ -228,7 +239,7 @@ export default {
         }
       },
       formatNames(files) {
-          console.log(files);
+          // console.log(files);
         if (files.length === 1) {
           return files[0].name
         } else {
@@ -238,7 +249,6 @@ export default {
       },
       habilitarBoton(){
         var archivos = document.querySelector("#Imagenes_Array").files;
-        // alert(archivos.length);
         if(archivos.length > 0){
           this.activoVer = false;
         }
@@ -257,53 +267,63 @@ export default {
     },
     watch:{
       arrayImagenes: function (nuevoArray, viejoArray) {
-        // console.log(nuevoArray);
-        if(nuevoArray.length === 0){ return; }
 
-        if(nuevoArray[0].id === 0){
-          this.form.dataImags = nuevoArray;
-          this.arrayImagenes = [];
+        // this.form.dataImags = nuevoArray;
+        var arregloNombres = [];
+        var archivos = document.querySelector('#Imagenes_Array').files;
+
+        for(var t = 0; t < archivos.length; t++){
+          // arregloNombres.push({'name':archivos[t].name });
+          arregloNombres.push(archivos[t].name.replace(/ /g,'_'));
         }
-        else{
-          var unArreglo = [];
-          var conversion = undefined;
-          var arregloNombres = [];
-          const toBase64 = file => new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-          });
+
+        this.form.nombreImags = arregloNombres;
+        // if(nuevoArray.length === 0){ return; }
+
+        // if(nuevoArray[0].id === 0){
+        //   this.form.dataImags = nuevoArray;
+        //   this.arrayImagenes = [];
+        // }
+        // else{
+        //   var unArreglo = [];
+        //   var conversion = undefined;
+        //   var arregloNombres = [];
+        //   const toBase64 = file => new Promise((resolve, reject) => {
+        //     const reader = new FileReader();
+        //     reader.readAsDataURL(file);
+        //     reader.onload = () => resolve(reader.result);
+        //     reader.onerror = error => reject(error);
+        //   });
               
-          let that = this;
-          var archivos = document.querySelector('#Imagenes_Array').files;
+        //   let that = this;
+        //   var archivos = document.querySelector('#Imagenes_Array').files;
 
-          async function convert_Base64(){
-            for(var t = 0; t < archivos.length; t++){
-              conversion = (await toBase64(archivos[t]));
-              unArreglo.push({ 'id':t, 'src':conversion,  'thumbnail':conversion });
-              arregloNombres.push({ 'id':t, 'name':archivos[t].name });
-            }
-          }
-          convert_Base64();
-          this.form.nombreImags = arregloNombres;
-          this.form.dataImags = unArreglo;
-          console.log(this.form.nombre != '');
-          console.log(this.form.descripcion != '');
-          console.log(this.form.precio != '');
-          console.log(this.form.categoria != null);
-          console.log(this.form.cantidad != '');
-          console.log(this.form.nombreImags.length > 0);
-          console.log(this.form.nombreImags);
-          console.log(nuevoArray.length > 0);
-          // alert(nuevoArray.length);
-          if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' ){
-            this.activoBtnRegistrar = false;
-          }
-          else{
-            this.activoBtnRegistrar = true;
-          }
-        }
+        //   async function convert_Base64(){
+        //     for(var t = 0; t < archivos.length; t++){
+        //       conversion = (await toBase64(archivos[t]));
+        //       unArreglo.push({ 'id':t, 'src':conversion,  'thumbnail':conversion });
+        //       arregloNombres.push({ 'id':t, 'name':archivos[t].name });
+        //     }
+        //   }
+        //   convert_Base64();
+        //   this.form.nombreImags = arregloNombres;
+        //   this.form.dataImags = unArreglo;
+        //   console.log(this.form.nombre != '');
+        //   console.log(this.form.descripcion != '');
+        //   console.log(this.form.precio != '');
+        //   console.log(this.form.categoria != null);
+        //   console.log(this.form.cantidad != '');
+        //   console.log(this.form.nombreImags.length > 0);
+        //   console.log(this.form.nombreImags);
+        //   console.log(nuevoArray.length > 0);
+          
+          // if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' ){
+          //   this.activoBtnRegistrar = false;
+          // }
+          // else{
+          //   this.activoBtnRegistrar = true;
+          // }
+        // }
       },
         producto(nuevo){
             this.form.nombre = nuevo.nombre;

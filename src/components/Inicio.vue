@@ -3,8 +3,8 @@
       <b-row>
           <b-col cols="12" lg="12">
               <Producto v-for="t in productos" :key="t._id"
-              :arrayImagenes="t.dataImagenes"
-              :srcImagen="t.dataImagenes[0].src"
+              :arrayImagenes="t.nombreImagenes"
+              :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
               :precioProducto="t.precio"
               :tituloProducto="t.nombre.substr(0, 25)"
               :textoProducto="t.descripcion.substr(0, 65)"
@@ -25,6 +25,7 @@ import axios from 'axios'
 import Galeria from './galeria'
 import { mapMutations, mapState } from 'vuex'
 
+// let urlImagenes = 'http://127.0.0.1:8887/imagenes';
 let url = 'http://localhost:3000/';
 export default {
     name:'Inicio',
@@ -35,22 +36,19 @@ export default {
         return{
             productos:{},
             unProducto:{},
-            propsImg:{
-                id:Number,
-                src:String,
-                thumbnail:String
-            },
-            arregloFinal: Array
+            // propsImg:{
+            //     id:Number,
+            //     src:String,
+            //     thumbnail:String
+            // },
+            arregloFinal: Array,
+            urlImagen:'http://127.0.0.1:8887/imagenes'
         }
     },
     computed:{
         ...mapState(['productosTodos'])
     },
     created: function(){
-        // axios.get(`${url}traerTodos`).then(function(res){
-        //     this.productos = res.data;
-        //     this.productosTodos = res.data;
-        // }.bind(this));
         this.traerProductosTodos('')
     },
     mounted(){
@@ -67,32 +65,29 @@ export default {
     methods:{
         ...mapMutations(['modifCantProducto','modifPuraCantidad','modificarCarro', 'traerProductosStore','traerProductosTodos']),
         mostrarModal: function(props){
-            // var index = 0;
             var vaina = [];
-            var propsImg = {
-                id:Number,
-                src:String,
-                thumbnail:String
-            }
+            // var propsImg = {
+            //     id:Number,
+            //     src:String,
+            //     thumbnail:String
+            // }
             this.$refs.elModal.producto = props;
             this.unProducto = props;
-            // console.log(this.unProducto);
+            console.log(this.unProducto);
             for (let index = 0; index < this.unProducto.arrayImagenes.length; index++) {
-                    vaina.push({ id:this.unProducto.arrayImagenes[index].id , src:this.unProducto.arrayImagenes[index].src, thumbnail:this.unProducto.arrayImagenes[index].src });
-                    // console.log(propsImg);
+                console.log(`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`)
+                vaina.push({ id:index , src:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`, thumbnail:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}` });
             } 
 
             this.arregloFinal = vaina;
-            // console.log(this.$refs);
+            console.log(this.arregloFinal);
             this.$refs.elModal.arrayImagenes = this.arregloFinal;
-            // this.$refs.galeria.arregloItems = this.arregloFinal;
             this.$bvModal.show("modal_1");
-            // console.log(this.unProducto);
         }
     },
     watch:{
         productosTodos(nuevo){
-            this.productos = nuevo
+            this.productos = nuevo;
         }
     }
 }
