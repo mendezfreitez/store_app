@@ -26,7 +26,8 @@ import Galeria from './galeria'
 import { mapMutations, mapState } from 'vuex'
 
 // let urlImagenes = 'http://127.0.0.1:8887/imagenes';
-let url = 'http://localhost:3000/';
+// let url = 'http://localhost:3000/';
+let url = 'https://storeapp-back-end.herokuapp.com/';
 export default {
     name:'Inicio',
     components:{

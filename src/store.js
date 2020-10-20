@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-let url = 'http://localhost:3000/';
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -14,7 +12,8 @@ export default new Vuex.Store({
     textoTotalCarro: "",
     categorias: [],
     productosTodos_: [],
-    productosTodos:[]
+    productosTodos: [],
+    url: 'https://storeapp-back-end.herokuapp.com/'
   },
   mutations: {
     modificarCarro(state, productos) {
@@ -43,12 +42,12 @@ export default new Vuex.Store({
       state.textoTotalCarro = texto;
     },
     traerCategorias(state, arreglo) {
-      axios.get(`${url}traerCategorias`).then(function(resp) {
+      axios.get(`${state.url}traerCategorias`).then(function(resp) {
         state.categorias = resp.data;
       });
     },
     traerProductosTodos(state, idCategoria) {
-        axios.post(`${url}traerTodos`, {id:idCategoria}).then(
+        axios.post(`${state.url}traerTodos`, {id:idCategoria}).then(
           function (res) {
             state.productosTodos = res.data;
             state.productosTodos_ = res.data;

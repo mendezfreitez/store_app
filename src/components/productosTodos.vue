@@ -84,7 +84,8 @@ import axios from 'axios'
 import Modal from '../components/Categorias/ModalNuevaCategoria'
 import ModalProducto from '../components/modalProducto'
 import { mapMutations, mapState } from 'vuex';
-let url = 'http://localhost:3000/';
+// let url = 'http://localhost:3000/';
+let url = 'https://storeapp-back-end.herokuapp.com/';
 export default {
     name:'productosTodos',
     components:{
