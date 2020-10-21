@@ -115,7 +115,8 @@ import Modal from './Modal'
 import InputFotos from './InputFotos'
 import axios from 'axios'
 import { mapMutations, mapState } from 'vuex';
-let url = 'http://localhost:3000/';
+// let url = 'http://localhost:3000/';
+let url = 'https://storeapp-back-end.herokuapp.com/';
 var arregloImagenes = [];
 export default {
     name:'NuevoProducto',

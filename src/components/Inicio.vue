@@ -43,7 +43,8 @@ export default {
             //     thumbnail:String
             // },
             arregloFinal: Array,
-            urlImagen:'http://127.0.0.1:8887/imagenes'
+            urlImagen:'https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes'
+            // urlImagen:'http://127.0.0.1:8887/imagenes'
         }
     },
     computed:{

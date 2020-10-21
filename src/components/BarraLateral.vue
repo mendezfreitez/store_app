@@ -42,7 +42,8 @@
 </template>
 
 <script>
-let url = 'http://localhost:3000/';
+// let url = 'http://localhost:3000/';
+let url = 'https://storeapp-back-end.herokuapp.com/';
 import axios from 'axios';
 import { mapMutations } from 'vuex';
 export default {

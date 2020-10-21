@@ -36,7 +36,8 @@
 import axios from 'axios';
 import galeria from 'lingallery';
 import { mapMutations, mapState } from 'vuex';
-let url = 'http://localhost:3000/';
+// let url = 'http://localhost:3000/';
+let url = 'https://storeapp-back-end.herokuapp.com/';
 export default {
   data(){
     return{
