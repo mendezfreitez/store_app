@@ -13,7 +13,7 @@
       backdrop
     >
 
-      <b-nav-form class="pl-2">
+      <b-nav-form class="pl-2"> 
         <b-form-input size="sm" class="mr-1 ml-0 w-50" placeholder="Búsqueda"></b-form-input>
         <b-button size="sm" class="ml-1" variant="outline-warning">Buscar</b-button>
       </b-nav-form>
