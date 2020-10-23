@@ -75,8 +75,8 @@ export default {
         }
        });
       if(suma === true){
-        this.ProductosCarro.push({ 'tituloProducto':this.producto.tituloProducto, 'textoProducto':this.producto.textoProducto, 'idProducto':this.producto.idProducto, 'laCantidad':this.producto.laCantidad, 'precio':this.producto.precioProducto, 'imagen':this.producto.arrayImagenes[0].src });
-        // console.log(this.ProductosCarro);
+        this.ProductosCarro.push({ 'tituloProducto':this.producto.tituloProducto, 'textoProducto':this.producto.textoProducto, 'idProducto':this.producto.idProducto, 'laCantidad':this.producto.laCantidad, 'precio':this.producto.precioProducto, 'imagen':`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/${this.producto.idProducto}/${this.producto.arrayImagenes[0]}` });
+        console.log(this.ProductosCarro);
         this.modificarCarro(this.ProductosCarro);        
       }
       // console.log(this.ProductosCarro);

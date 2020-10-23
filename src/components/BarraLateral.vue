@@ -12,17 +12,12 @@
       shadow
       backdrop
     >
-      <!-- <div class="px-3 py-2">
-        <b-form-group label="Backdrop variant" label-for="backdrop-variant">
-          <b-form-select id="backdrop-variant" v-model="variant" :options="variants"></b-form-select>
-        </b-form-group>
-      </div> -->
-      
+
       <b-nav-form class="pl-2">
         <b-form-input size="sm" class="mr-1 ml-0 w-50" placeholder="Búsqueda"></b-form-input>
         <b-button size="sm" class="ml-1" variant="outline-warning">Buscar</b-button>
       </b-nav-form>
-      <!-- <hr class="mb-1" /> -->
+      
       <b-navbar-nav class="text-left color-light" text-variant="light">
         <b-nav-item href="#" to="/" @click="traerProductosTodos('')" class="pl-2 ddd">
           Inicio <b-icon scale="1.5" icon="shop" style="float:right!important;" aria-hidden="true" class="mr-3"></b-icon>
@@ -32,9 +27,9 @@
         {{ categoria.nombre }} <b-icon scale="1.3" icon="caret-right-fill" style="float:right!important;" aria-hidden="true" class="mr-3"></b-icon>
         </b-nav-item>
 
-        <b-nav-item href="#" to="/productosTodos" class="pl-2">
+        <!-- <b-nav-item href="#" to="/productosTodos" class="pl-2">
           Productos Todos
-        </b-nav-item>
+        </b-nav-item> -->
       </b-navbar-nav>
 
     </b-sidebar>
@@ -68,7 +63,6 @@ export default {
   mounted(){
     axios.get(`${url}traerCategorias`).then(function (resp) {
       this.categoriasTodas = resp.data;
-        // console.log(resp.data);
     }.bind(this));
   },
   methods:{
