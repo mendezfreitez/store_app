@@ -4,9 +4,9 @@
     :img-src="srcImagen"
     img-alt="Imagen"
     img-top
-    style="max-width: 12rem;"
+    style="max-width: 15rem;"
     class="mb-2 ml-2 mr-2 mt-2 border border-secondary sombreadoProducto"
-    img-height="200"
+    img-height="235"
     @click="$emit('mostrar-modal', $props)"
   >
     <b-card-title class="text-left" style="font-size:13px!important;">{{tituloProducto}}</b-card-title>

@@ -20,11 +20,11 @@
             Total: {{textoTotalCarro | currency}}
           </b-badge>
 
-          <b-button variant="outline-primary" size="sm" class="float-right ml-1 w-80" style="width:80px; padding-left:5px;" @click="procesarPago">
+          <b-button :active="btnActivo" variant="outline-primary" size="sm" class="float-right ml-1 w-80" style="width:80px; padding-left:5px;" @click="procesarPago">
             Pagar <b-icon scale="1.2" icon="credit-card" aria-hidden="true" class="ml-1"></b-icon>
           </b-button>
 
-          <b-button variant="outline-danger" size="sm" class="float-right" @click="vaciarCarro">
+          <b-button :active="btnActivo" variant="outline-danger" size="sm" class="float-right" @click="vaciarCarro">
             Vaciar Carro
           </b-button>
 
@@ -54,7 +54,8 @@ export default {
   props:{
         tituloModal:String,
         textoModal:String,
-        precio:Number
+        precio:Number,
+        btnActivo:true
   },
   computed:{
     ...mapState(['ProductosCarro','textoTotalCarro'])
@@ -70,7 +71,7 @@ export default {
       this.modificarCarro([])
       this.$bvModal.hide('ModalCarroCompras')
     }
-  }
+  },
 }
 </script>
 

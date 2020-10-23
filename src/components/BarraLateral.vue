@@ -19,7 +19,7 @@
       </b-nav-form>
       
       <b-navbar-nav class="text-left color-light" text-variant="light">
-        <b-nav-item href="#" to="/" @click="traerProductosTodos('')" class="pl-2 ddd">
+        <b-nav-item v-b-toggle.sidebar-backdrop href="#" to="/" @click="traerProductosTodos('')" class="pl-2 ddd">
           Inicio <b-icon scale="1.5" icon="shop" style="float:right!important;" aria-hidden="true" class="mr-3"></b-icon>
         </b-nav-item>
 

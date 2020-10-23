@@ -76,6 +76,7 @@ export default {
     methods:{
       ...mapMutations(['traerProductosTodos']),
       modalProductos(){
+        // this.$refs.modalcito.btnActivo = false
         this.$bvModal.show('ModalCarroCompras');
       }
     },
