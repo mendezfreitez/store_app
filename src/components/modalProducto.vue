@@ -2,7 +2,6 @@
   <div>
     <b-modal id="modalProducto"
     :title="ElTituloModal"
-    hide-header-close
     header-bg-variant="success"
     header-text-variant="light"
     cancel-variant="outline-danger"

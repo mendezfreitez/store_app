@@ -23,9 +23,9 @@
             Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
           </b-button>
 
-          <b-button variant="outline-danger" size="sm" class="float-right" @click="cerrarmodal">
+          <!-- <b-button variant="outline-danger" size="sm" class="float-right" @click="cerrarmodal">
             Cerrar
-          </b-button>
+          </b-button> -->
         </div>
       </template>
     </b-modal>
@@ -92,5 +92,12 @@ export default {
 <style>
   .modal-body{
     padding: 0px!important;
+  }
+  .close{
+    opacity:1!important;
+    font-weight: 900!important;
+    font-size: 40px!important;
+    padding-top:7px!important;
+    /* background-color: #b71c1c!important; */
   }
 </style>

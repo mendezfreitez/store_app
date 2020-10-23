@@ -23,7 +23,7 @@
           Inicio <b-icon scale="1.5" icon="shop" style="float:right!important;" aria-hidden="true" class="mr-3"></b-icon>
         </b-nav-item>
 
-        <b-nav-item v-for="categoria in categoriasTodas" :key="categoria._id" href="#" @click="traerProductosTodos(categoria._id)" class="pl-2 ddd">
+        <b-nav-item v-b-toggle.sidebar-backdrop v-for="categoria in categoriasTodas" :key="categoria._id" href="#" @click="traerProductosTodos(categoria._id)" class="pl-2 ddd">
         {{ categoria.nombre }} <b-icon scale="1.3" icon="caret-right-fill" style="float:right!important;" aria-hidden="true" class="mr-3"></b-icon>
         </b-nav-item>
 
