@@ -4,7 +4,7 @@
 
     <b-sidebar
       id="sidebar-backdrop"
-      title="Barra lateral"
+      title="Categorías"
       :backdrop-variant="variant"
       bg-variant="success"
       text-variant="light"

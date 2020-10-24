@@ -2,7 +2,7 @@
   <div id="app">
     <BarraLateral />
     <Navegador />
-    <router-view style="margin-top:65px!important;" />
+    <router-view style="padding-top:65px!important; background-color:ffa!important;" />
   </div>
 </template>
 
@@ -51,7 +51,7 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 html,body{
-  background-color: #fff!important;
+  /* background-color: #fff!important; */
   /* font-family:'Dosis'!important; */
   /* font-weight: 700!important; */
   size:20px!important;
