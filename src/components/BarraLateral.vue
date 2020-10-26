@@ -27,9 +27,9 @@
         {{ categoria.nombre }} <b-icon scale="1.3" icon="caret-right-fill" style="float:right!important;" aria-hidden="true" class="mr-3"></b-icon>
         </b-nav-item>
 
-        <!-- <b-nav-item href="#" to="/productosTodos" class="pl-2">
-          Productos Todos
-        </b-nav-item> -->
+        <b-nav-item href="#" to="/personalizaTuCamiseta" class="pl-2">
+          Personaliza Tu Camiseta
+        </b-nav-item>
       </b-navbar-nav>
 
     </b-sidebar>

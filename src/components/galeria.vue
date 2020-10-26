@@ -1,5 +1,5 @@
 <template>
-  <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arregloItems"/>
+  <lingallery showControls="false" :iid.sync="currentId" :width="600" :height="400" :items="arregloItems"/>
 </template>
 
 <script>

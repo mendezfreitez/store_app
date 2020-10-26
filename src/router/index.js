@@ -8,7 +8,7 @@ import Registro from '../components/Registro'
 import TerminosCondiciones from '../components/TerminosCondiciones'
 import productosTodos from '../components/productosTodos'
 import editarProducto from '../components/EditarProducto'
-import NuevaCategoria from '../components/Categorias/NuevaCategoria'
+import Personalizar from '../components/personalizaTuCamiseta'
 
 Vue.use(VueRouter)
 
@@ -52,6 +52,11 @@ Vue.use(VueRouter)
       path: '/editarProducto/:iden',
       name: 'editarProducto',
       component: editarProducto
+    },
+    {
+      path: '/personalizaTuCamiseta',
+      name: 'personalizaTuCamiseta',
+      component: Personalizar      
     }
 ]
 

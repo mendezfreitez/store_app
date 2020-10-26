@@ -3,6 +3,7 @@
     <BarraLateral />
     <Navegador />
     <router-view style="padding-top:65px!important; background-color:ffa!important;" />
+    
   </div>
 </template>
 

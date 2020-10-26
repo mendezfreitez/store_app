@@ -97,7 +97,7 @@ export default {
     opacity:1!important;
     font-weight: 900!important;
     font-size: 40px!important;
-    padding-top:8px!important;
+    padding-top:9px!important; 
     background-color: #00701a!important;
   }
 </style>
