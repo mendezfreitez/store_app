@@ -392,11 +392,11 @@ padding-top: 60px;
 	height: 20px;
 }
 .rotate {  
-	-webkit-transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
+	transform:rotate(90deg);
+	/*-moz-transform:rotate(90deg);
 	-o-transform:rotate(90deg);
-	/* filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5); */
-	-ms-transform:rotate(90deg);		   
+	 filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5); 
+	-ms-transform:rotate(90deg);		   */
 }		
 .Arial{font-family:"Arial";}
 .Helvetica{font-family:"Helvetica";}
