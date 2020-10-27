@@ -9,6 +9,17 @@ import Numeric from '../src/ArchivosJavaScript/jquery.numeric-min'
 import 'typeface-dosis'
 import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+import 'fabric';
+// import jquery from 'jquery'
+// Vue.use(jquery)
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+import './editor/js/jquery.js';
+// import './editor/js/fabric.js';
+import './editor/js/tshirtEditor.js';
+import './editor/js/bootstrap.js';
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 import store from './store'
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
