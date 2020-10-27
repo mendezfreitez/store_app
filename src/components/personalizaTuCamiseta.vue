@@ -372,7 +372,7 @@ export default {
     vertical-align: middle;
 }
 .footer {
-	padding: 70px 0;
+	padding: 70px 0;   
 	margin-top: 70px;
 	border-top: 1px solid #E5E5E5;
 	background-color: whiteSmoke;
@@ -381,7 +381,7 @@ export default {
 padding-top: 60px;	        
 } */
 .color-preview {
-	border: 1px solid #CCC;
+	border: 1px solid #CCC; 
 	margin: 2px;
 	zoom: 1;
 	vertical-align: top;
