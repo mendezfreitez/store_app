@@ -24,7 +24,7 @@ import store from './store'
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(Numeric)
-Vue.use(VueSidebarMenu)
+Vue.use(VueSidebarMenu)     
 Vue.use(VueCurrencyFilter, {
   symbol: 'CLP',
   thousandsSeparator: '.',
