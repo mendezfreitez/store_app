@@ -105,71 +105,55 @@
 				<div align="center" style="min-height: 32px;">
 					<div class="clearfix">
 						<div class="btn-group inline pull-left" id="texteditor" style="display:none">
-							    <b-dropdown right text="Estilo" title="Tipografía">
-									<b-dropdown-item class="setFont" data-font="Arial">
-										<b-link tabindex="-1" href="#" class="Arial">Arial</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Helvetica">
-										<b-link tabindex="-1"  href="#" class="Helvetica">Helvetica</b-link>
-									</b-dropdown-item>
-									<!-- <b-dropdown-divider></b-dropdown-divider> -->
-									<b-dropdown-item class="setFont" data-font="Myriad Pro">
-										<b-link tabindex="-1" href="#" class="MyriadPro">Myriad Pro</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Delicious">
-										<b-link tabindex="-1" href="#" class="Delicious">Delicious</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Verdana">
-										<b-link tabindex="-1" href="#" class="Verdana">Verdana</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Georgia">
-										<b-link tabindex="-1" href="#" class="Georgia">Georgia</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Courier">
-										<b-link tabindex="-1" href="#" class="Courier">Courier</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Comic Sans MS">
-										<b-link tabindex="-1" href="#" class="ComicSansMS">Comic Sans MS</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Impact">
-										<b-link tabindex="-1" href="#" class="Impact">Impact</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Monaco">
-										<b-link tabindex="-1" href="#" class="Monaco">Monaco</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Optima">
-										<b-link tabindex="-1" href="#" class="Optima">Optima</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Hoefler Text">
-										<b-link tabindex="-1" href="#" class="HoeflerText">Hoefler Text</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Plaster">
-										<b-link tabindex="-1" href="#" class="Plaster">Plaster</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Engagement">
-										<b-link tabindex="-1" href="#" class="Engagement">Engagement</b-link>
-									</b-dropdown-item>
-									<b-dropdown-item class="setFont" data-font="Dosis">
-										<b-link tabindex="-1" href="#" class="Dosis">Dosis</b-link>
-									</b-dropdown-item>
-								</b-dropdown>						  
-							<!-- <b-button id="font-family" class="btn dropdown-toggle" data-toggle="dropdown" title="Font Style"><i class="icon-font" style="width:19px;height:19px;"></i></b-button>		                      
-							<ul class="dropdown-menu" role="menu" aria-labelledby="font-family-X">
-								<li><a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial">Arial</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Helvetica');" class="Helvetica">Helvetica</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Myriad Pro');" class="MyriadPro">Myriad Pro</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Delicious');" class="Delicious">Delicious</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Verdana');" class="Verdana">Verdana</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Georgia');" class="Georgia">Georgia</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Courier');" class="Courier">Courier</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Comic Sans MS');" class="ComicSansMS">Comic Sans MS</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Impact');" class="Impact">Impact</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Monaco');" class="Monaco">Monaco</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Optima');" class="Optima">Optima</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Hoefler Text');" class="Hoefler Text">Hoefler Text</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Plaster');" class="Plaster">Plaster</a></li>
-								<li><a tabindex="-1" href="#" onclick="setFont('Engagement');" class="Engagement">Engagement</a></li>
-							</ul> -->
+							<b-dropdown right text="Estilo" title="Tipografía">
+								<b-dropdown-item class="setFont" data-font="Arial">
+									<b-link tabindex="-1" href="#" class="Arial">Arial</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Helvetica">
+									<b-link tabindex="-1"  href="#" class="Helvetica">Helvetica</b-link>
+								</b-dropdown-item>
+								<!-- <b-dropdown-divider></b-dropdown-divider> -->
+								<b-dropdown-item class="setFont" data-font="Myriad Pro">
+									<b-link tabindex="-1" href="#" class="MyriadPro">Myriad Pro</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Delicious">
+									<b-link tabindex="-1" href="#" class="Delicious">Delicious</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Verdana">
+									<b-link tabindex="-1" href="#" class="Verdana">Verdana</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Georgia">
+									<b-link tabindex="-1" href="#" class="Georgia">Georgia</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Courier">
+									<b-link tabindex="-1" href="#" class="Courier">Courier</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Comic Sans MS">
+									<b-link tabindex="-1" href="#" class="ComicSansMS">Comic Sans MS</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Impact">
+									<b-link tabindex="-1" href="#" class="Impact">Impact</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Monaco">
+									<b-link tabindex="-1" href="#" class="Monaco">Monaco</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Optima">
+									<b-link tabindex="-1" href="#" class="Optima">Optima</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Hoefler Text">
+									<b-link tabindex="-1" href="#" class="HoeflerText">Hoefler Text</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Plaster">
+									<b-link tabindex="-1" href="#" class="Plaster">Plaster</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Engagement">
+									<b-link tabindex="-1" href="#" class="Engagement">Engagement</b-link>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Dosis">
+									<b-link tabindex="-1" href="#" class="Dosis">Dosis</b-link>
+								</b-dropdown-item>
+							</b-dropdown>
+
 							<b-button id="text-bold" title="Bold">
 								<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
 							</b-button>
@@ -284,12 +268,9 @@ export default {
 </script>
 <style>	
 @import '../editor/css/jquery.miniColors.css';
-
 @import '../editor/css/bootstrap-responsive.min.css';
-
 @import '../editor/css/jquery.simplecolorpicker.css';
 
-/* @import '../editor/css/bootstrap.min.css'; */
 #shirtDiv{
 	overflow:scroll!important;
 }
@@ -317,10 +298,7 @@ export default {
 	margin-top: 70px;
 	border-top: 1px solid #E5E5E5;
 	background-color: whiteSmoke;
-}			
-/* body {
-padding-top: 60px;	        
-} */
+}
 .color-preview {
 	border: 1px solid #CCC; 
 	margin: 2px;
@@ -334,10 +312,6 @@ padding-top: 60px;
 }
 .rotate {  
 	transform:rotate(90deg);
-	/*-moz-transform:rotate(90deg);
-	-o-transform:rotate(90deg);
-	 filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5); 
-	-ms-transform:rotate(90deg);		   */
 }		
 .Arial{font-family:"Arial";}
 .Helvetica{font-family:"Helvetica";}
