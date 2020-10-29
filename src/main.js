@@ -10,12 +10,14 @@ import 'typeface-dosis'
 import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import 'fabric';
-// import jquery from 'jquery'
+import 'canvas';
+// import jquery from 'jquery'npm run serve
 // Vue.use(jquery)
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-import './editor/js/jquery.js';
+// import './editor/js/caseEditor.js';
 import './editor/js/excanvas.js';
+import './editor/js/jquery.js';
 import './editor/js/tshirtEditor.js';
 import './editor/js/bootstrap.js';
 ////////////////////////////////////////////////////////////////

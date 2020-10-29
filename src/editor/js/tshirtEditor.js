@@ -53,19 +53,188 @@ var line4;
 		  //e.target.setFill('green');
 		  //canvas.renderAll();
 		});
+
+		  
+		  
+		  
+
+		  		var valueSelect = $("#tshirttype").val();
+		$("#tshirttype").change(function(){
+			valueSelect = $(this).val();
+			$("img[name=tshirtview]").attr("src", $(this).val());
+		console.log(valueSelect)
+		});
+		  
+		  
+		  
+		  $('#flipback').click(
+			  
+		   	function() {console.log(valueSelect)	
+               if (valueSelect === "../editor/img/crew_front.png") {
+                   if ($(this).attr("data-original-title") == "Show Back View") {
+			   		$(this).attr('data-original-title', 'Show Front View');			        		       
+			        $("#tshirtFacing").attr("src","../editor/img/crew_back.png");			        
+			        a = JSON.stringify(canvas);
+			        canvas.clear();
+			        try
+			        {
+			           var json = JSON.parse(b);
+			           canvas.loadFromJSON(b);
+			        }
+			        catch(e)
+			        {}
+			        
+				}
+				else {
+			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+			    	$("#tshirtFacing").attr("src","../editor/img/crew_front.png");			    	
+			    	b = JSON.stringify(canvas);
+			    	canvas.clear();
+			    	try
+			        {
+			           var json = JSON.parse(a);
+			           canvas.loadFromJSON(a);			           
+			        }
+			        catch(e)
+			        {}
+			    }		
+               }
+               else if (valueSelect === "../editor/img/mens_longsleeve_front.png") {
+				   alert()
+
+                  if ($(this).attr("data-original-title") == "Show Back View") {
+			   		$(this).attr('data-original-title', 'Show Front View');			        		       
+			        $("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_back.png");			        
+			        a = JSON.stringify(canvas);
+			        canvas.clear();
+			        try
+			        {
+			           var json = JSON.parse(b);
+			           canvas.loadFromJSON(b);
+			        }
+			        catch(e)
+			        {}
+			        
+			    } else {
+			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+			    	$("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_front.png");			    	
+			    	b = JSON.stringify(canvas);
+			    	canvas.clear();
+			    	try
+			        {
+			           var json = JSON.parse(a);
+			           canvas.loadFromJSON(a);			           
+			        }
+			        catch(e)
+			        {}
+			    }	
+               }
+               else if (valueSelect === "../editor/img/mens_tank_front.png") {
+                  if ($(this).attr("data-original-title") == "Show Back View") {
+			   		$(this).attr('data-original-title', 'Show Front View');			        		       
+			        $("#tshirtFacing").attr("src","../editor/img/mens_tank_back.png");			        
+			        a = JSON.stringify(canvas);
+			        canvas.clear();
+			        try
+			        {
+			           var json = JSON.parse(b);
+			           canvas.loadFromJSON(b);
+			        }
+			        catch(e)
+			        {}
+			        
+			    } else {
+			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+			    	$("#tshirtFacing").attr("src","../editor/img/mens_tank_front.png");			    	
+			    	b = JSON.stringify(canvas);
+			    	canvas.clear();
+			    	try
+			        {
+			           var json = JSON.parse(a);
+			           canvas.loadFromJSON(a);			           
+			        }
+			        catch(e)
+			        {}
+			    }	
+               }
+               else if (valueSelect === "../editor/img/mens_hoodie_front.png") {
+                  if ($(this).attr("data-original-title") == "Show Back View") {
+			   		$(this).attr('data-original-title', 'Show Front View');			        		       
+			        $("#tshirtFacing").attr("src","../editor/img/mens_hoodie_back.png");			        
+			        a = JSON.stringify(canvas);
+			        canvas.clear();
+			        try
+			        {
+			           var json = JSON.parse(b);
+			           canvas.loadFromJSON(b);
+			        }
+			        catch(e)
+			        {}
+			        
+			    } else {
+			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+			    	$("#tshirtFacing").attr("src","../editor/img/mens_hoodie_front.png");			    	
+			    	b = JSON.stringify(canvas);
+			    	canvas.clear();
+			    	try
+			        {
+			           var json = JSON.parse(a);
+			           canvas.loadFromJSON(a);			           
+			        }
+			        catch(e)
+			        {}
+			    }	
+               }
+			   /*	if ($(this).attr("data-original-title") == "Show Back View") {
+			   		$(this).attr('data-original-title', 'Show Front View');			        		       
+			        $("#tshirtFacing").attr("src","img/crew_back.png");			        
+			        a = JSON.stringify(canvas);
+			        canvas.clear();
+			        try
+			        {
+			           var json = JSON.parse(b);
+			           canvas.loadFromJSON(b);
+			        }
+			        catch(e)
+			        {}
+			        
+			    } else {
+			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+			    	$("#tshirtFacing").attr("src","img/crew_front.png");			    	
+			    	b = JSON.stringify(canvas);
+			    	canvas.clear();
+			    	try
+			        {
+			           var json = JSON.parse(a);
+			           canvas.loadFromJSON(a);			           
+			        }
+			        catch(e)
+			        {}
+			    }		*/
+			   	canvas.renderAll();
+			   	setTimeout(function() {
+			   		canvas.calcOffset();
+			    },200);	   	
+        });
 		 		 	 
 		document.getElementById('add-text').onclick = function() {
 			var text = $("#text-string").val();
 		    var textSample = new fabric.Text(text, {
-		      left: fabric.util.getRandomInt(0, 200),
-		      top: fabric.util.getRandomInt(0, 400),
-		      fontFamily: 'helvetica',
-		      angle: 0,
-		      fill: '#000000',
-		      scaleX: 0.5,
-		      scaleY: 0.5,
-		      fontWeight: '',
-	  		  hasRotatingPoint:true
+				left: fabric.util.getRandomInt(0, 200),
+				top: fabric.util.getRandomInt(0, 400),
+				fontFamily: 'helvetica',
+				cornerStyle:'rect',
+				cornerSize: 7,
+				padding: 7,
+				cornerStrokeColor:'transparent',
+				// underline: true,
+				// overline:true,
+				angle: 0,
+				fill: '#000000',
+				scaleX: 0.5,
+				scaleY: 0.5,
+				fontWeight: '',
+				hasRotatingPoint:true
 		    });		    
             canvas.add(textSample);	
             canvas.item(canvas.item.length-1).hasRotatingPoint = true;    
@@ -79,7 +248,8 @@ var line4;
 		    	  canvas.renderAll();
 		      }
 	  	});
-	  	$(".img-polaroid").click(function(e){
+		$(".img-polaroid").click(function (e) {
+			$("#texteditor").css('display', 'block');
 	  		var el = e.target;
 	  		/*temp code*/
 	  		var offset = 50;
@@ -94,20 +264,21 @@ var line4;
 		            left: left,
 		            top: top,
 		            angle: 0,
-		            padding: 10,
-		            cornersize: 10,
+		            padding: 7,
+		            cornerSize: 7,
 	      	  		hasRotatingPoint:true
 		          });
 		          //image.scale(getRandomNum(0.1, 0.25)).setCoords();
 		          canvas.add(image);
 		        });
 	  	});	  		  
-	  document.getElementById('remove-selected').onclick = function() {		  
-		    var activeObject = canvas.getActiveObject(),
-		        activeGroup = canvas.getActiveGroup();
+	  	document.getElementById('remove-selected').onclick = function() {		  
+		  var activeObject = canvas.getActiveObject(); 
+		    //    var activeGroup = canvas.getActiveGroup();
 		    if (activeObject) {
-		      canvas.remove(activeObject);
-		      $("#text-string").val("");
+		      	canvas.remove(activeObject);
+				$("#text-string").val("");
+            	$("#texteditor").css('display', 'block');
 		    }
 		    else if (activeGroup) {
 		      var objectsInGroup = activeGroup.getObjects();
@@ -116,8 +287,8 @@ var line4;
 		        canvas.remove(object);
 		      });
 		    }
-	  };
-	  document.getElementById('bring-to-front').onclick = function() {		  
+	  	};
+	  	document.getElementById('bring-to-front').onclick = function() {		  
 		    var activeObject = canvas.getActiveObject(),
 		        activeGroup = canvas.getActiveGroup();
 		    if (activeObject) {
@@ -130,8 +301,8 @@ var line4;
 		        object.bringToFront();
 		      });
 		    }
-	  };
-	  document.getElementById('send-to-back').onclick = function() {		  
+	  	};
+	  	document.getElementById('send-to-back').onclick = function() {		  
 		    var activeObject = canvas.getActiveObject(),
 		        activeGroup = canvas.getActiveGroup();
 		    if (activeObject) {
@@ -144,62 +315,71 @@ var line4;
 		        object.sendToBack();
 		      });
 		    }
-	  };		  
-	  $("#text-bold").click(function() {		  
-		  var activeObject = canvas.getActiveObject();
-		  if (activeObject && activeObject.type === 'text') {
-		    activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');		    
-		    canvas.renderAll();
-		  }
+		};	
+		$('.setFont').click(function (e) {
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.fontFamily = e.target.innerText;
+				canvas.renderAll();
+			}
+		});	  
+	  	$("#text-bold").click(function() {		  
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');		    
+				canvas.renderAll();
+			}
 		});
-	  $("#text-italic").click(function() {		 
-		  var activeObject = canvas.getActiveObject();
-		  if (activeObject && activeObject.type === 'text') {
-			  activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');		    
-		    canvas.renderAll();
-		  }
+		$("#text-italic").click(function() {		 
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');		    
+				canvas.renderAll();
+			}
 		});
-	  $("#text-strike").click(function() {		  
-		  var activeObject = canvas.getActiveObject();
-		  if (activeObject && activeObject.type === 'text') {
-			  activeObject.textDecoration = (activeObject.textDecoration == 'line-through' ? '' : 'line-through');
-		    canvas.renderAll();
-		  }
+		$("#text-strike").click(function() {		  
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.linethrough = (activeObject.linethrough == true ? '' : true);
+				$("#text-italic").click();
+				$("#text-italic").click();
+			}
 		});
-	  $("#text-underline").click(function() {		  
-		  var activeObject = canvas.getActiveObject();
-		  if (activeObject && activeObject.type === 'text') {
-			  activeObject.textDecoration = (activeObject.textDecoration == 'underline' ? '' : 'underline');
-		    canvas.renderAll();
-		  }
+		$("#text-underline").click(function () {
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.underline = (activeObject.underline == true ? '' : true);
+				$("#text-italic").click();
+				$("#text-italic").click();
+			}
 		});
-	  $("#text-left").click(function() {		  
+	  	$("#text-left").click(function() {		  
 		  var activeObject = canvas.getActiveObject();
 		  if (activeObject && activeObject.type === 'text') {
 			  activeObject.textAlign = 'left';
 		    canvas.renderAll();
 		  }
 		});
-	  $("#text-center").click(function() {		  
-		  var activeObject = canvas.getActiveObject();
-		  if (activeObject && activeObject.type === 'text') {
-			  activeObject.textAlign = 'center';		    
-		    canvas.renderAll();
-		  }
+	  	$("#text-center").click(function() {		  
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.textAlign = 'center';		    
+				canvas.renderAll();
+			}
 		});
-	  $("#text-right").click(function() {		  
-		  var activeObject = canvas.getActiveObject();
-		  if (activeObject && activeObject.type === 'text') {
-			  activeObject.textAlign = 'right';		    
-		    canvas.renderAll();
-		  }
+	  	$("#text-right").click(function() {		  
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.textAlign = 'right';		    
+				canvas.renderAll();
+			}
 		});	  
-	  $("#font-family").change(function() {
-	      var activeObject = canvas.getActiveObject();
-	      if (activeObject && activeObject.type === 'text') {
-	        activeObject.fontFamily = this.value;
-	        canvas.renderAll();
-	      }
+	 	 $("#font-family").change(function() {
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.fontFamily = this.value;
+				canvas.renderAll();
+			}
 	    });	  
 		$('#text-bgcolor').miniColors({
 			change: function(hex, rgb) {
@@ -231,7 +411,6 @@ var line4;
 				//
 			}
 		});
-		
 		$('#text-strokecolor').miniColors({
 			change: function(hex, rgb) {
 			  var activeObject = canvas.getActiveObject();
@@ -339,13 +518,14 @@ var line4;
 		 $("#text-string").val("");
 		 $("#imageeditor").css('display', 'none');
 	 }
-	 function setFont(font){
-		  var activeObject = canvas.getActiveObject();
-	      if (activeObject && activeObject.type === 'text') {
-	        activeObject.fontFamily = font;
-	        canvas.renderAll();
-	      }
-	  }
+
+	//  function setFont(font){
+	// 	  var activeObject = canvas.getActiveObject();
+	//       if (activeObject && activeObject.type === 'text') {
+	//         activeObject.fontFamily = font;
+	//         canvas.renderAll();
+	//       }
+	//   }
 	 function removeWhite(){
 		  var activeObject = canvas.getActiveObject();
 		  if (activeObject && activeObject.type === 'image') {			  

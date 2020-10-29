@@ -19,7 +19,7 @@
 <!--					      	<h3>Tee Styles</h3>-->
 <!--						      <p>-->
 						      	<b-select id="tshirttype">                        
-				                    <option value="../editor/img/crew_front.png" selected="selected">Manga corta</option>
+				                    <option value="../editor/img/crew_front.png" selected>Manga corta</option>
 				                    <option value="../editor/img/mens_longsleeve_front.png">Manga larga</option>
 				                    <option value="../editor/img/mens_hoodie_front.png">Sueter</option>                    
 				                    <option value="../editor/img/mens_tank_front.png">Franelilla</option>
@@ -106,48 +106,51 @@
 					<div class="clearfix">
 						<div class="btn-group inline pull-left" id="texteditor" style="display:none">
 							    <b-dropdown right text="Estilo" title="Tipografía">
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial">Arial</b-link>
+									<b-dropdown-item class="setFont" data-font="Arial">
+										<b-link tabindex="-1" href="#" class="Arial">Arial</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1"  href="#" onclick="setFont('Helvetica');" class="Helvetica">Helvetica</b-link>
+									<b-dropdown-item class="setFont" data-font="Helvetica">
+										<b-link tabindex="-1"  href="#" class="Helvetica">Helvetica</b-link>
 									</b-dropdown-item>
 									<!-- <b-dropdown-divider></b-dropdown-divider> -->
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Myriad Pro');" class="MyriadPro">Myriad Pro</b-link>
+									<b-dropdown-item class="setFont" data-font="Myriad Pro">
+										<b-link tabindex="-1" href="#" class="MyriadPro">Myriad Pro</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Delicious');" class="Delicious">Delicious</b-link>
+									<b-dropdown-item class="setFont" data-font="Delicious">
+										<b-link tabindex="-1" href="#" class="Delicious">Delicious</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Verdana');" class="Verdana">Verdana</b-link>
+									<b-dropdown-item class="setFont" data-font="Verdana">
+										<b-link tabindex="-1" href="#" class="Verdana">Verdana</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Georgia');" class="Georgia">Georgia</b-link>
+									<b-dropdown-item class="setFont" data-font="Georgia">
+										<b-link tabindex="-1" href="#" class="Georgia">Georgia</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Courier');" class="Courier">Courier</b-link>
+									<b-dropdown-item class="setFont" data-font="Courier">
+										<b-link tabindex="-1" href="#" class="Courier">Courier</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Comic Sans MS');" class="ComicSansMS">Comic Sans MS</b-link>
+									<b-dropdown-item class="setFont" data-font="Comic Sans MS">
+										<b-link tabindex="-1" href="#" class="ComicSansMS">Comic Sans MS</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Impact');" class="Impact">Impact</b-link>
+									<b-dropdown-item class="setFont" data-font="Impact">
+										<b-link tabindex="-1" href="#" class="Impact">Impact</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Monaco');" class="Monaco">Monaco</b-link>
+									<b-dropdown-item class="setFont" data-font="Monaco">
+										<b-link tabindex="-1" href="#" class="Monaco">Monaco</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Optima');" class="Optima">Optima</b-link>
+									<b-dropdown-item class="setFont" data-font="Optima">
+										<b-link tabindex="-1" href="#" class="Optima">Optima</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Hoefler Text');" class="Hoefler Text">Hoefler Text</b-link>
+									<b-dropdown-item class="setFont" data-font="Hoefler Text">
+										<b-link tabindex="-1" href="#" class="HoeflerText">Hoefler Text</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Plaster');" class="Plaster">Plaster</b-link>
+									<b-dropdown-item class="setFont" data-font="Plaster">
+										<b-link tabindex="-1" href="#" class="Plaster">Plaster</b-link>
 									</b-dropdown-item>
-									<b-dropdown-item>
-										<b-link tabindex="-1" href="#" onclick="setFont('Engagement');" class="Engagement">Engagement</b-link>
+									<b-dropdown-item class="setFont" data-font="Engagement">
+										<b-link tabindex="-1" href="#" class="Engagement">Engagement</b-link>
+									</b-dropdown-item>
+									<b-dropdown-item class="setFont" data-font="Dosis">
+										<b-link tabindex="-1" href="#" class="Dosis">Dosis</b-link>
 									</b-dropdown-item>
 								</b-dropdown>						  
 							<!-- <b-button id="font-family" class="btn dropdown-toggle" data-toggle="dropdown" title="Font Style"><i class="icon-font" style="width:19px;height:19px;"></i></b-button>		                      
@@ -209,10 +212,13 @@
 					</div>												
 				</div>					  		
 				<!--	EDITOR      -->	
-                <button id="flipback" type="button" class="btn" title="Rotate View"><i class="icon-retweet" style="height:19px;"></i></button>
-					<div id="shirtDiv" class="page" style="width: 100%; height: 630px; position: relative; background-color: rgb(255, 255, 255);">
-						<img name="tshirtview" id="tshirtFacing" src="../editor/img/crew_front.png">
-						<b-col id="drawingArea" style="position: absolute;top: 100px;left: 180px;z-index: 10;width: 240px;height: 400px;">					
+                <b-button @click="rotarCamiseta" variant="outline-success" title="Rotate View" style="padding-top: 8px; padding-bottom: 4px;">
+					<b-icon icon="arrow-left-right" scale="1.4" aria-hidden="true"></b-icon>
+				</b-button>
+					<div id="shirtDiv" class="page" style="width: 530px!important; height: 620px; position: relative; background-color: rgb(255, 255, 255);">
+						<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" :src="require(`../editor/img/crew_front.png`)"></b-img>
+						<b-img v-else name="tshirtview" id="tshirtFacing" :src="require(`../editor/img/crew_back.png`)"></b-img>
+						<b-col id="drawingArea" style="position: absolute;top: 100px;left: 145px;z-index: 10;width: 240px;height: 400px;">					
 							<canvas id="tcanvas" width=210 height="400" class="hover" style="-webkit-user-select: none;"></canvas>
 						</b-col>
 					</div>
@@ -261,166 +267,18 @@
 import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
 import '../editor/js/jquery.miniColors.min.js';
-// import '../editor/js/excanvas.js';
-
+import '../editor/js/excanvas.js';
 export default {
-	mounted(){
-
-		var valueSelect = $("#tshirttype").val();
-		$("#tshirttype").change(function(){
-			valueSelect = $(this).val();
-			$("img[name=tshirtview]").attr("src", $(this).val());
-		console.log(valueSelect)
-		});
-
-		$('#flipback').click(
-		   	function() {	
-               if (valueSelect === "../editor/img/crew_front.png") {
-                   if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","../editor/img/crew_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","../editor/img/crew_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }		
-               }
-               
-               else if (valueSelect === "../editor/img/mens_longsleeve_front.png") {
-				   alert()
-
-                  if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }	
-               }
-               else if (valueSelect === "../editor/img/mens_tank_front.png") {
-                  if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","../editor/img/mens_tank_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","../editor/img/mens_tank_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }	
-               }
-               else if (valueSelect === "../editor/img/mens_hoodie_front.png") {
-                  if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","../editor/img/mens_hoodie_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","../editor/img/mens_hoodie_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }	
-               }
-			   /*	if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","img/crew_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","img/crew_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }		*/
-			   	canvas.renderAll();
-			   	setTimeout(function() {
-			   		canvas.calcOffset();
-			    },200);	   	
-        });
+	data(){
+		return{
+			nombreImg:'crew_front',
+			visibleFront:true
+		}
+	},
+	methods:{
+		rotarCamiseta(){
+			this.visibleFront = !this.visibleFront
+		}
 	}
 }
 </script>
@@ -432,6 +290,9 @@ export default {
 @import '../editor/css/jquery.simplecolorpicker.css';
 
 /* @import '../editor/css/bootstrap.min.css'; */
+#shirtDiv{
+	overflow:scroll!important;
+}
 .well {
     min-height: 20px;
     padding: 19px;
@@ -443,7 +304,7 @@ export default {
 }
 .img-polaroid {
 	max-width: 100%;
-    padding: 4px;
+    padding: 0px;
     background-color: #fff;
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -577,5 +438,24 @@ padding-top: 60px;
     border-style: outset;
     border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
     border-image: initial;
+}
+@font-face {
+font-family: ‘Dosis’;
+   src: url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot');
+   src: url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.woff') format('woff'),
+        url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.ttf') format('truetype'),
+        url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.svg#adlerRegular') format('svg');
+  font-weight:900;
+  font-style:italic;
+}
+@media  (max-width: 600px) {
+	#tshirtFacing{
+		/* src: url('../editor/img/crew_back.png'); */
+		background-image: url('../editor/img/crew_back.png');
+	}
+  body {
+    background-color: black!important;
+  }
 }
 </style>
