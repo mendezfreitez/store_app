@@ -424,12 +424,6 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 @media  (max-width: 600px) {
-	#tshirtFacing{
-		/* src: url('../editor/img/crew_back.png'); */
-		background-image: url('../editor/img/crew_back.png');
-	}
-  body {
-    background-color: black!important;
-  }
+
 }
 </style>
