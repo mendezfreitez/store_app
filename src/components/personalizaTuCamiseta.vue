@@ -99,7 +99,7 @@
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix">
 						<div class="btn-group inline pull-left" id="texteditor">
-							<b-dropdown right text="Estilo" title="Tipografía">
+							<b-dropdown right text="Texto" title="Tipografía">
 								<b-dropdown-item class="setFont" data-font="Arial">
 									<b-link tabindex="-1" href="#" class="Arial">Arial</b-link>
 								</b-dropdown-item>
@@ -148,21 +148,48 @@
 								</b-dropdown-item>
 							</b-dropdown>
 
-							<b-button id="text-bold" title="Bold">
+							<b-dropdown right text="Estilo">
+								<b-dropdown-item>
+									<b-button id="text-bold" title="Bold">
+										<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
+										Bold
+									</b-button>
+								</b-dropdown-item>
+								
+								<b-dropdown-item>
+									<b-button id="text-italic" class="btn" data-original-title="Italic">
+										<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
+										Italic
+									</b-button>
+								</b-dropdown-item>
+
+								<b-dropdown-item>
+									<b-button id="text-strike" class="btn" title="Strike" style="">
+										<b-icon icon="type-strikethrough" scale="1.2" aria-hidden="true"></b-icon>
+										Strike
+									</b-button>
+								</b-dropdown-item>
+
+								<b-dropdown-item>
+									<b-button id="text-underline" class="btn" title="Underline" style="">
+										<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
+										Underline
+									</b-button>
+								</b-dropdown-item>
+							</b-dropdown>
+
+							<!-- <b-button id="text-bold" title="Bold">
 								<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
 							</b-button>
 							<b-button id="text-italic" class="btn" data-original-title="Italic">
 								<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
-								<!-- <img src="img/font_italic.png" height="" width=""> -->
 							</b-button>
 							<b-button id="text-strike" class="btn" title="Strike" style="">
 								<b-icon icon="type-strikethrough" scale="1.2" aria-hidden="true"></b-icon>
-								<!-- <img src="img/font_strikethrough.png" height="" width=""> -->
-							</b-button>
+							</b-button> 
 							<b-button id="text-underline" class="btn" title="Underline" style="">
 								<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
-								<!-- <img src="img/font_underline.png"> -->
-							</b-button>
+							</b-button> -->
 							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color">
 								<input type="hidden" id="text-fontcolor" class="color-picker" size="7" value="#000000">
 							</b-button>
@@ -912,7 +939,9 @@ var line4;
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
 
-
+.dropdown-toggle{
+	padding: 6px!important;
+}
 .custom-control-label{
 	width: 136px!important;
 	/* align-items: center!important; */
@@ -1085,7 +1114,7 @@ font-family: ‘Dosis’;
 		padding-left: 0px!important;
 		padding-right: 0px!important;
 	}
-	#shirtDiv, #contenedorControles, #contenedorColores{
+	#shirtDiv, #contenedorColores{
 		overflow-x: scroll!important;
 	}
 	.columna{
