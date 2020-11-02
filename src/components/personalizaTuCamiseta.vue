@@ -24,7 +24,7 @@
 <!--						      </p>-->								
 					      </div>
 					      <div class="well">
-							<ul class="nav">
+							<ul id="contenedorColores" class="nav">
 								<li class="color-preview" title="White" style="background-color:#ffffff;"></li>
 								<li class="color-preview" title="Dark Heather" style="background-color:#616161;"></li>
 								<li class="color-preview" title="Gray" style="background-color:#f0f0f0;"></li>
@@ -51,7 +51,7 @@
 				     </div>				   
 				    <div class="tab-pane" id="tab2">
 				    	<div class="well">
-							<b-input-group size="md" class="mt-3">
+							<b-input-group size="md">
 								<b-form-input placeholder="Agregar Texto Acá" id="text-string"></b-form-input>
 								<b-input-group-append>
 								<b-button id="add-text" variant="success">
@@ -64,7 +64,7 @@
 							  	<!-- <b-button style="height: 34px!important;" id="add-text" variant="outline-dark"  title="Agregar Texto">
 								  	
 								</b-button> -->
-							  <hr>
+							  <hr style="margin-bottom:5px!important;margin-top:5px!important;">
 							</div>
 							<div id="avatarlist">
 								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/1.png">
@@ -83,22 +83,22 @@
 								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/14.png">
 								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/15.png">
 							</div>	
-                            <div>
+                            <!-- <div>
                                 <hr>
 							     <form action="" method="post" enctype="multipart/form-data">
                                      <input type="file" name="fileToUpload" id="fileToUpload">
                                      <input class="btn btn-primary" type="submit" value="Agregar Imágen" name="submit">
                                 </form>
-							</div>
+							</div> -->
 				    	</div>				      
 				    </div>
 				  </div>
 				</div>				
 		    </b-col>		
 		    <b-col class="columna pl-0" lg="5">		    
-				<div align="center" style="min-height: 32px;">
+				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix">
-						<div class="btn-group inline pull-left" id="texteditor" style="display:none">
+						<div class="btn-group inline pull-left" id="texteditor">
 							<b-dropdown right text="Estilo" title="Tipografía">
 								<b-dropdown-item class="setFont" data-font="Arial">
 									<b-link tabindex="-1" href="#" class="Arial">Arial</b-link>
@@ -169,7 +169,7 @@
 							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Border Color">
 								<input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000">
 							</b-button>
-							<b-button id="flip" type="button" class="btn" title="Show Back View">
+							<b-button id="flipback" type="button" class="btn" title="Show Back View">
 								<b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon>
 								<!-- <i class="icon-retweet" style="height:19px;"></i> -->
 							</b-button>
@@ -190,9 +190,9 @@
 					</div>												
 				</div>					  		
 				<!--	EDITOR      -->	
-                <b-button id="flipback" variant="outline-success" title="Rotate View" style="padding-top: 8px; padding-bottom: 4px;">
+                <!-- <b-button id="flipback" variant="outline-success" title="Rotate View" style="padding-top: 8px; padding-bottom: 4px;">
 					<b-icon icon="arrow-left-right" scale="1.4" aria-hidden="true"></b-icon>
-				</b-button>
+				</b-button> -->
 					<div id="shirtDiv" class="page mb-2"  style="width: inherit!important; position: relative; background-color: rgb(255, 255, 255);">
 						<!-- <div v-if="seleccion == 0">
 							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png"></b-img>
@@ -367,22 +367,22 @@ var line4;
 	    selectedObject.hasRotatingPoint = true
 	    if (selectedObject && selectedObject.type === 'text') {
 	    	//display text editor	    	
-	    	$("#texteditor").css('display', 'block');
+	    	// $("#texteditor").css('display', 'block');
 	    	$("#text-string").val(selectedObject.getText());	    	
 	    	$('#text-fontcolor').miniColors('value',selectedObject.fill);
 	    	$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);	
-	    	$("#imageeditor").css('display', 'block');
+	    	// $("#imageeditor").css('display', 'block');
 	    }
 	    else if (selectedObject && selectedObject.type === 'image'){
 	    	//display image editor
-	    	$("#texteditor").css('display', 'none');	
-	    	$("#imageeditor").css('display', 'block');
+	    	// $("#texteditor").css('display', 'none');	
+	    	// $("#imageeditor").css('display', 'block');
 	    }
 	  }
 	 function onSelectedCleared(e){
-		 $("#texteditor").css('display', 'none');
+		//  $("#texteditor").css('display', 'none');
 		 $("#text-string").val("");
-		 $("#imageeditor").css('display', 'none');
+		//  $("#imageeditor").css('display', 'none');
 	 }
 
 	function resize(){    
@@ -467,9 +467,7 @@ var line4;
 				hasRotatingPoint:true
 		    });		    
             canvas.add(textSample);	
-            canvas.item(canvas.item.length-1).hasRotatingPoint = true;    
-            $("#texteditor").css('display', 'block');
-            $("#imageeditor").css('display', 'block');
+            canvas.item(canvas.item.length-1).hasRotatingPoint = true;
 		  });
 		  
 	  	$("#text-string").keyup(function(){	  		
@@ -668,7 +666,7 @@ var line4;
 		  
 
 		$(".img-polaroid").click(function (e) {
-			$("#texteditor").css('display', 'block');
+			// $("#texteditor").css('display', 'block');
 	  		var el = e.target;
 	  		/*temp code*/
 	  		var offset = 50;
@@ -691,13 +689,13 @@ var line4;
 		          canvas.add(image);
 		        });
 	  	});	  		  
-	  	document.getElementById('remove-selected').onclick = function() {		  
+	  	$('#remove-selected').click(function() {		  
 		  var activeObject = canvas.getActiveObject(); 
 		    //    var activeGroup = canvas.getActiveGroup();
 		    if (activeObject) {
 		      	canvas.remove(activeObject);
 				$("#text-string").val("");
-            	$("#texteditor").css('display', 'block');
+            	// $("#texteditor").css('display', 'block');
 		    }
 		    else if (activeGroup) {
 		      var objectsInGroup = activeGroup.getObjects();
@@ -706,7 +704,7 @@ var line4;
 		        canvas.remove(object);
 		      });
 		    }
-	  	};
+	  	});
 	  	document.getElementById('bring-to-front').onclick = function() {		  
 		    var activeObject = canvas.getActiveObject(),
 		        activeGroup = canvas.getActiveGroup();
@@ -914,11 +912,16 @@ var line4;
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
 
+
 .custom-control-label{
 	width: 136px!important;
 	/* align-items: center!important; */
 }
-
+#avatarlist{
+	height: 137px;
+	width: 100%;
+	overflow-x: scroll;
+}
 #canvas{
   border: solid 1px blue;  
   width: 100%;
@@ -926,7 +929,7 @@ var line4;
 #shirtDiv{
 	/* overflow:scroll!important; */
 	width: 100%!important;
-	margin-top: 10px!important;
+	/* margin-top: 10px!important; */
 }
 .well {
     min-height: 20px;
@@ -938,7 +941,7 @@ var line4;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .img-polaroid {
-	max-width: 100%;
+	width: 60px;
     padding: 0px;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -1082,12 +1085,17 @@ font-family: ‘Dosis’;
 		padding-left: 0px!important;
 		padding-right: 0px!important;
 	}
-	#shirtDiv{
-		overflow-x: scroll;
+	#shirtDiv, #contenedorControles, #contenedorColores{
+		overflow-x: scroll!important;
 	}
 	.columna{
 		padding-left: 0px!important;
 		padding-right: 0px!important;
+	}
+	#avatarlist{
+		height: 120px;
+		/* width: 100%;
+		overflow-x: scroll; */
 	}
 }
 @media (min-width: 601px){
