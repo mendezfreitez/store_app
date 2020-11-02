@@ -67,155 +67,7 @@ var line4;
 		  
 		  
 		  
-		  $('#flipback').click(
-			  
-		   	function() {console.log(valueSelect)	
-               if (valueSelect === "../editor/img/crew_front.png") {
-                   if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","../editor/img/crew_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-				}
-				else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","../editor/img/crew_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }		
-               }
-               else if (valueSelect === "../editor/img/mens_longsleeve_front.png") {
-				   alert()
 
-                  if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }	
-               }
-               else if (valueSelect === "../editor/img/mens_tank_front.png") {
-                  if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","../editor/img/mens_tank_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","../editor/img/mens_tank_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }	
-               }
-               else if (valueSelect === "../editor/img/mens_hoodie_front.png") {
-                  if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","../editor/img/mens_hoodie_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","../editor/img/mens_hoodie_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }	
-               }
-			   /*	if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","img/crew_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
-			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","img/crew_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }		*/
-			   	canvas.renderAll();
-			   	setTimeout(function() {
-			   		canvas.calcOffset();
-			    },200);	   	
-        });
 		 		 	 
 		document.getElementById('add-text').onclick = function() {
 			var text = $("#text-string").val();
@@ -247,7 +99,195 @@ var line4;
 		    	  activeObject.text = this.value;
 		    	  canvas.renderAll();
 		      }
-	  	});
+			});
+		  
+
+		  
+		fabric.Image.fromURL('https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png', function (image) {
+			var offset = 50;
+			var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
+	        var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
+			image.set({
+				left: 0,
+				top: 0,
+				angle: 0,
+				padding: 7,
+				backgroundColor:'#FFF',
+				selectable:false,
+				cornerSize: 7,
+				hasRotatingPoint:true
+			});
+			canvas.add(image);
+		});
+		  
+		$('.color-preview').click(function(){
+			canvas._objects[0].backgroundColor = $(this).css("background-color");
+			// console.log(canvas._objects[0]._element.src = 'https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_back.png');
+			// console.log(canvas._objects[0])
+			canvas.renderAll();
+		});
+		
+		var frontBack = 'front'
+		$("#flipback").click(function () {
+			if (frontBack === "front") {
+				frontBack = 'back';
+			} else {
+				frontBack = 'front';
+			}
+			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_${frontBack}.png`;
+			canvas.renderAll();
+		});
+		//   		$('#flipback').click(
+			  
+		//    	function() {console.log(valueSelect)	
+        //        if (valueSelect === "../editor/img/crew_front.png") {
+        //            if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","../editor/img/crew_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 		}
+		// 		else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","../editor/img/crew_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }		
+        //        }
+        //        else if (valueSelect === "../editor/img/mens_longsleeve_front.png") {
+		// 		   alert()
+
+        //           if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 	    } else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }	
+        //        }
+        //        else if (valueSelect === "../editor/img/mens_tank_front.png") {
+        //           if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_tank_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 	    } else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_tank_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }	
+        //        }
+        //        else if (valueSelect === "../editor/img/mens_hoodie_front.png") {
+        //           if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_hoodie_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 	    } else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_hoodie_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }	
+        //        }
+		// 	   /*	if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","img/crew_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 	    } else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","img/crew_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }		*/
+		// 	   	canvas.renderAll();
+		// 	   	setTimeout(function() {
+		// 	   		canvas.calcOffset();
+		// 	    },200);	   	
+        // });
+		  
+
 		$(".img-polaroid").click(function (e) {
 			$("#texteditor").css('display', 'block');
 	  		var el = e.target;
@@ -445,10 +485,7 @@ var line4;
 	        }
 	    );
 	   
-	   $('.color-preview').click(function(){
-		   var color = $(this).css("background-color");
-		   document.getElementById("shirtDiv").style.backgroundColor = color;		   
-	   });
+
 	   
 	   $('#flip').click(
 		   function() {			   
@@ -484,10 +521,10 @@ var line4;
 			    },200);			   	
         });	   
 	   $(".clearfix button,a").tooltip();
-	   line1 = new fabric.Line([0,0,200,0], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
-	   line2 = new fabric.Line([199,0,200,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
+	   line1 = new fabric.Line([0,0,220,0], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
+	   line2 = new fabric.Line([209,0,210,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
 	   line3 = new fabric.Line([0,0,0,400], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
-	   line4 = new fabric.Line([0,400,200,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
+	   line4 = new fabric.Line([0,400,20,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
 	 });//doc ready
 	 
 	 

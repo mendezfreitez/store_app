@@ -1,13 +1,13 @@
 <template>
     <b-container fluid>
-		<section id="typography">
+		<!-- <section id="typography"> -->
 		  <div class="page-header">
-		    <h1>Personaliza tu camiseta</h1>
+		    <!-- <h3>Personaliza tu camiseta</h3> -->
 		  </div>
 		
 		  <!-- Headings & Paragraph Copy -->
-		  <b-row>
-		    <b-col lg="4">
+		  <b-row align-h="center">
+		    <b-col class="columna" lg="4">
 		    	<div class="tabbable"> <!-- Only required for left/right tabs -->
 				  <b-nav class="nav nav-tabs">
 				  	<b-nav-item class="active"><a href="#tab1" data-toggle="tab">Opciones Camisetas</a></b-nav-item>				    
@@ -18,11 +18,8 @@
 				     	<div class="well">
 <!--					      	<h3>Tee Styles</h3>-->
 <!--						      <p>-->
-						      	<b-select id="tshirttype">                        
-				                    <option value="../editor/img/crew_front.png" selected>Manga corta</option>
-				                    <option value="../editor/img/mens_longsleeve_front.png">Manga larga</option>
-				                    <option value="../editor/img/mens_hoodie_front.png">Sueter</option>                    
-				                    <option value="../editor/img/mens_tank_front.png">Franelilla</option>
+						      	<b-select @change="mostrarCamiseta" v-model="seleccion" :options="options">                        
+				
 								</b-select>	
 <!--						      </p>-->								
 					      </div>
@@ -92,16 +89,13 @@
                                      <input type="file" name="fileToUpload" id="fileToUpload">
                                      <input class="btn btn-primary" type="submit" value="Agregar Imágen" name="submit">
                                 </form>
-							  
 							</div>
-                            
 				    	</div>				      
 				    </div>
-                      
 				  </div>
 				</div>				
 		    </b-col>		
-		    <b-col lg="4">		    
+		    <b-col class="columna pl-0" lg="5">		    
 				<div align="center" style="min-height: 32px;">
 					<div class="clearfix">
 						<div class="btn-group inline pull-left" id="texteditor" style="display:none">
@@ -196,24 +190,75 @@
 					</div>												
 				</div>					  		
 				<!--	EDITOR      -->	
-                <b-button @click="rotarCamiseta" variant="outline-success" title="Rotate View" style="padding-top: 8px; padding-bottom: 4px;">
+                <b-button id="flipback" variant="outline-success" title="Rotate View" style="padding-top: 8px; padding-bottom: 4px;">
 					<b-icon icon="arrow-left-right" scale="1.4" aria-hidden="true"></b-icon>
 				</b-button>
-					<div id="shirtDiv" class="page" style="width: 530px!important; height: 620px; position: relative; background-color: rgb(255, 255, 255);">
-						<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" :src="require(`../editor/img/crew_front.png`)"></b-img>
-						<b-img v-else name="tshirtview" id="tshirtFacing" :src="require(`../editor/img/crew_back.png`)"></b-img>
-						<b-col id="drawingArea" style="position: absolute;top: 100px;left: 145px;z-index: 10;width: 240px;height: 400px;">					
-							<canvas id="tcanvas" width=210 height="400" class="hover" style="-webkit-user-select: none;"></canvas>
-						</b-col>
+					<div id="shirtDiv" class="page mb-2"  style="width: inherit!important; position: relative; background-color: rgb(255, 255, 255);">
+						<!-- <div v-if="seleccion == 0">
+							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png"></b-img>
+							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_back.png"></b-img>					
+						</div>
+						<div v-if="seleccion == 1">
+							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_longsleeve_front.png"></b-img>
+							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_longsleeve_back.png"></b-img>					
+						</div>
+						<div v-if="seleccion == 2">
+							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_hoodie_front.png"></b-img>
+							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_hoodie_back.png"></b-img>					
+						</div>
+						<div v-if="seleccion == 3">
+							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_tank_front.png"></b-img>
+							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_tank_back.png"></b-img>					
+						</div>
+						<div v-if="seleccion == 4">
+							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/womens_crew_front.png"></b-img>
+							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/womens_crew_back.png"></b-img>					
+						</div> -->
+
+						<!-- <b-col id="drawingArea" style="position: absolute;top: 0px;left: 0px;z-index: 10;width: 540px;height: 640px;">					 -->
+							<canvas id="tcanvas" width=530 height=630 class="hover" style="-webkit-user-select: none;"></canvas>
+						<!-- </b-col> -->
 					</div>
 		    </b-col>
-		    <b-col lg="4">
-		      <div class="well">
-		      	<h3>Select Sizes</h3>
-			      <p>
+		    <b-col class="columna" lg="3">
+		      <div  style="width: 265px;" class="well">
+		      	<h4>Tallas</h4>
+				<div style="width: 250px;" class="text-right">
+					<b-form-checkbox size="lg" v-model="checkedOptions.checked_s" name="check-button" switch>
+						S <input :disabled="!checkedOptions.checked_s" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+					</b-form-checkbox>
+					<hr style="margin:5px!important;" />
+				</div>	
+				<div style="width: 250px;" class="text-right">
+					<b-form-checkbox size="lg" v-model="checkedOptions.checked_m" name="check-button" switch>
+						M <input :disabled="!checkedOptions.checked_m" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+					</b-form-checkbox>
+					<hr style="margin:5px!important;" />
+				</div>	
+				<div style="width: 250px;" class="text-right">
+					<b-form-checkbox size="lg" v-model="checkedOptions.checked_l" name="check-button" switch>
+						L <input :disabled="!checkedOptions.checked_l" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+					</b-form-checkbox>
+					<hr style="margin:5px!important;" />
+				</div>
+				<div style="width: 250px;" class="text-right">
+					<b-form-checkbox size="lg" v-model="checkedOptions.checked_xl" name="check-button" switch>
+						XL <input :disabled="!checkedOptions.checked_xl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+					</b-form-checkbox>
+					<hr style="margin:5px!important;" />
+				</div>
+				<div style="width: 250px;" class="text-right">
+					<b-form-checkbox size="lg" v-model="checkedOptions.checked_xxl" name="check-button" switch>
+						XXL <input :disabled="!checkedOptions.checked_xxl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+					</b-form-checkbox>
+					<hr style="margin:5px!important;" />
+				</div>
+			      <!-- <p>
 			      	<table class="table">
 			      		<tr>
-			      			<td><input type="checkbox">&emsp;S</td>
+			      			<td>
+
+							  </td>
 			      			<td align="right"><input min="0" style="width: 40px;" value="1" type="number"></td>
 			      		</tr>
 			      		<tr>
@@ -233,17 +278,16 @@
 			      			<td align="right"><input min="0" style="width: 40px;"  placeholder="1" type="number"></td>
 			      		</tr>
 			      	</table>			
-			      	</p>
-					<button type="button" class="btn btn-sm btn-block btn-success" name="addToTheBag" id="addToTheBag">
-						Añadir
-						<i class="icon-briefcase icon-white"></i>
-					</button>
+			      	</p> -->
+				<b-button variant="outline-primary" size="sm w-100"  style=" padding-left:8px;" @click="agregarAlCarro">
+					Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
+				</b-button>
 		      </div>		      		       		   
 		    </b-col>
 		
 		  </b-row>
 		
-		</section>
+		<!-- </section> -->
     </b-container>
 </template>
 
@@ -252,17 +296,616 @@ import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
 import '../editor/js/jquery.miniColors.min.js';
 import '../editor/js/excanvas.js';
+// import '../editor/js/tshirtEditor.js';
+
 export default {
 	data(){
 		return{
-			nombreImg:'crew_front',
-			visibleFront:true
+			checkedOptions:{
+				checked_s:false,
+				checked_m:false,
+				checked_l:false,
+				checked_xl:false,
+				checked_xxl:false
+			},
+			visibleFront:true,
+			seleccion:0,
+			options:[{value:0, text:'Manga Corta'},
+					{value:1, text:'Manga Larga'},
+					{value:2, text:'Sueter'},
+					{value:3, text:'Franelilla'},
+					{value:4, text:'Franela Corta'}]
 		}
 	},
 	methods:{
 		rotarCamiseta(){
 			this.visibleFront = !this.visibleFront
+		},
+		mostrarCamiseta(){
+			this.visibleFront = !this.visibleFront
+			this.visibleFront = !this.visibleFront
+		},
+		agregarAlCarro(){
+			alert("Se agregara al carro")
 		}
+	},
+	mounted(){
+		var canvas;
+var tshirts = new Array(); //prototype: [{style:'x',color:'white',front:'a',back:'b',price:{tshirt:'12.95',frontPrint:'4.99',backPrint:'4.99',total:'22.47'}}]
+var a;
+var b;
+var line1;
+var line2;
+var line3;
+var line4;
+ 	$(document).ready(function() {
+		//setup front side canvas 
+ 		canvas = new fabric.Canvas('tcanvas', {
+		  hoverCursor: 'pointer',
+		  selection: true,
+		  selectionBorderColor:'blue'
+		});
+ 		canvas.on({
+			 'object:moving': function(e) {		  	
+			    e.target.opacity = 0.5;
+			  },
+			  'object:modified': function(e) {		  	
+			    e.target.opacity = 1;
+			  },
+			 'object:selected':onObjectSelected,
+			 'selection:cleared':onSelectedCleared
+		 });
+
+		 
+	 function getRandomNum(min, max) {
+	    return Math.random() * (max - min) + min;
+	 }
+	 
+	 function onObjectSelected(e) {	 
+	    var selectedObject = e.target;
+	    $("#text-string").val("");
+	    selectedObject.hasRotatingPoint = true
+	    if (selectedObject && selectedObject.type === 'text') {
+	    	//display text editor	    	
+	    	$("#texteditor").css('display', 'block');
+	    	$("#text-string").val(selectedObject.getText());	    	
+	    	$('#text-fontcolor').miniColors('value',selectedObject.fill);
+	    	$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);	
+	    	$("#imageeditor").css('display', 'block');
+	    }
+	    else if (selectedObject && selectedObject.type === 'image'){
+	    	//display image editor
+	    	$("#texteditor").css('display', 'none');	
+	    	$("#imageeditor").css('display', 'block');
+	    }
+	  }
+	 function onSelectedCleared(e){
+		 $("#texteditor").css('display', 'none');
+		 $("#text-string").val("");
+		 $("#imageeditor").css('display', 'none');
+	 }
+
+	function resize(){    
+		$("#tcanvas").outerHeight($(window).height()-$("#tcanvas").offset().top- Math.abs($("#tcanvas").outerHeight(true) - $("#tcanvas").outerHeight()));
+	}
+	$(document).ready(function(){
+		resize();
+		$(window).on("resize", function(){                      
+			resize();
+			canvas.width = $('.col-lg-5').width()
+			console.log(canvas.width);
+			canvas.renderAll();
+			// console.log($('.col-lg-5').width())
+		});
+	});
+
+
+
+		// piggyback on `canvas.findTarget`, to fire "object:over" and "object:out" events
+ 		canvas.findTarget = (function(originalFn) {
+		  return function() {
+		    var target = originalFn.apply(this, arguments);
+		    if (target) {
+		      if (this._hoveredTarget !== target) {
+		    	  canvas.fire('object:over', { target: target });
+		        if (this._hoveredTarget) {
+		        	canvas.fire('object:out', { target: this._hoveredTarget });
+		        }
+		        this._hoveredTarget = target;
+		      }
+		    }
+		    else if (this._hoveredTarget) {
+		    	canvas.fire('object:out', { target: this._hoveredTarget });
+		      this._hoveredTarget = null;
+		    }
+		    return target;
+		  };
+		})(canvas.findTarget);
+
+ 		canvas.on('object:over', function(e) {		
+		  //e.target.setFill('red');
+		  //canvas.renderAll();
+		});
+		
+ 		canvas.on('object:out', function(e) {		
+		  //e.target.setFill('green');
+		  //canvas.renderAll();
+		});
+
+		  
+		  
+		  
+
+		  		var valueSelect = $("#tshirttype").val();
+		$("#tshirttype").change(function(){
+			valueSelect = $(this).val();
+			$("img[name=tshirtview]").attr("src", $(this).val());
+		console.log(valueSelect)
+		});
+		  
+		  
+		  
+
+		 		 	 
+		$('#add-text').click(function() {
+			var text = $("#text-string").val();
+		    var textSample = new fabric.Text(text, {
+				left: fabric.util.getRandomInt(0, 200),
+				top: fabric.util.getRandomInt(0, 400),
+				fontFamily: 'helvetica',
+				cornerStyle:'rect',
+				cornerSize: 7,
+				padding: 7,
+				cornerStrokeColor:'transparent',
+				// underline: true,
+				// overline:true,
+				angle: 0,
+				fill: '#000000',
+				scaleX: 0.5,
+				scaleY: 0.5,
+				fontWeight: '',
+				hasRotatingPoint:true
+		    });		    
+            canvas.add(textSample);	
+            canvas.item(canvas.item.length-1).hasRotatingPoint = true;    
+            $("#texteditor").css('display', 'block');
+            $("#imageeditor").css('display', 'block');
+		  });
+		  
+	  	$("#text-string").keyup(function(){	  		
+	  		var activeObject = canvas.getActiveObject();
+		      if (activeObject && activeObject.type === 'text') {
+		    	  activeObject.text = this.value;
+		    	  canvas.renderAll();
+		      }
+			});
+		  
+
+		  
+		fabric.Image.fromURL('https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png', function (image) {
+			var offset = 50;
+			var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
+	        var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
+			image.set({
+				left: 0,
+				top: 0,
+				angle: 0,
+				padding: 7,
+				backgroundColor:'#FFF',
+				selectable:false,
+				cornerSize: 7,
+				hasRotatingPoint:true
+			});
+			canvas.add(image);
+		});
+		  
+		$('.color-preview').click(function(){
+			canvas._objects[0].backgroundColor = $(this).css("background-color");
+			// console.log(canvas._objects[0]._element.src = 'https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_back.png');
+			// console.log(canvas._objects[0])
+			canvas.renderAll();
+		});
+		
+		var frontBack = 'front'
+		$("#flipback").click(function () {
+			if (frontBack === "front") {
+				frontBack = 'back';
+			} else {
+				frontBack = 'front';
+			}
+			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_${frontBack}.png`;
+			canvas.renderAll();
+		});
+		//   		$('#flipback').click(
+			  
+		//    	function() {console.log(valueSelect)	
+        //        if (valueSelect === "../editor/img/crew_front.png") {
+        //            if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","../editor/img/crew_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 		}
+		// 		else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","../editor/img/crew_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }		
+        //        }
+        //        else if (valueSelect === "../editor/img/mens_longsleeve_front.png") {
+		// 		   alert()
+
+        //           if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 	    } else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }	
+        //        }
+        //        else if (valueSelect === "../editor/img/mens_tank_front.png") {
+        //           if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_tank_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 	    } else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_tank_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }	
+        //        }
+        //        else if (valueSelect === "../editor/img/mens_hoodie_front.png") {
+        //           if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_hoodie_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 	    } else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_hoodie_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }	
+        //        }
+		// 	   /*	if ($(this).attr("data-original-title") == "Show Back View") {
+		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
+		// 	        $("#tshirtFacing").attr("src","img/crew_back.png");			        
+		// 	        a = JSON.stringify(canvas);
+		// 	        canvas.clear();
+		// 	        try
+		// 	        {
+		// 	           var json = JSON.parse(b);
+		// 	           canvas.loadFromJSON(b);
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+			        
+		// 	    } else {
+		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+		// 	    	$("#tshirtFacing").attr("src","img/crew_front.png");			    	
+		// 	    	b = JSON.stringify(canvas);
+		// 	    	canvas.clear();
+		// 	    	try
+		// 	        {
+		// 	           var json = JSON.parse(a);
+		// 	           canvas.loadFromJSON(a);			           
+		// 	        }
+		// 	        catch(e)
+		// 	        {}
+		// 	    }		*/
+		// 	   	canvas.renderAll();
+		// 	   	setTimeout(function() {
+		// 	   		canvas.calcOffset();
+		// 	    },200);	   	
+        // });
+		  
+
+		$(".img-polaroid").click(function (e) {
+			$("#texteditor").css('display', 'block');
+	  		var el = e.target;
+	  		/*temp code*/
+	  		var offset = 50;
+	        var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
+	        var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
+	        var angle = fabric.util.getRandomInt(-20, 40);
+	        var width = fabric.util.getRandomInt(30, 50);
+	        var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
+	        
+	  		fabric.Image.fromURL(el.src, function(image) {
+		          image.set({
+		            left: left,
+		            top: top,
+		            angle: 0,
+		            padding: 7,
+		            cornerSize: 7,
+	      	  		hasRotatingPoint:true
+		          });
+		          //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+		          canvas.add(image);
+		        });
+	  	});	  		  
+	  	document.getElementById('remove-selected').onclick = function() {		  
+		  var activeObject = canvas.getActiveObject(); 
+		    //    var activeGroup = canvas.getActiveGroup();
+		    if (activeObject) {
+		      	canvas.remove(activeObject);
+				$("#text-string").val("");
+            	$("#texteditor").css('display', 'block');
+		    }
+		    else if (activeGroup) {
+		      var objectsInGroup = activeGroup.getObjects();
+		      canvas.discardActiveGroup();
+		      objectsInGroup.forEach(function(object) {
+		        canvas.remove(object);
+		      });
+		    }
+	  	};
+	  	document.getElementById('bring-to-front').onclick = function() {		  
+		    var activeObject = canvas.getActiveObject(),
+		        activeGroup = canvas.getActiveGroup();
+		    if (activeObject) {
+		      activeObject.bringToFront();
+		    }
+		    else if (activeGroup) {
+		      var objectsInGroup = activeGroup.getObjects();
+		      canvas.discardActiveGroup();
+		      objectsInGroup.forEach(function(object) {
+		        object.bringToFront();
+		      });
+		    }
+	  	};
+	  	document.getElementById('send-to-back').onclick = function() {		  
+		    var activeObject = canvas.getActiveObject(),
+		        activeGroup = canvas.getActiveGroup();
+		    if (activeObject) {
+		      activeObject.sendToBack();
+		    }
+		    else if (activeGroup) {
+		      var objectsInGroup = activeGroup.getObjects();
+		      canvas.discardActiveGroup();
+		      objectsInGroup.forEach(function(object) {
+		        object.sendToBack();
+		      });
+		    }
+		};	
+		$('.setFont').click(function (e) {
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.fontFamily = e.target.innerText;
+				canvas.renderAll();
+			}
+		});	  
+	  	$("#text-bold").click(function() {		  
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');		    
+				canvas.renderAll();
+			}
+		});
+		$("#text-italic").click(function() {		 
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');		    
+				canvas.renderAll();
+			}
+		});
+		$("#text-strike").click(function() {		  
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.linethrough = (activeObject.linethrough == true ? '' : true);
+				$("#text-italic").click();
+				$("#text-italic").click();
+			}
+		});
+		$("#text-underline").click(function () {
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.underline = (activeObject.underline == true ? '' : true);
+				$("#text-italic").click();
+				$("#text-italic").click();
+			}
+		});
+	  	$("#text-left").click(function() {		  
+		  var activeObject = canvas.getActiveObject();
+		  if (activeObject && activeObject.type === 'text') {
+			  activeObject.textAlign = 'left';
+		    canvas.renderAll();
+		  }
+		});
+	  	$("#text-center").click(function() {		  
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.textAlign = 'center';		    
+				canvas.renderAll();
+			}
+		});
+	  	$("#text-right").click(function() {		  
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.textAlign = 'right';		    
+				canvas.renderAll();
+			}
+		});	  
+	 	 $("#font-family").change(function() {
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.fontFamily = this.value;
+				canvas.renderAll();
+			}
+	    });	  
+		$('#text-bgcolor').miniColors({
+			change: function(hex, rgb) {
+			  var activeObject = canvas.getActiveObject();
+		      if (activeObject && activeObject.type === 'text') {
+		    	  activeObject.backgroundColor = this.value;
+		        canvas.renderAll();
+		      }
+			},
+			open: function(hex, rgb) {
+				//
+			},
+			close: function(hex, rgb) {
+				//
+			}
+		});		
+		$('#text-fontcolor').miniColors({
+			change: function(hex, rgb) {
+			  var activeObject = canvas.getActiveObject();
+		      if (activeObject && activeObject.type === 'text') {
+		    	  activeObject.fill = this.value;
+		    	  canvas.renderAll();
+		      }
+			},
+			open: function(hex, rgb) {
+				//
+			},
+			close: function(hex, rgb) {
+				//
+			}
+		});
+		$('#text-strokecolor').miniColors({
+			change: function(hex, rgb) {
+			  var activeObject = canvas.getActiveObject();
+		      if (activeObject && activeObject.type === 'text') {
+		    	  activeObject.strokeStyle = this.value;
+		    	  canvas.renderAll();
+		      }
+			},
+			open: function(hex, rgb) {
+				//
+			},
+			close: function(hex, rgb) {
+				//
+			}
+		});
+	
+		//canvas.add(new fabric.fabric.Object({hasBorders:true,hasControls:false,hasRotatingPoint:false,selectable:false,type:'rect'}));
+	   $("#drawingArea").hover(
+	        function() { 	        	
+	        	 canvas.add(line1);
+		         canvas.add(line2);
+		         canvas.add(line3);
+		         canvas.add(line4); 
+		         canvas.renderAll();
+	        },
+	        function() {	        	
+	        	 canvas.remove(line1);
+		         canvas.remove(line2);
+		         canvas.remove(line3);
+		         canvas.remove(line4);
+		         canvas.renderAll();
+	        }
+	    );
+	   
+
+	   
+	   $('#flip').click(
+		   function() {			   
+			   	if ($(this).attr("data-original-title") == "Show Back View") {
+			   		$(this).attr('data-original-title', 'Show Front View');			        		       
+			        $("#tshirtFacing").attr("src","img/crew_back.png");			        
+			        a = JSON.stringify(canvas);
+			        canvas.clear();
+			        try
+			        {
+			           var json = JSON.parse(b);
+			           canvas.loadFromJSON(b);
+			        }
+			        catch(e)
+			        {}
+			        
+			    } else {
+			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
+			    	$("#tshirtFacing").attr("src","img/crew_front.png");			    	
+			    	b = JSON.stringify(canvas);
+			    	canvas.clear();
+			    	try
+			        {
+			           var json = JSON.parse(a);
+			           canvas.loadFromJSON(a);			           
+			        }
+			        catch(e)
+			        {}
+			    }		
+			   	canvas.renderAll();
+			   	setTimeout(function() {
+			   		canvas.calcOffset();
+			    },200);			   	
+        });	   
+	   $(".clearfix button,a").tooltip();
+	   line1 = new fabric.Line([0,0,220,0], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
+	   line2 = new fabric.Line([209,0,210,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
+	   line3 = new fabric.Line([0,0,0,400], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
+	   line4 = new fabric.Line([0,400,20,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
+	 });//doc ready
+	 
 	}
 }
 </script>
@@ -271,13 +914,24 @@ export default {
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
 
+.custom-control-label{
+	width: 136px!important;
+	/* align-items: center!important; */
+}
+
+#canvas{
+  border: solid 1px blue;  
+  width: 100%;
+}
 #shirtDiv{
-	overflow:scroll!important;
+	/* overflow:scroll!important; */
+	width: 100%!important;
+	margin-top: 10px!important;
 }
 .well {
     min-height: 20px;
-    padding: 19px;
-    margin-bottom: 20px;
+    padding: 5px;
+    margin-bottom: 10px;
     background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
     border-radius: 4px;
@@ -424,6 +1078,22 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 @media  (max-width: 600px) {
-
+	.container-fluid{
+		padding-left: 0px!important;
+		padding-right: 0px!important;
+	}
+	#shirtDiv{
+		overflow-x: scroll;
+	}
+	.columna{
+		padding-left: 0px!important;
+		padding-right: 0px!important;
+	}
 }
+@media (min-width: 601px){
+		#shirtDiv{
+		overflow-x: hidden;
+	}
+}
+
 </style>

@@ -18,7 +18,6 @@ import 'canvas';
 // import './editor/js/caseEditor.js';
 import './editor/js/excanvas.js';
 import './editor/js/jquery.js';
-import './editor/js/tshirtEditor.js';
 import './editor/js/bootstrap.js';
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
