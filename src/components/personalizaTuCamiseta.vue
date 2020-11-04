@@ -9,11 +9,15 @@
 		  <b-row align-h="center">
 		    <b-col class="columna" lg="4">
 		    	<div class="tabbable"> <!-- Only required for left/right tabs -->
-				  <b-nav class="nav nav-tabs">
-				  	<b-nav-item class="active"><a href="#tab1" data-toggle="tab">Opciones Camisetas</a></b-nav-item>				    
-				    <b-nav-item><a href="#tab2" data-toggle="tab">Avatares</a></b-nav-item>
+				  <b-nav tabs style="border-bottom: 0px!important;">
+				  	<b-nav-item :active="activo" @click="activar(true)">
+						<a href="#tab1" data-toggle="tab">Opciones Camisetas</a>
+					</b-nav-item>				    
+				    <b-nav-item :active="!activo" @click="activar(false)">
+						<a href="#tab2" data-toggle="tab">Avatares</a>
+					</b-nav-item>
 				  </b-nav>
-				  <div class="tab-content">
+				  <div class="tab-content" style="background-color: #FFF!important; padding: 5px!important; border: 1px solid black!important;border-color: #dee2e6;">
 				     <div class="tab-pane active" id="tab1">
 				     	<div class="well">
 <!--					      	<h3>Tee Styles</h3>-->
@@ -200,7 +204,7 @@
 								<b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon>
 								<!-- <i class="icon-retweet" style="height:19px;"></i> -->
 							</b-button>
-							<b-button id="remove-selected" class="btn" title="Delete selected item">
+							<b-button id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado">
 								<b-icon icon="trash" scale="1.2" aria-hidden="true"></b-icon>
 								<!-- <i class="icon-trash" style="height:19px;"></i> -->
 							</b-button>
@@ -220,7 +224,7 @@
                 <!-- <b-button id="flipback" variant="outline-success" title="Rotate View" style="padding-top: 8px; padding-bottom: 4px;">
 					<b-icon icon="arrow-left-right" scale="1.4" aria-hidden="true"></b-icon>
 				</b-button> -->
-					<div id="shirtDiv" class="page mb-2"  style="width: inherit!important; position: relative; background-color: rgb(255, 255, 255);">
+					<div id="shirtDiv" class="mb-2" style=" background-color: rgb(255, 255, 255);">
 						<!-- <div v-if="seleccion == 0">
 							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png"></b-img>
 							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_back.png"></b-img>					
@@ -243,7 +247,7 @@
 						</div> -->
 
 						<!-- <b-col id="drawingArea" style="position: absolute;top: 0px;left: 0px;z-index: 10;width: 540px;height: 640px;">					 -->
-							<canvas id="tcanvas" width=530 height=630 class="hover" style="-webkit-user-select: none;"></canvas>
+							<canvas id="tcanvas" width=530 height=630 class="hover" ></canvas>
 						<!-- </b-col> -->
 					</div>
 		    </b-col>
@@ -328,6 +332,7 @@ import '../editor/js/excanvas.js';
 export default {
 	data(){
 		return{
+			activo:true,
 			checkedOptions:{
 				checked_s:false,
 				checked_m:false,
@@ -345,6 +350,9 @@ export default {
 		}
 	},
 	methods:{
+		activar(valor){
+			this.activo = valor;
+		},
 		rotarCamiseta(){
 			this.visibleFront = !this.visibleFront
 		},
@@ -417,12 +425,20 @@ var line4;
 	}
 	$(document).ready(function(){
 		resize();
+		var anchoContenedorCanvas;
+		var anchoCanvas;
+		var margen;
+		var componente;
 		$(window).on("resize", function(){                      
-			resize();
-			canvas.width = $('.col-lg-5').width()
-			console.log(canvas.width);
-			canvas.renderAll();
-			// console.log($('.col-lg-5').width())
+			// resize();
+			anchoContenedorCanvas = $('#shirtDiv').width();
+			anchoCanvas = $("#tcanvas").width();
+			margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
+			console.log(margen);
+			// $('#shirtDiv').css('padding-left', margen);
+			componente = document.getElementById('shirtDiv');
+			componente.style.setProperty('padding-left', margen);
+			// canvas.renderAll();
 		});
 	});
 
@@ -459,21 +475,13 @@ var line4;
 		  //canvas.renderAll();
 		});
 
-		  
-		  
-		  
-
-		  		var valueSelect = $("#tshirttype").val();
+		var valueSelect = $("#tshirttype").val();
 		$("#tshirttype").change(function(){
 			valueSelect = $(this).val();
 			$("img[name=tshirtview]").attr("src", $(this).val());
 		console.log(valueSelect)
 		});
 		  
-		  
-		  
-
-		 		 	 
 		$('#add-text').click(function() {
 			var text = $("#text-string").val();
 		    var textSample = new fabric.Text(text, {
@@ -946,9 +954,14 @@ var line4;
 	width: 136px!important;
 	/* align-items: center!important; */
 }
+/* .tab-content{
+	background-color: #FFF;
+	padding: 5px!important;
+	border: 1px solid transparent;
+} */
 #avatarlist{
 	height: 137px;
-	width: 100%;
+	/* width: 100%; */
 	overflow-x: scroll;
 }
 #canvas{

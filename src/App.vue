@@ -43,8 +43,8 @@ export default {
 }
 @font-face {
 font-family: ‘Dosis’;
-   src: url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot');
-   src: url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    src: url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot');
+    src: url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot?#iefix') format('embedded-opentype'),
         url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.woff') format('woff'),
         url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.ttf') format('truetype'),
         url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.svg#adlerRegular') format('svg');
@@ -52,10 +52,9 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 html,body{
-  /* background-color: #fff!important; */
+  background-color: #f5f5f5!important;
   /* font-family:'Dosis'!important; */
   /* font-weight: 700!important; */
   size:20px!important;
 }
-
 </style>
