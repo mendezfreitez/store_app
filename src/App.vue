@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="width:100%!importaant;">
     <BarraLateral />
     <Navegador />
     <router-view style="padding-top:65px!important; background-color:ffa!important;" />
@@ -52,9 +52,10 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 html,body{
-  background-color: #f5f5f5!important;
+  background-color: #f5f5f5!important; 
   /* font-family:'Dosis'!important; */
   /* font-weight: 700!important; */
+  padding-left: 2px!important;
   size:20px!important;
 }
 </style>

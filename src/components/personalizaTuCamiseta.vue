@@ -1,109 +1,128 @@
 <template>
     <b-container fluid>
-		<!-- <section id="typography"> -->
-		  <div class="page-header">
-		    <!-- <h3>Personaliza tu camiseta</h3> -->
-		  </div>
+		<b-modal hide-header-close :static="true" id="modal-1" hide-backdrop hide-footer size="sm" title="Tallas">
+			<div style="width: 100%;" class="pl-3 pr-3 pb-3">
+				<!-- <h4 class="text-center"></h4> -->
+				<div class="text-center">
+					<div >
+						<b-form-checkbox size="lg" v-model="checkedOptions.checked_s" name="check-button" switch>
+							S <input :disabled="!checkedOptions.checked_s" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+						</b-form-checkbox>
+						<hr style="margin:5px!important;" />
+					</div>	
+					<div>
+						<b-form-checkbox size="lg" v-model="checkedOptions.checked_m" name="check-button" switch>
+							M <input :disabled="!checkedOptions.checked_m" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+						</b-form-checkbox>
+						<hr style="margin:5px!important;" />
+					</div>	
+					<div>
+						<b-form-checkbox size="lg" v-model="checkedOptions.checked_l" name="check-button" switch>
+							L <input :disabled="!checkedOptions.checked_l" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+						</b-form-checkbox>
+						<hr style="margin:5px!important;" />
+					</div>
+					<div>
+						<b-form-checkbox size="lg" v-model="checkedOptions.checked_xl" name="check-button" switch>
+							XL <input :disabled="!checkedOptions.checked_xl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+						</b-form-checkbox>
+						<hr style="margin:5px!important;" />
+					</div>
+					<div>
+						<b-form-checkbox size="lg" v-model="checkedOptions.checked_xxl" name="check-button" switch>
+							XXL <input :disabled="!checkedOptions.checked_xxl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+						</b-form-checkbox>
+						<hr style="margin:5px!important;" />
+					</div>
+				</div>
+				<b-button variant="outline-primary" size="sm w-100"  style=" padding-left:8px;" @click="agregarAlCarro">
+					Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
+				</b-button>
+			</div>	
+		</b-modal>
 		
-		  <!-- Headings & Paragraph Copy -->
-		  <b-row align-h="center">
-		    <b-col class="columna" lg="4">
-		    	<div class="tabbable"> <!-- Only required for left/right tabs -->
-				  <b-nav tabs style="border-bottom: 0px!important;">
-				  	<b-nav-item :active="activo" @click="activar(true)">
-						<a href="#tab1" data-toggle="tab">Opciones Camisetas</a>
-					</b-nav-item>				    
-				    <b-nav-item :active="!activo" @click="activar(false)">
-						<a href="#tab2" data-toggle="tab">Avatares</a>
-					</b-nav-item>
-				  </b-nav>
-				  <div class="tab-content" style="background-color: #FFF!important; padding: 5px!important; border: 1px solid black!important;border-color: #dee2e6;">
-				     <div class="tab-pane active" id="tab1">
-				     	<div class="well">
-<!--					      	<h3>Tee Styles</h3>-->
-<!--						      <p>-->
-						      	<b-select @change="mostrarCamiseta" v-model="seleccion" :options="options">                        
-				
-								</b-select>	
-<!--						      </p>-->								
-					      </div>
-					      <div class="well">
-							<ul id="contenedorColores" class="nav">
-								<li class="color-preview" title="White" style="background-color:#ffffff;"></li>
-								<li class="color-preview" title="Dark Heather" style="background-color:#616161;"></li>
-								<li class="color-preview" title="Gray" style="background-color:#f0f0f0;"></li>
-								<li class="color-preview" title="Charcoal" style="background-color:#5b5b5b;"></li>
-								<li class="color-preview" title="Black" style="background-color:#222222;"></li>
-								<li class="color-preview" title="Heather Orange" style="background-color:#fc8d74;"></li>
-								<li class="color-preview" title="Heather Dark Chocolate" style="background-color:#432d26;"></li>
-								<li class="color-preview" title="Salmon" style="background-color:#eead91;"></li>
-								<li class="color-preview" title="Chesnut" style="background-color:#806355;"></li>
-								<li class="color-preview" title="Dark Chocolate" style="background-color:#382d21;"></li>
-								<li class="color-preview" title="Citrus Yellow" style="background-color:#faef93;"></li>
-								<li class="color-preview" title="Avocado" style="background-color:#aeba5e;"></li>
-								<li class="color-preview" title="Kiwi" style="background-color:#8aa140;"></li>
-								<li class="color-preview" title="Irish Green" style="background-color:#1f6522;"></li>
-								<li class="color-preview" title="Scrub Green" style="background-color:#13afa2;"></li>
-								<li class="color-preview" title="Teal Ice" style="background-color:#b8d5d7;"></li>
-								<li class="color-preview" title="Heather Sapphire" style="background-color:#15aeda;"></li>
-								<li class="color-preview" title="Sky" style="background-color:#a5def8;"></li>
-								<li class="color-preview" title="Antique Sapphire" style="background-color:#0f77c0;"></li>
-								<li class="color-preview" title="Heather Navy" style="background-color:#3469b7;"></li>							
-								<li class="color-preview" title="Cherry Red" style="background-color:#c50404;"></li>
-							</ul>
-						</div>			      
-				     </div>				   
-				    <div class="tab-pane" id="tab2">
-				    	<div class="well">
-							<b-input-group size="md">
-								<b-form-input placeholder="Agregar Texto Acá" id="text-string"></b-form-input>
-								<b-input-group-append>
-								<b-button id="add-text" variant="success">
-									<b-icon icon="check" scale="2" aria-hidden="true"></b-icon>
-								</b-button>
-								</b-input-group-append>
-							</b-input-group>
-				    		<div class="input-append">
-							  	<!-- <input class="span2" id="text-string" type="text" placeholder=""> -->
-							  	<!-- <b-button style="height: 34px!important;" id="add-text" variant="outline-dark"  title="Agregar Texto">
-								  	
-								</b-button> -->
-							  <hr style="margin-bottom:5px!important;margin-top:5px!important;">
-							</div>
-							<div id="avatarlist">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/1.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/2.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/3.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/4.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/5.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/6.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/7.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/8.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/9.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/10.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/11.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/12.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/13.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/14.png">
-								<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/15.png">
-							</div>	
-                            <!-- <div>
-                                <hr>
-							     <form action="" method="post" enctype="multipart/form-data">
-                                     <input type="file" name="fileToUpload" id="fileToUpload">
-                                     <input class="btn btn-primary" type="submit" value="Agregar Imágen" name="submit">
-                                </form>
-							</div> -->
-				    	</div>				      
-				    </div>
-				  </div>
-				</div>				
-		    </b-col>		
-		    <b-col class="columna pl-0" lg="5">		    
+		<b-modal hide-header-close :static="true" id="modal-2" hide-backdrop hide-footer size="sm" title="Modelo | Color">
+			<div class="tab-pane active" id="tab1">
+				<div class="well" style="margin-bottom:5px!important;">
+					<b-select @change="mostrarCamiseta" v-model="seleccion" :options="options">
+					</b-select>								
+				</div>
+				<div class="well" style="overflow-x:scroll!important;">
+					<ul id="contenedorColores" class="nav">
+						<li class="color-preview" title="White" style="background-color:#ffffff;"></li>
+						<li class="color-preview" title="Dark Heather" style="background-color:#616161;"></li>
+						<li class="color-preview" title="Gray" style="background-color:#f0f0f0;"></li>
+						<li class="color-preview" title="Charcoal" style="background-color:#5b5b5b;"></li>
+						<li class="color-preview" title="Black" style="background-color:#222222;"></li>
+						<li class="color-preview" title="Heather Orange" style="background-color:#fc8d74;"></li>
+						<li class="color-preview" title="Heather Dark Chocolate" style="background-color:#432d26;"></li>
+						<li class="color-preview" title="Salmon" style="background-color:#eead91;"></li>
+						<li class="color-preview" title="Chesnut" style="background-color:#806355;"></li>
+						<li class="color-preview" title="Dark Chocolate" style="background-color:#382d21;"></li>
+						<li class="color-preview" title="Citrus Yellow" style="background-color:#faef93;"></li>
+						<li class="color-preview" title="Avocado" style="background-color:#aeba5e;"></li>
+						<li class="color-preview" title="Kiwi" style="background-color:#8aa140;"></li>
+						<li class="color-preview" title="Irish Green" style="background-color:#1f6522;"></li>
+						<li class="color-preview" title="Scrub Green" style="background-color:#13afa2;"></li>
+						<li class="color-preview" title="Teal Ice" style="background-color:#b8d5d7;"></li>
+						<li class="color-preview" title="Heather Sapphire" style="background-color:#15aeda;"></li>
+						<li class="color-preview" title="Sky" style="background-color:#a5def8;"></li>
+						<li class="color-preview" title="Antique Sapphire" style="background-color:#0f77c0;"></li>
+						<li class="color-preview" title="Heather Navy" style="background-color:#3469b7;"></li>							
+						<li class="color-preview" title="Cherry Red" style="background-color:#c50404;"></li>
+					</ul>
+				</div>			      
+			</div>
+		
+		
+		
+		</b-modal>
+		
+		<b-modal hide-header-close :static="true" id="modal-3" hide-backdrop hide-footer size="sm" title="Imagen | Texto">
+			<div class="well">
+				<b-input-group size="md">
+					<b-form-input placeholder="Agregar Texto Acá" id="text-string"></b-form-input>
+					<b-input-group-append>
+						<b-button id="add-text" variant="success">
+							<b-icon icon="check" scale="2" aria-hidden="true"></b-icon>
+						</b-button>
+					</b-input-group-append>
+				</b-input-group>
+				<div class="input-append">
+					<hr style="margin-bottom:5px!important;margin-top:5px!important;">
+				</div>
+				<div id="avatarlist">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/1.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/2.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/3.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/4.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/5.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/6.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/7.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/8.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/9.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/10.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/11.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/12.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/13.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/14.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/15.png">
+				</div>
+			</div>	
+		</b-modal>
+		
+		<b-row align-h="center">
+			<b-col class="columna" sm="12" lg="2">
+			</b-col>		
+			
+			<b-col class="columna pl-0" sm="12" lg="8">
+				<b-button v-b-modal.modal-2 size="sm" variant="outline-success">Modelo | Color</b-button>
+				<b-button v-b-modal.modal-3 size="sm" variant="outline-success" class="ml-1 mr-1">Imagen | Texto</b-button>
+				<b-button v-b-modal.modal-1 size="sm" variant="outline-success">Tallas</b-button>		    
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
-					<div class="clearfix">
+					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
-							<b-dropdown right text="Texto" title="Tipografía">
+							<b-dropdown right text="Texto" title="Tipografía" variant="outline-success">
 								<b-dropdown-item class="setFont" data-font="Arial">
 									<b-link tabindex="-1" href="#" class="Arial">Arial</b-link>
 								</b-dropdown-item>
@@ -151,29 +170,26 @@
 									<b-link tabindex="-1" href="#" class="Dosis">Dosis</b-link>
 								</b-dropdown-item>
 							</b-dropdown>
-
-							<b-dropdown right text="Estilo">
+							
+							<b-dropdown right text="Estilo" variant="outline-success">
 								<b-dropdown-item>
 									<b-button id="text-bold" title="Bold">
 										<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
 										Bold
 									</b-button>
 								</b-dropdown-item>
-								
 								<b-dropdown-item>
 									<b-button id="text-italic" class="btn" data-original-title="Italic">
 										<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
 										Italic
 									</b-button>
 								</b-dropdown-item>
-
 								<b-dropdown-item>
 									<b-button id="text-strike" class="btn" title="Strike" style="">
 										<b-icon icon="type-strikethrough" scale="1.2" aria-hidden="true"></b-icon>
 										Strike
 									</b-button>
 								</b-dropdown-item>
-
 								<b-dropdown-item>
 									<b-button id="text-underline" class="btn" title="Underline" style="">
 										<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
@@ -181,35 +197,24 @@
 									</b-button>
 								</b-dropdown-item>
 							</b-dropdown>
-
-							<!-- <b-button id="text-bold" title="Bold">
-								<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
-							</b-button>
-							<b-button id="text-italic" class="btn" data-original-title="Italic">
-								<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
-							</b-button>
-							<b-button id="text-strike" class="btn" title="Strike" style="">
-								<b-icon icon="type-strikethrough" scale="1.2" aria-hidden="true"></b-icon>
-							</b-button> 
-							<b-button id="text-underline" class="btn" title="Underline" style="">
-								<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
-							</b-button> -->
-							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color">
+							
+							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-success">
 								<input type="hidden" id="text-fontcolor" class="color-picker" size="7" value="#000000">
 							</b-button>
-							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Border Color">
+							
+							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Border Color" variant="outline-success">
 								<input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000">
 							</b-button>
-							<b-button id="flipback" type="button" class="btn" title="Show Back View">
+							
+							<b-button id="flipback" type="button" class="btn" title="Show Back View" variant="outline-success">
 								<b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon>
-								<!-- <i class="icon-retweet" style="height:19px;"></i> -->
 							</b-button>
-							<b-button id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado">
+							
+							<b-button id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-success">
 								<b-icon icon="trash" scale="1.2" aria-hidden="true"></b-icon>
-								<!-- <i class="icon-trash" style="height:19px;"></i> -->
 							</b-button>
-								<!--- Background <input type="hidden" id="text-bgcolor" class="color-picker" size="7" value="#ffffff"> --->
 						</div>							  
+						
 						<div class="pull-right" align="" id="imageeditor" style="display:none">
 							<div class="btn-group">										      
 								<button class="btn" id="bring-to-front" title="Bring to Front"><i class="icon-fast-backward rotate" style="height:19px;"></i></button>
@@ -219,106 +224,15 @@
 							</div>
 						</div>			  
 					</div>												
-				</div>					  		
-				<!--	EDITOR      -->	
-                <!-- <b-button id="flipback" variant="outline-success" title="Rotate View" style="padding-top: 8px; padding-bottom: 4px;">
-					<b-icon icon="arrow-left-right" scale="1.4" aria-hidden="true"></b-icon>
-				</b-button> -->
-					<div id="shirtDiv" class="mb-2" style=" background-color: rgb(255, 255, 255);">
-						<!-- <div v-if="seleccion == 0">
-							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png"></b-img>
-							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_back.png"></b-img>					
-						</div>
-						<div v-if="seleccion == 1">
-							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_longsleeve_front.png"></b-img>
-							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_longsleeve_back.png"></b-img>					
-						</div>
-						<div v-if="seleccion == 2">
-							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_hoodie_front.png"></b-img>
-							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_hoodie_back.png"></b-img>					
-						</div>
-						<div v-if="seleccion == 3">
-							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_tank_front.png"></b-img>
-							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/mens_tank_back.png"></b-img>					
-						</div>
-						<div v-if="seleccion == 4">
-							<b-img v-if="visibleFront" name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/womens_crew_front.png"></b-img>
-							<b-img v-else name="tshirtview" id="tshirtFacing" src="https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/womens_crew_back.png"></b-img>					
-						</div> -->
-
-						<!-- <b-col id="drawingArea" style="position: absolute;top: 0px;left: 0px;z-index: 10;width: 540px;height: 640px;">					 -->
-							<canvas id="tcanvas" width=530 height=630 class="hover" ></canvas>
-						<!-- </b-col> -->
-					</div>
-		    </b-col>
-		    <b-col class="columna" lg="3">
-		      <div  style="width: 265px;" class="well">
-		      	<h4>Tallas</h4>
-				<div style="width: 250px;" class="text-right">
-					<b-form-checkbox size="lg" v-model="checkedOptions.checked_s" name="check-button" switch>
-						S <input :disabled="!checkedOptions.checked_s" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
-					</b-form-checkbox>
-					<hr style="margin:5px!important;" />
-				</div>	
-				<div style="width: 250px;" class="text-right">
-					<b-form-checkbox size="lg" v-model="checkedOptions.checked_m" name="check-button" switch>
-						M <input :disabled="!checkedOptions.checked_m" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
-					</b-form-checkbox>
-					<hr style="margin:5px!important;" />
-				</div>	
-				<div style="width: 250px;" class="text-right">
-					<b-form-checkbox size="lg" v-model="checkedOptions.checked_l" name="check-button" switch>
-						L <input :disabled="!checkedOptions.checked_l" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
-					</b-form-checkbox>
-					<hr style="margin:5px!important;" />
 				</div>
-				<div style="width: 250px;" class="text-right">
-					<b-form-checkbox size="lg" v-model="checkedOptions.checked_xl" name="check-button" switch>
-						XL <input :disabled="!checkedOptions.checked_xl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
-					</b-form-checkbox>
-					<hr style="margin:5px!important;" />
+				<div id="shirtDiv" align="center" class="mb-2" style=" background-color: rgb(255, 255, 255);">
+					<canvas id="tcanvas" width=530 height=630 class="hover" ></canvas>
 				</div>
-				<div style="width: 250px;" class="text-right">
-					<b-form-checkbox size="lg" v-model="checkedOptions.checked_xxl" name="check-button" switch>
-						XXL <input :disabled="!checkedOptions.checked_xxl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
-					</b-form-checkbox>
-					<hr style="margin:5px!important;" />
-				</div>
-			      <!-- <p>
-			      	<table class="table">
-			      		<tr>
-			      			<td>
-
-							  </td>
-			      			<td align="right"><input min="0" style="width: 40px;" value="1" type="number"></td>
-			      		</tr>
-			      		<tr>
-			      			<td><input type="checkbox">&emsp;M</td>
-			      			<td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-			      		</tr>
-			      		<tr>
-			      			<td><input type="checkbox">&emsp;L</td>
-			      			<td align="right"><input min="0" style="width: 40px;"  placeholder="1" type="number"></td>
-			      		</tr>
-			      		<tr>
-			      			<td><input type="checkbox">&emsp;XL</td>
-			      			<td align="right"><input min="0" style="width: 40px;"  placeholder="1" type="number"></td>
-			      		</tr>
-                        <tr>
-			      			<td><input type="checkbox">&emsp;XXL</td>
-			      			<td align="right"><input min="0" style="width: 40px;"  placeholder="1" type="number"></td>
-			      		</tr>
-			      	</table>			
-			      	</p> -->
-				<b-button variant="outline-primary" size="sm w-100"  style=" padding-left:8px;" @click="agregarAlCarro">
-					Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
-				</b-button>
-		      </div>		      		       		   
-		    </b-col>
-		
-		  </b-row>
-		
-		<!-- </section> -->
+			</b-col>
+			
+			<b-col class="columna" sm="12" lg="2">	      		       		    
+			</b-col>
+		</b-row>
     </b-container>
 </template>
 
@@ -333,6 +247,8 @@ export default {
 	data(){
 		return{
 			activo:true,
+			activo2:false,
+			activo3:false,
 			checkedOptions:{
 				checked_s:false,
 				checked_m:false,
@@ -351,7 +267,25 @@ export default {
 	},
 	methods:{
 		activar(valor){
-			this.activo = valor;
+			switch (valor) {
+				case 1:
+					this.activo = true
+					this.activo2 = false
+					this.activo3 = false
+				break;
+				case 2:
+					this.activo = false
+					this.activo2 = true
+					this.activo3 = false
+				break;
+				case 3:
+					this.activo = false
+					this.activo2 = false
+					this.activo3 = true
+				break;
+				default:
+				break;
+			}
 		},
 		rotarCamiseta(){
 			this.visibleFront = !this.visibleFront
@@ -389,58 +323,57 @@ var line4;
 			  },
 			 'object:selected':onObjectSelected,
 			 'selection:cleared':onSelectedCleared
-		 });
-
-		 
-	 function getRandomNum(min, max) {
-	    return Math.random() * (max - min) + min;
-	 }
-	 
-	 function onObjectSelected(e) {	 
-	    var selectedObject = e.target;
-	    $("#text-string").val("");
-	    selectedObject.hasRotatingPoint = true
-	    if (selectedObject && selectedObject.type === 'text') {
-	    	//display text editor	    	
-	    	// $("#texteditor").css('display', 'block');
-	    	$("#text-string").val(selectedObject.getText());	    	
-	    	$('#text-fontcolor').miniColors('value',selectedObject.fill);
-	    	$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);	
-	    	// $("#imageeditor").css('display', 'block');
-	    }
-	    else if (selectedObject && selectedObject.type === 'image'){
-	    	//display image editor
-	    	// $("#texteditor").css('display', 'none');	
-	    	// $("#imageeditor").css('display', 'block');
-	    }
-	  }
-	 function onSelectedCleared(e){
-		//  $("#texteditor").css('display', 'none');
-		 $("#text-string").val("");
-		//  $("#imageeditor").css('display', 'none');
-	 }
-
-	function resize(){    
-		$("#tcanvas").outerHeight($(window).height()-$("#tcanvas").offset().top- Math.abs($("#tcanvas").outerHeight(true) - $("#tcanvas").outerHeight()));
-	}
-	$(document).ready(function(){
-		resize();
-		var anchoContenedorCanvas;
-		var anchoCanvas;
-		var margen;
-		var componente;
-		$(window).on("resize", function(){                      
-			// resize();
-			anchoContenedorCanvas = $('#shirtDiv').width();
-			anchoCanvas = $("#tcanvas").width();
-			margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
-			console.log(margen);
-			// $('#shirtDiv').css('padding-left', margen);
-			componente = document.getElementById('shirtDiv');
-			componente.style.setProperty('padding-left', margen);
-			// canvas.renderAll();
 		});
-	});
+
+		function getRandomNum(min, max) {
+			return Math.random() * (max - min) + min;
+		}
+		
+		function onObjectSelected(e) {	 
+			var selectedObject = e.target;
+			$("#text-string").val("");
+			selectedObject.hasRotatingPoint = true
+			if (selectedObject && selectedObject.type === 'text') {
+				//display text editor	    	
+				// $("#texteditor").css('display', 'block');
+				$("#text-string").val(selectedObject.getText());	    	
+				$('#text-fontcolor').miniColors('value',selectedObject.fill);
+				$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);	
+				// $("#imageeditor").css('display', 'block');
+			}
+			else if (selectedObject && selectedObject.type === 'image'){
+				//display image editor
+				// $("#texteditor").css('display', 'none');	
+				// $("#imageeditor").css('display', 'block');
+			}
+		}
+		function onSelectedCleared(e){
+			//  $("#texteditor").css('display', 'none');
+			$("#text-string").val("");
+			//  $("#imageeditor").css('display', 'none');
+		}
+
+		function resize(){    
+			$("#tcanvas").outerHeight($(window).height()-$("#tcanvas").offset().top- Math.abs($("#tcanvas").outerHeight(true) - $("#tcanvas").outerHeight()));
+		}
+		$(document).ready(function(){
+			resize();
+			var anchoContenedorCanvas;
+			var anchoCanvas;
+			var margen;
+			var componente;
+			$(window).on("resize", function(){                      
+				// resize();
+				anchoContenedorCanvas = $('#shirtDiv').width();
+				anchoCanvas = $("#tcanvas").width();
+				margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
+				console.log(margen);
+				// $('#shirtDiv').css('padding-left', margen);
+				componente = document.getElementById('shirtDiv');
+				componente.style.setProperty('padding-left', margen);
+				// canvas.renderAll();
+			});
+		});
 
 
 
@@ -942,11 +875,24 @@ var line4;
 	}
 }
 </script>
+
 <style>	
 @import '../editor/css/jquery.miniColors.css';
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
 
+#modal-1___BV_modal_header_, #modal-2___BV_modal_header_, #modal-3___BV_modal_header_{
+	padding-top: 5px!important;
+	padding-bottom: 5px!important;
+}
+.dropdown-menu-right{
+	padding-bottom: 0px!important;
+	padding-top: 0px!important;
+}
+.dropdown-item{
+	padding-left: 5px!important;
+	padding-right: 0px!important;
+}
 .dropdown-toggle{
 	padding: 6px!important;
 }
@@ -954,11 +900,7 @@ var line4;
 	width: 136px!important;
 	/* align-items: center!important; */
 }
-/* .tab-content{
-	background-color: #FFF;
-	padding: 5px!important;
-	border: 1px solid transparent;
-} */
+
 #avatarlist{
 	height: 137px;
 	/* width: 100%; */
@@ -976,7 +918,7 @@ var line4;
 .well {
     min-height: 20px;
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0px!important;
     background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
     border-radius: 4px;
@@ -1138,6 +1080,11 @@ font-family: ‘Dosis’;
 		height: 120px;
 		/* width: 100%;
 		overflow-x: scroll; */
+	}
+	#modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
+		margin-top: 0px!important;
+		margin-left: 0px!important;
+		margin-right: 0px!important;
 	}
 }
 @media (min-width: 601px){
