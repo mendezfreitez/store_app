@@ -173,25 +173,25 @@
 							
 							<b-dropdown right text="Estilo" variant="outline-success">
 								<b-dropdown-item>
-									<b-button id="text-bold" title="Bold">
+									<b-button id="text-bold" title="Bold" variant="outline-success" size="sm">
 										<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
 										Bold
 									</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item>
-									<b-button id="text-italic" class="btn" data-original-title="Italic">
+									<b-button id="text-italic" class="btn" data-original-title="Italic" variant="outline-success" size="sm">
 										<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
 										Italic
 									</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item>
-									<b-button id="text-strike" class="btn" title="Strike" style="">
+									<b-button id="text-strike" class="btn" title="Strike" variant="outline-success" size="sm">
 										<b-icon icon="type-strikethrough" scale="1.2" aria-hidden="true"></b-icon>
 										Strike
 									</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item>
-									<b-button id="text-underline" class="btn" title="Underline" style="">
+									<b-button id="text-underline" class="btn" title="Underline" variant="outline-success" size="sm">
 										<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
 										Underline
 									</b-button>
