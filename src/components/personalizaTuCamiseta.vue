@@ -1,6 +1,8 @@
 <template>
     <b-container fluid>
 		<b-modal
+			header-bg-variant="success"
+			header-text-variant="light"
 			hide-header-close
 			:static="true"
 			id="modal-1"
@@ -10,17 +12,16 @@
 			title="Tallas"
 		>
 			<div style="width: 100%;" class="pl-3 pr-3 pb-3">
-				<!-- <h4 class="text-center"></h4> -->
 				<div class="text-center">
 					<div >
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_s" name="check-button" switch>
-							S <input :disabled="!checkedOptions.checked_s" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:63px!important;" value="1" type="number">
+							S <input :disabled="!checkedOptions.checked_s" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:65px!important;" value="1" type="number">
 						</b-form-checkbox>
 						<hr style="margin:5px!important;" />
 					</div>	
 					<div>
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_m" name="check-button" switch>
-							M <input :disabled="!checkedOptions.checked_m" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:59px!important;" value="1" type="number">
+							M <input :disabled="!checkedOptions.checked_m" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:60px!important;" value="1" type="number">
 						</b-form-checkbox>
 						<hr style="margin:5px!important;" />
 					</div>	
@@ -38,7 +39,7 @@
 					</div>
 					<div>
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_xxl" name="check-button" switch>
-							XXL <input :disabled="!checkedOptions.checked_xxl" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:40px!important;" value="1" type="number">
+							XXL <input :disabled="!checkedOptions.checked_xxl" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:41px!important;" value="1" type="number">
 						</b-form-checkbox>
 						<hr style="margin:5px!important;" />
 					</div>
@@ -50,6 +51,8 @@
 		</b-modal>
 		
 		<b-modal
+			header-bg-variant="success"
+			header-text-variant="light"
 			hide-header-close
 			:static="true"
 			id="modal-2"
@@ -95,6 +98,8 @@
 		</b-modal>
 		
 		<b-modal
+			header-bg-variant="success"
+			header-text-variant="light"
 			hide-header-close
 			:static="true" id="modal-3"
 			hide-backdrop
@@ -448,8 +453,6 @@ var line4;
 				cornerSize: 7,
 				padding: 7,
 				cornerStrokeColor:'transparent',
-				// underline: true,
-				// overline:true,
 				angle: 0,
 				fill: '#000000',
 				scaleX: 0.5,
@@ -490,8 +493,6 @@ var line4;
 		  
 		$('.color-preview').click(function(){
 			canvas._objects[0].backgroundColor = $(this).css("background-color");
-			// console.log(canvas._objects[0]._element.src = 'https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_back.png');
-			// console.log(canvas._objects[0])
 			canvas.renderAll();
 		});
 		
@@ -505,157 +506,7 @@ var line4;
 			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_${frontBack}.png`;
 			canvas.renderAll();
 		});
-		//   		$('#flipback').click(
-			  
-		//    	function() {console.log(valueSelect)	
-        //        if (valueSelect === "../editor/img/crew_front.png") {
-        //            if ($(this).attr("data-original-title") == "Show Back View") {
-		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
-		// 	        $("#tshirtFacing").attr("src","../editor/img/crew_back.png");			        
-		// 	        a = JSON.stringify(canvas);
-		// 	        canvas.clear();
-		// 	        try
-		// 	        {
-		// 	           var json = JSON.parse(b);
-		// 	           canvas.loadFromJSON(b);
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-			        
-		// 		}
-		// 		else {
-		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-		// 	    	$("#tshirtFacing").attr("src","../editor/img/crew_front.png");			    	
-		// 	    	b = JSON.stringify(canvas);
-		// 	    	canvas.clear();
-		// 	    	try
-		// 	        {
-		// 	           var json = JSON.parse(a);
-		// 	           canvas.loadFromJSON(a);			           
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-		// 	    }		
-        //        }
-        //        else if (valueSelect === "../editor/img/mens_longsleeve_front.png") {
-		// 		   alert()
-
-        //           if ($(this).attr("data-original-title") == "Show Back View") {
-		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
-		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_back.png");			        
-		// 	        a = JSON.stringify(canvas);
-		// 	        canvas.clear();
-		// 	        try
-		// 	        {
-		// 	           var json = JSON.parse(b);
-		// 	           canvas.loadFromJSON(b);
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-			        
-		// 	    } else {
-		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_longsleeve_front.png");			    	
-		// 	    	b = JSON.stringify(canvas);
-		// 	    	canvas.clear();
-		// 	    	try
-		// 	        {
-		// 	           var json = JSON.parse(a);
-		// 	           canvas.loadFromJSON(a);			           
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-		// 	    }	
-        //        }
-        //        else if (valueSelect === "../editor/img/mens_tank_front.png") {
-        //           if ($(this).attr("data-original-title") == "Show Back View") {
-		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
-		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_tank_back.png");			        
-		// 	        a = JSON.stringify(canvas);
-		// 	        canvas.clear();
-		// 	        try
-		// 	        {
-		// 	           var json = JSON.parse(b);
-		// 	           canvas.loadFromJSON(b);
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-			        
-		// 	    } else {
-		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_tank_front.png");			    	
-		// 	    	b = JSON.stringify(canvas);
-		// 	    	canvas.clear();
-		// 	    	try
-		// 	        {
-		// 	           var json = JSON.parse(a);
-		// 	           canvas.loadFromJSON(a);			           
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-		// 	    }	
-        //        }
-        //        else if (valueSelect === "../editor/img/mens_hoodie_front.png") {
-        //           if ($(this).attr("data-original-title") == "Show Back View") {
-		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
-		// 	        $("#tshirtFacing").attr("src","../editor/img/mens_hoodie_back.png");			        
-		// 	        a = JSON.stringify(canvas);
-		// 	        canvas.clear();
-		// 	        try
-		// 	        {
-		// 	           var json = JSON.parse(b);
-		// 	           canvas.loadFromJSON(b);
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-			        
-		// 	    } else {
-		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-		// 	    	$("#tshirtFacing").attr("src","../editor/img/mens_hoodie_front.png");			    	
-		// 	    	b = JSON.stringify(canvas);
-		// 	    	canvas.clear();
-		// 	    	try
-		// 	        {
-		// 	           var json = JSON.parse(a);
-		// 	           canvas.loadFromJSON(a);			           
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-		// 	    }	
-        //        }
-		// 	   /*	if ($(this).attr("data-original-title") == "Show Back View") {
-		// 	   		$(this).attr('data-original-title', 'Show Front View');			        		       
-		// 	        $("#tshirtFacing").attr("src","img/crew_back.png");			        
-		// 	        a = JSON.stringify(canvas);
-		// 	        canvas.clear();
-		// 	        try
-		// 	        {
-		// 	           var json = JSON.parse(b);
-		// 	           canvas.loadFromJSON(b);
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-			        
-		// 	    } else {
-		// 	    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-		// 	    	$("#tshirtFacing").attr("src","img/crew_front.png");			    	
-		// 	    	b = JSON.stringify(canvas);
-		// 	    	canvas.clear();
-		// 	    	try
-		// 	        {
-		// 	           var json = JSON.parse(a);
-		// 	           canvas.loadFromJSON(a);			           
-		// 	        }
-		// 	        catch(e)
-		// 	        {}
-		// 	    }		*/
-		// 	   	canvas.renderAll();
-		// 	   	setTimeout(function() {
-		// 	   		canvas.calcOffset();
-		// 	    },200);	   	
-        // });
-		  
-
+	
 		$(".img-polaroid").click(function (e) {
 			// $("#texteditor").css('display', 'block');
 	  		var el = e.target;
@@ -905,15 +756,15 @@ var line4;
 @import '../editor/css/jquery.simplecolorpicker.css';
 
 #modal-2___BV_modal_title_, #modal-3___BV_modal_title_, #modal-1___BV_modal_title_{
-	font-size: 14px!important;
+	font-size: 16px!important;
 	align-content: center!important;
 }
 .dropdown-toggle{
 	font-size: 0.875rem!important;
 }
 #modal-1___BV_modal_header_, #modal-2___BV_modal_header_, #modal-3___BV_modal_header_{
-	padding-top: 5px!important;
-	padding-bottom: 5px!important;
+	padding-top: 3px!important;
+	padding-bottom: 3px!important;
 }
 .dropdown-menu-right{
 	padding-bottom: 0px!important;
