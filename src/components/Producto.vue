@@ -52,8 +52,8 @@ export default {
   padding-bottom: 0px!important;
 }
 .sombreadoProducto{
--webkit-box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.12);
--moz-box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.12);
-box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.12);
+-webkit-box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.32);
+-moz-box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.32);
+box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.32);
 }
 </style>

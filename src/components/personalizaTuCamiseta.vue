@@ -1,36 +1,44 @@
 <template>
     <b-container fluid>
-		<b-modal hide-header-close :static="true" id="modal-1" hide-backdrop hide-footer size="sm" title="Tallas">
+		<b-modal
+			hide-header-close
+			:static="true"
+			id="modal-1"
+			hide-backdrop
+			hide-footer
+			size="sm"
+			title="Tallas"
+		>
 			<div style="width: 100%;" class="pl-3 pr-3 pb-3">
 				<!-- <h4 class="text-center"></h4> -->
 				<div class="text-center">
 					<div >
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_s" name="check-button" switch>
-							S <input :disabled="!checkedOptions.checked_s" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+							S <input :disabled="!checkedOptions.checked_s" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:63px!important;" value="1" type="number">
 						</b-form-checkbox>
 						<hr style="margin:5px!important;" />
 					</div>	
 					<div>
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_m" name="check-button" switch>
-							M <input :disabled="!checkedOptions.checked_m" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+							M <input :disabled="!checkedOptions.checked_m" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:59px!important;" value="1" type="number">
 						</b-form-checkbox>
 						<hr style="margin:5px!important;" />
 					</div>	
 					<div>
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_l" name="check-button" switch>
-							L <input :disabled="!checkedOptions.checked_l" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+							L <input :disabled="!checkedOptions.checked_l" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:67px!important;" value="1" type="number">
 						</b-form-checkbox>
 						<hr style="margin:5px!important;" />
 					</div>
 					<div>
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_xl" name="check-button" switch>
-							XL <input :disabled="!checkedOptions.checked_xl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+							XL <input :disabled="!checkedOptions.checked_xl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:53px!important;" value="1" type="number">
 						</b-form-checkbox>
 						<hr style="margin:5px!important;" />
 					</div>
 					<div>
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_xxl" name="check-button" switch>
-							XXL <input :disabled="!checkedOptions.checked_xxl" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px;" value="1" type="number">
+							XXL <input :disabled="!checkedOptions.checked_xxl" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:40px!important;" value="1" type="number">
 						</b-form-checkbox>
 						<hr style="margin:5px!important;" />
 					</div>
@@ -41,7 +49,15 @@
 			</div>	
 		</b-modal>
 		
-		<b-modal hide-header-close :static="true" id="modal-2" hide-backdrop hide-footer size="sm" title="Modelo | Color">
+		<b-modal
+			hide-header-close
+			:static="true"
+			id="modal-2"
+			hide-backdrop
+			hide-footer
+			size="sm"
+			title="Modelo | Color"
+		>
 			<div class="tab-pane active" id="tab1">
 				<div class="well" style="margin-bottom:5px!important;">
 					<b-select @change="mostrarCamiseta" v-model="seleccion" :options="options">
@@ -78,7 +94,14 @@
 		
 		</b-modal>
 		
-		<b-modal hide-header-close :static="true" id="modal-3" hide-backdrop hide-footer size="sm" title="Imagen | Texto">
+		<b-modal
+			hide-header-close
+			:static="true" id="modal-3"
+			hide-backdrop
+			hide-footer
+			size="sm"
+			title="Imagen | Texto"
+		>
 			<div class="well">
 				<b-input-group size="md">
 					<b-form-input placeholder="Agregar Texto Acá" id="text-string"></b-form-input>
@@ -225,7 +248,7 @@
 						</div>			  
 					</div>												
 				</div>
-				<div id="shirtDiv" align="center" class="mb-2" style=" background-color: rgb(255, 255, 255);">
+				<div id="shirtDiv" align="center" class="mb-2" style=" background-color: #FFF;">
 					<canvas id="tcanvas" width=530 height=630 class="hover" ></canvas>
 				</div>
 			</b-col>
@@ -880,6 +903,11 @@ var line4;
 @import '../editor/css/jquery.miniColors.css';
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
+
+#modal-2___BV_modal_title_, #modal-3___BV_modal_title_, #modal-1___BV_modal_title_{
+	font-size: 14px!important;
+	align-content: center!important;
+}
 .dropdown-toggle{
 	font-size: 0.875rem!important;
 }
@@ -900,12 +928,10 @@ var line4;
 }
 .custom-control-label{
 	width: 136px!important;
-	/* align-items: center!important; */
 }
 
 #avatarlist{
 	height: 137px;
-	/* width: 100%; */
 	overflow-x: scroll;
 }
 #canvas{
@@ -913,9 +939,8 @@ var line4;
   width: 100%;
 }
 #shirtDiv{
-	/* overflow:scroll!important; */
 	width: 100%!important;
-	/* margin-top: 10px!important; */
+	box-shadow: 9px 7px 8px -2px rgba(0,0,0,0.22);
 }
 .well {
     min-height: 20px;
@@ -1080,8 +1105,6 @@ font-family: ‘Dosis’;
 	}
 	#avatarlist{
 		height: 120px;
-		/* width: 100%;
-		overflow-x: scroll; */
 	}
 	#modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
 		margin-top: 0px!important;
