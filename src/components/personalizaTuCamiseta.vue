@@ -122,7 +122,7 @@
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
-							<b-dropdown right text="Texto" title="Tipografía" variant="outline-success">
+							<b-dropdown right text="Texto" title="Tipografía" variant="outline-success" style="font-size:10px!important;">
 								<b-dropdown-item class="setFont" data-font="Arial">
 									<b-link tabindex="-1" href="#" class="Arial">Arial</b-link>
 								</b-dropdown-item>
@@ -880,7 +880,9 @@ var line4;
 @import '../editor/css/jquery.miniColors.css';
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
-
+.dropdown-toggle{
+	font-size: 0.875rem!important;
+}
 #modal-1___BV_modal_header_, #modal-2___BV_modal_header_, #modal-3___BV_modal_header_{
 	padding-top: 5px!important;
 	padding-bottom: 5px!important;
