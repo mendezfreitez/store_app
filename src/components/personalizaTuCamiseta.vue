@@ -1,7 +1,7 @@
 <template>
     <b-container fluid>
 		<b-modal
-			header-bg-variant="success"
+			header-bg-variant="dark"
 			header-text-variant="light"
 			hide-header-close
 			:static="true"
@@ -9,8 +9,11 @@
 			hide-backdrop
 			hide-footer
 			size="sm"
-			title="Tallas"
 		>
+			<template #modal-title style="width:100%;">
+				<header style="display:inline-block;padding-top: 4px!important;">Tallas</header>
+				<b-button @click="$bvModal.hide('modal-1')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
+			</template> 
 			<div style="width: 100%;" class="pl-3 pr-3 pb-3">
 				<div class="text-center">
 					<div >
@@ -29,7 +32,7 @@
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_l" name="check-button" switch>
 							L <input :disabled="!checkedOptions.checked_l" class="ml-5" min="0" style="width: 45px; font-size:14px; height:22px; margin-left:67px!important;" value="1" type="number">
 						</b-form-checkbox>
-						<hr style="margin:5px!important;" />
+						<hr style="margin:5px!important;" />	
 					</div>
 					<div>
 						<b-form-checkbox size="lg" v-model="checkedOptions.checked_xl" name="check-button" switch>
@@ -51,7 +54,7 @@
 		</b-modal>
 		
 		<b-modal
-			header-bg-variant="success"
+			header-bg-variant="dark"
 			header-text-variant="light"
 			hide-header-close
 			:static="true"
@@ -59,8 +62,11 @@
 			hide-backdrop
 			hide-footer
 			size="sm"
-			title="Modelo | Color"
 		>
+			<template #modal-title style="width:100%;">
+				<header style="display:inline-block;padding-top: 4px!important;">Modelo | Color</header>
+				<b-button @click="$bvModal.hide('modal-2')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
+			</template>
 			<div class="tab-pane active" id="tab1">
 				<div class="well" style="margin-bottom:5px!important;">
 					<b-select @change="mostrarCamiseta" v-model="seleccion" :options="options">
@@ -98,15 +104,18 @@
 		</b-modal>
 		
 		<b-modal
-			header-bg-variant="success"
+			header-bg-variant="dark"
 			header-text-variant="light"
-			hide-header-close
 			:static="true" id="modal-3"
+			hide-header-close
 			hide-backdrop
 			hide-footer
 			size="sm"
-			title="Imagen | Texto"
 		>
+			<template #modal-title style="width:100%;">
+				<header style="display:inline-block;padding-top: 4px!important;">Imagen | Texto</header>
+				<b-button @click="$bvModal.hide('modal-3')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
+			</template>
 			<div class="well">
 				<b-input-group size="md">
 					<b-form-input placeholder="Agregar Texto Acá" id="text-string"></b-form-input>
@@ -269,11 +278,16 @@ import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
 import '../editor/js/jquery.miniColors.min.js';
 import '../editor/js/excanvas.js';
+import '../editor/js/create.js';
 // import '../editor/js/tshirtEditor.js';
 
 export default {
 	data(){
 		return{
+			escalaX: 0.5,
+			escalaY: 0.5,
+			escalaXlienzo: 0.5,
+			escalaYlienzo: 0.5,
 			activo:true,
 			activo2:false,
 			activo3:false,
@@ -335,13 +349,34 @@ var line1;
 var line2;
 var line3;
 var line4;
+let that = this;
+
  	$(document).ready(function() {
+		var anchoContenedorCanvas = $('#shirtDiv').width();
+		console.log(anchoContenedorCanvas);
+
 		//setup front side canvas 
  		canvas = new fabric.Canvas('tcanvas', {
 		  hoverCursor: 'pointer',
 		  selection: true,
 		  selectionBorderColor:'blue'
 		});
+
+		if(anchoContenedorCanvas > 1000){
+			canvas.width = 540;
+		}
+		else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+			canvas.width = 378;
+			$('.canvas-container').css('width', 375);
+			$('.canvas-container').css('height', 441);
+		}
+		else if(anchoContenedorCanvas <= 500){
+			canvas.width = 170;
+			canvas.width = 220;
+			$('.canvas-container').css('width', 265);
+			$('.canvas-container').css('height', 315);
+		}
+		console.log(canvas)
  		canvas.on({
 			 'object:moving': function(e) {		  	
 			    e.target.opacity = 0.5;
@@ -385,22 +420,88 @@ var line4;
 			$("#tcanvas").outerHeight($(window).height()-$("#tcanvas").offset().top- Math.abs($("#tcanvas").outerHeight(true) - $("#tcanvas").outerHeight()));
 		}
 		$(document).ready(function(){
-			resize();
-			var anchoContenedorCanvas;
-			var anchoCanvas;
-			var margen;
-			var componente;
-			$(window).on("resize", function(){                      
-				// resize();
-				anchoContenedorCanvas = $('#shirtDiv').width();
-				anchoCanvas = $("#tcanvas").width();
-				margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
-				console.log(margen);
-				// $('#shirtDiv').css('padding-left', margen);
-				componente = document.getElementById('shirtDiv');
-				componente.style.setProperty('padding-left', margen);
-				// canvas.renderAll();
-			});
+var stage = new createjs.Stage("canvas");
+
+var c = new createjs.Shape();
+c.graphics.f("#f00").dc(0,0,50); // Drawn a 100x100 circle from the center
+
+var t = new createjs.Text("Resize the browser/frame to redraw", "24px Arial bold", "#000");
+t.x = t.y = 20;
+stage.addChild(c, t);
+
+window.addEventListener("resize", handleResize);
+function handleResize() {
+    var w = window.innerWidth-2; // -2 accounts for the border
+    var h = window.innerHeight-2;
+    stage.canvas.width = w;
+    stage.canvas.height = h;
+    //
+    var ratio = 100/100; // 100 is the width and height of the circle content.
+    var windowRatio = w/h;
+    var scale = w/100;
+    if (windowRatio > ratio) {
+        scale = h/100;
+    }
+    // Scale up to fit width or height
+    c.scaleX= c.scaleY = scale; 
+    
+    // Center the shape
+    c.x = w / 2;
+    c.y = h / 2;
+        
+    stage.update();
+}
+       
+handleResize();
+
+
+
+			// resize();
+			// var anchoContenedorCanvas;
+			// var anchoCanvas;
+			// var margen;
+			// var componente;
+
+			// $(window).on("resize", function(){
+			// 	anchoContenedorCanvas = $('#shirtDiv').width();
+			// 	anchoCanvas = $("#tcanvas").width();
+			// 	margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
+				
+			// 	console.log(anchoContenedorCanvas);
+			// 	if(anchoContenedorCanvas > 1000){
+			// 		that.escalaX = that.escalaY = 0.9;
+			// 	}
+			// 	else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+			// 		that.escalaX = that.escalaY = 0.7;
+			// 	}
+			// 	else if(anchoContenedorCanvas <= 500){
+			// 		that.escalaX = that.escalaY = 0.5;
+			// 	}
+				
+			// 	componente = document.getElementById('shirtDiv');
+			// 	componente.style.setProperty('padding-left', margen);
+			// 	canvas.renderAll();
+			// });
+
+			// $(window).on("load", function(){
+			// 	anchoContenedorCanvas = $('#shirtDiv').width();
+			// 	anchoCanvas = $("#tcanvas").width();
+			// 	margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
+				
+			// 	if(anchoContenedorCanvas > 1000){
+			// 		that.escalaX = that.escalaY = 0.9;
+			// 	}
+			// 	else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+			// 		that.escalaX = that.escalaY = 0.7;
+			// 	}
+			// 	else if(anchoContenedorCanvas <= 500){
+			// 		that.escalaX = that.escalaY = 0.5;
+			// 	}
+				
+			// 	componente = document.getElementById('shirtDiv');
+			// 	componente.style.setProperty('padding-left', margen);
+			// 	canvas.renderAll();
+			// });
 		});
 
 
@@ -475,10 +576,24 @@ var line4;
 
 		  
 		fabric.Image.fromURL('https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png', function (image) {
-			var offset = 50;
-			var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
-	        var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
+			var anchoContenedorCanvas = $('#shirtDiv').width();
+			// anchoCanvas = $("#tcanvas").width();
+			// margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
+			
+			console.log(anchoContenedorCanvas);
+			if(anchoContenedorCanvas > 1000){
+				that.escalaXlienzo = that.escalaYlienzo = 1;
+			}
+			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+				that.escalaXlienzo = that.escalaYlienzo = 0.8;
+			}
+			else if(anchoContenedorCanvas <= 500){
+				that.escalaXlienzo = that.escalaYlienzo = 0.6;
+			}
+
 			image.set({
+				scaleX:that.escalaXlienzo,
+				scaleY:that.escalaYlienzo,
 				left: 0,
 				top: 0,
 				angle: 0,
@@ -504,6 +619,7 @@ var line4;
 				frontBack = 'front';
 			}
 			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_${frontBack}.png`;
+			// $('.upper-canvas').click();
 			canvas.renderAll();
 		});
 	
@@ -511,16 +627,19 @@ var line4;
 			// $("#texteditor").css('display', 'block');
 	  		var el = e.target;
 	  		/*temp code*/
-	  		var offset = 50;
-	        var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
-	        var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
+			  var offset = 50;
+			//   var left = 210;
+	        var left = fabric.util.getRandomInt(140, 290);
+	        var top = fabric.util.getRandomInt(80, 450);
 	        var angle = fabric.util.getRandomInt(-20, 40);
-	        var width = fabric.util.getRandomInt(30, 50);
+	        var width = fabric.util.getRandomInt(10, 90);
 	        var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
 	        
 	  		fabric.Image.fromURL(el.src, function(image) {
 		          image.set({
-		            left: left,
+					left: left,
+					scaleX: that.escalaX,
+					scaleY: that.escalaY,
 		            top: top,
 		            angle: 0,
 		            padding: 7,
@@ -755,16 +874,21 @@ var line4;
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
 
+#modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
+	margin-top: 0px!important;
+	/* margin-left: 0px!important;
+	margin-right: 0px!important; */
+}
 #modal-2___BV_modal_title_, #modal-3___BV_modal_title_, #modal-1___BV_modal_title_{
 	font-size: 16px!important;
 	align-content: center!important;
+	width: 100%!important;
 }
 .dropdown-toggle{
 	font-size: 0.875rem!important;
 }
 #modal-1___BV_modal_header_, #modal-2___BV_modal_header_, #modal-3___BV_modal_header_{
-	padding-top: 3px!important;
-	padding-bottom: 3px!important;
+	padding: 3px!important;
 }
 .dropdown-menu-right{
 	padding-bottom: 0px!important;
@@ -948,7 +1072,7 @@ font-family: ‘Dosis’;
 		padding-right: 0px!important;
 	}
 	#shirtDiv, #contenedorColores{
-		overflow-x: scroll!important;
+		overflow-x: hidden!important;
 	}
 	.columna{
 		padding-left: 0px!important;
@@ -957,16 +1081,15 @@ font-family: ‘Dosis’;
 	#avatarlist{
 		height: 120px;
 	}
-	#modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
+	/* #modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
 		margin-top: 0px!important;
 		margin-left: 0px!important;
 		margin-right: 0px!important;
-	}
+	} */
 }
 @media (min-width: 601px){
 		#shirtDiv{
 		overflow-x: hidden;
 	}
 }
-
 </style>
