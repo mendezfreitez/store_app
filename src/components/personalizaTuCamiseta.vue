@@ -149,10 +149,11 @@
 		</b-modal>
 		
 		<b-row align-h="center">
-			<b-col class="columna" sm="12" lg="2">
+			<b-col class="columna" sm="12" md="3" lg="3">
 			</b-col>		
 			
-			<b-col class="columna pl-0" sm="12" lg="8">
+			<b-col class="columna pl-1 pr-1" sm="12" md="6" lg="6">
+
 				<b-button v-b-modal.modal-2 size="sm" variant="outline-success">Modelo | Color</b-button>
 				<b-button v-b-modal.modal-3 size="sm" variant="outline-success" class="ml-1 mr-1">Imagen | Texto</b-button>
 				<b-button v-b-modal.modal-1 size="sm" variant="outline-success">Tallas</b-button>		    
@@ -262,12 +263,19 @@
 						</div>			  
 					</div>												
 				</div>
-				<div id="shirtDiv" align="center" class="mb-2" style=" background-color: #FFF;">
-					<canvas id="tcanvas" width=530 height=630 class="hover" ></canvas>
-				</div>
+				<b-card id="lienzo2D"
+					border-variant="success"
+					header-text-variant="white"
+					align="center"
+				>
+					<div id="shirtDiv" align="center" style=" background-color: #FFF;">
+						<canvas id="tcanvas" width=530 height=630 class="hover" ></canvas>
+					</div>
+				</b-card>
+
 			</b-col>
 			
-			<b-col class="columna" sm="12" lg="2">	      		       		    
+			<b-col class="columna" sm="12" md="3" lg="3">	      		       		    
 			</b-col>
 		</b-row>
     </b-container>
@@ -278,14 +286,13 @@ import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
 import '../editor/js/jquery.miniColors.min.js';
 import '../editor/js/excanvas.js';
-import '../editor/js/create.js';
 // import '../editor/js/tshirtEditor.js';
 
 export default {
 	data(){
 		return{
-			escalaX: 0.5,
-			escalaY: 0.5,
+			escalaX: 1,
+			escalaY: 1,
 			escalaXlienzo: 0.5,
 			escalaYlienzo: 0.5,
 			activo:true,
@@ -363,20 +370,18 @@ let that = this;
 		});
 
 		if(anchoContenedorCanvas > 1000){
-			canvas.width = 540;
+			$("#tcanvas").css('width', 530);
+			$("#tcanvas").css('height', 630);
 		}
 		else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-			canvas.width = 378;
-			$('.canvas-container').css('width', 375);
-			$('.canvas-container').css('height', 441);
+			$("#tcanvas").css('width', (530 * 0.8).toFixed(0));
+			$("#tcanvas").css('height',  (630 * 0.8).toFixed(0));
 		}
 		else if(anchoContenedorCanvas <= 500){
-			canvas.width = 170;
-			canvas.width = 220;
-			$('.canvas-container').css('width', 265);
-			$('.canvas-container').css('height', 315);
+			$("#tcanvas").css('width', (530 * 0.6).toFixed(0));
+			$("#tcanvas").css('height',  (630 * 0.6).toFixed(0));
 		}
-		console.log(canvas)
+		// console.log(canvas)
  		canvas.on({
 			 'object:moving': function(e) {		  	
 			    e.target.opacity = 0.5;
@@ -416,92 +421,65 @@ let that = this;
 			//  $("#imageeditor").css('display', 'none');
 		}
 
-		function resize(){    
-			$("#tcanvas").outerHeight($(window).height()-$("#tcanvas").offset().top- Math.abs($("#tcanvas").outerHeight(true) - $("#tcanvas").outerHeight()));
-		}
 		$(document).ready(function(){
-var stage = new createjs.Stage("canvas");
+			
+			var anchoContenedorCanvas;
 
-var c = new createjs.Shape();
-c.graphics.f("#f00").dc(0,0,50); // Drawn a 100x100 circle from the center
-
-var t = new createjs.Text("Resize the browser/frame to redraw", "24px Arial bold", "#000");
-t.x = t.y = 20;
-stage.addChild(c, t);
-
-window.addEventListener("resize", handleResize);
-function handleResize() {
-    var w = window.innerWidth-2; // -2 accounts for the border
-    var h = window.innerHeight-2;
-    stage.canvas.width = w;
-    stage.canvas.height = h;
-    //
-    var ratio = 100/100; // 100 is the width and height of the circle content.
-    var windowRatio = w/h;
-    var scale = w/100;
-    if (windowRatio > ratio) {
-        scale = h/100;
-    }
-    // Scale up to fit width or height
-    c.scaleX= c.scaleY = scale; 
-    
-    // Center the shape
-    c.x = w / 2;
-    c.y = h / 2;
-        
-    stage.update();
-}
-       
-handleResize();
-
-
-
-			// resize();
-			// var anchoContenedorCanvas;
-			// var anchoCanvas;
-			// var margen;
-			// var componente;
-
-			// $(window).on("resize", function(){
-			// 	anchoContenedorCanvas = $('#shirtDiv').width();
-			// 	anchoCanvas = $("#tcanvas").width();
-			// 	margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
+			$(window).on("resize", function(){
+				anchoContenedorCanvas = $('#shirtDiv').width();
 				
-			// 	console.log(anchoContenedorCanvas);
-			// 	if(anchoContenedorCanvas > 1000){
-			// 		that.escalaX = that.escalaY = 0.9;
-			// 	}
-			// 	else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-			// 		that.escalaX = that.escalaY = 0.7;
-			// 	}
-			// 	else if(anchoContenedorCanvas <= 500){
-			// 		that.escalaX = that.escalaY = 0.5;
-			// 	}
-				
-			// 	componente = document.getElementById('shirtDiv');
-			// 	componente.style.setProperty('padding-left', margen);
-			// 	canvas.renderAll();
-			// });
+				console.log(anchoContenedorCanvas);
+				if(anchoContenedorCanvas > 1000){
+					$("#tcanvas").css('width', 530);
+					$("#tcanvas").css('height', 630);
 
-			// $(window).on("load", function(){
-			// 	anchoContenedorCanvas = $('#shirtDiv').width();
-			// 	anchoCanvas = $("#tcanvas").width();
-			// 	margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
+					$(".canvas-container").css('width', 530);
+					$(".canvas-container").css('height', 630);
+				}
+				else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+					$("#tcanvas").css('width', (530 * 0.8).toFixed(0));
+					$("#tcanvas").css('height',  (630 * 0.8).toFixed(0));
+					
+					$(".canvas-container").css('width', (530 * 0.8).toFixed(0));
+					$(".canvas-container").css('height',  (630 * 0.8).toFixed(0));
+				}
+				else if(anchoContenedorCanvas <= 500){
+					$("#tcanvas").css('width', (530 * 0.6).toFixed(0));
+					$("#tcanvas").css('height',  (630 * 0.6).toFixed(0));
+
+					$(".canvas-container").css('width', (530 * 0.6).toFixed(0));
+					$(".canvas-container").css('height',  (630 * 0.6).toFixed(0));
+				}
+				canvas.renderAll();
+			});
+
+			$(window).on("load", function(){
+				anchoContenedorCanvas = $('#shirtDiv').width();
 				
-			// 	if(anchoContenedorCanvas > 1000){
-			// 		that.escalaX = that.escalaY = 0.9;
-			// 	}
-			// 	else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-			// 		that.escalaX = that.escalaY = 0.7;
-			// 	}
-			// 	else if(anchoContenedorCanvas <= 500){
-			// 		that.escalaX = that.escalaY = 0.5;
-			// 	}
-				
-			// 	componente = document.getElementById('shirtDiv');
-			// 	componente.style.setProperty('padding-left', margen);
-			// 	canvas.renderAll();
-			// });
+				console.log(anchoContenedorCanvas);
+				if(anchoContenedorCanvas > 1000){
+					$("#tcanvas").css('width', 530);
+					$("#tcanvas").css('height', 630);
+
+					$(".canvas-container").css('width', 530);
+					$(".canvas-container").css('height', 630);
+				}
+				else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+					$("#tcanvas").css('width', (530 * 0.8).toFixed(0));
+					$("#tcanvas").css('height',  (630 * 0.8).toFixed(0));
+					
+					$(".canvas-container").css('width', (530 * 0.8).toFixed(0));
+					$(".canvas-container").css('height',  (630 * 0.8).toFixed(0));
+				}
+				else if(anchoContenedorCanvas <= 500){
+					$("#tcanvas").css('width', (530 * 0.6).toFixed(0));
+					$("#tcanvas").css('height',  (630 * 0.6).toFixed(0));
+
+					$(".canvas-container").css('width', (530 * 0.6).toFixed(0));
+					$(".canvas-container").css('height',  (630 * 0.6).toFixed(0));
+				}
+				canvas.renderAll();
+			});
 		});
 
 
@@ -589,16 +567,16 @@ handleResize();
 			}
 			else if(anchoContenedorCanvas <= 500){
 				that.escalaXlienzo = that.escalaYlienzo = 0.6;
+				// canvas.width = 170;
+				// canvas.height = 220;
 			}
 
 			image.set({
-				scaleX:that.escalaXlienzo,
-				scaleY:that.escalaYlienzo,
 				left: 0,
 				top: 0,
 				angle: 0,
 				padding: 7,
-				backgroundColor:'#FFF',
+				backgroundColor:'#000',
 				selectable:false,
 				cornerSize: 7,
 				hasRotatingPoint:true
@@ -630,7 +608,7 @@ handleResize();
 			  var offset = 50;
 			//   var left = 210;
 	        var left = fabric.util.getRandomInt(140, 290);
-	        var top = fabric.util.getRandomInt(80, 450);
+	        var top = fabric.util.getRandomInt(50, 450);
 	        var angle = fabric.util.getRandomInt(-20, 40);
 	        var width = fabric.util.getRandomInt(10, 90);
 	        var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
@@ -915,8 +893,10 @@ handleResize();
 }
 #shirtDiv{
 	width: 100%!important;
-	box-shadow: 9px 7px 8px -2px rgba(0,0,0,0.22);
 }
+/* #lienzo2D{
+	box-shadow: 9px 7px 8px -2px rgba(0,0,0,0.22);	
+} */
 .well {
     min-height: 20px;
     padding: 5px;
@@ -1067,16 +1047,12 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 @media  (max-width: 600px) {
-	.container-fluid{
+	/* .container-fluid{
 		padding-left: 0px!important;
 		padding-right: 0px!important;
-	}
+	} */
 	#shirtDiv, #contenedorColores{
 		overflow-x: hidden!important;
-	}
-	.columna{
-		padding-left: 0px!important;
-		padding-right: 0px!important;
 	}
 	#avatarlist{
 		height: 120px;
@@ -1086,6 +1062,9 @@ font-family: ‘Dosis’;
 		margin-left: 0px!important;
 		margin-right: 0px!important;
 	} */
+}
+.card-body{
+	padding: 0px!important;
 }
 @media (min-width: 601px){
 		#shirtDiv{

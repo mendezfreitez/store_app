@@ -52,10 +52,9 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 html,body{
-  background-color: #f5f5f5!important; 
-  /* font-family:'Dosis'!important; */
-  /* font-weight: 700!important; */
-  padding-left: 2px!important;
+  background-color: #f5f5f5!important;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
   size:20px!important;
 }
 </style>

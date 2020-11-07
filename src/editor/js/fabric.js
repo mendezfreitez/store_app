@@ -12393,7 +12393,6 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, {
    */
   fabric.Image.fromURL = function(url, callback, imgOptions) {
     var img = fabric.document.createElement('img');
-
     /** @ignore */
     img.onload = function() {
       if (callback) {
