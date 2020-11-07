@@ -21,14 +21,12 @@
       
       <b-navbar-nav class="text-left color-light" text-variant="light">
         <b-nav-item v-b-toggle.sidebar-backdrop href="#" to="/" @click="traerProductosTodos('')" class="pl-2 ddd" style="font-size:21px!important;font-family:'Dosis';font-weight:700!important;">
-          Inicio <b-icon scale="1.5" icon="shop" style="float:right!important;" aria-hidden="true" class="mr-3"></b-icon>
+          Inicio <b-icon scale="1.5" icon="shop" style="float:right!important;" aria-hidden="true" class="mr-4"></b-icon>
         </b-nav-item>
 
         <b-nav-item v-b-toggle.sidebar-backdrop v-for="categoria in categoriasTodas" :key="categoria._id" href="#" @click="traerProductosTodos(categoria._id)" class="pl-2 ddd" style="font-size:21px!important;font-family:'Dosis';font-weight:700!important;">
-        {{ categoria.nombre }} 
-        <!-- <b-icon scale="1" role="img"  style="float:right!important;" aria-hidden="true" class="mr-3"> -->
-          <b-img height="40" :src="'../editor/img/categorias/' + categoria.nombre + '.svg'" alt=""></b-img>
-        <!-- </b-icon> -->
+          {{ categoria.nombre }}
+          <b-img height="40" right class="mr-4" :src="require('../editor/img/categorias/' + categoria.nombre + '.svg')" alt=""></b-img>
         </b-nav-item>
 
         <b-nav-item href="#" to="/personalizaTuCamiseta" class="pl-2" style="font-size:21px!important;font-family:'Dosis';font-weight:700!important;">
