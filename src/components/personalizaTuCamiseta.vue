@@ -148,7 +148,7 @@
 			</div>	
 		</b-modal>
 		
-		<b-row align-h="center">
+		<b-row>
 			<b-col class="columna" sm="12" md="3" lg="3">
 			</b-col>		
 			
@@ -286,7 +286,6 @@ import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
 import '../editor/js/jquery.miniColors.min.js';
 import '../editor/js/excanvas.js';
-// import '../editor/js/tshirtEditor.js';
 
 export default {
 	data(){
@@ -370,16 +369,16 @@ let that = this;
 		});
 
 		if(anchoContenedorCanvas > 1000){
-			$("#tcanvas").css('width', 530);
-			$("#tcanvas").css('height', 630);
+			$("#tcanvas,.upper-canvas").css('width', 530);
+			$("#tcanvas,.upper-canvas").css('height', 630);
 		}
 		else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-			$("#tcanvas").css('width', (530 * 0.8).toFixed(0));
-			$("#tcanvas").css('height',  (630 * 0.8).toFixed(0));
+			$("#tcanvas,.upper-canvas").css('width', (530 * 0.8).toFixed(0));
+			$("#tcanvas,.upper-canvas").css('height',  (630 * 0.8).toFixed(0));
 		}
 		else if(anchoContenedorCanvas <= 500){
-			$("#tcanvas").css('width', (530 * 0.6).toFixed(0));
-			$("#tcanvas").css('height',  (630 * 0.6).toFixed(0));
+			$("#tcanvas,.upper-canvas").css('width', (530 * 0.6).toFixed(0));
+			$("#tcanvas,.upper-canvas").css('height',  (630 * 0.6).toFixed(0));
 		}
 		// console.log(canvas)
  		canvas.on({
@@ -402,23 +401,16 @@ let that = this;
 			$("#text-string").val("");
 			selectedObject.hasRotatingPoint = true
 			if (selectedObject && selectedObject.type === 'text') {
-				//display text editor	    	
-				// $("#texteditor").css('display', 'block');
 				$("#text-string").val(selectedObject.getText());	    	
 				$('#text-fontcolor').miniColors('value',selectedObject.fill);
-				$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);	
-				// $("#imageeditor").css('display', 'block');
+				$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);
 			}
 			else if (selectedObject && selectedObject.type === 'image'){
-				//display image editor
-				// $("#texteditor").css('display', 'none');	
-				// $("#imageeditor").css('display', 'block');
+		
 			}
 		}
 		function onSelectedCleared(e){
-			//  $("#texteditor").css('display', 'none');
 			$("#text-string").val("");
-			//  $("#imageeditor").css('display', 'none');
 		}
 
 		$(document).ready(function(){
@@ -430,25 +422,16 @@ let that = this;
 				
 				console.log(anchoContenedorCanvas);
 				if(anchoContenedorCanvas > 1000){
-					$("#tcanvas").css('width', 530);
-					$("#tcanvas").css('height', 630);
-
-					$(".canvas-container").css('width', 530);
-					$(".canvas-container").css('height', 630);
+					$("#tcanvas,.upper-canvas,.canvas-container").css('width', 530);
+					$("#tcanvas,.upper-canvas,.canvas-container").css('height', 630);
 				}
 				else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-					$("#tcanvas").css('width', (530 * 0.8).toFixed(0));
-					$("#tcanvas").css('height',  (630 * 0.8).toFixed(0));
-					
-					$(".canvas-container").css('width', (530 * 0.8).toFixed(0));
-					$(".canvas-container").css('height',  (630 * 0.8).toFixed(0));
+					$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.8).toFixed(0));
+					$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.8).toFixed(0));
 				}
 				else if(anchoContenedorCanvas <= 500){
-					$("#tcanvas").css('width', (530 * 0.6).toFixed(0));
-					$("#tcanvas").css('height',  (630 * 0.6).toFixed(0));
-
-					$(".canvas-container").css('width', (530 * 0.6).toFixed(0));
-					$(".canvas-container").css('height',  (630 * 0.6).toFixed(0));
+					$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.6).toFixed(0));
+					$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.6).toFixed(0));
 				}
 				canvas.renderAll();
 			});
@@ -458,31 +441,20 @@ let that = this;
 				
 				console.log(anchoContenedorCanvas);
 				if(anchoContenedorCanvas > 1000){
-					$("#tcanvas").css('width', 530);
-					$("#tcanvas").css('height', 630);
-
-					$(".canvas-container").css('width', 530);
-					$(".canvas-container").css('height', 630);
+					$("#tcanvas,.upper-canvas,.canvas-container").css('width', 530);
+					$("#tcanvas,.upper-canvas,.canvas-container").css('height', 630);
 				}
 				else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-					$("#tcanvas").css('width', (530 * 0.8).toFixed(0));
-					$("#tcanvas").css('height',  (630 * 0.8).toFixed(0));
-					
-					$(".canvas-container").css('width', (530 * 0.8).toFixed(0));
-					$(".canvas-container").css('height',  (630 * 0.8).toFixed(0));
+					$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.8).toFixed(0));
+					$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.8).toFixed(0));
 				}
 				else if(anchoContenedorCanvas <= 500){
-					$("#tcanvas").css('width', (530 * 0.6).toFixed(0));
-					$("#tcanvas").css('height',  (630 * 0.6).toFixed(0));
-
-					$(".canvas-container").css('width', (530 * 0.6).toFixed(0));
-					$(".canvas-container").css('height',  (630 * 0.6).toFixed(0));
+					$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.6).toFixed(0));
+					$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.6).toFixed(0));
 				}
 				canvas.renderAll();
 			});
 		});
-
-
 
 		// piggyback on `canvas.findTarget`, to fire "object:over" and "object:out" events
  		canvas.findTarget = (function(originalFn) {
@@ -555,8 +527,6 @@ let that = this;
 		  
 		fabric.Image.fromURL('https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png', function (image) {
 			var anchoContenedorCanvas = $('#shirtDiv').width();
-			// anchoCanvas = $("#tcanvas").width();
-			// margen = ((anchoContenedorCanvas - anchoCanvas) / 2).toFixed(0);
 			
 			console.log(anchoContenedorCanvas);
 			if(anchoContenedorCanvas > 1000){
@@ -567,8 +537,6 @@ let that = this;
 			}
 			else if(anchoContenedorCanvas <= 500){
 				that.escalaXlienzo = that.escalaYlienzo = 0.6;
-				// canvas.width = 170;
-				// canvas.height = 220;
 			}
 
 			image.set({
@@ -634,7 +602,6 @@ let that = this;
 		    if (activeObject) {
 		      	canvas.remove(activeObject);
 				$("#text-string").val("");
-            	// $("#texteditor").css('display', 'block');
 		    }
 		    else if (activeGroup) {
 		      var objectsInGroup = activeGroup.getObjects();
@@ -854,8 +821,6 @@ let that = this;
 
 #modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
 	margin-top: 0px!important;
-	/* margin-left: 0px!important;
-	margin-right: 0px!important; */
 }
 #modal-2___BV_modal_title_, #modal-3___BV_modal_title_, #modal-1___BV_modal_title_{
 	font-size: 16px!important;
