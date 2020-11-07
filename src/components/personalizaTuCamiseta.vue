@@ -149,10 +149,10 @@
 		</b-modal>
 		
 		<b-row>
-			<b-col class="columna" sm="12" md="3" lg="3">
+			<b-col sm="12" md="3" lg="3">
 			</b-col>		
 			
-			<b-col class="columna pl-1 pr-1" sm="12" md="6" lg="6">
+			<b-col class="pl-1 pr-1" sm="12" md="6" lg="6">
 
 				<b-button v-b-modal.modal-2 size="sm" variant="outline-success">Modelo | Color</b-button>
 				<b-button v-b-modal.modal-3 size="sm" variant="outline-success" class="ml-1 mr-1">Imagen | Texto</b-button>
@@ -234,6 +234,12 @@
 										Underline
 									</b-button>
 								</b-dropdown-item>
+								<b-dropdown-item>
+									<b-button id="text-overline" class="btn" title="Overline" variant="outline-success" size="sm">
+										<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
+										Overline
+									</b-button>
+								</b-dropdown-item>
 							</b-dropdown>
 							
 							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-success">
@@ -275,7 +281,7 @@
 
 			</b-col>
 			
-			<b-col class="columna" sm="12" md="3" lg="3">	      		       		    
+			<b-col sm="12" md="3" lg="3">	      		       		    
 			</b-col>
 		</b-row>
     </b-container>
@@ -347,7 +353,7 @@ export default {
 		}
 	},
 	mounted(){
-		var canvas;
+var canvas;
 var tshirts = new Array(); //prototype: [{style:'x',color:'white',front:'a',back:'b',price:{tshirt:'12.95',frontPrint:'4.99',backPrint:'4.99',total:'22.47'}}]
 var a;
 var b;
@@ -413,48 +419,28 @@ let that = this;
 			$("#text-string").val("");
 		}
 
-		$(document).ready(function(){
+		var anchoContenedorCanvas;
+
+		$(window).on("resize", function(){
+			anchoContenedorCanvas = $('#shirtDiv').width();
 			
-			var anchoContenedorCanvas;
-
-			$(window).on("resize", function(){
-				anchoContenedorCanvas = $('#shirtDiv').width();
-				
-				console.log(anchoContenedorCanvas);
-				if(anchoContenedorCanvas > 1000){
-					$("#tcanvas,.upper-canvas,.canvas-container").css('width', 530);
-					$("#tcanvas,.upper-canvas,.canvas-container").css('height', 630);
-				}
-				else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-					$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.8).toFixed(0));
-					$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.8).toFixed(0));
-				}
-				else if(anchoContenedorCanvas <= 500){
-					$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.6).toFixed(0));
-					$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.6).toFixed(0));
-				}
-				canvas.renderAll();
-			});
-
-			$(window).on("load", function(){
-				anchoContenedorCanvas = $('#shirtDiv').width();
-				
-				console.log(anchoContenedorCanvas);
-				if(anchoContenedorCanvas > 1000){
-					$("#tcanvas,.upper-canvas,.canvas-container").css('width', 530);
-					$("#tcanvas,.upper-canvas,.canvas-container").css('height', 630);
-				}
-				else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-					$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.8).toFixed(0));
-					$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.8).toFixed(0));
-				}
-				else if(anchoContenedorCanvas <= 500){
-					$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.6).toFixed(0));
-					$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.6).toFixed(0));
-				}
-				canvas.renderAll();
-			});
+			console.log(anchoContenedorCanvas);
+			if(anchoContenedorCanvas > 1000){
+				$("#tcanvas,.upper-canvas,.canvas-container").css('width', 530);
+				$("#tcanvas,.upper-canvas,.canvas-container").css('height', 630);
+			}
+			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.8).toFixed(0));
+				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.8).toFixed(0));
+			}
+			else if(anchoContenedorCanvas <= 500){
+				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.6).toFixed(0));
+				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.6).toFixed(0));
+			}
+			canvas.renderAll();
 		});
+
+		$(window).resize(); // PARA LA PRIMERA CARGA
 
 		// piggyback on `canvas.findTarget`, to fire "object:over" and "object:out" events
  		canvas.findTarget = (function(originalFn) {
@@ -676,12 +662,20 @@ let that = this;
 				$("#text-italic").click();
 			}
 		});
+		$("#text-overline").click(function () {
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.overline = (activeObject.overline == true ? '' : true);
+				$("#text-italic").click();
+				$("#text-italic").click();
+			}
+		});
 	  	$("#text-left").click(function() {		  
-		  var activeObject = canvas.getActiveObject();
-		  if (activeObject && activeObject.type === 'text') {
-			  activeObject.textAlign = 'left';
-		    canvas.renderAll();
-		  }
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.textAlign = 'left';
+				canvas.renderAll();
+			}
 		});
 	  	$("#text-center").click(function() {		  
 			var activeObject = canvas.getActiveObject();
@@ -1012,27 +1006,18 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 @media  (max-width: 600px) {
-	/* .container-fluid{
-		padding-left: 0px!important;
-		padding-right: 0px!important;
-	} */
 	#shirtDiv, #contenedorColores{
 		overflow-x: hidden!important;
 	}
 	#avatarlist{
 		height: 120px;
 	}
-	/* #modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
-		margin-top: 0px!important;
-		margin-left: 0px!important;
-		margin-right: 0px!important;
-	} */
 }
 .card-body{
 	padding: 0px!important;
 }
 @media (min-width: 601px){
-		#shirtDiv{
+	#shirtDiv{
 		overflow-x: hidden;
 	}
 }

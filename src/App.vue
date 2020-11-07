@@ -42,13 +42,13 @@ export default {
   color: #42b983;
 }
 @font-face {
-font-family: ‘Dosis’;
+font-family: 'Dosis';
     src: url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot');
     src: url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot?#iefix') format('embedded-opentype'),
         url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.woff') format('woff'),
         url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.ttf') format('truetype'),
         url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.svg#adlerRegular') format('svg');
-  font-weight:900;
+  font-weight:bold;
   font-style:italic;
 }
 html,body{
@@ -56,5 +56,9 @@ html,body{
   padding-left: 0px!important;
   padding-right: 0px!important;
   size:20px!important;
+}
+h4, h5{
+  font-family: 'Dosis'; font-weight:700!important;
+  
 }
 </style>

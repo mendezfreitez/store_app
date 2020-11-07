@@ -15,11 +15,11 @@
       <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arrayImagenes"/>
         <template v-slot:modal-footer>
         <div class="w-100" style="margin:0px!important;">
-          <b-badge variant="success" class="text-right" id="footerModal" style="width:170px!important; font-size:14px!important; margin-top:4px!important;">
+          <b-badge variant="success" class="text-right" id="footerModal" style="font-family: 'Dosis';width:170px!important; font-size:18px!important; margin-top:4px!important;">
             Precio: {{producto.precioProducto | currency}}
           </b-badge>
 
-          <b-button variant="outline-primary" size="sm" class="float-right ml-1" style=" padding-left:8px;" @click="agregarAlCarro">
+          <b-button variant="outline-primary" size="sm" class="float-right ml-1" style=" padding-left:8px;font-family: 'Dosis';font-weight:600!important;" @click="agregarAlCarro">
             Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
           </b-button>
 

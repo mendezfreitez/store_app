@@ -2,7 +2,7 @@
     <div>
         <div v-for="Producto in ProductosCarro" :key="Producto.idProducto" class="mb-2 mt-1 ml-2 mr-2">
             <b-card :img-src="Producto.imagen" img-alt="Card image" img-right img-height="100" border-variant="secondary" class="margenCard">
-                <h6>{{Producto.tituloProducto}}</h6>
+                <h6 style="font-family: 'Dosis'; font-weight:700!important;">{{Producto.tituloProducto}}</h6>
                 <div>
                     <!-- <vue-numeric-input
                     :ref="'dato_'"
@@ -27,12 +27,12 @@
                 </div>
                 
                 <div>
-                    <b-badge class="text-right" variant="success" style="display:inline-block!important; font-size:13px; width:130px!important;">
+                    <b-badge class="text-right" variant="success" style="display:inline-block!important;font-family: 'Dosis'; font-weight:700!important; font-size:13px; width:130px!important;">
                         {{Producto.precio * Producto.laCantidad | currency}}
                     </b-badge>
                 </div>
 
-                <b-link style="position:absolute; bottom:5px!important; right:105px!important;" class="btn btn-sm btn-outline-secondary papelera" title="Eliminar Producto de Carro" href="#"  @click="removerDeCarro(Producto.idProducto, Producto.tituloProducto)">
+                <b-link style="position:absolute; bottom:5px!important;font-family: 'Dosis'; font-weight:600!important; right:105px!important;" class="btn btn-sm btn-outline-secondary papelera" title="Eliminar Producto de Carro" href="#"  @click="removerDeCarro(Producto.idProducto, Producto.tituloProducto)">
                     Eliminar
                 </b-link>
             </b-card>

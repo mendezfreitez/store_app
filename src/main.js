@@ -6,11 +6,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueCurrencyFilter from 'vue-currency-filter'
 import Numeric from '../src/ArchivosJavaScript/jquery.numeric-min'
-import 'typeface-dosis'
+// import 'typeface-dosis'
 import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import 'fabric';
 import 'canvas';
+// Load Dosis typeface
+// require('typeface-dosis')
 // import jquery from 'jquery'npm run serve
 // Vue.use(jquery)
 ////////////////////////////////////////////////////////////////

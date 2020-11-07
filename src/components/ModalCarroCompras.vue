@@ -20,13 +20,18 @@
           </b-badge>
         </div>
         <div class="w-100 text-center" style="margin:0px!important;">
-          <b-button :active="btnActivo" variant="danger" class="w-25" @click="vaciarCarro">
-            Vaciar Carro
-          </b-button> 
-
-          <b-button :active="btnActivo" variant="primary" class="ml-4 w-25" style=" padding-left:9px;" @click="procesarPago">
-            Pagar <b-icon scale="1.2" icon="credit-card" aria-hidden="true" class="ml-1"></b-icon>
-          </b-button>
+          <b class="row">
+            <b-col>
+              <b-button :active="btnActivo" variant="danger" class="w-100" @click="vaciarCarro" style=" font-size:19px!important;font-family: 'Dosis'; font-weight:600!important;">
+                Vaciar Carro
+              </b-button> 
+            </b-col>
+            <b-col>
+              <b-button :active="btnActivo" variant="primary" class="w-100" style=" font-size:19px!important;font-family: 'Dosis'; font-weight:600!important;padding-left:9px;" @click="procesarPago">
+                Pagar <b-icon scale="1.2" icon="credit-card" aria-hidden="true" class="ml-1"></b-icon>
+              </b-button>
+            </b-col>
+          </b>
         </div>
        
       </template>
