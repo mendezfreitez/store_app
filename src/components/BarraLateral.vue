@@ -8,7 +8,6 @@
       :backdrop-variant="variant"
       bg-variant="success"
       text-variant="light"
-      no-header-close
       shadow
       backdrop
       style="font-family:'Dosis';font-weight:900!important;"
@@ -30,7 +29,7 @@
         </b-nav-item>
 
         <b-nav-item href="#" to="/personalizaTuCamiseta" class="pl-2" style="font-size:21px!important;font-family:'Dosis';font-weight:700!important;">
-          Personaliza Tu Camiseta
+          Personalizado
         </b-nav-item>
       </b-navbar-nav>
 
@@ -76,5 +75,17 @@ export default {
 <style>
 .ddd:hover{
   background: #35815b!important;
+}
+.b-sidebar-header{
+  background: #087f23;
+  margin-bottom: 5px!important;
+  height: 63px!important;
+}
+#sidebar-backdrop{
+  width:260px!important;
+}
+.b-sidebar-header > button{
+  padding: 10px!important;
+  margin-left: 78px!important;
 }
 </style>

@@ -428,14 +428,17 @@ let that = this;
 			if(anchoContenedorCanvas > 1000){
 				$("#tcanvas,.upper-canvas,.canvas-container").css('width', 530);
 				$("#tcanvas,.upper-canvas,.canvas-container").css('height', 630);
+				// alert('Esta pantalla es grande');
 			}
 			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
 				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.8).toFixed(0));
 				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.8).toFixed(0));
+				// alert('Esta pantalla es mediana, como minimo dos veces tu pipicito jaja XD');
 			}
 			else if(anchoContenedorCanvas <= 500){
-				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.6).toFixed(0));
-				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.6).toFixed(0));
+				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.7).toFixed(0));
+				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.7).toFixed(0));
+				// alert('Esta pantalla es pequeña como tu pene jaja XD');
 			}
 			canvas.renderAll();
 		});
@@ -519,10 +522,10 @@ let that = this;
 				that.escalaXlienzo = that.escalaYlienzo = 1;
 			}
 			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-				that.escalaXlienzo = that.escalaYlienzo = 0.8;
+				that.escalaXlienzo = that.escalaYlienzo = 0.9;
 			}
 			else if(anchoContenedorCanvas <= 500){
-				that.escalaXlienzo = that.escalaYlienzo = 0.6;
+				that.escalaXlienzo = that.escalaYlienzo = 0.7;
 			}
 
 			image.set({
