@@ -69,7 +69,7 @@
 			</template>
 			<div class="tab-pane active" id="tab1">
 				<div class="well" style="margin-bottom:5px!important;">
-					<b-select @change="mostrarCamiseta" v-model="seleccion" :options="options">
+					<b-select id="seleccionModelo" v-model="seleccion" :options="options">
 					</b-select>								
 				</div>
 				<div class="well" style="overflow-x:scroll!important;">
@@ -148,11 +148,11 @@
 			</div>	
 		</b-modal>
 		
-		<b-row>
+		<div class="row">
 			<b-col sm="12" md="3" lg="3">
 			</b-col>		
 			
-			<b-col class="pl-1 pr-1" sm="12" md="6" lg="6">
+			<b-col sm="12" md="6" lg="6">
 
 				<b-button v-b-modal.modal-2 size="sm" variant="outline-success">Modelo | Color</b-button>
 				<b-button v-b-modal.modal-3 size="sm" variant="outline-success" class="ml-1 mr-1">Imagen | Texto</b-button>
@@ -269,21 +269,21 @@
 						</div>			  
 					</div>												
 				</div>
-				<b-card id="lienzo2D"
+				<!-- <b-card
 					border-variant="success"
 					header-text-variant="white"
 					align="center"
-				>
+				> -->
 					<div id="shirtDiv" align="center" style=" background-color: #FFF;">
 						<canvas id="tcanvas" width=530 height=630 class="hover" ></canvas>
 					</div>
-				</b-card>
+				<!-- </b-card> -->
 
 			</b-col>
 			
 			<b-col sm="12" md="3" lg="3">	      		       		    
 			</b-col>
-		</b-row>
+		</div>
     </b-container>
 </template>
 
@@ -292,7 +292,6 @@ import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
 import '../editor/js/jquery.miniColors.min.js';
 import '../editor/js/excanvas.js';
-
 export default {
 	data(){
 		return{
@@ -311,12 +310,12 @@ export default {
 				checked_xxl:false
 			},
 			visibleFront:true,
-			seleccion:0,
-			options:[{value:0, text:'Manga Corta'},
-					{value:1, text:'Manga Larga'},
-					{value:2, text:'Sueter'},
-					{value:3, text:'Franelilla'},
-					{value:4, text:'Franela Corta'}]
+			seleccion:'crew_',
+			options:[{value:'crew_', text:'Manga Corta'},
+					{value:'mens_longsleeve_', text:'Manga Larga'},
+					{value:'mens_hoodie_', text:'Sueter'},
+					{value:'mens_tank_', text:'Franelilla'},
+					{value:'womens_crew_', text:'Franela Corta'}]
 		}
 	},
 	methods:{
@@ -428,17 +427,14 @@ let that = this;
 			if(anchoContenedorCanvas > 1000){
 				$("#tcanvas,.upper-canvas,.canvas-container").css('width', 530);
 				$("#tcanvas,.upper-canvas,.canvas-container").css('height', 630);
-				// alert('Esta pantalla es grande');
 			}
 			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
 				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.8).toFixed(0));
 				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.8).toFixed(0));
-				// alert('Esta pantalla es mediana, como minimo dos veces tu pipicito jaja XD');
 			}
 			else if(anchoContenedorCanvas <= 500){
 				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.6).toFixed(0));
 				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.6).toFixed(0));
-				// alert('Esta pantalla es pequeña como tu pene jaja XD');
 			}
 			canvas.renderAll();
 		});
@@ -517,16 +513,16 @@ let that = this;
 		fabric.Image.fromURL('https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png', function (image) {
 			var anchoContenedorCanvas = $('#shirtDiv').width();
 			
-			console.log(anchoContenedorCanvas);
-			if(anchoContenedorCanvas > 1000){
-				that.escalaXlienzo = that.escalaYlienzo = 1;
-			}
-			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-				that.escalaXlienzo = that.escalaYlienzo = 0.9;
-			}
-			else if(anchoContenedorCanvas <= 500){
-				that.escalaXlienzo = that.escalaYlienzo = 0.7;
-			}
+			// console.log(anchoContenedorCanvas);
+			// if(anchoContenedorCanvas > 1000){
+			// 	that.escalaXlienzo = that.escalaYlienzo = 1;
+			// }
+			// else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+			// 	that.escalaXlienzo = that.escalaYlienzo = 0.9;
+			// }
+			// else if(anchoContenedorCanvas <= 500){
+			// 	that.escalaXlienzo = that.escalaYlienzo = 0.7;
+			// }
 
 			image.set({
 				left: 0,
@@ -553,10 +549,19 @@ let that = this;
 			} else {
 				frontBack = 'front';
 			}
-			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_${frontBack}.png`;
+			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/${document.getElementById('seleccionModelo').value}${frontBack}.png`;
 			// $('.upper-canvas').click();
+			console.log(canvas._objects[0]._element.src);
 			canvas.renderAll();
 		});
+
+		$('#seleccionModelo').change(function(){
+			console.log(canvas._objects[0]._element.src);
+			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/${document.getElementById('seleccionModelo').value}'front'.png`;
+			$('#flipback').click();
+			$('#flipback').click();
+			canvas.renderAll();
+		})
 	
 		$(".img-polaroid").click(function (e) {
 			// $("#texteditor").css('display', 'block');
@@ -856,9 +861,6 @@ let that = this;
 #shirtDiv{
 	width: 100%!important;
 }
-/* #lienzo2D{
-	box-shadow: 9px 7px 8px -2px rgba(0,0,0,0.22);	
-} */
 .well {
     min-height: 20px;
     padding: 5px;
@@ -1009,7 +1011,7 @@ font-family: ‘Dosis’;
   font-style:italic;
 }
 @media  (max-width: 600px) {
-	#shirtDiv, #contenedorColores{
+	#shirtDiv, #contenedorColores, #divMamador{
 		overflow-x: hidden!important;
 	}
 	#avatarlist{
@@ -1021,7 +1023,7 @@ font-family: ‘Dosis’;
 }
 @media (min-width: 601px){
 	#shirtDiv{
-		overflow-x: hidden;
+		overflow-x: hidden!important;
 	}
 }
 </style>
