@@ -6,7 +6,7 @@
       id="sidebar-backdrop"
       title="Categorías"
       :backdrop-variant="variant"
-      bg-variant="success"
+      bg-variant="dark"
       text-variant="light"
       shadow
       backdrop
@@ -77,7 +77,7 @@ export default {
   background: #35815b!important;
 }
 .b-sidebar-header{
-  background: #087f23;
+  background:#343a40 !important;
   margin-bottom: 5px!important;
   height: 63px!important;
 }
@@ -86,6 +86,10 @@ export default {
 }
 .b-sidebar-header > button{
   padding: 10px!important;
-  margin-left: 78px!important;
+  margin-left: 76px!important;
+  background:#343a40 !important;
+  /* border-color: #35815b!important; */
+  border:solid 1px #fff!important;
+  border-radius: 5px;
 }
 </style>

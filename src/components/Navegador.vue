@@ -1,6 +1,6 @@
 <template>
   <div>
-  <b-navbar toggleable="md" type="dark" style="background-color:#1fa02e!important;" fixed="top">
+  <b-navbar toggleable="md" type="dark" variant="dark" fixed="top">
     <!-- <b-navbar-toggle v-b-toggle.sidebar-backdrop target="nav-collapse"></b-navbar-toggle> -->
     <b-button size="md" class="ml-1 my-sm-0 botonToggler" variant="outline-secondary" v-b-toggle.sidebar-backdrop>
       <span class="navbar-toggler-icon" style="color:#fff!important;" ></span>

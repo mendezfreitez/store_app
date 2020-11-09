@@ -276,6 +276,7 @@
 				> -->
 					<div id="shirtDiv" align="center" style=" background-color: #FFF;">
 						<canvas id="tcanvas" width=530 height=630 class="hover" ></canvas>
+						<canvas id="tcanvas2" width=530 height=630 class="hover" ></canvas>
 					</div>
 				<!-- </b-card> -->
 
@@ -295,6 +296,7 @@ import '../editor/js/excanvas.js';
 export default {
 	data(){
 		return{
+			frontBack:'front',
 			escalaX: 1,
 			escalaY: 1,
 			escalaXlienzo: 0.5,
@@ -352,7 +354,7 @@ export default {
 		}
 	},
 	mounted(){
-var canvas;
+var canvas, canvas2;
 var tshirts = new Array(); //prototype: [{style:'x',color:'white',front:'a',back:'b',price:{tshirt:'12.95',frontPrint:'4.99',backPrint:'4.99',total:'22.47'}}]
 var a;
 var b;
@@ -361,6 +363,7 @@ var line2;
 var line3;
 var line4;
 let that = this;
+var frontBack = 'front';
 
  	$(document).ready(function() {
 		var anchoContenedorCanvas = $('#shirtDiv').width();
@@ -372,21 +375,37 @@ let that = this;
 		  selection: true,
 		  selectionBorderColor:'blue'
 		});
+		canvas2 = new fabric.Canvas('tcanvas2', {
+		  hoverCursor: 'pointer',
+		  selection: true,
+		  selectionBorderColor:'blue'
+		});
+		canvas2.renderAll();
 
 		if(anchoContenedorCanvas > 1000){
-			$("#tcanvas,.upper-canvas").css('width', 530);
-			$("#tcanvas,.upper-canvas").css('height', 630);
+			$("#tcanvas,#tcanvas2,.upper-canvas").css('width', 530);
+			$("#tcanvas,#tcanvas2,.upper-canvas").css('height', 630);
 		}
 		else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-			$("#tcanvas,.upper-canvas").css('width', (530 * 0.8).toFixed(0));
-			$("#tcanvas,.upper-canvas").css('height',  (630 * 0.8).toFixed(0));
+			$("#tcanvas,#tcanvas2,.upper-canvas").css('width', (530 * 0.8).toFixed(0));
+			$("#tcanvas,#tcanvas2,.upper-canvas").css('height',  (630 * 0.8).toFixed(0));
 		}
 		else if(anchoContenedorCanvas <= 500){
-			$("#tcanvas,.upper-canvas").css('width', (530 * 0.6).toFixed(0));
-			$("#tcanvas,.upper-canvas").css('height',  (630 * 0.6).toFixed(0));
+			$("#tcanvas,#tcanvas2,.upper-canvas").css('width', (530 * 0.6).toFixed(0));
+			$("#tcanvas,#tcanvas2,.upper-canvas").css('height',  (630 * 0.6).toFixed(0));
 		}
 		// console.log(canvas)
  		canvas.on({
+			 'object:moving': function(e) {		  	
+			    e.target.opacity = 0.5;
+			  },
+			  'object:modified': function(e) {		  	
+			    e.target.opacity = 1;
+			  },
+			 'object:selected':onObjectSelected,
+			 'selection:cleared':onSelectedCleared
+		});
+		canvas2.on({
 			 'object:moving': function(e) {		  	
 			    e.target.opacity = 0.5;
 			  },
@@ -425,16 +444,16 @@ let that = this;
 			
 			console.log(anchoContenedorCanvas);
 			if(anchoContenedorCanvas > 1000){
-				$("#tcanvas,.upper-canvas,.canvas-container").css('width', 530);
-				$("#tcanvas,.upper-canvas,.canvas-container").css('height', 630);
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 530);
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 630);
 			}
 			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.8).toFixed(0));
-				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.8).toFixed(0));
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.8).toFixed(0));
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.8).toFixed(0));
 			}
 			else if(anchoContenedorCanvas <= 500){
-				$("#tcanvas,.upper-canvas,.canvas-container").css('width', (530 * 0.6).toFixed(0));
-				$("#tcanvas,.upper-canvas,.canvas-container").css('height',  (630 * 0.6).toFixed(0));
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.6).toFixed(0));
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.6).toFixed(0));
 			}
 			canvas.renderAll();
 		});
@@ -472,6 +491,40 @@ let that = this;
 		  //canvas.renderAll();
 		});
 
+ 		canvas2.findTarget = (function(originalFn) {
+		  return function() {
+		    var target = originalFn.apply(this, arguments);
+		    if (target) {
+		      if (this._hoveredTarget !== target) {
+		    	  canvas2.fire('object:over', { target: target });
+		        if (this._hoveredTarget) {
+		        	canvas2.fire('object:out', { target: this._hoveredTarget });
+		        }
+		        this._hoveredTarget = target;
+		      }
+		    }
+		    else if (this._hoveredTarget) {
+		    	canvas2.fire('object:out', { target: this._hoveredTarget });
+		      this._hoveredTarget = null;
+		    }
+		    return target;
+		  };
+		})(canvas2.findTarget);
+
+ 		canvas2.on('object:over', function(e) {		
+		  //e.target.setFill('red');
+		  //canvas2.renderAll();
+		});
+		
+ 		canvas.on('object:out', function(e) {		
+		  //e.target.setFill('green');
+		  //canvas2.renderAll();
+		});
+
+
+
+
+
 		var valueSelect = $("#tshirttype").val();
 		$("#tshirttype").change(function(){
 			valueSelect = $(this).val();
@@ -482,8 +535,8 @@ let that = this;
 		$('#add-text').click(function() {
 			var text = $("#text-string").val();
 		    var textSample = new fabric.Text(text, {
-				left: fabric.util.getRandomInt(0, 200),
-				top: fabric.util.getRandomInt(0, 400),
+				left: 190,
+				top: 80,
 				fontFamily: 'helvetica',
 				cornerStyle:'rect',
 				cornerSize: 7,
@@ -495,35 +548,28 @@ let that = this;
 				scaleY: 0.5,
 				fontWeight: '',
 				hasRotatingPoint:true
-		    });		    
-            canvas.add(textSample);	
-            canvas.item(canvas.item.length-1).hasRotatingPoint = true;
-		  });
+			});
+			
+			if(that.frontBack === 'back'){
+				canvas.add(textSample);
+				canvas.item(canvas.item.length-1).hasRotatingPoint = true;
+			}
+			else{
+				canvas2.add(textSample);
+				canvas2.item(canvas2.item.length-1).hasRotatingPoint = true;				
+			}
+		});
 		  
 	  	$("#text-string").keyup(function(){	  		
 	  		var activeObject = canvas.getActiveObject();
-		      if (activeObject && activeObject.type === 'text') {
-		    	  activeObject.text = this.value;
-		    	  canvas.renderAll();
-		      }
-			});
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.text = this.value;
+				canvas.renderAll();
+			}
+		});
 		  
-
-		  
-		fabric.Image.fromURL('https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/crew_front.png', function (image) {
+		fabric.Image.fromURL(`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/${document.getElementById('seleccionModelo').value}front.png`, function (image) {
 			var anchoContenedorCanvas = $('#shirtDiv').width();
-			
-			// console.log(anchoContenedorCanvas);
-			// if(anchoContenedorCanvas > 1000){
-			// 	that.escalaXlienzo = that.escalaYlienzo = 1;
-			// }
-			// else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-			// 	that.escalaXlienzo = that.escalaYlienzo = 0.9;
-			// }
-			// else if(anchoContenedorCanvas <= 500){
-			// 	that.escalaXlienzo = that.escalaYlienzo = 0.7;
-			// }
-
 			image.set({
 				left: 0,
 				top: 0,
@@ -536,31 +582,72 @@ let that = this;
 			});
 			canvas.add(image);
 		});
-		  
-		$('.color-preview').click(function(){
-			canvas._objects[0].backgroundColor = $(this).css("background-color");
-			canvas.renderAll();
-		});
-		
-		var frontBack = 'front'
-		$("#flipback").click(function () {
-			if (frontBack === "front") {
-				frontBack = 'back';
-			} else {
-				frontBack = 'front';
-			}
-			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/${document.getElementById('seleccionModelo').value}${frontBack}.png`;
-			// $('.upper-canvas').click();
-			console.log(canvas._objects[0]._element.src);
-			canvas.renderAll();
+		fabric.Image.fromURL(`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/${document.getElementById('seleccionModelo').value}back.png`, function (image) {
+			var anchoContenedorCanvas = $('#shirtDiv').width();
+			image.set({
+				left: 0,
+				top: 0,
+				angle: 0,
+				padding: 7,
+				backgroundColor:'#FFF',
+				selectable:false,
+				cornerSize: 7,
+				hasRotatingPoint:true
+			});
+			canvas2.add(image);
 		});
 
-		$('#seleccionModelo').change(function(){
-			console.log(canvas._objects[0]._element.src);
-			canvas._objects[0]._element.src = `https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/${document.getElementById('seleccionModelo').value}'front'.png`;
-			$('#flipback').click();
-			$('#flipback').click();
+		$('.color-preview').click(function(){
+			canvas._objects[0].backgroundColor = $(this).css("background-color");
+			canvas2._objects[0].backgroundColor = $(this).css("background-color");
 			canvas.renderAll();
+			canvas2.renderAll();
+		});
+		
+		$("#flipback").click(function () {
+			if (that.frontBack === "front") {
+				document.getElementsByClassName('canvas-container')[0].style.display = 'block';
+				document.getElementsByClassName('canvas-container')[1].style.display = 'none';
+				that.frontBack = 'back';
+			} else {
+				document.getElementsByClassName('canvas-container')[1].style.display = 'block';
+				document.getElementsByClassName('canvas-container')[0].style.display = 'none';
+				that.frontBack = 'front';
+			}
+			console.log(that.frontBack);
+		});
+		$("#flipback").click();
+
+		$('#seleccionModelo').change(function(){
+				fabric.Image.fromURL(`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/${document.getElementById('seleccionModelo').value}front.png`, function (image) {
+					var anchoContenedorCanvas = $('#shirtDiv').width();
+					image.set({
+						left: 0,
+						top: 0,
+						angle: 0,
+						padding: 7,
+						backgroundColor:'#FFF',
+						selectable:false,
+						cornerSize: 7,
+						hasRotatingPoint:true
+					});
+				canvas.add(image);
+			});
+			fabric.Image.fromURL(`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/camisetas/${document.getElementById('seleccionModelo').value}back.png`, function (image) {
+					var anchoContenedorCanvas = $('#shirtDiv').width();
+					image.set({
+						left: 0,
+						top: 0,
+						angle: 0,
+						padding: 7,
+						backgroundColor:'#FFF',
+						selectable:false,
+						cornerSize: 7,
+						hasRotatingPoint:true
+					});
+				canvas2.add(image);
+			});
+			// canvas.renderAll();
 		})
 	
 		$(".img-polaroid").click(function (e) {
@@ -576,19 +663,25 @@ let that = this;
 	        var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
 	        
 	  		fabric.Image.fromURL(el.src, function(image) {
-		          image.set({
+				image.set({
 					left: left,
 					scaleX: that.escalaX,
 					scaleY: that.escalaY,
-		            top: top,
-		            angle: 0,
-		            padding: 7,
-		            cornerSize: 7,
-	      	  		hasRotatingPoint:true
-		          });
-		          //image.scale(getRandomNum(0.1, 0.25)).setCoords();
-		          canvas.add(image);
-		        });
+					top: top,
+					angle: 0,
+					padding: 7,
+					cornerSize: 7,
+					hasRotatingPoint:true
+				});
+				if(that.frontBack === 'back'){
+					canvas.add(image);
+					canvas.item(canvas.item.length-1).hasRotatingPoint = true;
+				}
+				else{
+					canvas2.add(image);
+					canvas2.item(canvas2.item.length-1).hasRotatingPoint = true;				
+				}
+			});
 	  	});	  		  
 	  	$('#remove-selected').click(function() {		  
 		  var activeObject = canvas.getActiveObject(); 
