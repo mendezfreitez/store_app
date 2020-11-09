@@ -1,7 +1,6 @@
 <template>
   <div>
   <b-navbar toggleable="md" type="dark" variant="dark" fixed="top">
-    <!-- <b-navbar-toggle v-b-toggle.sidebar-backdrop target="nav-collapse"></b-navbar-toggle> -->
     <b-button size="md" class="ml-1 my-sm-0 botonToggler" variant="outline-secondary" v-b-toggle.sidebar-backdrop>
       <span class="navbar-toggler-icon" style="color:#fff!important;" ></span>
     </b-button>
@@ -18,13 +17,6 @@
               Ingresar
             </b-button>
           </div>
-
-          <!-- <b-icon animation="animation" icon="cart" variant="light" style="width:40px!important; height:40px!important;" shift-h = "12">
-          </b-icon>
-          
-          <b-nav-item class="carroEnlace" href="#" @click="modalProductos" style="color: #FFC107!important; margin-right:25px!important; font-size:14px!important; padding-top:1px!important;">
-            {{cantidadCarro}}
-          </b-nav-item> -->
         </b-navbar-nav>
 
         <b-nav-item-dropdown hidden>
@@ -76,20 +68,16 @@ export default {
     methods:{
       ...mapMutations(['traerProductosTodos']),
       modalProductos(){
-        // this.$refs.modalcito.btnActivo = false
         this.$bvModal.show('ModalCarroCompras');
       }
     },
     mounted(){
-      // alert()
-      // this.cantidadCarro = localStorage.setItem('cantProductosCarro');
     }
 }
 </script>
 
 <style>
   a.nav-link{
-    /* color: #FFC107!important; */
     color: #f8f9fa!important;
   }
   a.nav-link:hover, .carroEnlace:hover{
@@ -100,7 +88,6 @@ export default {
   }
   .botonToggler, .botonToggler:hover{
     border-color: rgba(255, 255, 255, 0.1)!important;
-    /* border-color:#fff!important; */
     background-color: transparent!important;
   }
   .botonHome:hover{

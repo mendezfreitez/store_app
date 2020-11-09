@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       categoriasTodas:[],
-      variant: 'transparent',
+      variant: 'dark',
       // variants: [
       //   'transparent',
       //   'black',
@@ -88,7 +88,6 @@ export default {
   padding: 10px!important;
   margin-left: 76px!important;
   background:#343a40 !important;
-  /* border-color: #35815b!important; */
   border:solid 1px #fff!important;
   border-radius: 5px;
 }

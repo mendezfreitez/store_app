@@ -33,7 +33,6 @@
             </b-col>
           </b>
         </div>
-       
       </template>
     </b-modal>
   </div>
