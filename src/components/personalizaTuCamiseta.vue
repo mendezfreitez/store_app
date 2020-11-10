@@ -160,83 +160,83 @@
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
-							<b-dropdown right text="Texto" title="Tipografía" variant="outline-dark">
+							<b-dropdown right text="Fuente" title="Tipografía" variant="outline-dark">
 								<b-dropdown-item class="setFont" data-font="Arial">
-									<b-link tabindex="-1" href="#" class="Arial">Arial</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Arial">Arial</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Helvetica">
-									<b-link tabindex="-1"  href="#" class="Helvetica">Helvetica</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1"  href="#" class="Helvetica">Helvetica</b-button>
 								</b-dropdown-item>
 								<!-- <b-dropdown-divider></b-dropdown-divider> -->
 								<b-dropdown-item class="setFont" data-font="Myriad Pro">
-									<b-link tabindex="-1" href="#" class="MyriadPro">Myriad Pro</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="MyriadPro">Myriad Pro</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Delicious">
-									<b-link tabindex="-1" href="#" class="Delicious">Delicious</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Delicious">Delicious</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Verdana">
-									<b-link tabindex="-1" href="#" class="Verdana">Verdana</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Verdana">Verdana</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Georgia">
-									<b-link tabindex="-1" href="#" class="Georgia">Georgia</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Georgia">Georgia</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Courier">
-									<b-link tabindex="-1" href="#" class="Courier">Courier</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Courier">Courier</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Comic Sans MS">
-									<b-link tabindex="-1" href="#" class="ComicSansMS">Comic Sans MS</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="ComicSansMS">Comic Sans MS</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Impact">
-									<b-link tabindex="-1" href="#" class="Impact">Impact</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Impact">Impact</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Monaco">
-									<b-link tabindex="-1" href="#" class="Monaco">Monaco</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Monaco">Monaco</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Optima">
-									<b-link tabindex="-1" href="#" class="Optima">Optima</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Optima">Optima</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Hoefler Text">
-									<b-link tabindex="-1" href="#" class="HoeflerText">Hoefler Text</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="HoeflerText">Hoefler Text</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Plaster">
-									<b-link tabindex="-1" href="#" class="Plaster">Plaster</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Plaster">Plaster</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Engagement">
-									<b-link tabindex="-1" href="#" class="Engagement">Engagement</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Engagement">Engagement</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Dosis">
-									<b-link tabindex="-1" href="#" class="Dosis">Dosis</b-link>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Dosis">Dosis</b-button>
 								</b-dropdown-item>
 							</b-dropdown>
 							
 							<b-dropdown right text="Estilo" variant="outline-dark">
 								<b-dropdown-item>
-									<b-button id="text-bold" title="Bold" variant="outline-success" size="sm">
+									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-bold" title="Bold" variant="outline-dark" size="sm">
 										<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
 										Bold
 									</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item>
-									<b-button id="text-italic" class="btn" data-original-title="Italic" variant="outline-success" size="sm">
+									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-italic" class="btn" data-original-title="Italic" variant="outline-dark" size="sm">
 										<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
 										Italic
 									</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item>
-									<b-button id="text-strike" class="btn" title="Strike" variant="outline-success" size="sm">
+									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-strike" class="btn" title="Strike" variant="outline-dark" size="sm">
 										<b-icon icon="type-strikethrough" scale="1.2" aria-hidden="true"></b-icon>
 										Strike
 									</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item>
-									<b-button id="text-underline" class="btn" title="Underline" variant="outline-success" size="sm">
+									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-underline" class="btn" title="Underline" variant="outline-dark" size="sm">
 										<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
 										Underline
 									</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item>
-									<b-button id="text-overline" class="btn" title="Overline" variant="outline-success" size="sm">
-										<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
+									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-overline" class="btn" title="Overline" variant="outline-dark" size="sm">
+										<!-- <b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon> -->
 										Overline
 									</b-button>
 								</b-dropdown-item>
@@ -250,9 +250,9 @@
 								<input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000">
 							</b-button>
 							
-							<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="flipback" type="button" class="btn" title="Show Back View" variant="outline-dark">
+							<!-- <b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="flipback" type="button" class="btn" title="Show Back View" variant="outline-dark">
 								<b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon>
-							</b-button>
+							</b-button> -->
 							
 							<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
 								<b-icon icon="trash" scale="1.1" aria-hidden="true"></b-icon>
@@ -278,6 +278,12 @@
 						<canvas id="tcanvas" onclick="vaina" width=530 height=630 class="hover" ></canvas>
 						<canvas id="tcanvas2" onclick="vaina" width=530 height=630 class="hover" ></canvas>
 					</div>
+					<div class="mt-1">
+						<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="flipback" type="button" class="btn" title="Show Back View" variant="outline-dark">
+							{{textLado}}
+							<!-- <b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon> -->
+						</b-button>
+					</div>
 				<!-- </b-card> -->
 
 			</b-col>
@@ -291,12 +297,12 @@
 <script>
 import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
-import '../editor/js/jquery.miniColors.min.js';
 // import '../editor/js/excanvas.js';
 export default {
 	data(){
 		return{
 			frontBack:'front',
+			textLado:'Ver Posterior',
 			escalaX: 1,
 			escalaY: 1,
 			escalaXlienzo: 0.5,
@@ -614,10 +620,12 @@ export default {
 				if (that.frontBack === "front") {
 					document.getElementsByClassName('canvas-container')[0].style.display = 'block';
 					document.getElementsByClassName('canvas-container')[1].style.display = 'none';
+					that.textLado = "Ver Posterior";
 					that.frontBack = 'back';
 				} else {
 					document.getElementsByClassName('canvas-container')[1].style.display = 'block';
 					document.getElementsByClassName('canvas-container')[0].style.display = 'none';
+					that.textLado = "Ver Frontal";
 					that.frontBack = 'front';
 				}
 				console.log(that.frontBack);
@@ -754,48 +762,105 @@ export default {
 				}
 			};	
 			$('.setFont').click(function (e) {
-				var activeObject = canvas.getActiveObject();
-				if (activeObject && activeObject.type === 'text') {
-					activeObject.fontFamily = e.target.innerText;
-					canvas.renderAll();
+				if(that.frontBack === 'back'){
+					var activeObject = canvas.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.fontFamily = e.target.innerText;
+						canvas.renderAll();
+					}
+				}
+				else{
+					var activeObject = canvas2.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.fontFamily = e.target.innerText;
+						canvas2.renderAll();
+					}
 				}
 			});	  
-			$("#text-bold").click(function() {		  
-				var activeObject = canvas.getActiveObject();
-				if (activeObject && activeObject.type === 'text') {
-					activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');		    
-					canvas.renderAll();
+			$("#text-bold").click(function() {	
+				if(that.frontBack === 'back'){
+					var activeObject = canvas.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');		    
+						canvas.renderAll();
+					}
+				}
+				else{		
+					var activeObject = canvas2.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');		    
+						canvas2.renderAll();
+					}
 				}
 			});
 			$("#text-italic").click(function() {		 
-				var activeObject = canvas.getActiveObject();
-				if (activeObject && activeObject.type === 'text') {
-					activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');		    
-					canvas.renderAll();
-				}
+					if(that.frontBack === 'back'){
+						var activeObject = canvas.getActiveObject();
+						if (activeObject && activeObject.type === 'text') {
+							activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');		    
+							canvas.renderAll();
+						}
+					}
+					else{		
+						var activeObject = canvas2.getActiveObject();
+						if (activeObject && activeObject.type === 'text') {
+							activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');		    
+							canvas2.renderAll();
+						}
+					}
 			});
-			$("#text-strike").click(function() {		  
-				var activeObject = canvas.getActiveObject();
-				if (activeObject && activeObject.type === 'text') {
-					activeObject.linethrough = (activeObject.linethrough == true ? '' : true);
-					$("#text-italic").click();
-					$("#text-italic").click();
+			$("#text-strike").click(function() {
+				if(that.frontBack === 'back'){
+					var activeObject = canvas.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.linethrough = (activeObject.linethrough == true ? '' : true);
+						$("#text-italic").click();
+						$("#text-italic").click();
+					}
+				}
+				else{		
+					var activeObject = canvas2.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.linethrough = (activeObject.linethrough == true ? '' : true);
+						$("#text-italic").click();
+						$("#text-italic").click();
+					}
 				}
 			});
 			$("#text-underline").click(function () {
-				var activeObject = canvas.getActiveObject();
-				if (activeObject && activeObject.type === 'text') {
-					activeObject.underline = (activeObject.underline == true ? '' : true);
-					$("#text-italic").click();
-					$("#text-italic").click();
+				if(that.frontBack === 'back'){
+					var activeObject = canvas.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.underline = (activeObject.underline == true ? '' : true);
+						$("#text-italic").click();
+						$("#text-italic").click();
+					}
+				}
+				else{		
+					var activeObject = canvas2.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.underline = (activeObject.underline == true ? '' : true);
+						$("#text-italic").click();
+						$("#text-italic").click();
+					}
 				}
 			});
 			$("#text-overline").click(function () {
-				var activeObject = canvas.getActiveObject();
-				if (activeObject && activeObject.type === 'text') {
-					activeObject.overline = (activeObject.overline == true ? '' : true);
-					$("#text-italic").click();
-					$("#text-italic").click();
+				if(that.frontBack === 'back'){
+					var activeObject = canvas.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.overline = (activeObject.overline == true ? '' : true);
+						$("#text-italic").click();
+						$("#text-italic").click();
+					}
+				}
+				else{		
+					var activeObject = canvas2.getActiveObject();
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.overline = (activeObject.overline == true ? '' : true);
+						$("#text-italic").click();
+						$("#text-italic").click();
+					}
 				}
 			});
 			$("#text-left").click(function() {		  
@@ -934,6 +999,7 @@ export default {
 		
 	}
 }
+import '../editor/js/jquery.miniColors.min.js';
 </script>
 
 <style>	
@@ -941,7 +1007,10 @@ export default {
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
 
-
+.dropdown-item >  a.btn-outline-dark, .dropdown-item > button.btn-outline-dark{
+	padding-top: 2px!important;
+	padding-bottom: 2px!important;
+}
 #modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
 	margin-top: 0px!important;
 }
