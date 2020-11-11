@@ -241,11 +241,6 @@
 									</b-button>
 								</b-dropdown-item>
 							</b-dropdown>
-							
-							<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
-								<b-icon icon="trash" scale="1.1" aria-hidden="true"></b-icon>
-							</b-button>
-							
 							<b-dropdown right text="Color Texto" title="Tipografía" variant="outline-dark">
 								<b-dropdown-item @click="clickColor">
 									<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-dark">
@@ -273,6 +268,10 @@
 									</b-form-input>
 								</b-dropdown-item> -->
 							</b-dropdown>
+							
+							<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
+								<b-icon icon="trash" scale="1.3" aria-hidden="true"></b-icon>
+							</b-button>
 						</div>							  
 						
 						<div class="pull-right" align="" id="imageeditor" style="display:none">
@@ -474,25 +473,29 @@ export default {
 				// $('.miniColors-selector').css({top: '20px', left: '20px', position:'absolute'});
 
 				console.log(anchoContenedorCanvas);
-				if(anchoContenedorCanvas >= 1200){
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 1.2).toFixed(0));
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 1.2).toFixed(0));
+				if(anchoContenedorCanvas >= 1500){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 530);
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 630);
+				}
+				else if(anchoContenedorCanvas >= 1200 && anchoContenedorCanvas < 1500){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.7).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 0.7).toFixed(0));
 				}
 				else if(anchoContenedorCanvas >= 992 && anchoContenedorCanvas < 1200){
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 1.1).toFixed(0));
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 1.1).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.7).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 0.7).toFixed(0));
 				}
 				else if(anchoContenedorCanvas >= 768 && anchoContenedorCanvas < 992){
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 1).toFixed(0));
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 1).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.65).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 0.65).toFixed(0));
 				}
 				else if(anchoContenedorCanvas >= 576 && anchoContenedorCanvas < 768){
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.75).toFixed(0));
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.75).toFixed(0));
-				}
-				else if(anchoContenedorCanvas < 576){
 					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.62).toFixed(0));
 					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.62).toFixed(0));
+				}
+				else if(anchoContenedorCanvas < 576){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.57).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.57).toFixed(0));
 				}
 				canvas.renderAll();
 			});
@@ -593,9 +596,9 @@ export default {
 					cornerStrokeColor:'transparent',
 					angle: 0,
 					fill: '#000000',
-					scaleX: 0.9,
-					scaleY: 0.9,
-					fontWeight: '',
+					scaleX: 1,
+					scaleY: 1,
+					fontWeight: 'bold',
 					hasRotatingPoint:true
 				});
 				
@@ -762,42 +765,9 @@ export default {
 					canvas.remove(activeObject);
 					$("#text-string").val("");
 				}
-				// else if (activeGroup) {
-				// var objectsInGroup = activeGroup.getObjects();
-				// canvas.discardActiveGroup();
-				// objectsInGroup.forEach(function(object) {
-				// 	canvas.remove(object);
-				// });
-				// }
+				
 			});
-			document.getElementById('bring-to-front').onclick = function() {		  
-				var activeObject = canvas.getActiveObject(),
-					activeGroup = canvas.getActiveGroup();
-				if (activeObject) {
-				activeObject.bringToFront();
-				}
-				else if (activeGroup) {
-				var objectsInGroup = activeGroup.getObjects();
-				canvas.discardActiveGroup();
-				objectsInGroup.forEach(function(object) {
-					object.bringToFront();
-				});
-				}
-			};
-			document.getElementById('send-to-back').onclick = function() {		  
-				var activeObject = canvas.getActiveObject(),
-					activeGroup = canvas.getActiveGroup();
-				if (activeObject) {
-				activeObject.sendToBack();
-				}
-				else if (activeGroup) {
-				var objectsInGroup = activeGroup.getObjects();
-				canvas.discardActiveGroup();
-				objectsInGroup.forEach(function(object) {
-					object.sendToBack();
-				});
-				}
-			};	
+			
 			$('.setFont').click(function (e) {
 				if(that.frontBack === 'back'){
 					var activeObject = canvas.getActiveObject();
@@ -989,7 +959,7 @@ export default {
 						var activeObject = canvas2.getActiveObject();
 					}
 					if (activeObject && activeObject.type === 'text') {
-						activeObject.strokeWidth = 1;
+						activeObject.strokeWidth = 2;
 						activeObject.stroke = this.value;
 						// activeObject.strokeStyle = '#000';
 					}	
