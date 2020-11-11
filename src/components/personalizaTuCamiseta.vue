@@ -149,10 +149,10 @@
 		</b-modal>
 		
 		<div class="row">
-			<b-col sm="2" md="3" lg="3">
+			<b-col xs="12" sm="1" md="1" lg="2" xl="2">
 			</b-col>			
 			
-			<b-col sm="8" md="6" lg="6">
+			<b-col xs="12" sm="10" md="10" lg="8" xl="8">
 
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-2 size="sm" variant="outline-dark">Modelo | Color</b-button>
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="outline-dark" class="ml-1 mr-1">Imagen | Texto</b-button>
@@ -242,53 +242,67 @@
 								</b-dropdown-item>
 							</b-dropdown>
 							
-							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-dark">
-								<input type="hidden" id="text-fontcolor" class="color-picker" size="7" value="#000000">
-							</b-button>
-							
-							<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Border Color" variant="outline-dark">
-								<input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000">
-							</b-button>
-							
-							<!-- <b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="flipback" type="button" class="btn" title="Show Back View" variant="outline-dark">
-								<b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon>
-							</b-button> -->
-							
 							<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
 								<b-icon icon="trash" scale="1.1" aria-hidden="true"></b-icon>
 							</b-button>
+							
+							<b-dropdown right text="Color Texto" title="Tipografía" variant="outline-dark">
+								<b-dropdown-item @click="clickColor">
+									<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-dark">
+										<label class="mb-0 mr-2" for="" style="font-size: 17px !important; font-family: Dosis; font-weight: 800 !important;">Color</label>
+										<input type="hidden" id="text-fontcolor" class="color-picker" size="7" value="#000000">
+									</b-button>
+								</b-dropdown-item>
+
+								<b-dropdown-item @click="clickBorde">
+									<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Border Color" variant="outline-dark">
+										<label class="mb-0 mr-1" for="" style="font-size: 17px !important; font-family: Dosis; font-weight: 800 !important;">Borde</label>
+										<input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000">
+									</b-button>	
+								</b-dropdown-item>
+
+								<!-- <b-dropdown-item class="mr-1">
+									<label class="mb-0 mr-2 ml-2" for="" style="display:block;font-size: 17px !important; font-family: Dosis; font-weight: 800 !important;">Ancho Borde</label>
+									<b-form-input
+										v-model="rangoValor"
+										type="number"
+										min="0"
+										max="10"
+										id="inputRangoValor"
+									>
+									</b-form-input>
+								</b-dropdown-item> -->
+							</b-dropdown>
 						</div>							  
 						
 						<div class="pull-right" align="" id="imageeditor" style="display:none">
 							<div class="btn-group">										      
 								<button class="btn" id="bring-to-front" title="Bring to Front"><i class="icon-fast-backward rotate" style="height:19px;"></i></button>
 								<button class="btn" id="send-to-back" title="Send to Back"><i class="icon-fast-forward rotate" style="height:19px;"></i></button>
-								<button id="flip" type="button" class="btn" title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>
-								<button id="remove-selected" class="btn" title="Delete selected item"><i class="icon-trash" style="height:19px;"></i></button>
 							</div>
 						</div>			  
 					</div>												
 				</div>
-				<!-- <b-card
-					border-variant="success"
+				<b-card
+					border-variant="dark"
 					header-text-variant="white"
 					align="center"
-				> -->
+				>
 					<div id="shirtDiv" align="center" style=" background-color: #FFF;">
 						<canvas id="tcanvas" onclick="vaina" width=530 height=630 class="hover" ></canvas>
 						<canvas id="tcanvas2" onclick="vaina" width=530 height=630 class="hover" ></canvas>
 					</div>
-					<div class="mt-1">
-						<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="flipback" type="button" class="btn" title="Show Back View" variant="outline-dark">
-							{{textLado}}
-							<!-- <b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon> -->
-						</b-button>
-					</div>
-				<!-- </b-card> -->
 
+				</b-card>
+				<div class="mt-1">
+					<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="flipback" type="button" class="btn" title="Show Back View" variant="dark">
+						{{textLado}}
+						<!-- <b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon> -->
+					</b-button>
+				</div>
 			</b-col>
 			
-			<b-col sm="2" md="3" lg="3">	      		       		    
+			<b-col xs="12" sm="1" md="1" lg="8" xl="2">	      		       		    
 			</b-col>
 		</div>
     </b-container>
@@ -297,10 +311,12 @@
 <script>
 import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
+import '../editor/js/jquery.miniColors.min.js';
 // import '../editor/js/excanvas.js';
 export default {
 	data(){
 		return{
+			rangoValor:0,
 			frontBack:'front',
 			textLado:'Ver Posterior',
 			escalaX: 1,
@@ -357,6 +373,14 @@ export default {
 		},
 		agregarAlCarro(){
 			alert("Se agregara al carro")
+		},
+		clickColor(){
+			var vaina = document.getElementsByClassName('miniColors-trigger')[0];
+			$(vaina).click();
+		},
+		clickBorde(){
+			var vaina = document.getElementsByClassName('miniColors-trigger')[1];
+			$(vaina).click();
 		}
 	},
 	mounted(){
@@ -373,8 +397,7 @@ export default {
 
 		$(document).ready(function() {
 			var anchoContenedorCanvas = $('#shirtDiv').width();
-			console.log(anchoContenedorCanvas);
-
+			// console.log(anchoContenedorCanvas);
 			//setup front side canvas 
 			canvas = new fabric.Canvas('tcanvas', {
 			hoverCursor: 'pointer',
@@ -389,16 +412,16 @@ export default {
 			canvas2.renderAll();
 
 			if(anchoContenedorCanvas > 1000){
-				$("#tcanvas,#tcanvas2,.upper-canvas").css('width', 530);
-				$("#tcanvas,#tcanvas2,.upper-canvas").css('height', 630);
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 630);
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 740);
 			}
 			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-				$("#tcanvas,#tcanvas2,.upper-canvas").css('width', (530 * 0.8).toFixed(0));
-				$("#tcanvas,#tcanvas2,.upper-canvas").css('height',  (630 * 0.8).toFixed(0));
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (630 * 0.8).toFixed(0));
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (740 * 0.8).toFixed(0));
 			}
 			else if(anchoContenedorCanvas <= 500){
-				$("#tcanvas,#tcanvas2,.upper-canvas").css('width', (530 * 0.6).toFixed(0));
-				$("#tcanvas,#tcanvas2,.upper-canvas").css('height',  (630 * 0.6).toFixed(0));
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (630 * 0.6).toFixed(0));
+				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (740 * 0.6).toFixed(0));
 			}
 			
 			canvas.on({
@@ -446,20 +469,30 @@ export default {
 			var anchoContenedorCanvas;
 
 			$(window).on("resize", function(){
-				anchoContenedorCanvas = $('#shirtDiv').width();
-				
+				anchoContenedorCanvas = $(window).width();
+				// $('.miniColors-selector').css('left', ($(window).width() / 4).toFixed(0) - 94)
+				// $('.miniColors-selector').css({top: '20px', left: '20px', position:'absolute'});
+
 				console.log(anchoContenedorCanvas);
-				if(anchoContenedorCanvas > 1000){
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 530);
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 630);
+				if(anchoContenedorCanvas >= 1200){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 1.2).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 1.2).toFixed(0));
 				}
-				else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.8).toFixed(0));
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.8).toFixed(0));
+				else if(anchoContenedorCanvas >= 992 && anchoContenedorCanvas < 1200){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 1.1).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 1.1).toFixed(0));
 				}
-				else if(anchoContenedorCanvas <= 500){
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.6).toFixed(0));
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.6).toFixed(0));
+				else if(anchoContenedorCanvas >= 768 && anchoContenedorCanvas < 992){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 1).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', (630 * 1).toFixed(0));
+				}
+				else if(anchoContenedorCanvas >= 576 && anchoContenedorCanvas < 768){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.75).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.75).toFixed(0));
+				}
+				else if(anchoContenedorCanvas < 576){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.62).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.62).toFixed(0));
 				}
 				canvas.renderAll();
 			});
@@ -550,14 +583,18 @@ export default {
 					left: 190,
 					top: 80,
 					fontFamily: 'helvetica',
+					hasBorders:true,
+					stroke: '#fff',
+					strokeWidth: 0,
+					textBackgroundColor: 'transparent',
 					cornerStyle:'rect',
 					cornerSize: 7,
 					padding: 7,
 					cornerStrokeColor:'transparent',
 					angle: 0,
 					fill: '#000000',
-					scaleX: 0.5,
-					scaleY: 0.5,
+					scaleX: 0.9,
+					scaleY: 0.9,
 					fontWeight: '',
 					hasRotatingPoint:true
 				});
@@ -891,6 +928,22 @@ export default {
 					canvas.renderAll();
 				}
 			});	  
+
+				$('#inputRangoValor').change(function(e){
+					e.preventDefault();
+					if(that.frontBack === 'back'){
+						var activeObject = canvas.getActiveObject();				
+					}
+					else{
+						var activeObject = canvas2.getActiveObject();
+					}
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.strokeWidth = that.rangoValor;
+					}	
+					$("#text-italic").click();
+					$("#text-italic").click();
+				});
+
 			$('#text-bgcolor').miniColors({
 				change: function(hex, rgb) {
 				var activeObject = canvas.getActiveObject();
@@ -908,11 +961,17 @@ export default {
 			});		
 			$('#text-fontcolor').miniColors({
 				change: function(hex, rgb) {
-				var activeObject = canvas.getActiveObject();
-				if (activeObject && activeObject.type === 'text') {
-					activeObject.fill = this.value;
-					canvas.renderAll();
-				}
+					if(that.frontBack === 'back'){
+						var activeObject = canvas.getActiveObject();				
+					}
+					else{
+						var activeObject = canvas2.getActiveObject();
+					}
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.fill = this.value;
+					}	
+					$("#text-italic").click();
+					$("#text-italic").click();
 				},
 				open: function(hex, rgb) {
 					//
@@ -923,11 +982,19 @@ export default {
 			});
 			$('#text-strokecolor').miniColors({
 				change: function(hex, rgb) {
-				var activeObject = canvas.getActiveObject();
-				if (activeObject && activeObject.type === 'text') {
-					activeObject.strokeStyle = this.value;
-					canvas.renderAll();
-				}
+					if(that.frontBack === 'back'){
+						var activeObject = canvas.getActiveObject();				
+					}
+					else{
+						var activeObject = canvas2.getActiveObject();
+					}
+					if (activeObject && activeObject.type === 'text') {
+						activeObject.strokeWidth = 1;
+						activeObject.stroke = this.value;
+						// activeObject.strokeStyle = '#000';
+					}	
+					$("#text-italic").click();
+					$("#text-italic").click();
 				},
 				open: function(hex, rgb) {
 					//
@@ -996,17 +1063,18 @@ export default {
 		line3 = new fabric.Line([0,0,0,400], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
 		line4 = new fabric.Line([0,400,20,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
 		});//doc ready
-		
 	}
 }
-import '../editor/js/jquery.miniColors.min.js';
 </script>
 
 <style>	
 @import '../editor/css/jquery.miniColors.css';
 @import '../editor/css/bootstrap-responsive.min.css';
 @import '../editor/css/jquery.simplecolorpicker.css';
-
+.miniColors-selector{
+	width: 188px!important;
+	height: 162px!important;
+}
 .dropdown-item >  a.btn-outline-dark, .dropdown-item > button.btn-outline-dark{
 	padding-top: 2px!important;
 	padding-bottom: 2px!important;
