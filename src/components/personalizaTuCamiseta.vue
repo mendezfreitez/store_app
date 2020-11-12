@@ -117,7 +117,7 @@
 				<b-button @click="$bvModal.hide('modal-3')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
 			</template>
 			<div class="well">
-				<b-input-group size="md">
+				<!-- <b-input-group size="md">
 					<b-form-input placeholder="Agregar Texto Acá" v-model="textoCamiseta" id="text-string"></b-form-input>
 					<b-input-group-append>
 						<b-button id="add-text" variant="dark">
@@ -127,7 +127,7 @@
 				</b-input-group>
 				<div class="input-append">
 					<hr style="margin-bottom:5px!important;margin-top:5px!important;">
-				</div>
+				</div> -->
 				<div id="avatarlist">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/1.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/2.png">
@@ -148,6 +148,99 @@
 			</div>	
 		</b-modal>
 		
+
+
+
+
+
+
+
+
+
+		<b-modal
+			header-bg-variant="dark"
+			header-text-variant="light"
+			:static="true" id="modal-4"
+			hide-header-close
+			hide-backdrop
+			hide-footer
+			size="sm"
+			scrollable 
+		>
+			<template #modal-title style="width:100%;">
+				<header style="display:inline-block;padding-top: 0px!important;">Texto</header>
+				<b-button id="hidderModal4" @click="$bvModal.hide('modal-4')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
+				<b-input-group size="md" class="pt-1">
+					<b-form-input placeholder="Agregar Texto Acá" v-model="textoCamiseta" id="text-string" size="sm"></b-form-input>
+					<b-input-group-append>
+						<b-button id="add-text" variant="outline-light" size="sm">
+							<b-icon icon="check" scale="2" aria-hidden="true"></b-icon>
+						</b-button>
+					</b-input-group-append>
+				</b-input-group>
+			</template>
+			<div class="well">
+					<b-list-group>
+						<b-list-group-item class="setFont Course p-0" style="font-size:20px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont HighSchoolUSASerif p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Arigatou p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont GratySans p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont GontserratBlack p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Impact p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont AlitaBrush p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Avoid p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Dosis p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Bambi p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Amettha p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont bellisa p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Cathallina p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont DartyZhedant p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont DawetAyu p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Dexotick p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont DKHand p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont EldaMaria p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont GultanBonte p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont LOVEINDONESIA p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont JustKids p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont krustycraft p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont LogoplexiRegular p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont magnum p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont marlon p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont medicall p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont MoGaReZeKiDuA p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Mops p-0" style="font-size:26px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont MulledWineSeason p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont octinPrisonFree p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Playball p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont PotatoPancakes p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont PriborgSans p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Rainbow p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont RoundyRainbows p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont ReshuffleSans p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Saitama p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont SansitaSwashedMedium p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Scheme p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont SuperMarioBros2 p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont TheBoardy p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Tambora p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Woodland p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Years p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+					</b-list-group>
+				<!-- </div> -->
+			</div>	
+		</b-modal>
+
+
+
+
+
+
+
+
+
+
+
+
 		<b-row class="m-0">
 			<b-col xs="12" sm="1" md="1" lg="2" xl="2">
 			</b-col>			
@@ -155,151 +248,12 @@
 			<b-col xs="12" sm="10" md="10" lg="8" xl="8" class="p-0">
 
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-2 size="sm" variant="outline-dark">Modelo | Color</b-button>
-				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="outline-dark" class="ml-1 mr-1">Imagen | Texto</b-button>
+				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="outline-dark" class="ml-1 mr-1">Imágen</b-button>
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-1 size="sm" variant="outline-dark">Tallas</b-button>		    
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
-							<b-dropdown size="sm" right text="Fuente" title="Tipografía" variant="outline-dark">
-								<b-dropdown-item class="setFont" data-font="Course">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Course">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="HighSchoolUSASerif">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="HighSchoolUSASerif">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Arigatou">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Arigatou">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="GratySans">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="GratySans">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="GontserratBlack">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="GontserratBlack">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Impact">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Impact">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="AlitaBrush">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="AlitaBrush">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Avoid">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Avoid">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Dosis">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Dosis">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Bambi">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Bambi">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Amettha">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Amettha">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="bellisa">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="bellisa">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Cathallina">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Cathallina">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="DartyZhedant">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="DartyZhedant">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="DawetAyu">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="DawetAyu">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Dexotick">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Dexotick">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="DKHand">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="DKHand">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="EldaMaria">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="EldaMaria">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="GultanBonte">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="GultanBonte">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="LOVEINDONESIA">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="LOVEINDONESIA">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="JustKids">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="JustKids">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="krustycraft">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="krustycraft">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="LogoplexiRegular">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="LogoplexiRegular">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="magnum">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="magnum">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="marlon">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="marlon">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="medicall">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="medicall">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="MoGaReZeKiDuA">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="MoGaReZeKiDuA">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Mops">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Mops">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="MulledWineSeason">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="MulledWineSeason">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="octinPrisonFree">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="octinPrisonFree">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Playball">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Playball">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="PotatoPancakes">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="PotatoPancakes">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="PriborgSans">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="PriborgSans">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Rainbow">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Rainbow">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="RoundyRainbows">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="RoundyRainbows">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="ReshuffleSans">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="ReshuffleSans">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Saitama">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Saitama">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="SansitaSwashedMedium">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="SansitaSwashedMedium">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Scheme">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Scheme">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="SuperMarioBros2">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="SuperMarioBros2">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="TheBoardy">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="TheBoardy">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Tambora">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Tambora">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Woodland">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Woodland">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Years">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Years">{{textoCamiseta}}</b-button>
-								</b-dropdown-item>
-							</b-dropdown>
-							
-
-							
-
-
-							<b-dropdown size="sm" right text="Estilo" variant="outline-dark">
+							<!-- <b-dropdown size="sm" right text="Estilo" variant="outline-dark">
 								<b-dropdown-item>
 									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-bold" title="Bold" variant="outline-dark" size="sm">
 										<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
@@ -326,11 +280,11 @@
 								</b-dropdown-item>
 								<b-dropdown-item>
 									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-overline" class="btn" title="Overline" variant="outline-dark" size="sm">
-										<!-- <b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon> -->
 										Overline
 									</b-button>
 								</b-dropdown-item>
-							</b-dropdown>
+							</b-dropdown> -->
+												<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-4 size="sm" variant="outline-dark">Texto</b-button>
 							<b-dropdown size="sm" right text="Color Texto" title="Tipografía" variant="outline-dark">
 								<b-dropdown-item @click="clickColor">
 									<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-dark">
@@ -358,7 +312,6 @@
 									</b-form-input>
 								</b-dropdown-item> -->
 							</b-dropdown>
-							
 							<b-button size="sm" style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
 								<b-icon icon="trash" scale="1.1" aria-hidden="true"></b-icon>
 							</b-button>
@@ -386,7 +339,6 @@
 				<div class="mt-1">
 					<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="flipback" type="button" class="btn" title="Show Back View" variant="dark">
 						{{textLado}}
-						<!-- <b-icon icon="arrow-left-right" scale="1.2" aria-hidden="true"></b-icon> -->
 					</b-button>
 				</div>
 			</b-col>
@@ -401,11 +353,10 @@
 import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
 import '../editor/js/jquery.miniColors.min.js';
-// import '../editor/js/excanvas.js';
 export default {
 	data(){
 		return{
-			textoCamiseta: 'Maritza Freitez',
+			textoCamiseta: '',
 			rangoValor:0,
 			frontBack:'front',
 			textLado:'Ver Posterior',
@@ -709,6 +660,7 @@ export default {
 					canvas2.add(textSample);
 					canvas2.item(canvas2.item.length-1).hasRotatingPoint = true;				
 				}
+				$("#hidderModal4").click();
 			});
 			
 			$("#text-string").keyup(function(){	  		
@@ -872,17 +824,18 @@ export default {
 				if(that.frontBack === 'back'){
 					var activeObject = canvas.getActiveObject();
 					if (activeObject && activeObject.type === 'text') {
-						activeObject.fontFamily = e.target.classList[1].replace(/_/g, ' ');
+						activeObject.fontFamily = e.target.classList[2].replace(/_/g, ' ');
 						canvas.renderAll();
 					}
 				}
 				else{
 					var activeObject = canvas2.getActiveObject();
 					if (activeObject && activeObject.type === 'text') {
-						activeObject.fontFamily = e.target.classList[1].replace(/_/g, ' ');
+						activeObject.fontFamily = e.target.classList[2].replace(/_/g, ' ');
 						canvas2.renderAll();
 					}
 				}
+				$("#hidderModal4").click();
 			});	  
 			$("#text-bold").click(function() {	
 				if(that.frontBack === 'back'){
@@ -1207,10 +1160,10 @@ export default {
 	padding-top: 2px!important;
 	padding-bottom: 2px!important;
 }
-#modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog{
+#modal-1 > .modal-dialog, #modal-2 > .modal-dialog, #modal-3 > .modal-dialog, #modal-4 > .modal-dialog{
 	margin-top: 0px!important;
 }
-#modal-2___BV_modal_title_, #modal-3___BV_modal_title_, #modal-1___BV_modal_title_{
+#modal-2___BV_modal_title_, #modal-3___BV_modal_title_, #modal-1___BV_modal_title_, #modal-4___BV_modal_title_{
 	font-size: 16px!important;
 	align-content: center!important;
 	width: 100%!important;
@@ -1219,7 +1172,7 @@ export default {
 	/* font-size: 0.875rem!important; */
 	font-size:16px!important;font-family:'Dosis'!important;font-weight:800!important;
 }
-#modal-1___BV_modal_header_, #modal-2___BV_modal_header_, #modal-3___BV_modal_header_{
+#modal-1___BV_modal_header_, #modal-2___BV_modal_header_, #modal-3___BV_modal_header_, #modal-4___BV_modal_header_{
 	padding: 3px!important;
 }
 .dropdown-menu-right{
