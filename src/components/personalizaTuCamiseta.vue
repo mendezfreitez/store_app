@@ -118,7 +118,7 @@
 			</template>
 			<div class="well">
 				<b-input-group size="md">
-					<b-form-input placeholder="Agregar Texto Acá" id="text-string"></b-form-input>
+					<b-form-input placeholder="Agregar Texto Acá" v-model="textoCamiseta" id="text-string"></b-form-input>
 					<b-input-group-append>
 						<b-button id="add-text" variant="dark">
 							<b-icon icon="check" scale="2" aria-hidden="true"></b-icon>
@@ -148,11 +148,11 @@
 			</div>	
 		</b-modal>
 		
-		<div class="row">
+		<b-row class="m-0">
 			<b-col xs="12" sm="1" md="1" lg="2" xl="2">
 			</b-col>			
 			
-			<b-col xs="12" sm="10" md="10" lg="8" xl="8">
+			<b-col xs="12" sm="10" md="10" lg="8" xl="8" class="p-0">
 
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-2 size="sm" variant="outline-dark">Modelo | Color</b-button>
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="outline-dark" class="ml-1 mr-1">Imagen | Texto</b-button>
@@ -160,56 +160,146 @@
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
-							<b-dropdown right text="Fuente" title="Tipografía" variant="outline-dark">
-								<b-dropdown-item class="setFont" data-font="Arial">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Arial">Arial</b-button>
+							<b-dropdown size="sm" right text="Fuente" title="Tipografía" variant="outline-dark">
+								<b-dropdown-item class="setFont" data-font="Course">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Course">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Helvetica">
-									<b-button size="sm" variant="outline-dark" tabindex="-1"  href="#" class="Helvetica">Helvetica</b-button>
+								<b-dropdown-item class="setFont" data-font="HighSchoolUSASerif">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="HighSchoolUSASerif">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
-								<!-- <b-dropdown-divider></b-dropdown-divider> -->
-								<b-dropdown-item class="setFont" data-font="Myriad Pro">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="MyriadPro">Myriad Pro</b-button>
+								<b-dropdown-item class="setFont" data-font="Arigatou">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Arigatou">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Delicious">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Delicious">Delicious</b-button>
+								<b-dropdown-item class="setFont" data-font="GratySans">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="GratySans">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Verdana">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Verdana">Verdana</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Georgia">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Georgia">Georgia</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Courier">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Courier">Courier</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Comic Sans MS">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="ComicSansMS">Comic Sans MS</b-button>
+								<b-dropdown-item class="setFont" data-font="GontserratBlack">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="GontserratBlack">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Impact">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Impact">Impact</b-button>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Impact">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Monaco">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Monaco">Monaco</b-button>
+								<b-dropdown-item class="setFont" data-font="AlitaBrush">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="AlitaBrush">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Optima">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Optima">Optima</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Hoefler Text">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="HoeflerText">Hoefler Text</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Plaster">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Plaster">Plaster</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item class="setFont" data-font="Engagement">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Engagement">Engagement</b-button>
+								<b-dropdown-item class="setFont" data-font="Avoid">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Avoid">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
 								<b-dropdown-item class="setFont" data-font="Dosis">
-									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Dosis">Dosis</b-button>
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Dosis">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Bambi">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Bambi">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Amettha">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Amettha">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="bellisa">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="bellisa">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Cathallina">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Cathallina">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="DartyZhedant">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="DartyZhedant">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="DawetAyu">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="DawetAyu">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Dexotick">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Dexotick">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="DKHand">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="DKHand">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="EldaMaria">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="EldaMaria">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="GultanBonte">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="GultanBonte">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="LOVEINDONESIA">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="LOVEINDONESIA">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="JustKids">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="JustKids">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="krustycraft">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="krustycraft">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="LogoplexiRegular">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="LogoplexiRegular">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="magnum">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="magnum">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="marlon">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="marlon">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="medicall">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="medicall">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="MoGaReZeKiDuA">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="MoGaReZeKiDuA">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Mops">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Mops">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="MulledWineSeason">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="MulledWineSeason">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="octinPrisonFree">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="octinPrisonFree">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Playball">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Playball">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="PotatoPancakes">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="PotatoPancakes">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="PriborgSans">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="PriborgSans">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Rainbow">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Rainbow">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="RoundyRainbows">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="RoundyRainbows">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="ReshuffleSans">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="ReshuffleSans">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Saitama">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Saitama">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="SansitaSwashedMedium">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="SansitaSwashedMedium">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Scheme">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Scheme">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="SuperMarioBros2">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="SuperMarioBros2">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="TheBoardy">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="TheBoardy">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Tambora">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Tambora">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Woodland">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Woodland">{{textoCamiseta}}</b-button>
+								</b-dropdown-item>
+								<b-dropdown-item class="setFont" data-font="Years">
+									<b-button size="sm" variant="outline-dark" tabindex="-1" href="#" class="Years">{{textoCamiseta}}</b-button>
 								</b-dropdown-item>
 							</b-dropdown>
 							
-							<b-dropdown right text="Estilo" variant="outline-dark">
+
+							
+
+
+							<b-dropdown size="sm" right text="Estilo" variant="outline-dark">
 								<b-dropdown-item>
 									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-bold" title="Bold" variant="outline-dark" size="sm">
 										<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
@@ -241,7 +331,7 @@
 									</b-button>
 								</b-dropdown-item>
 							</b-dropdown>
-							<b-dropdown right text="Color Texto" title="Tipografía" variant="outline-dark">
+							<b-dropdown size="sm" right text="Color Texto" title="Tipografía" variant="outline-dark">
 								<b-dropdown-item @click="clickColor">
 									<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-dark">
 										<label class="mb-0 mr-2" for="" style="font-size: 17px !important; font-family: Dosis; font-weight: 800 !important;">Color</label>
@@ -269,8 +359,8 @@
 								</b-dropdown-item> -->
 							</b-dropdown>
 							
-							<b-button style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
-								<b-icon icon="trash" scale="1.3" aria-hidden="true"></b-icon>
+							<b-button size="sm" style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
+								<b-icon icon="trash" scale="1.1" aria-hidden="true"></b-icon>
 							</b-button>
 						</div>							  
 						
@@ -303,7 +393,7 @@
 			
 			<b-col xs="12" sm="1" md="1" lg="8" xl="2">	      		       		    
 			</b-col>
-		</div>
+		</b-row>
     </b-container>
 </template>
 
@@ -315,6 +405,7 @@ import '../editor/js/jquery.miniColors.min.js';
 export default {
 	data(){
 		return{
+			textoCamiseta: 'Maritza Freitez',
 			rangoValor:0,
 			frontBack:'front',
 			textLado:'Ver Posterior',
@@ -410,18 +501,18 @@ export default {
 			});
 			canvas2.renderAll();
 
-			if(anchoContenedorCanvas > 1000){
-				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 630);
-				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 740);
-			}
-			else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (630 * 0.8).toFixed(0));
-				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (740 * 0.8).toFixed(0));
-			}
-			else if(anchoContenedorCanvas <= 500){
-				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (630 * 0.6).toFixed(0));
-				$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (740 * 0.6).toFixed(0));
-			}
+			// if(anchoContenedorCanvas > 1000){
+			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 630);
+			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 740);
+			// }
+			// else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
+			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (630 * 0.8).toFixed(0));
+			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (740 * 0.8).toFixed(0));
+			// }
+			// else if(anchoContenedorCanvas <= 500){
+			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (630 * 0.6).toFixed(0));
+			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (740 * 0.6).toFixed(0));
+			// }
 			
 			canvas.on({
 				'object:moving': function(e) {		  	
@@ -493,11 +584,19 @@ export default {
 					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.62).toFixed(0));
 					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.62).toFixed(0));
 				}
-				else if(anchoContenedorCanvas < 576){
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.57).toFixed(0));
-					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.57).toFixed(0));
+				else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas < 576){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.62).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.62).toFixed(0));
 				}
-				canvas.renderAll();
+				else if(anchoContenedorCanvas >= 400 && anchoContenedorCanvas < 500){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.62).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.62).toFixed(0));
+				}
+				else if(anchoContenedorCanvas >= 300 && anchoContenedorCanvas < 400){
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (530 * 0.5).toFixed(0));
+					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (630 * 0.5).toFixed(0));
+				}
+				// canvas.renderAll();
 			});
 
 			$(window).resize(); // PARA LA PRIMERA CARGA
@@ -769,17 +868,18 @@ export default {
 			});
 			
 			$('.setFont').click(function (e) {
+				console.log(e)
 				if(that.frontBack === 'back'){
 					var activeObject = canvas.getActiveObject();
 					if (activeObject && activeObject.type === 'text') {
-						activeObject.fontFamily = e.target.innerText;
+						activeObject.fontFamily = e.target.classList[1].replace(/_/g, ' ');
 						canvas.renderAll();
 					}
 				}
 				else{
 					var activeObject = canvas2.getActiveObject();
 					if (activeObject && activeObject.type === 'text') {
-						activeObject.fontFamily = e.target.innerText;
+						activeObject.fontFamily = e.target.classList[1].replace(/_/g, ' ');
 						canvas2.renderAll();
 					}
 				}
@@ -1040,7 +1140,65 @@ export default {
 <style>	
 @import '../editor/css/jquery.miniColors.css';
 @import '../editor/css/bootstrap-responsive.min.css';
-@import '../editor/css/jquery.simplecolorpicker.css';
+@import '../editor/css/jquery.simplecolorpicker.css';		
+.Arial{font-family:"Arial";}
+.Helvetica{font-family:"Helvetica";}
+.MyriadPro{font-family:"Myriad Pro";}
+.Delicious{font-family:"Delicious";}
+.Verdana{font-family:"Verdana";}
+.Georgia{font-family:"Georgia";}
+.Courier{font-family:"Courier";}
+.ComicSansMS{font-family:"Comic Sans MS";}
+.Impact{font-family:"Impact";}
+.Monaco{font-family:"Monaco";}
+.Optima{font-family:"Optima";}
+.HoeflerText{font-family:"Hoefler Text";}
+.Plaster{font-family:"Plaster";}
+.Engagement{font-family:"Engagement";}
+.Dosis{font-family: "Dosis";}
+.Bambi{font-family: "Bambi";}
+.Arigatou{font-family: "Arigatou";}
+.AlitaBrush{font-family: "AlitaBrush";}
+.Amettha{font-family: "Amettha";}
+.Avoid{font-family: "Avoid";}
+.bellisa{font-family: "bellisa";}
+.Cathallina{font-family: "Cathallina";}
+.Course{font-family: "Course";}
+.DartyZhedant{font-family: "DartyZhedant";}
+.DawetAyu{font-family: "DawetAyu";}
+.Dexotick{font-family: "Dexotick";}
+.DKHand{font-family: "DKHand";}
+.EldaMaria{font-family: "EldaMaria";}
+.GontserratBlack{font-family: "GontserratBlack";}
+.GratySans{font-family: "GratySans";}
+.GultanBonte{font-family: "GultanBonte";}
+.HighSchoolUSASerif{font-family: "HighSchoolUSASerif";}
+.LOVEINDONESIA{font-family: "LOVEINDONESIA";}
+.JustKids {font-family: "JustKids";}
+.krustycraft {font-family: "krustycraft";}
+.LogoplexiRegular {font-family: "LogoplexiRegular";}
+.magnum {font-family: "magnum";}
+.marlon {font-family: "marlon";}
+.medicall {font-family: "medicall";}
+.MoGaReZeKiDuA {font-family: "MoGaReZeKiDuA";}
+.Mops {font-family: "Mops";}
+.MulledWineSeason {font-family: "MulledWineSeason";}
+.octinPrisonFree {font-family: "octinPrisonFree";}
+.Playball {font-family: "Playball";}
+.PotatoPancakes {font-family: "PotatoPancakes";}
+.PriborgSans {font-family: "PriborgSans";}
+.Rainbow {font-family: "Rainbow";}
+.RoundyRainbows {font-family: "RoundyRainbows";}
+.ReshuffleSans {font-family: "ReshuffleSans";}
+.Saitama {font-family: "Saitama";}
+.SansitaSwashedMedium {font-family: "SansitaSwashedMedium";}
+.Scheme {font-family: "Scheme";}
+.SuperMarioBros2 {font-family: "SuperMarioBros2";}
+.TheBoardy {font-family: "TheBoardy";}
+.Tambora {font-family: "Tambora";}
+.Woodland {font-family: "Woodland";}
+.Years {font-family: "Years";}
+
 .miniColors-selector{
 	width: 188px!important;
 	height: 162px!important;
@@ -1078,7 +1236,6 @@ export default {
 .custom-control-label{
 	width: 136px!important;
 }
-
 #avatarlist{
 	height: 137px;
 	overflow-x: scroll;
@@ -1128,21 +1285,7 @@ export default {
 }
 .rotate {  
 	transform:rotate(90deg);
-}		
-.Arial{font-family:"Arial";}
-.Helvetica{font-family:"Helvetica";}
-.MyriadPro{font-family:"Myriad Pro";}
-.Delicious{font-family:"Delicious";}
-.Verdana{font-family:"Verdana";}
-.Georgia{font-family:"Georgia";}
-.Courier{font-family:"Courier";}
-.ComicSansMS{font-family:"Comic Sans MS";}
-.Impact{font-family:"Impact";}
-.Monaco{font-family:"Monaco";}
-.Optima{font-family:"Optima";}
-.HoeflerText{font-family:"Hoefler Text";}
-.Plaster{font-family:"Plaster";}
-.Engagement{font-family:"Engagement";}
+}
 [class^="icon-"], [class*=" icon-"] {
     display: inline-block;
     width: 14px;
@@ -1230,15 +1373,268 @@ export default {
     border-image: initial;
 }
 @font-face {
-font-family: ‘Dosis’;
-   src: url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot');
-   src: url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot?#iefix') format('embedded-opentype'),
-        url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.woff') format('woff'),
-        url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.ttf') format('truetype'),
-        url('../Fonts/DosisFonts/extraBold/Dosis-ExtraBold.svg#adlerRegular') format('svg');
+font-family: 'Years';
+	src: url('../Fonts/Years.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Woodland';
+	src: url('../Fonts/Woodland.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Tambora';
+	src: url('../Fonts/Tambora.otf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'TheBoardy';
+	src: url('../Fonts/TheBoardy.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'SuperMarioBros2';
+	src: url('../Fonts/SuperMarioBros2.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Scheme';
+	src: url('../Fonts/Scheme.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'SansitaSwashedMedium';
+	src: url('../Fonts/SansitaSwashedMedium.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Saitama';
+	src: url('../Fonts/Saitama.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'ReshuffleSans';
+	src: url('../Fonts/ReshuffleSans.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'RoundyRainbows';
+	src: url('../Fonts/RoundyRainbows.otf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Rainbow';
+	src: url('../Fonts/Rainbow.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'PriborgSans';
+	src: url('../Fonts/PriborgSans.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'PotatoPancakes';
+	src: url('../Fonts/PotatoPancakes.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Playball';
+	src: url('../Fonts/Playball.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'octinPrisonFree';
+	src: url('../Fonts/octinPrisonFree.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'MulledWineSeason';
+	src: url('../Fonts/MulledWineSeason.otf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Mops';
+	src: url('../Fonts/Mops.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'MoGaReZeKiDuA';
+	src: url('../Fonts/MoGaReZeKiDuA.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'medicall';
+	src: url('../Fonts/medicall.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'marlon';
+	src: url('../Fonts/marlon.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'magnum';
+	src: url('../Fonts/magnum.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'LogoplexiRegular';
+	src: url('../Fonts/LogoplexiRegular.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'krustycraft';
+	src: url('../Fonts/krustycraft.otf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'JustKids';
+	src: url('../Fonts/JustKids.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'LOVEINDONESIA';
+	src: url('../Fonts/LOVEINDONESIA.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Arigatou';
+	src: url('../Fonts/arigatou.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Bambi';
+	src: url('../Fonts/Bambi.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Dosis';
+   src:url('../Fonts/Dosis-ExtraBold.ttf') format('truetype');
   font-weight:900;
   font-style:italic;
 }
+@font-face {
+font-family: 'AlitaBrush';
+	src: url('../Fonts/AlitaBrush.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Amettha';
+	src: url('../Fonts/Amettha.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Avoid';
+	src: url('../Fonts/Avoid.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'bellisa';
+	src: url('../Fonts/bellisa.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Cathallina';
+	src: url('../Fonts/Cathallina.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Course';
+	src: url('../Fonts/Course.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'DartyZhedant';
+	src: url('../Fonts/DartyZhedant.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'DawetAyu';
+	src: url('../Fonts/DawetAyu.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Dexotick';
+	src: url('../Fonts/Dexotick.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'DKHand';
+	src: url('../Fonts/DKHand.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'EldaMaria';
+	src: url('../Fonts/EldaMaria.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'GontserratBlack';
+	src: url('../Fonts/GontserratBlack.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'GratySans';
+	src: url('../Fonts/GratySans.otf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'GultanBonte';
+	src: url('../Fonts/GultanBonte.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'HighSchoolUSASerif';
+	src: url('../Fonts/HighSchoolUSASerif.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+
+
+
+
+
 @media  (max-width: 600px) {
 	#shirtDiv, #contenedorColores, #divMamador{
 		overflow-x: hidden!important;

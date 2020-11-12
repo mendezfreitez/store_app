@@ -41,16 +41,6 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-@font-face {
-font-family: 'Dosis';
-    src: url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot');
-    src: url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.eot?#iefix') format('embedded-opentype'),
-        url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.woff') format('woff'),
-        url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.ttf') format('truetype'),
-        url('./Fonts/DosisFonts/extraBold/Dosis-ExtraBold.svg#adlerRegular') format('svg');
-  font-weight:bold;
-  font-style:italic;
-}
 html,body{
   background-color: #f5f5f5!important;
   padding-left: 0px!important;

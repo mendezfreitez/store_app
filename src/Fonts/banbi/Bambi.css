@@ -1,0 +1,11 @@
+/* Webfont: BambiHandwritten-Regular */@font-face {
+    font-family: 'BambiHandwritten';
+    src: url('Bambi Handwritten Font.eot'); /* IE9 Compat Modes */
+    src: url('Bambi Handwritten Font.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Bambi Handwritten Font.woff') format('woff'), /* Modern Browsers */
+         url('Bambi Handwritten Font.ttf') format('truetype'); /* Safari, Android, iOS */
+             font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
