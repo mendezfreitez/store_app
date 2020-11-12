@@ -151,7 +151,7 @@
 				<header style="display:inline-block;padding-top: 0px!important;">Texto</header>
 				<b-button id="hidderModal4" @click="$bvModal.hide('modal-4')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
 				<b-input-group size="md" class="pt-1">
-					<b-form-input placeholder="Agregar Texto Acá" v-model="textoCamiseta" id="text-string" size="sm" class="pt-0 pb-0 pl-2 pr-2" style="font-size:16px!important; height:31px;"></b-form-input>
+					<b-form-input placeholder="Agregar Texto Acá" v-model="textoCamiseta" id="text-string" size="sm" class="pt-0 pb-0 pl-2 pr-2" style="text-align:center!important;font-size:16px!important; height:31px;"></b-form-input>
 					<b-input-group-append>
 						<b-button variant="outline-light" size="sm" class="pt-0 pl-0 pr-2 pl-2" style="font-size:17px;">
 							OK
@@ -161,7 +161,6 @@
 			</template>
 			<div class="well">
 					<b-list-group>
-						<b-list-group-item class="setFont Course p-0" style="font-size:20px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont HighSchoolUSASerif p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Arigatou p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont GratySans p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
@@ -172,7 +171,6 @@
 						<b-list-group-item class="setFont Dosis p-0" style="font-size:22px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Bambi p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Amettha p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
-						<b-list-group-item class="setFont bellisa p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Cathallina p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont DartyZhedant p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont DawetAyu p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
@@ -229,6 +227,7 @@
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
+
 							<!-- <b-dropdown size="sm" right text="Estilo" variant="outline-dark">
 								<b-dropdown-item>
 									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-bold" title="Bold" variant="outline-dark" size="sm">
@@ -260,7 +259,13 @@
 									</b-button>
 								</b-dropdown-item>
 							</b-dropdown> -->
-												<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-4 size="sm" variant="outline-dark">Texto</b-button>
+							<b-button id="modalTextoBtn" style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-4 size="sm" variant="outline-dark">Texto</b-button>
+							
+							<b-button hidden style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-italic" class="btn" data-original-title="Italic" variant="outline-dark" size="sm">
+								<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
+								Italic
+							</b-button>
+
 							<b-dropdown size="sm" right text="Color Texto" title="Tipografía" variant="outline-dark">
 								<b-dropdown-item @click="clickColor">
 									<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-dark">
@@ -332,7 +337,7 @@ import '../editor/js/jquery.miniColors.min.js';
 export default {
 	data(){
 		return{
-			textoCamiseta: '',
+			textoCamiseta: 'Maritza Freitez',
 			rangoValor:0,
 			frontBack:'front',
 			textLado:'Ver Posterior',
@@ -443,22 +448,40 @@ export default {
 			
 			canvas.on({
 				'object:moving': function(e) {		  	
-					e.target.opacity = 0.5;
+					e.target.opacity = 0.4;
 				},
 				'object:modified': function(e) {		  	
 					e.target.opacity = 1;
 				},
-				'object:selected':onObjectSelected,
+				'selection:created':function(e){
+					var selectedObject = e.target;
+					selectedObject.hasRotatingPoint = true
+					if (selectedObject && selectedObject.text != "") {
+						that.textoCamiseta = selectedObject.text;	    	
+						$('#text-fontcolor').miniColors('value',selectedObject.fill);
+						$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);
+					}
+					canvas.renderAll();
+				},
 				'selection:cleared':onSelectedCleared
 			});
 			canvas2.on({
 				'object:moving': function(e) {		  	
-					e.target.opacity = 0.5;
+					e.target.opacity = 0.4;
 				},
 				'object:modified': function(e) {		  	
 					e.target.opacity = 1;
 				},
-				'object:selected':onObjectSelected,
+				'selection:created':function(e){
+					var selectedObject = e.target;
+					selectedObject.hasRotatingPoint = true
+					if (selectedObject && selectedObject.text != "") {
+						that.textoCamiseta = selectedObject.text;	    	
+						$('#text-fontcolor').miniColors('value',selectedObject.fill);
+						$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);
+					}
+					canvas2.renderAll();
+				},
 				'selection:cleared':onSelectedCleared
 			});
 
@@ -467,20 +490,10 @@ export default {
 			}
 			
 			function onObjectSelected(e) {	 
-				var selectedObject = e.target;
-				$("#text-string").val("");
-				selectedObject.hasRotatingPoint = true
-				if (selectedObject && selectedObject.type === 'text') {
-					$("#text-string").val(selectedObject.getText());	    	
-					$('#text-fontcolor').miniColors('value',selectedObject.fill);
-					$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);
-				}
-				else if (selectedObject && selectedObject.type === 'image'){
-			
-				}
+
 			}
 			function onSelectedCleared(e){
-				$("#text-string").val("");
+				that.textoCamiseta = "";
 			}
 
 			var anchoContenedorCanvas;
@@ -527,6 +540,17 @@ export default {
 			});
 
 			$(window).resize(); // PARA LA PRIMERA CARGA
+
+			// $('#modalTextoBtn').click(function(e){
+			// 	var selectedObject = e.target;
+			// 	selectedObject.hasRotatingPoint = true
+			// 	if (selectedObject && selectedObject.type === 'text') {
+			// 		that.textoCamiseta = selectedObject.getText();
+			// 	}
+			// 	else {
+			// 		that.textoCamiseta = "";
+			// 	}
+			// });
 
 			document.addEventListener('keyup', function(e){
 				// console.log(e.keyCode);
@@ -1124,9 +1148,7 @@ export default {
 .AlitaBrush{font-family: "AlitaBrush";}
 .Amettha{font-family: "Amettha";}
 .Avoid{font-family: "Avoid";}
-.bellisa{font-family: "bellisa";}
 .Cathallina{font-family: "Cathallina";}
-.Course{font-family: "Course";}
 .DartyZhedant{font-family: "DartyZhedant";}
 .DawetAyu{font-family: "DawetAyu";}
 .Dexotick{font-family: "Dexotick";}
@@ -1576,20 +1598,8 @@ font-family: 'Avoid';
 	font-style:italic;
 }
 @font-face {
-font-family: 'bellisa';
-	src: url('../Fonts/bellisa.ttf') format('truetype');
-	font-weight:900;
-	font-style:italic;
-}
-@font-face {
 font-family: 'Cathallina';
 	src: url('../Fonts/Cathallina.ttf') format('truetype');
-	font-weight:900;
-	font-style:italic;
-}
-@font-face {
-font-family: 'Course';
-	src: url('../Fonts/Course.ttf') format('truetype');
 	font-weight:900;
 	font-style:italic;
 }
@@ -1611,7 +1621,7 @@ font-family: 'Dexotick';
 	font-weight:900;
 	font-style:italic;
 }
-@font-face {
+@font-face { 
 font-family: 'DKHand';
 	src: url('../Fonts/DKHand.ttf') format('truetype');
 	font-weight:900;
