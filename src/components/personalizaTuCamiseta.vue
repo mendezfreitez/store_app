@@ -117,17 +117,6 @@
 				<b-button @click="$bvModal.hide('modal-3')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
 			</template>
 			<div class="well">
-				<!-- <b-input-group size="md">
-					<b-form-input placeholder="Agregar Texto Acá" v-model="textoCamiseta" id="text-string"></b-form-input>
-					<b-input-group-append>
-						<b-button id="add-text" variant="dark">
-							<b-icon icon="check" scale="2" aria-hidden="true"></b-icon>
-						</b-button>
-					</b-input-group-append>
-				</b-input-group>
-				<div class="input-append">
-					<hr style="margin-bottom:5px!important;margin-top:5px!important;">
-				</div> -->
 				<div id="avatarlist">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/1.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/2.png">
@@ -148,15 +137,6 @@
 			</div>	
 		</b-modal>
 		
-
-
-
-
-
-
-
-
-
 		<b-modal
 			header-bg-variant="dark"
 			header-text-variant="light"
@@ -171,10 +151,10 @@
 				<header style="display:inline-block;padding-top: 0px!important;">Texto</header>
 				<b-button id="hidderModal4" @click="$bvModal.hide('modal-4')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
 				<b-input-group size="md" class="pt-1">
-					<b-form-input placeholder="Agregar Texto Acá" v-model="textoCamiseta" id="text-string" size="sm"></b-form-input>
+					<b-form-input placeholder="Agregar Texto Acá" v-model="textoCamiseta" id="text-string" size="sm" class="pt-0 pb-0 pl-2 pr-2" style="font-size:16px!important; height:31px;"></b-form-input>
 					<b-input-group-append>
-						<b-button id="add-text" variant="outline-light" size="sm">
-							<b-icon icon="check" scale="2" aria-hidden="true"></b-icon>
+						<b-button variant="outline-light" size="sm" class="pt-0 pl-0 pr-2 pl-2" style="font-size:17px;">
+							OK
 						</b-button>
 					</b-input-group-append>
 				</b-input-group>
@@ -225,21 +205,17 @@
 						<b-list-group-item class="setFont Tambora p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Woodland p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Years p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont CookiesLoverFilled p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont GrettanaBold p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont jsbBestofBothWorlds p-0" style="font-size:30px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont SketchMatch p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Thumbellia p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont UbuntuMonoR p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont ubuntuTitleFr p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 					</b-list-group>
 				<!-- </div> -->
 			</div>	
 		</b-modal>
-
-
-
-
-
-
-
-
-
-
-
 
 		<b-row class="m-0">
 			<b-col xs="12" sm="1" md="1" lg="2" xl="2">
@@ -820,20 +796,54 @@ export default {
 			});
 			
 			$('.setFont').click(function (e) {
-				console.log(e)
+				var text = $("#text-string").val();
+				if(text === ''){
+					return;
+				}
+				var textSample = new fabric.Text(text, {
+					left: 190,
+					top: 80,
+					hasBorders:true,
+					fontFamily: this.classList[2],
+					centeredScaling: true,
+					stroke: '#fff',
+					strokeWidth: 0,
+					textBackgroundColor: 'transparent',
+					cornerStyle:'rect',
+					cornerSize: 8,
+					padding: 6,
+					cornerStrokeColor:'rgb(0, 0, 0)',
+					cornerColor: 'rgb(90, 106, 245)',
+					transparentCorners:false,
+					angle: 0,
+					fill: '#000000',
+					scaleX: 1,
+					scaleY: 1,
+					fontWeight: 'bold',
+					hasRotatingPoint:true
+				});
+
 				if(that.frontBack === 'back'){
 					var activeObject = canvas.getActiveObject();
 					if (activeObject && activeObject.type === 'text') {
 						activeObject.fontFamily = e.target.classList[2].replace(/_/g, ' ');
-						canvas.renderAll();
 					}
+					else{
+						canvas.add(textSample);
+						canvas.item(canvas.item.length-1).hasRotatingPoint = true;
+					}
+					canvas.renderAll();
 				}
 				else{
 					var activeObject = canvas2.getActiveObject();
 					if (activeObject && activeObject.type === 'text') {
 						activeObject.fontFamily = e.target.classList[2].replace(/_/g, ' ');
-						canvas2.renderAll();
 					}
+					else{
+						canvas2.add(textSample);
+						canvas2.item(canvas2.item.length-1).hasRotatingPoint = true;							
+					}
+					canvas2.renderAll();
 				}
 				$("#hidderModal4").click();
 			});	  
@@ -1151,7 +1161,17 @@ export default {
 .Tambora {font-family: "Tambora";}
 .Woodland {font-family: "Woodland";}
 .Years {font-family: "Years";}
+.CookiesLoverFilled {font-family: "CookiesLoverFilled";}
+.GrettanaBold {font-family: "GrettanaBold";}
+.jsbBestofBothWorlds {font-family: "jsbBestofBothWorlds";}
+.SketchMatch {font-family: "SketchMatch";}
+.Thumbellia {font-family: "Thumbellia";}
+.UbuntuMonoR {font-family: "UbuntuMonoR";}
+.ubuntuTitleFr {font-family: "ubuntuTitleFr";}
 
+.setFont {
+	max-height: 35px!important;
+}
 .miniColors-selector{
 	width: 188px!important;
 	height: 162px!important;
@@ -1324,6 +1344,50 @@ export default {
     border-style: outset;
     border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
     border-image: initial;
+}
+
+
+@font-face {
+font-family: 'ubuntuTitleFr';
+	src: url('../Fonts/ubuntuTitleFr.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'UbuntuMonoR';
+	src: url('../Fonts/UbuntuMonoR.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'Thumbellia';
+	src: url('../Fonts/Thumbellia.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'SketchMatch';
+	src: url('../Fonts/SketchMatch.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'jsbBestofBothWorlds';
+	src: url('../Fonts/jsbBestofBothWorlds.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'CookiesLoverFilled';
+	src: url('../Fonts/CookiesLoverFilled.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'GrettanaBold';
+	src: url('../Fonts/GrettanaBold.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
 }
 @font-face {
 font-family: 'Years';
