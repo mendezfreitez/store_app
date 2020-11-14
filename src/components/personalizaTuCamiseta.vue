@@ -98,9 +98,6 @@
 					</ul>
 				</div>			      
 			</div>
-		
-		
-		
 		</b-modal>
 		
 		<b-modal
@@ -113,7 +110,7 @@
 			size="sm"
 		>
 			<template #modal-title style="width:100%;">
-				<header style="display:inline-block;padding-top: 4px!important;">Imagen | Texto</header>
+				<header style="display:inline-block;padding-top: 4px!important;">Imagen</header>
 				<b-button @click="$bvModal.hide('modal-3')" variant="warning" size="sm" style="float:right;display:inline-block;">Cerrar</b-button>
 			</template>
 			<div class="well">
@@ -133,6 +130,8 @@
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/13.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/14.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/15.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Astronauta/1.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Astronauta/2.png">
 				</div>
 			</div>	
 		</b-modal>
@@ -157,6 +156,7 @@
 							OK
 						</b-button>
 					</b-input-group-append>
+					<b-button @click="cambiarPosicion" class="ml-1" size="sm" variant="outline-light" style="width:70px!important;">{{posicion}}</b-button>
 				</b-input-group>
 			</template>
 			<div class="well">
@@ -210,8 +210,10 @@
 						<b-list-group-item class="setFont Thumbellia p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont UbuntuMonoR p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont ubuntuTitleFr p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont anantasia p-0" style="font-size:20px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont APANRG p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont Japan p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 					</b-list-group>
-				<!-- </div> -->
 			</div>	
 		</b-modal>
 
@@ -220,7 +222,6 @@
 			</b-col>			
 			
 			<b-col xs="12" sm="10" md="10" lg="8" xl="8" class="p-0">
-
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-2 size="sm" variant="outline-dark">Modelo | Color</b-button>
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="outline-dark" class="ml-1 mr-1">Imágen</b-button>
 				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-1 size="sm" variant="outline-dark">Tallas</b-button>		    
@@ -228,37 +229,6 @@
 					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
 
-							<!-- <b-dropdown size="sm" right text="Estilo" variant="outline-dark">
-								<b-dropdown-item>
-									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-bold" title="Bold" variant="outline-dark" size="sm">
-										<b-icon icon="type-bold" scale="1.2" aria-hidden="true"></b-icon>
-										Bold
-									</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item>
-									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-italic" class="btn" data-original-title="Italic" variant="outline-dark" size="sm">
-										<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
-										Italic
-									</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item>
-									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-strike" class="btn" title="Strike" variant="outline-dark" size="sm">
-										<b-icon icon="type-strikethrough" scale="1.2" aria-hidden="true"></b-icon>
-										Strike
-									</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item>
-									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-underline" class="btn" title="Underline" variant="outline-dark" size="sm">
-										<b-icon icon="type-underline" scale="1.2" aria-hidden="true"></b-icon>
-										Underline
-									</b-button>
-								</b-dropdown-item>
-								<b-dropdown-item>
-									<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-overline" class="btn" title="Overline" variant="outline-dark" size="sm">
-										Overline
-									</b-button>
-								</b-dropdown-item>
-							</b-dropdown> -->
 							<b-button id="modalTextoBtn" style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-4 size="sm" variant="outline-dark">Texto</b-button>
 							
 							<b-button hidden style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-italic" class="btn" data-original-title="Italic" variant="outline-dark" size="sm">
@@ -280,18 +250,6 @@
 										<input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000">
 									</b-button>	
 								</b-dropdown-item>
-
-								<!-- <b-dropdown-item class="mr-1">
-									<label class="mb-0 mr-2 ml-2" for="" style="display:block;font-size: 17px !important; font-family: Dosis; font-weight: 800 !important;">Ancho Borde</label>
-									<b-form-input
-										v-model="rangoValor"
-										type="number"
-										min="0"
-										max="10"
-										id="inputRangoValor"
-									>
-									</b-form-input>
-								</b-dropdown-item> -->
 							</b-dropdown>
 							<b-button size="sm" style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
 								<b-icon icon="trash" scale="1.1" aria-hidden="true"></b-icon>
@@ -337,6 +295,8 @@ import '../editor/js/jquery.miniColors.min.js';
 export default {
 	data(){
 		return{
+			posicion:'Horizontal',
+			indice: 0,
 			textoCamiseta: 'Maritza Freitez',
 			rangoValor:0,
 			frontBack:'front',
@@ -403,6 +363,16 @@ export default {
 		clickBorde(){
 			var vaina = document.getElementsByClassName('miniColors-trigger')[1];
 			$(vaina).click();
+		},
+		cambiarPosicion(){
+			if(this.posicion === 'Vertical'){
+				this.posicion = 'Horizontal';
+				this.angulo = 0;
+			}
+			else{
+				this.posicion = 'Vertical';
+				this.angulo = 90;
+			}
 		}
 	},
 	mounted(){
@@ -455,6 +425,8 @@ export default {
 				},
 				'selection:created':function(e){
 					var selectedObject = e.target;
+					console.log(canvas._objects);
+					// console.log(selectedObject.identificador);
 					selectedObject.hasRotatingPoint = true
 					if (selectedObject && selectedObject.text != "") {
 						that.textoCamiseta = selectedObject.text;	    	
@@ -503,7 +475,7 @@ export default {
 				// $('.miniColors-selector').css('left', ($(window).width() / 4).toFixed(0) - 94)
 				// $('.miniColors-selector').css({top: '20px', left: '20px', position:'absolute'});
 
-				console.log(anchoContenedorCanvas);
+				// console.log(anchoContenedorCanvas);
 				if(anchoContenedorCanvas >= 1500){
 					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 530);
 					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 630);
@@ -824,9 +796,10 @@ export default {
 				if(text === ''){
 					return;
 				}
+				var indice;
 				var textSample = new fabric.Text(text, {
-					left: 190,
-					top: 80,
+					// identificador: undefined,
+					top:90,
 					hasBorders:true,
 					fontFamily: this.classList[2],
 					centeredScaling: true,
@@ -839,34 +812,31 @@ export default {
 					cornerStrokeColor:'rgb(0, 0, 0)',
 					cornerColor: 'rgb(90, 106, 245)',
 					transparentCorners:false,
-					angle: 0,
+					angle: that.angulo,
 					fill: '#000000',
-					scaleX: 1,
-					scaleY: 1,
+					scaleX: 0.9,
+					scaleY: 0.9,
 					fontWeight: 'bold',
 					hasRotatingPoint:true
 				});
-
 				if(that.frontBack === 'back'){
 					var activeObject = canvas.getActiveObject();
-					if (activeObject && activeObject.type === 'text') {
-						activeObject.fontFamily = e.target.classList[2].replace(/_/g, ' ');
+					if (activeObject) {
+						textSample.top = activeObject.top;
+						canvas.remove(activeObject);
 					}
-					else{
-						canvas.add(textSample);
-						canvas.item(canvas.item.length-1).hasRotatingPoint = true;
-					}
+					canvas.add(textSample);
+					canvas._objects[canvas._objects.length - 1].centerH();
 					canvas.renderAll();
 				}
 				else{
 					var activeObject = canvas2.getActiveObject();
-					if (activeObject && activeObject.type === 'text') {
-						activeObject.fontFamily = e.target.classList[2].replace(/_/g, ' ');
+					if (activeObject) {
+						textSample.top = activeObject.top;
+						canvas2.remove(activeObject);
 					}
-					else{
-						canvas2.add(textSample);
-						canvas2.item(canvas2.item.length-1).hasRotatingPoint = true;							
-					}
+					canvas2.add(textSample);
+					canvas2._objects[canvas2._objects.length - 1].centerH();
 					canvas2.renderAll();
 				}
 				$("#hidderModal4").click();
@@ -1190,6 +1160,9 @@ export default {
 .Thumbellia {font-family: "Thumbellia";}
 .UbuntuMonoR {font-family: "UbuntuMonoR";}
 .ubuntuTitleFr {font-family: "ubuntuTitleFr";}
+.anantasia {font-family: "anantasia";}
+.APANRG {font-family: "APANRG";}
+.Japan {font-family: "Japan";}
 
 .setFont {
 	max-height: 35px!important;
@@ -1369,6 +1342,24 @@ export default {
 }
 
 
+@font-face {
+font-family: 'Japan';
+	src: url('../Fonts/Japan.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'APANRG';
+	src: url('../Fonts/APANRG.TTF') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'anantasia';
+	src: url('../Fonts/anantasia.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
 @font-face {
 font-family: 'ubuntuTitleFr';
 	src: url('../Fonts/ubuntuTitleFr.ttf') format('truetype');
@@ -1564,7 +1555,7 @@ font-family: 'LOVEINDONESIA';
 @font-face {
 font-family: 'Arigatou';
 	src: url('../Fonts/arigatou.ttf') format('truetype');
-	font-weight:900;
+	font-weight: 900;
 	font-style:italic;
 }
 @font-face {
