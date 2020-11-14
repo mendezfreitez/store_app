@@ -813,9 +813,9 @@ export default {
 					cornerColor: 'rgb(90, 106, 245)',
 					transparentCorners:false,
 					angle: that.angulo,
-					fill: '#000000',
+					fill: '#000000', 
 					scaleX: 0.9,
-					scaleY: 0.9,
+					scaleY: 0.9,                                       
 					fontWeight: 'bold',
 					hasRotatingPoint:true
 				});
