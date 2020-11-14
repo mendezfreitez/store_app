@@ -295,6 +295,7 @@ import '../editor/js/jquery.miniColors.min.js';
 export default {
 	data(){
 		return{
+			angulo:0,
 			posicion:'Horizontal',
 			indice: 0,
 			textoCamiseta: 'Maritza Freitez',
@@ -607,6 +608,7 @@ export default {
 				var textSample = new fabric.Text(text, {
 					left: 190,
 					top: 80,
+					selectable:true,
 					fontFamily: 'helvetica',
 					hasBorders:true,
 					stroke: '#fff',
@@ -826,6 +828,7 @@ export default {
 						canvas.remove(activeObject);
 					}
 					canvas.add(textSample);
+            		// canvas.item(canvas.item.length-1).hasRotatingPoint = true;  
 					canvas._objects[canvas._objects.length - 1].centerH();
 					canvas.renderAll();
 				}
