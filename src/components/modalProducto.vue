@@ -11,7 +11,7 @@
     @ok="onSubmit"
     centered
     >
-        <b-container class="mt-3">
+        <div class="mt-3 pl-2 pr-2">
             <b-form @reset="onReset" v-if="show">
                 <div>
                   <!-- Styled -->
@@ -95,15 +95,15 @@
 
                 
                 <b-card class="mb-3 pb-2 pl-2">
-                   <b-form-group>
+                   <b-form-group class="mb-1">
                     <b-form-checkbox :disabled="descuentoHabilitado" v-model="form.aplicaDescuento" @change="cambioAplicaDescuento" name="check-button" switch size="md" class=" mt-1">
                       Aplica Descuento
                     </b-form-checkbox>
                    </b-form-group>                  
-                  <b-container :hidden="!form.aplicaDescuento" class="pl-0">
-                    <b-row>
-                      <b-col>
-                        <b-form-group id="input-group-5">
+                  <div :hidden="!form.aplicaDescuento" class="pr-2">
+                    <b-card class="pl-2 pr-2 mb-2">
+                      <div class="w-50 pr-1" style="display:inline-block;">
+                        <b-form-group id="input-group-5" class="mb-0">
                           <label class="mb-0 lbl"><i><b>Desde</b></i></label>
                           <b-form-input
                             class="p-1"
@@ -115,10 +115,10 @@
                             size="sm"
                           ></b-form-input>
                         </b-form-group>
-                      </b-col>
+                      </div>
 
-                      <b-col>
-                        <b-form-group id="input-group-6">
+                      <div class="w-50 pl-1" style="display:inline-block;">
+                        <b-form-group id="input-group-6" class="mb-0">
                           <label class="mb-0 lbl"><i><b>Hasta</b></i></label>
                           <b-form-input
                             class="p-1"
@@ -128,26 +128,28 @@
                             style="display:inline-block!important;"
                             name="hasta"
                             size="sm"
+                            :min="form.descuento.desde"
                           ></b-form-input>
                         </b-form-group>
-                      </b-col>
-                    </b-row>
+                      </div>
+                    </b-card>
 
                       <b-card class="pl-2 pr-2">
                           <div class="w-50" id="parte1" style="display:inline-block;">
-                            <b-form-group>
-                            <b-form-checkbox v-model="form.descuento.tipoPorcentaje" @change="cambioTipoDescuento" name="check-button" switch size="md" style="display:inline-block; width:130px;">
-                              Porcentaje
-                            </b-form-checkbox>
-                            
+                            <b-form-group class="mb-0">
+                              <b-form-checkbox v-model="form.descuento.tipoPorcentaje" @change="cambioTipoDescuento" name="check-button" switch size="md" style="display:inline-block; width:130px;">
+                                Porcentaje
+                              </b-form-checkbox>
+                              
 
-                            <b-form-checkbox v-model="form.descuento.tipoMonto" @change="cambioTipoDescuento" name="check-button" switch size="md" style="display:inline-block;">
-                              Monto
-                            </b-form-checkbox></b-form-group>
+                              <b-form-checkbox v-model="form.descuento.tipoMonto" @change="cambioTipoDescuento" name="check-button" switch size="md" style="display:inline-block;">
+                                Monto
+                              </b-form-checkbox>
+                            </b-form-group>
                           </div>
                           <div class="w-50" id="parte2" style="display:inline-block;">
-                                <b-form-group :hidden="form.descuento.tipoMonto">
-                                  <b-input-group size="sm" prepend="%" class="mb-2 mr-sm-2 mb-sm-0">
+                                <b-form-group :hidden="form.descuento.tipoMonto" class="mb-0">
+                                  <b-input-group size="sm" prepend="%" class="mb-2">
                                     <b-form-input
                                       @keyup="cambioDescuentoPorc"
                                       type="number"
@@ -159,8 +161,8 @@
                                     ></b-form-input>
                                   </b-input-group>
                                 </b-form-group>
-                                <b-form-group :hidden="form.descuento.tipoPorcentaje">
-                                  <b-input-group size="sm" prepend="CLP" class="mb-2 mr-sm-2 mb-sm-0">
+                                <b-form-group :hidden="form.descuento.tipoPorcentaje" class="mb-0">
+                                  <b-input-group size="sm" prepend="CLP" class="mb-2">
                                     <b-form-input
                                       @keyup="cambioDescuentoMonto"
                                       type="number"
@@ -175,7 +177,7 @@
                             
                           </div>
                       </b-card>
-                  </b-container>
+                  </div>
                 </b-card>
                 <!-- <select id="" class="form-control mt-0 border-top-0 rounded-top-0">
                     <option v-for="item in form.nombreImags" :key="item.id">
@@ -186,7 +188,7 @@
 
             <Modal ref="elModal" :tituloModal="form.nombre" :textoModal="form.descripcion"></Modal>
             
-        </b-container>
+        </div>
 
         <template v-slot:modal-footer>
             <div class="text-center mt-3">
@@ -506,7 +508,7 @@ export default {
   .input-group-prepend{
     text-align: center;
   }
-  #parte1 > fieldset.form-group, #parte2 > div > fieldset.form-group{
+  /* #parte1 > fieldset.form-group, #parte2 > fieldset.form-group, div.card-body > fieldset{
     margin-bottom: 0px;
-  }
+  } */
 </style>
