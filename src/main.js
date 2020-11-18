@@ -13,6 +13,9 @@ import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import 'fabric';
 import 'canvas';
+import VueNumberInput from '@chenfengyuan/vue-number-input';
+
+Vue.use(VueNumberInput);
 // Load Dosis typeface
 // require('typeface-dosis')
 // import jquery from 'jquery'npm run serve

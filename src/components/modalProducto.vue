@@ -15,20 +15,22 @@
             <b-form @reset="onReset" v-if="show">
                 <div>
                   <!-- Styled -->
-                  <b-form-file class="text-left border-bottom-0 mb-3"
-                  id="Imagenes_Array"
-                  accept="image/*"
-                  multiple
-                  :file-name-formatter="formatNames"
-                  v-model="arrayImagenes"
-                  @blur="cambioUnInput"
-                  placeholder="Imágenes Producto"
-                  drop-placeholder="Drop file here..."
+                  <b-form-file
+                    class="text-left border-bottom-0 mb-3"
+                    id="Imagenes_Array"
+                    accept="image/*"
+                    multiple
+                    :file-name-formatter="formatNames"
+                    v-model="arrayImagenes"
+                    @blur="cambioUnInput"
+                    placeholder="Imágenes Producto"
+                    drop-placeholder="Drop file here..."
+                    size="sm"
                   ></b-form-file>
                 </div>
                 
                 <b-form-group id="input-group-1">
-                    <b-form-input
+                  <b-form-input
                     @keydown="cambioUnInput"
                     id="input-1"
                     v-model="form.nombre"
@@ -36,11 +38,12 @@
                     required
                     placeholder="Nombre Producto"
                     name="nombre"
-                    ></b-form-input>
+                    size="sm"
+                  ></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="input-group-2">   
-                    <b-form-input
+                  <b-form-input
                     @keydown="cambioUnInput"
                     id="input-2"
                     v-model="form.descripcion"
@@ -48,27 +51,22 @@
                     placeholder="Descripción Producto"
                     type="text"
                     name="descripcion"
-                    ></b-form-input>
+                    size="sm"
+                  ></b-form-input>
                 </b-form-group>
 
                 <b-form-group>
-                    <b-form-select v-model="form.categoria" :options="options" @change="cambioUnInput"></b-form-select>
+                  <b-form-select
+                    v-model="form.categoria"
+                    :options="options"
+                    @change="cambioUnInput"
+                    size="sm"
+                  ></b-form-select>
                 </b-form-group>
 
-                <b-form-group id="input-group-3">
-                    <b-form-input
-                    @keydown="cambioUnInput"
-                    id="input-precio"
-                    v-model="form.precio"
-                    required
-                    placeholder="Precio"
-                    type="text"
-                    name="precio"
-                    ></b-form-input>
-                </b-form-group>
 
                 <b-form-group id="input-group-4">
-                    <b-form-input
+                  <b-form-input
                     @keydown="cambioUnInput"
                     id="input-4"
                     v-model="form.cantidad"
@@ -76,9 +74,109 @@
                     placeholder="Cantidad"
                     type="number"
                     name="cantidad" 
-                    ></b-form-input>
+                    size="sm"
+                  ></b-form-input>
                 </b-form-group>
 
+                <b-form-group id="input-group-3">
+                  <b-form-input
+                    @change="cambioInputPrecio"
+                    id="input-precio"
+                    v-model="form.precio"
+                    required
+                    placeholder="Precio"
+                    type="number"
+                    name="precio"
+                    size="sm"
+                  ></b-form-input>
+                </b-form-group>
+
+
+
+                
+                <b-card class="mb-3 pb-2 pl-2">
+                   <b-form-group>
+                    <b-form-checkbox :disabled="descuentoHabilitado" v-model="form.aplicaDescuento" @change="cambioAplicaDescuento" name="check-button" switch size="md" class=" mt-1">
+                      Aplica Descuento
+                    </b-form-checkbox>
+                   </b-form-group>                  
+                  <b-container :hidden="!form.aplicaDescuento" class="pl-0">
+                    <b-row>
+                      <b-col>
+                        <b-form-group id="input-group-5">
+                          <label class="mb-0 lbl"><i><b>Desde</b></i></label>
+                          <b-form-input
+                            class="p-1"
+                            id="input-desde inline-form"
+                            v-model="form.descuento.desde"
+                            type="date"
+                            style="display:inline-block!important;"
+                            name="desde"
+                            size="sm"
+                          ></b-form-input>
+                        </b-form-group>
+                      </b-col>
+
+                      <b-col>
+                        <b-form-group id="input-group-6">
+                          <label class="mb-0 lbl"><i><b>Hasta</b></i></label>
+                          <b-form-input
+                            class="p-1"
+                            id="input-hasta"
+                            v-model="form.descuento.hasta"
+                            type="date"
+                            style="display:inline-block!important;"
+                            name="hasta"
+                            size="sm"
+                          ></b-form-input>
+                        </b-form-group>
+                      </b-col>
+                    </b-row>
+
+                      <b-card class="pl-2 pr-2">
+                          <div class="w-50" id="parte1" style="display:inline-block;">
+                            <b-form-group>
+                            <b-form-checkbox v-model="form.descuento.tipoPorcentaje" @change="cambioTipoDescuento" name="check-button" switch size="md" style="display:inline-block; width:130px;">
+                              Porcentaje
+                            </b-form-checkbox>
+                            
+
+                            <b-form-checkbox v-model="form.descuento.tipoMonto" @change="cambioTipoDescuento" name="check-button" switch size="md" style="display:inline-block;">
+                              Monto
+                            </b-form-checkbox></b-form-group>
+                          </div>
+                          <div class="w-50" id="parte2" style="display:inline-block;">
+                                <b-form-group :hidden="form.descuento.tipoMonto">
+                                  <b-input-group size="sm" prepend="%" class="mb-2 mr-sm-2 mb-sm-0">
+                                    <b-form-input
+                                      @keyup="cambioDescuentoPorc"
+                                      type="number"
+                                      :min="0"
+                                      :max="100"
+                                      id="inline-form-input-porcentaje"
+                                      placeholder="Porcentaje"
+                                      v-model="form.descuento.porcentajeDescuento"
+                                    ></b-form-input>
+                                  </b-input-group>
+                                </b-form-group>
+                                <b-form-group :hidden="form.descuento.tipoPorcentaje">
+                                  <b-input-group size="sm" prepend="CLP" class="mb-2 mr-sm-2 mb-sm-0">
+                                    <b-form-input
+                                      @keyup="cambioDescuentoMonto"
+                                      type="number"
+                                      :min="0"
+                                      :max="form.precio"
+                                      id="inline-form-input-monto"
+                                      placeholder="Monto"
+                                      v-model="form.descuento.montoDescuento"
+                                    ></b-form-input>
+                                  </b-input-group>
+                                </b-form-group>
+                            
+                          </div>
+                      </b-card>
+                  </b-container>
+                </b-card>
                 <!-- <select id="" class="form-control mt-0 border-top-0 rounded-top-0">
                     <option v-for="item in form.nombreImags" :key="item.id">
                     {{ item.name }}
@@ -89,11 +187,6 @@
             <Modal ref="elModal" :tituloModal="form.nombre" :textoModal="form.descripcion"></Modal>
             
         </b-container>
-
-
-
-
-
 
         <template v-slot:modal-footer>
             <div class="text-center mt-3">
@@ -131,13 +224,22 @@ export default {
           precio: '',
           cantidad: '',
           nombreImags: '',
-          // dataImags: null,
-          idProducto:''
+          aplicaDescuento: false,
+          idProducto:'',
+          descuento:{
+            desde: '',
+            hasta:'',
+            tipoPorcentaje:true,
+            tipoMonto:false,
+            montoDescuento:'',
+            porcentajeDescuento:''
+          }
         },
         arrayImagenes:[],
         show: true,
         activoVer:true,
         activoBtnRegistrar: false,
+        descuentoHabilitado:true,
         options: [],
         RegistroEdicion:''
       }
@@ -263,67 +365,107 @@ export default {
         else{
             this.activoBtnRegistrar = true;
         }
+
+        //#region HABILITAR EL BOTON DE DESCUENTO EN CASO DE HABER INGRESADO UN PRECIO, SE NO HABERLO
+        if(this.form.precio != ''){
+          this.descuentoHabilitado = false; //DISABLED="FALSE" --> BTN HABILITADO
+          this.form.aplicaDescuento = false;
+        }
+        else{
+          this.descuentoHabilitado = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+        }
+        //#endregion
+
+        //#region VER SI HAY DESCUENTO ACTIVADO, Y EN CASO DE ESTAR ACTIVADO VER SI TODOS SUS CAMPOS SE LLENARON
+        if(this.descuentoHabilitado === false){
+          if(this.form.descuento.desde != '' && this.form.descuento.hasta != '' && this.form.descuento.montoDescuento != ''){
+            this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+          }
+          else{
+            this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+          }
+        }
+        //#endregion
+      },
+      cambioInputPrecio(){
+        if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' ){
+            this.activoBtnRegistrar = false;
+        }
+        else{
+            this.activoBtnRegistrar = true;
+        }
+
+        //#region HABILITAR EL BOTON DE DESCUENTO EN CASO DE HABER INGRESADO UN PRECIO, SE NO HABERLO
+        if(this.form.precio != ''){
+          this.descuentoHabilitado = false; //DISABLED="FALSE" --> BTN HABILITADO
+          this.form.aplicaDescuento = false;
+        }
+        else{
+          this.descuentoHabilitado = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+          // this.form.aplicaDescuento = false;
+          this.cambioAplicaDescuento()
+        }
+        //#endregion
+
+        //#region VER SI HAY DESCUENTO ACTIVADO, Y EN CASO DE ESTAR ACTIVADO VER SI TODOS SUS CAMPOS SE LLENARON
+        if(this.descuentoHabilitado === false){
+          if(this.form.descuento.desde != '' && this.form.descuento.hasta != '' && this.form.descuento.montoDescuento != ''){
+            this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+          }
+          else{
+            this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+          }
+        }
+        //#endregion
+      },
+      cambioTipoDescuento(){
+        this.form.descuento.tipoPorcentaje = !this.form.descuento.tipoPorcentaje;
+        this.form.descuento.tipoMonto = !this.form.descuento.tipoMonto;
+        this.form.descuento.montoDescuento = '';
+        this.form.descuento.porcentajeDescuento = '';
+      },
+      cambioDescuentoPorc(e){
+        if(parseFloat(this.form.descuento.porcentajeDescuento) > parseFloat(e.target.max)){
+          alert(`El porcentaje de descuento no puede exceder el ${e.target.max}%`);
+          this.form.descuento.porcentajeDescuento = '';
+        }
+        else{
+          this.form.descuento.montoDescuento = (this.form.precio * (this.form.descuento.porcentajeDescuento / 100)).toFixed(1)
+          console.log(this.form)
+        }
+      },
+      cambioDescuentoMonto(e){
+        if(parseFloat(this.form.descuento.montoDescuento) > parseFloat(e.target.max)){
+          alert(`El monto de descuento no puede exceder los ${e.target.max} CLP`);
+          this.form.descuento.montoDescuento = '';
+        }
+        else{
+          this.form.descuento.porcentajeDescuento = ((this.form.precio - (this.form.precio - this.form.descuento.montoDescuento)) / this.form.precio) * 100
+          console.log(this.form)
+        }
+      },
+      cambioAplicaDescuento(){
+        this.form.aplicaDescuento = !this.form.aplicaDescuento;
+        if(this.form.aplicaDescuento === false){
+          this.form.descuento.desde = ''
+          this.form.descuento.hasta = ''
+          this.form.descuento.tipoPorcentaje = true
+          this.form.descuento.tipoMonto = false
+          this.form.descuento.montoDescuento = ''
+          this.form.descuento.porcentajeDescuento = ''
+        }
       }
     },
     watch:{
       arrayImagenes: function (nuevoArray, viejoArray) {
-
-        // this.form.dataImags = nuevoArray;
         var arregloNombres = [];
         var archivos = document.querySelector('#Imagenes_Array').files;
 
         for(var t = 0; t < archivos.length; t++){
-          // arregloNombres.push({'name':archivos[t].name });
           arregloNombres.push(archivos[t].name.replace(/ /g,'_'));
         }
 
         this.form.nombreImags = arregloNombres;
-        // if(nuevoArray.length === 0){ return; }
-
-        // if(nuevoArray[0].id === 0){
-        //   this.form.dataImags = nuevoArray;
-        //   this.arrayImagenes = [];
-        // }
-        // else{
-        //   var unArreglo = [];
-        //   var conversion = undefined;
-        //   var arregloNombres = [];
-        //   const toBase64 = file => new Promise((resolve, reject) => {
-        //     const reader = new FileReader();
-        //     reader.readAsDataURL(file);
-        //     reader.onload = () => resolve(reader.result);
-        //     reader.onerror = error => reject(error);
-        //   });
-              
-        //   let that = this;
-        //   var archivos = document.querySelector('#Imagenes_Array').files;
-
-        //   async function convert_Base64(){
-        //     for(var t = 0; t < archivos.length; t++){
-        //       conversion = (await toBase64(archivos[t]));
-        //       unArreglo.push({ 'id':t, 'src':conversion,  'thumbnail':conversion });
-        //       arregloNombres.push({ 'id':t, 'name':archivos[t].name });
-        //     }
-        //   }
-        //   convert_Base64();
-        //   this.form.nombreImags = arregloNombres;
-        //   this.form.dataImags = unArreglo;
-        //   console.log(this.form.nombre != '');
-        //   console.log(this.form.descripcion != '');
-        //   console.log(this.form.precio != '');
-        //   console.log(this.form.categoria != null);
-        //   console.log(this.form.cantidad != '');
-        //   console.log(this.form.nombreImags.length > 0);
-        //   console.log(this.form.nombreImags);
-        //   console.log(nuevoArray.length > 0);
-          
-          // if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' ){
-          //   this.activoBtnRegistrar = false;
-          // }
-          // else{
-          //   this.activoBtnRegistrar = true;
-          // }
-        // }
       },
         producto(nuevo){
             this.form.nombre = nuevo.nombre;
@@ -354,5 +496,17 @@ export default {
 <style>
   .container{
     margin-top: 0px!important;
+  }
+  .custom-control-label, .lbl{
+    font-size: 14px!important;
+  }
+  .input-group-prepend,.input-group-text{
+    width: 41px!important;
+  }
+  .input-group-prepend{
+    text-align: center;
+  }
+  #parte1 > fieldset.form-group, #parte2 > div > fieldset.form-group{
+    margin-bottom: 0px;
   }
 </style>

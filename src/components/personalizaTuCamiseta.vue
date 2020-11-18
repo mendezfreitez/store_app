@@ -115,7 +115,7 @@
 			</template>
 			<div class="well">
 				<div id="avatarlist">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/1.png">
+					<!-- <img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/1.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/2.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/3.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/4.png">
@@ -129,9 +129,11 @@
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/12.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/13.png">
 					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/14.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/15.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Astronauta/1.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Astronauta/2.png">
+					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/15.png"> -->
+					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/1.png">
+					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/2.png">
+					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/3.png">
+					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/4.png">
 				</div>
 			</div>	
 		</b-modal>
@@ -198,12 +200,12 @@
 						<b-list-group-item class="setFont Saitama p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont SansitaSwashedMedium p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Scheme p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
-						<b-list-group-item class="setFont SuperMarioBros2 p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont SuperMarioBros2 pt-2 pb-2" style="font-size:15px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont TheBoardy p-0" style="font-size:24px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Tambora p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Woodland p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Years p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
-						<b-list-group-item class="setFont CookiesLoverFilled p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont CookiesLoverFilled pt-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont GrettanaBold p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont jsbBestofBothWorlds p-0" style="font-size:30px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont SketchMatch p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
@@ -213,6 +215,7 @@
 						<b-list-group-item class="setFont anantasia p-0" style="font-size:20px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont APANRG p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Japan p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont japones p-0" style="font-size:25px;" button>{{textoCamiseta}}</b-list-group-item>
 					</b-list-group>
 			</div>	
 		</b-modal>
@@ -389,6 +392,38 @@ export default {
 		var frontBack = 'front';
 
 		$(document).ready(function() {
+
+			// fabric.Object.prototype.customiseCornerIcons({
+			// 	settings: {
+			// 		borderColor: 'black',
+			// 		cornerSize: 25,
+			// 		cornerShape: 'rect',
+			// 		cornerBackgroundColor: 'black',
+			// 		cornerPadding: 10
+			// 	},
+			// 	tl: {
+			// 		icon: '../editor/img/rotar_icono.svg'
+			// 	},
+			// 	tr: {
+			// 		icon: '../editor/img/rotar_icono.svg'
+			// 	},
+			// 	bl: {
+			// 		icon: '../editor/img/rotar_icono.svg'
+			// 	},
+			// 	br: {
+			// 		icon: '../editor/img/rotar_icono.svg'
+			// 	},
+			// 	mb: {
+			// 		icon: '../editor/img/rotar_icono.svg'
+			// 	},
+			// 	// only is hasRotatingPoint is not set to false
+			// 	mtr: {
+			// 		icon: 'icons/rotate.svg'
+			// 	},
+			// }, function() {
+			// 	canvas.renderAll();
+			// } );
+
 			var anchoContenedorCanvas = $('#shirtDiv').width();
 			// console.log(anchoContenedorCanvas);
 			//setup front side canvas 
@@ -458,10 +493,6 @@ export default {
 				'selection:cleared':onSelectedCleared
 			});
 
-			function getRandomNum(min, max) {
-				return Math.random() * (max - min) + min;
-			}
-			
 			function onObjectSelected(e) {	 
 
 			}
@@ -514,16 +545,13 @@ export default {
 
 			$(window).resize(); // PARA LA PRIMERA CARGA
 
-			// $('#modalTextoBtn').click(function(e){
-			// 	var selectedObject = e.target;
-			// 	selectedObject.hasRotatingPoint = true
-			// 	if (selectedObject && selectedObject.type === 'text') {
-			// 		that.textoCamiseta = selectedObject.getText();
-			// 	}
-			// 	else {
-			// 		that.textoCamiseta = "";
-			// 	}
-			// });
+			$('#modalTextoBtn').click(function(e){
+				alert();
+				var activeObject = canvas.getActiveObject();
+				if(activeObject){
+					console.log(activeObject);
+				}
+			});
 
 			document.addEventListener('keyup', function(e){
 				// console.log(e.keyCode);
@@ -737,6 +765,39 @@ export default {
 				});
 			})
 		
+
+
+				// var textSample = new fabric.Text(text, {
+				// 	flipY:false,
+				// 	top:90,
+				// 	lockMovementX: true,
+				// 	hasBorders:true,
+				// 	fontFamily: this.classList[2],
+				// 	centeredScaling: true,
+				// 	stroke: '#fff',
+				// 	strokeWidth: 0,
+				// 	textBackgroundColor: 'transparent',
+				// 	cornerStyle:'circle',
+				// 	cornerSize: 11,
+				// 	padding: 8,
+				// 	cornerStrokeColor:'#004c40',
+				// 	cornerColor: '#48a999',
+				// 	transparentCorners:false,
+				// 	angle: that.angulo,
+				// 	fill: '#000000',
+				// 	lockScalingX: false,
+				// 	lockScalingY: false,
+				// 	minScaleLimit:0.5,
+				// 	//skewX: 18, ///// TORCER EN EL EJE "X"
+				// 	//skewY: -18, ///// TORCER EN EL EJE "Y"(esta bien mierda)
+				// 	scaleX: 0.9,
+				// 	scaleY: 0.9,                                       
+				// 	fontWeight: 'bold',
+				// 	hasRotatingPoint:true
+				// });
+
+
+
 			$(".img-polaroid").click(function (e) {
 				// $("#texteditor").css('display', 'block');
 				var el = e.target;
@@ -752,21 +813,30 @@ export default {
 				fabric.Image.fromURL(el.src, function(image) {
 					image.set({
 						left: left,
+						minScaleLimit:0.2,
+						centeredScaling:true,
+						// lockMovementX: true,
 						scaleX: that.escalaX,
 						scaleY: that.escalaY,
-						top: top,
+						top: 100,
 						angle: 0,
-						padding: 7,
-						cornerSize: 7,
+						padding: 1,
+						cornerStyle:'circle',
+						cornerSize: 11,
+						cornerStrokeColor:'#004c40',
+						cornerColor: '#48a999',
+						transparentCorners:false,
 						hasRotatingPoint:true
 					});
 					if(that.frontBack === 'back'){
 						canvas.add(image);
 						canvas.item(canvas.item.length-1).hasRotatingPoint = true;
+						canvas._objects[canvas._objects.length - 1].centerH();
 					}
 					else{
 						canvas2.add(image);
-						canvas2.item(canvas2.item.length-1).hasRotatingPoint = true;				
+						canvas2.item(canvas2.item.length-1).hasRotatingPoint = true;
+						canvas2._objects[canvas2._objects.length - 1].centerH();				
 					}
 				});
 			});	  		  
@@ -800,22 +870,28 @@ export default {
 				}
 				var indice;
 				var textSample = new fabric.Text(text, {
-					// identificador: undefined,
+					flipY:false,
 					top:90,
+					lockMovementX: true,
 					hasBorders:true,
 					fontFamily: this.classList[2],
 					centeredScaling: true,
 					stroke: '#fff',
 					strokeWidth: 0,
 					textBackgroundColor: 'transparent',
-					cornerStyle:'rect',
-					cornerSize: 8,
-					padding: 6,
-					cornerStrokeColor:'rgb(0, 0, 0)',
-					cornerColor: 'rgb(90, 106, 245)',
+					cornerStyle:'circle',
+					cornerSize: 11,
+					padding: 8,
+					cornerStrokeColor:'#004c40',
+					cornerColor: '#48a999',
 					transparentCorners:false,
 					angle: that.angulo,
-					fill: '#000000', 
+					fill: '#000000',
+					lockScalingX: false,
+					lockScalingY: false,
+					minScaleLimit:0.5,
+					//skewX: 18, ///// TORCER EN EL EJE "X"
+					//skewY: -18, ///// TORCER EN EL EJE "Y"(esta bien mierda)
 					scaleX: 0.9,
 					scaleY: 0.9,                                       
 					fontWeight: 'bold',
@@ -1166,6 +1242,7 @@ export default {
 .anantasia {font-family: "anantasia";}
 .APANRG {font-family: "APANRG";}
 .Japan {font-family: "Japan";}
+.japones {font-family: "japones";}
 
 .setFont {
 	max-height: 35px!important;
@@ -1345,6 +1422,12 @@ export default {
 }
 
 
+@font-face {
+font-family: 'japones';
+	src: url('../Fonts/japones.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
 @font-face {
 font-family: 'Japan';
 	src: url('../Fonts/Japan.ttf') format('truetype');
