@@ -3,9 +3,9 @@
     <b-modal id="modal_1"
     :title="tituloModal"
     header-close-variant="light"
-    header-bg-variant="success"
+    header-bg-variant="dark"
     header-text-variant="light"
-    cancel-variant="outline-danger"
+    cancel-variant="transparent"
     ok-variant="outline-primary"
     ok-title="Agregar al Carro"
     cancel-title="Cerrar"
@@ -15,11 +15,11 @@
       <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arrayImagenes"/>
         <template v-slot:modal-footer>
         <div class="w-100" style="margin:0px!important;">
-          <b-badge variant="success" class="text-right" id="footerModal" style="font-family: 'Dosis';width:170px!important; font-size:18px!important; margin-top:4px!important;">
-            Precio: {{producto.precioProducto | currency}}
+          <b-badge variant="dark" class="text-right" id="footerModal" style="font-family: 'Dosis';width:170px!important; font-size:18px!important; margin-top:4px!important;">
+            {{producto.precioProducto | currency}}
           </b-badge>
 
-          <b-button variant="outline-primary" size="sm" class="float-right ml-1" style=" padding-left:8px;font-family: 'Dosis';font-weight:600!important;" @click="agregarAlCarro">
+          <b-button variant="outline-dark" size="sm" class="float-right ml-1" style=" padding-left:8px;font-family: 'Dosis';font-weight:600!important;" @click="agregarAlCarro">
             Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
           </b-button>
 
@@ -98,6 +98,9 @@ export default {
     font-weight: 900!important;
     font-size: 40px!important;
     padding-top:9px!important; 
-    background-color: #00701a!important;
+    background-color: transparent!important;
+  }
+  .modal-header{
+    border-bottom: 0px!important;
   }
 </style>

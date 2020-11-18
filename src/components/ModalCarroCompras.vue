@@ -3,7 +3,7 @@
     <b-modal id="ModalCarroCompras"
     title="Carro de Compras"
     scrollable
-    header-bg-variant="success"
+    header-bg-variant="dark"
     header-text-variant="light"
     cancel-variant="outline-danger"
     ok-variant="outline-primary"
@@ -14,8 +14,8 @@
       <ListaProductos />
       
       <template v-slot:modal-footer>
-        <div class="w-100" style="margin:0px!important;">
-          <b-badge variant="success" class="text-right mb-2" id="footerModal" style="width:190px!important; font-size:16px!important; margin-top:4px!important;">
+        <div class="w-100 text-right" style="margin:0px!important;">
+          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="width:190px!important; font-size:16px!important; margin-top:4px!important;">
             Total: {{textoTotalCarro | currency}}
           </b-badge>
         </div>

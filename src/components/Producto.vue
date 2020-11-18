@@ -9,9 +9,9 @@
     img-height="240"
     @click="$emit('mostrar-modal', $props)"
   >
-    <b-card-title class="text-left ml-2 mt-1" style="font-size:16px!important;">{{tituloProducto}}</b-card-title>
-    <p class="text-right mr-2" style="font-size:18px!important">
-      <b-badge style="font-family: 'Dosis';" variant="success">{{precioProducto | currency}}</b-badge>
+    <b-card-title class="text-left ml-2 mt-1 mb-0" style="font-size:16px!important;">{{tituloProducto}}</b-card-title>
+    <p class="text-right mr-2" style="font-size:20px!important">
+      <b-badge style="font-family: 'Dosis';" variant="dark">{{precioProducto | currency}}</b-badge>
     </p>
   </b-card>
 </div>
