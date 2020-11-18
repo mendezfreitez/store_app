@@ -95,8 +95,8 @@
 
                 
                 <b-card class="mb-3 pb-2 pl-2">
-                   <b-form-group class="mb-1">
-                    <b-form-checkbox :disabled="descuentoHabilitado" v-model="form.aplicaDescuento" @change="cambioAplicaDescuento" name="check-button" switch size="md" class=" mt-1">
+                   <b-form-group class="mb-2">
+                    <b-form-checkbox :disabled="descuentoHabilitado" v-model="form.aplicaDescuento" @change="cambioAplicaDescuento" name="check-button" switch size="lg" class=" mt-1">
                       Aplica Descuento
                     </b-form-checkbox>
                    </b-form-group>                  
@@ -126,7 +126,7 @@
                             v-model="form.descuento.hasta"
                             type="date"
                             style="display:inline-block!important;"
-                            name="hasta"
+                            name="hasta" 
                             size="sm"
                             :min="form.descuento.desde"
                           ></b-form-input>
@@ -137,12 +137,25 @@
                       <b-card class="pl-2 pr-2">
                           <div class="w-50" id="parte1" style="display:inline-block;">
                             <b-form-group class="mb-0">
-                              <b-form-checkbox v-model="form.descuento.tipoPorcentaje" @change="cambioTipoDescuento" name="check-button" switch size="md" style="display:inline-block; width:130px;">
+                              <b-form-checkbox
+                              v-model="form.descuento.tipoPorcentaje"
+                              @change="cambioTipoDescuento"
+                              name="check-button"
+                              switch
+                              size="lg"
+                              style="display:inline-block; width:130px;"
+                              >
                                 Porcentaje
                               </b-form-checkbox>
                               
 
-                              <b-form-checkbox v-model="form.descuento.tipoMonto" @change="cambioTipoDescuento" name="check-button" switch size="md" style="display:inline-block;">
+                              <b-form-checkbox
+                              v-model="form.descuento.tipoMonto"
+                              @change="cambioTipoDescuento"
+                              name="check-button"
+                              switch
+                              size="lg"
+                              style="display:inline-block;">
                                 Monto
                               </b-form-checkbox>
                             </b-form-group>
@@ -508,7 +521,7 @@ export default {
   .input-group-prepend{
     text-align: center;
   }
-  /* #parte1 > fieldset.form-group, #parte2 > fieldset.form-group, div.card-body > fieldset{
-    margin-bottom: 0px;
-  } */
+  .b-custom-control-lg > label.custom-control-label{
+    padding-top: 4px!important;
+  }
 </style>
