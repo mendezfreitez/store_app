@@ -108,6 +108,6 @@ export default {
     border-width: 0px!important;
   }
   #modal_1___BV_modal_title_{
-    padding-top: 3px!important;
+    padding-top: 5px!important;
   }
 </style>

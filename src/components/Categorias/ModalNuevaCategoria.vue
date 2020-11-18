@@ -2,7 +2,7 @@
   <div>
     <b-modal id="modalNuevaCategoria"
     :title="tituloModal"
-    header-bg-variant="success"
+    header-bg-variant="dark"
     header-text-variant="light"
     cancel-variant="outline-danger"
     ok-variant="outline-primary"
@@ -92,7 +92,13 @@ export default {
 </script>
 
 <style>
-  .modal-body{
-    padding: 0px!important;
-  }
+.modal-body{
+  padding: 0px!important;
+}
+#modalNuevaCategoria___BV_modal_content_{
+  border-width: 0px!important;
+}
+#modalNuevaCategoria___BV_modal_title_{
+  padding-top: 3px!important;
+}
 </style>

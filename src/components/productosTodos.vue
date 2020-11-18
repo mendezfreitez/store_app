@@ -6,7 +6,7 @@
             Nuevo
             <b-icon icon="plus"></b-icon>
         </b-button> -->
-        <b-button size="sm" variant="outline-success" style="display: inline-block!important;float:right!important;" @click="modalProducto('')">
+        <b-button size="sm" variant="outline-dark" style="display: inline-block!important;float:right!important;" @click="modalProducto('')">
             Nuevo
             <b-icon icon="plus"></b-icon>
         </b-button>
@@ -46,7 +46,7 @@
 
     <b-container>
         <h3 style="display: inline-block!important;">Administrador de Categorías</h3>
-        <b-button size="sm" @click="modalCategoria('','')" variant="outline-success" style="display: inline-block!important;float:right!important;">
+        <b-button size="sm" @click="modalCategoria('','')" variant="outline-dark" style="display: inline-block!important;float:right!important;">
             Nuevo
             <b-icon icon="plus"></b-icon>
         </b-button>

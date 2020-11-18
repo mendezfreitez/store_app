@@ -42,7 +42,7 @@ export default {
   color: #42b983;
 }
 html,body{
-  background-color: #f5f5f5!important;
+  background-color: #f9c3c3cf!important;
   padding-left: 0px!important;
   padding-right: 0px!important;
   size:20px!important;

@@ -1,6 +1,6 @@
 <template>
   <div>
-  <b-navbar toggleable="md" type="dark" variant="dark" fixed="top">
+  <b-navbar toggleable="md" type="dark" fixed="top" id="navegadorArriba">
     <b-button size="md" class="ml-1 my-sm-0 botonToggler" variant="outline-secondary" v-b-toggle.sidebar-backdrop>
       <span class="navbar-toggler-icon" style="color:#fff!important;" ></span>
     </b-button>
@@ -95,5 +95,8 @@ export default {
   }
   .carroEnlace:hover{
     color: #fff!important;
+  }
+  #navegadorArriba{
+    background-color: #565a5f!important;
   }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <b-modal id="modalProducto"
     :title="ElTituloModal"
-    header-bg-variant="success"
+    header-bg-variant="dark"
     header-text-variant="light"
     cancel-variant="outline-danger"
     ok-variant="outline-primary"
@@ -523,5 +523,11 @@ export default {
   }
   .b-custom-control-lg > label.custom-control-label{
     padding-top: 4px!important;
+  }
+  #modalProducto___BV_modal_content_{
+    border-width: 0px!important;
+  }
+  #modalProducto___BV_modal_title_{
+    padding-top: 5px!important;
   }
 </style>

@@ -5,7 +5,7 @@
     img-alt="Imagen"
     img-top
     style="max-width: 15rem;"
-    class="mb-2 ml-2 mr-2 mt-2 border border-secondary sombreadoProducto"
+    class="mb-2 ml-2 mr-2 mt-2 sombreadoProducto"
     img-height="240"
     @click="$emit('mostrar-modal', $props)"
   >
