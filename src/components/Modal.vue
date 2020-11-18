@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-modal id="modal_1"
+    style="border: 0px solid rgba(0, 0, 0, 0.2)!important;"
     :title="tituloModal"
     header-close-variant="light"
     header-bg-variant="dark"
@@ -15,11 +16,11 @@
       <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arrayImagenes"/>
         <template v-slot:modal-footer>
         <div class="w-100" style="margin:0px!important;">
-          <b-badge variant="dark" class="text-right" id="footerModal" style="font-family: 'Dosis';width:170px!important; font-size:18px!important; margin-top:4px!important;">
+          <b-badge variant="dark" class="text-right" id="footerModal" style="font-family: 'UbuntuMonoR';width:170px!important; font-size:18px!important; margin-top:4px!important;">
             {{producto.precioProducto | currency}}
           </b-badge>
 
-          <b-button variant="outline-dark" size="sm" class="float-right ml-1" style=" padding-left:8px;font-family: 'Dosis';font-weight:600!important;" @click="agregarAlCarro">
+          <b-button variant="outline-dark" size="sm" class="float-right ml-1" style=" padding-left:8px;font-family: 'OverpassLight';font-weight:600!important;" @click="agregarAlCarro">
             Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
           </b-button>
 
@@ -102,5 +103,11 @@ export default {
   }
   .modal-header{
     border-bottom: 0px!important;
+  }
+  #modal_1___BV_modal_content_{
+    border-width: 0px!important;
+  }
+  #modal_1___BV_modal_title_{
+    padding-top: 3px!important;
   }
 </style>

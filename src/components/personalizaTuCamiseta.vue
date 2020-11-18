@@ -216,6 +216,8 @@
 						<b-list-group-item class="setFont APANRG p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont Japan p-0" style="font-size:28px;" button>{{textoCamiseta}}</b-list-group-item>
 						<b-list-group-item class="setFont japones p-0" style="font-size:25px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont OverpassExtraLight p-0" style="font-size:25px;" button>{{textoCamiseta}}</b-list-group-item>
+						<b-list-group-item class="setFont OverpassLight p-0" style="font-size:25px;" button>{{textoCamiseta}}</b-list-group-item>
 					</b-list-group>
 			</div>	
 		</b-modal>
@@ -1243,6 +1245,8 @@ export default {
 .APANRG {font-family: "APANRG";}
 .Japan {font-family: "Japan";}
 .japones {font-family: "japones";}
+.OverpassExtraLight {font-family: "OverpassExtraLight";}
+.OverpassLight {font-family: "OverpassLight";}
 
 .setFont {
 	max-height: 35px!important;
@@ -1422,6 +1426,18 @@ export default {
 }
 
 
+@font-face {
+font-family: 'OverpassLight';
+	src: url('../Fonts/OverpassLight.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
+@font-face {
+font-family: 'OverpassExtraLight';
+	src: url('../Fonts/OverpassExtraLight.ttf') format('truetype');
+	font-weight:900;
+	font-style:italic;
+}
 @font-face {
 font-family: 'japones';
 	src: url('../Fonts/japones.ttf') format('truetype');

@@ -1,6 +1,6 @@
 <template>
   <b-container>
-      <b-row>
+      <div>
           <b-col cols="12" lg="12">
               <Producto v-for="t in productos" :key="t._id"
               :arrayImagenes="t.nombreImagenes"
@@ -13,7 +13,7 @@
               :idProducto="t._id"
               @mostrar-modal="mostrarModal"/>
           </b-col>
-      </b-row>
+      </div>
       <Modal ref="elModal" :tituloModal="unProducto.tituloProducto" :textoModal="unProducto.bodyProducto" :precio="unProducto.precioProducto"></Modal>
   </b-container>
 </template>
@@ -98,6 +98,8 @@ export default {
 <style>
  .container{
      margin-top: 15px!important;
-     /* Dosis,sans-serif */
  }
+ .sombreadoProducto{
+  border-width: 0px!important;
+}
 </style>

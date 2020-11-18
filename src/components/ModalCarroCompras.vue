@@ -15,19 +15,19 @@
       
       <template v-slot:modal-footer>
         <div class="w-100 text-right" style="margin:0px!important;">
-          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="width:190px!important; font-size:16px!important; margin-top:4px!important;">
+          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="font-family: 'UbuntuMonoR'; width:190px!important; font-size:18px!important; margin-top:4px!important;">
             Total: {{textoTotalCarro | currency}}
           </b-badge>
         </div>
         <div class="w-100 text-center" style="margin:0px!important;">
           <b class="row">
             <b-col>
-              <b-button :active="btnActivo" variant="danger" class="w-100" @click="vaciarCarro" style=" font-size:19px!important;font-family: 'Dosis'; font-weight:600!important;">
+              <b-button :active="btnActivo" variant="outline-dark" class="w-100" @click="vaciarCarro" style="height: 39px; font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;">
                 Vaciar Carro
               </b-button> 
             </b-col>
             <b-col>
-              <b-button :active="btnActivo" variant="primary" class="w-100" style=" font-size:19px!important;font-family: 'Dosis'; font-weight:600!important;padding-left:9px;" @click="procesarPago">
+              <b-button :active="btnActivo" variant="dark" class="w-100" style="height: 39px; font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;padding-left:9px;" @click="procesarPago">
                 Pagar <b-icon scale="1.2" icon="credit-card" aria-hidden="true" class="ml-1"></b-icon>
               </b-button>
             </b-col>
@@ -85,5 +85,11 @@ export default {
 }
 .modal-footer{
   padding: 10px 8px!important;
+}
+#ModalCarroCompras___BV_modal_content_{
+  border-width: 0px!important;
+}
+#ModalCarroCompras___BV_modal_title_{
+  padding-top: 3px!important;
 }
 </style>
