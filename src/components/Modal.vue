@@ -4,7 +4,6 @@
     style="border: 0px solid rgba(0, 0, 0, 0.2)!important;"
     :title="tituloModal"
     header-close-variant="light"
-    header-bg-variant="dark"
     header-text-variant="light"
     cancel-variant="transparent"
     ok-variant="outline-primary"
@@ -16,7 +15,7 @@
       <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arrayImagenes"/>
         <template v-slot:modal-footer>
         <div class="w-100" style="margin:0px!important;">
-          <b-badge variant="dark" class="text-right" id="footerModal" style="font-family: 'UbuntuMonoR';width:170px!important; font-size:18px!important; margin-top:4px!important;">
+          <b-badge variant="dark" class="text-right pl-1 pr-1 pt-0 pb-0" id="footerModal" style="background-color:rgb(185 72 72 / 90%)!important;font-family: 'UbuntuMonoR';width:170px!important; font-size:18px!important; margin-top:4px!important;">
             {{producto.precioProducto | currency}}
           </b-badge>
 
@@ -103,6 +102,7 @@ export default {
   }
   .modal-header{
     border-bottom: 0px!important;
+    background-color: #ce3333!important;
   }
   #modal_1___BV_modal_content_{
     border-width: 0px!important;

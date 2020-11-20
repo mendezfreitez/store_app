@@ -97,6 +97,6 @@ export default {
     color: #fff!important;
   }
   #navegadorArriba{
-    background-color: #565a5f!important;
+    background-color: #ce3333!important;
   }
 </style>

@@ -27,7 +27,7 @@
                 </div>
                 
                 <div>
-                    <b-badge class="text-right" variant="dark" style="display:inline-block!important;font-family: 'UbuntuMonoR'; font-weight:700!important; font-size:13px; width:130px!important;">
+                    <b-badge class="text-right" variant="dark" style="background-color: rgb(185 72 72 / 90%)!important;display:inline-block!important;font-family: 'UbuntuMonoR'; font-weight:700!important; font-size:13px; width:130px!important;">
                         {{Producto.precio * Producto.laCantidad | currency}}
                     </b-badge>
                 </div>

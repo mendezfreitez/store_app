@@ -5,7 +5,7 @@
           <b-col cols="10" lg="4" md="6" sm="8">
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
 
-            <h3>Administrador</h3>
+            <h3>Usuario</h3>
 
             <b-form-group id="input-group-1">
               <b-form-input

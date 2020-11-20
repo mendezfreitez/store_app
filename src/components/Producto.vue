@@ -11,7 +11,7 @@
   >
     <b-card-title class="text-left ml-2 mt-1 mb-0" style="font-family: 'OverpassLight';font-size:14px!important;">{{tituloProducto}}</b-card-title>
     <p class="text-right mr-2" style="font-size:20px!important">
-      <b-badge style="font-family: 'UbuntuMonoR';" variant="dark">{{precioProducto | currency}}</b-badge>
+      <b-badge class="pl-1 pr-1 pt-0 pb-0" style="font-family: 'UbuntuMonoR'; background-color: rgb(185 72 72 / 81%)!important;" variant="dark">{{precioProducto | currency}}</b-badge>
     </p>
   </b-card>
 </div>

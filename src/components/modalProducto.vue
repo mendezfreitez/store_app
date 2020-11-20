@@ -37,6 +37,7 @@
                     type="text"
                     required
                     placeholder="Nombre Producto"
+                    autocomplete="off"
                     name="nombre"
                     size="sm"
                   ></b-form-input>
@@ -49,6 +50,7 @@
                     v-model="form.descripcion"
                     required
                     placeholder="Descripción Producto"
+                    autocomplete="off"
                     type="text"
                     name="descripcion"
                     size="sm"
@@ -82,6 +84,7 @@
                   <b-form-input
                     @change="cambioInputPrecio"
                     id="input-precio"
+                    autocomplete="off"
                     v-model="form.precio"
                     required
                     placeholder="Precio"
@@ -253,7 +256,7 @@ export default {
         arrayImagenes:[],
         show: true,
         activoVer:true,
-        activoBtnRegistrar: false,
+        activoBtnRegistrar: true,
         descuentoHabilitado:true,
         options: [],
         RegistroEdicion:''
@@ -310,10 +313,17 @@ export default {
         this.form.precio = null
         this.form.cantidad = null
         this.form.nombreImags = null
-        // this.form.dataImags = undefined
         this.activoBtnRegistrar = true
         this.arrayImagenes = []
         this.show = false
+        this.form.descuento.desde = ''
+        this.form.descuento.hasta = ''
+        this.form.descuento.tipoPorcentaje = true
+        this.form.descuento.tipoMonto = false
+        this.form.descuento.montoDescuento = ''
+        this.form.descuento.porcentajeDescuento = ''
+        this.form.aplicaDescuento = false
+        this.descuentoHabilitado = true
         this.$nextTick(() => {
             this.show = true
         })
@@ -376,6 +386,21 @@ export default {
       cambioUnInput(){
         if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' ){
             this.activoBtnRegistrar = false;
+
+
+          if(this.form.aplicaDescuento === true){
+            if(this.form.descuento.desde != '' && this.form.descuento.hasta != '' && this.form.descuento.montoDescuento != ''){
+              this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+            }
+            else{
+              this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+            }
+          }
+          else{
+            this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+          }
+
+
         }
         else{
             this.activoBtnRegistrar = true;
@@ -384,27 +409,62 @@ export default {
         //#region HABILITAR EL BOTON DE DESCUENTO EN CASO DE HABER INGRESADO UN PRECIO, SE NO HABERLO
         if(this.form.precio != ''){
           this.descuentoHabilitado = false; //DISABLED="FALSE" --> BTN HABILITADO
-          this.form.aplicaDescuento = false;
+          // this.form.aplicaDescuento = false;
         }
         else{
           this.descuentoHabilitado = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+          this.form.descuento.tipoPorcentaje = true;
+          this.form.descuento.tipoMonto = false;
+          this.form.descuento.desde = '';
+          this.form.descuento.hasta = '';
+          this.form.descuento.montoDescuento = '';
+          this.form.descuento.porcentajeDescuento = '';
+          this.form.aplicaDescuento = false;
         }
         //#endregion
 
         //#region VER SI HAY DESCUENTO ACTIVADO, Y EN CASO DE ESTAR ACTIVADO VER SI TODOS SUS CAMPOS SE LLENARON
-        if(this.descuentoHabilitado === false){
-          if(this.form.descuento.desde != '' && this.form.descuento.hasta != '' && this.form.descuento.montoDescuento != ''){
-            this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
-          }
-          else{
-            this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
-          }
-        }
+
+
+        // if(this.form.precio != ''){
+        //   if(this.form.aplicaDescuento === true){
+        //     if(this.form.descuento.desde != '' && this.form.descuento.hasta != '' && this.form.descuento.montoDescuento != ''){
+        //       this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+        //     }
+        //     else{
+        //       this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+        //     }
+        //   }
+        //   else{
+        //     this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+        //   }          
+        // }
+        // else{
+        //   this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+        // }
+
+
         //#endregion
       },
       cambioInputPrecio(){
         if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' ){
             this.activoBtnRegistrar = false;
+
+
+          if(this.form.aplicaDescuento === true){
+            if(this.form.descuento.desde != '' && this.form.descuento.hasta != '' && this.form.descuento.montoDescuento != ''){
+              this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+            }
+            else{
+              this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+            }
+          }
+          else{
+            this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+          }
+
+
+
         }
         else{
             this.activoBtnRegistrar = true;
@@ -413,24 +473,41 @@ export default {
         //#region HABILITAR EL BOTON DE DESCUENTO EN CASO DE HABER INGRESADO UN PRECIO, SE NO HABERLO
         if(this.form.precio != ''){
           this.descuentoHabilitado = false; //DISABLED="FALSE" --> BTN HABILITADO
-          this.form.aplicaDescuento = false;
+          // this.form.aplicaDescuento = false;
         }
         else{
           this.descuentoHabilitado = true; //DISABLED="TRUE" --> BTN DESHABILITADO
-          // this.form.aplicaDescuento = false;
-          this.cambioAplicaDescuento()
+          this.form.descuento.tipoPorcentaje = true;
+          this.form.descuento.tipoMonto = false;
+          this.form.descuento.desde = '';
+          this.form.descuento.hasta = '';
+          this.form.descuento.montoDescuento = '';
+          this.form.descuento.porcentajeDescuento = '';
+          this.form.aplicaDescuento = false;
         }
         //#endregion
 
         //#region VER SI HAY DESCUENTO ACTIVADO, Y EN CASO DE ESTAR ACTIVADO VER SI TODOS SUS CAMPOS SE LLENARON
-        if(this.descuentoHabilitado === false){
-          if(this.form.descuento.desde != '' && this.form.descuento.hasta != '' && this.form.descuento.montoDescuento != ''){
-            this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
-          }
-          else{
-            this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
-          }
-        }
+
+
+        // if(this.form.precio != ''){
+        //   if(this.form.aplicaDescuento === true){
+        //     if(this.form.descuento.desde != '' && this.form.descuento.hasta != '' && this.form.descuento.montoDescuento != ''){
+        //       this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+        //     }
+        //     else{
+        //       this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+        //     }
+        //   }
+        //   else{
+        //     this.activoBtnRegistrar = false; //DISABLED="FALSE" --> BTN HABILITADO
+        //   }          
+        // }
+        // else{
+        //   this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+        // }
+
+
         //#endregion
       },
       cambioTipoDescuento(){
@@ -438,6 +515,7 @@ export default {
         this.form.descuento.tipoMonto = !this.form.descuento.tipoMonto;
         this.form.descuento.montoDescuento = '';
         this.form.descuento.porcentajeDescuento = '';
+        this.activoBtnRegistrar = true; //DISABLED="FALSE" --> BTN DESHABILITADO
       },
       cambioDescuentoPorc(e){
         if(parseFloat(this.form.descuento.porcentajeDescuento) > parseFloat(e.target.max)){
@@ -447,6 +525,25 @@ export default {
         else{
           this.form.descuento.montoDescuento = (this.form.precio * (this.form.descuento.porcentajeDescuento / 100)).toFixed(1)
           console.log(this.form)
+        }
+
+        
+        console.log('desde:  ' + this.form.descuento.desde)
+        console.log('hasta:  ' + this.form.descuento.hasta)
+        console.log('monto:  ' + this.form.descuento.montoDescuento)
+        console.log('porce:  ' + this.form.descuento.porcentajeDescuento)
+
+
+        if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' && this.form.descuento.porcentajeDescuento != '' ){
+          if(this.form.descuento.desde === "" || this.form.descuento.hasta === ""){
+            this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+          }
+          else{
+            this.activoBtnRegistrar = false; //DISABLED="TRUE" --> BTN HABILITADO
+          }  
+        }
+        else{
+            this.activoBtnRegistrar = true;
         }
       },
       cambioDescuentoMonto(e){
@@ -458,6 +555,23 @@ export default {
           this.form.descuento.porcentajeDescuento = ((this.form.precio - (this.form.precio - this.form.descuento.montoDescuento)) / this.form.precio) * 100
           console.log(this.form)
         }
+        console.log('desde:  ' + this.form.descuento.desde)
+        console.log('hasta:  ' + this.form.descuento.hasta)
+        console.log('monto:  ' + this.form.descuento.montoDescuento)
+        console.log('porce:  ' + this.form.descuento.porcentajeDescuento)
+
+
+        if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' && this.form.descuento.montoDescuento != ''){
+          if(this.form.descuento.desde === "" || this.form.descuento.hasta === ""){
+            this.activoBtnRegistrar = true; //DISABLED="TRUE" --> BTN DESHABILITADO
+          }
+          else{
+            this.activoBtnRegistrar = false; //DISABLED="TRUE" --> BTN HABILITADO
+          }  
+        }
+        else{
+            this.activoBtnRegistrar = true;
+        }
       },
       cambioAplicaDescuento(){
         this.form.aplicaDescuento = !this.form.aplicaDescuento;
@@ -468,6 +582,10 @@ export default {
           this.form.descuento.tipoMonto = false
           this.form.descuento.montoDescuento = ''
           this.form.descuento.porcentajeDescuento = ''
+          this.cambioInputPrecio()
+        }
+        else{
+          this.activoBtnRegistrar = true; //DISABLED="FALSE" --> BTN DESHABILITADO
         }
       }
     },
@@ -483,17 +601,26 @@ export default {
         this.form.nombreImags = arregloNombres;
       },
         producto(nuevo){
+            this.descuentoHabilitado = false;
+
             this.form.nombre = nuevo.nombre;
             this.form.descripcion = nuevo.descripcion;
             this.form.categoria = nuevo.categoria;
             this.form.precio = nuevo.precio;
             this.form.cantidad = nuevo.cantidad;
             this.form.nombreImags = nuevo.nombreImags;
-            this.form.dataImags = nuevo.dataImagenes;
+            // this.form.dataImags = nuevo.dataImagenes;
             this.form.idProducto = nuevo._id;
+            this.form.aplicaDescuento = nuevo.aplicaDescuento;
+            this.form.descuento.desde = nuevo.descuento.desde;
+            this.form.descuento.hasta = nuevo.descuento.hasta;
+            this.form.descuento.tipoPorcentaje = nuevo.descuento.tipoPorcentaje;
+            this.form.descuento.tipoMonto = nuevo.descuento.tipoMonto;
+            this.form.descuento.montoDescuento = nuevo.descuento.montoDescuento;
+            this.form.descuento.porcentajeDescuento = nuevo.descuento.porcentajeDescuento;
             this.arrayImagenes = nuevo.dataImagenes;
             this.activoBtnRegistrar = false;
-            this.formatNames(nuevo.dataImagenes);
+            // this.formatNames(nuevo.nombreImags);
         }
     },
     mounted(){

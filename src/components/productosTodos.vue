@@ -132,6 +132,7 @@ export default {
             }
         },
         editarProducto(id, producto){
+            console.log(producto)
             this.tituloProductoModal = 'Editar Producto'
             this.unSoloProducto = producto
             this.idProducto = id

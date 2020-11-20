@@ -41,8 +41,11 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-html,body{
-  background-color: #f9c3c3cf!important;
+body{
+  background-color: transparent!important;
+}
+html{
+  background-color: #ffefefcf!important;
   padding-left: 0px!important;
   padding-right: 0px!important;
   size:20px!important;
@@ -51,4 +54,5 @@ h4, h5{
   font-family: 'OverpassLight'; font-weight:700!important;
   
 }
+/* f9c3c3cf */
 </style>

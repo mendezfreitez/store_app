@@ -29,8 +29,8 @@ Vue.use(VueRouter)
     component: TerminosCondiciones
   },
   {
-    path: '/Admin',
-    name: 'Admin',
+    path: '/user',
+    name: 'user',
     component: Admin
   },
   {
@@ -44,8 +44,8 @@ Vue.use(VueRouter)
     component:ListaProductos
     },
     {
-      path: '/productosTodos',
-      name: 'productosTodos',
+      path: '/admin',
+      name: 'admin',
       component: productosTodos
     },
     {

@@ -13,22 +13,22 @@
     
       <ListaProductos />
       
-      <template v-slot:modal-footer>
+      <template v-slot:modal-footer class="pb-0">
         <div class="w-100 text-right" style="margin:0px!important;">
-          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="font-family: 'UbuntuMonoR'; width:190px!important; font-size:18px!important; margin-top:4px!important;">
+          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="background-color: rgb(185 72 72 / 90%)!important;font-family: 'UbuntuMonoR'; width:190px!important; font-size:18px!important; margin-top:4px!important;">
             Total: {{textoTotalCarro | currency}}
           </b-badge>
         </div>
         <div class="w-100 text-center" style="margin:0px!important;">
           <b class="row">
-            <b-col>
-              <b-button :active="btnActivo" variant="outline-dark" class="w-100" @click="vaciarCarro" style="height: 39px; font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;">
+            <b-col class="pl-0 pr-0">
+              <b-button :active="btnActivo" size="lg" squared variant="outline-dark" class="w-100" @click="vaciarCarro" style="font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;">
                 Vaciar Carro
               </b-button> 
             </b-col>
-            <b-col>
-              <b-button :active="btnActivo" variant="dark" class="w-100" style="height: 39px; font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;padding-left:9px;" @click="procesarPago">
-                Pagar <b-icon scale="1.2" icon="credit-card" aria-hidden="true" class="ml-1"></b-icon>
+            <b-col class="pl-0 pr-0">
+              <b-button size="lg" squared :active="btnActivo" variant="dark" class="w-100" style="font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;padding-left:9px;" @click="procesarPago">
+                Pagar <b-icon scale="1.3" icon="credit-card" aria-hidden="true" class="ml-2"></b-icon>
               </b-button>
             </b-col>
           </b>
@@ -91,5 +91,8 @@ export default {
 }
 #ModalCarroCompras___BV_modal_title_{
   padding-top: 3px!important;
+}
+#ModalCarroCompras___BV_modal_footer_{
+  padding-bottom: 0px!important;
 }
 </style>
