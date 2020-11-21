@@ -1,7 +1,8 @@
 <template>
 <div>
     <b-container>
-        <h3 style="display: inline-block!important;">Administrador de Productos</h3>
+        <b-badge class="mb-2" variant="dark">
+        <h3 class="mb-0" style="display: inline-block!important;">Productos</h3></b-badge>
         <!-- <b-button size="sm" to="/NuevoProducto" variant="outline-success" style="display: inline-block!important;float:right!important;">
             Nuevo
             <b-icon icon="plus"></b-icon>
@@ -15,8 +16,8 @@
                 <thead>
                     <tr>
                         <th scope="col">Producto</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Categoría</th>
+                        <!-- <th scope="col">Descripción</th> -->
+                        <!-- <th scope="col">Categoría</th> -->
                         <th scope="col">Precio</th>
                         <th scope="col">Acción</th>
                     </tr>
@@ -24,8 +25,8 @@
                 <tbody>
                     <tr v-for="Producto in productosTodos" :key="Producto.idProducto">
                         <td nowrap class="text-left">{{Producto.nombre}}</td>
-                        <td nowrap class="text-left">{{Producto.descripcion.substr(0,50)}}</td>
-                        <td nowrap class="text-left">{{Producto.categoria}}</td>
+                        <!-- <td nowrap class="text-left">{{Producto.descripcion.substr(0,50)}}</td> -->
+                        <!-- <td nowrap class="text-left">{{Producto.categoria}}</td> -->
                         <td nowrap class="text-right">{{Producto.precio | currency}}</td>
                         <td nowrap class="text-center">
                             <a href="#" class="papelera" @click="eliminarProducto(Producto._id, Producto.nombre)">
@@ -45,7 +46,8 @@
     <ModalProducto ref="modalProducto" :ElTituloModal="tituloProductoModal" :producto="unSoloProducto" :idProducto="idProducto"></ModalProducto>
 
     <b-container>
-        <h3 style="display: inline-block!important;">Administrador de Categorías</h3>
+        <b-badge class="mb-2" variant="dark">
+        <h3 class="mb-0" style="display: inline-block!important;">Categorías</h3></b-badge>
         <b-button size="sm" @click="modalCategoria('','')" variant="outline-dark" style="display: inline-block!important;float:right!important;">
             Nuevo
             <b-icon icon="plus"></b-icon>

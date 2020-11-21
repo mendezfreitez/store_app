@@ -54,8 +54,8 @@ Vue.use(VueRouter)
       component: editarProducto
     },
     {
-      path: '/personalizaTuCamiseta',
-      name: 'personalizaTuCamiseta',
+      path: '/personalizado',
+      name: 'personalizado',
       component: Personalizar      
     }
 ]

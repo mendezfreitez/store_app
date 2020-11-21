@@ -548,7 +548,6 @@ export default {
 			$(window).resize(); // PARA LA PRIMERA CARGA
 
 			$('#modalTextoBtn').click(function(e){
-				alert();
 				var activeObject = canvas.getActiveObject();
 				if(activeObject){
 					console.log(activeObject);

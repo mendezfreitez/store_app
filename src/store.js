@@ -42,16 +42,17 @@ export default new Vuex.Store({
       state.textoTotalCarro = texto;
     },
     traerCategorias(state, arreglo) {
-      axios.get(`${state.url}traerCategorias`).then(function(resp) {
+      axios.get(`${state.url}traerCategorias`).then(resp => {
         state.categorias = resp.data;
       });
     },
     traerProductosTodos(state, idCategoria) {
-        axios.post(`${state.url}traerTodos`, {id:idCategoria}).then(
-          function (res) {
+      
+      axios.post(`${state.url}traerTodos`, { id: idCategoria }).then(res => {
             state.productosTodos = res.data;
-            state.productosTodos_ = res.data;
-          }.bind(this)
+        state.productosTodos_ = res.data;
+        console.log(res.data)
+          }
         );
     },
     updateProductosTodos(state, productos) {

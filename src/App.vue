@@ -45,7 +45,7 @@ body{
   background-color: transparent!important;
 }
 html{
-  background-color: #ffefefcf!important;
+  background-color: #f9f9f9cf!important;
   padding-left: 0px!important;
   padding-right: 0px!important;
   size:20px!important;

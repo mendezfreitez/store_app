@@ -1,16 +1,16 @@
 <template>
   <div style="display:inline-block;">
   <b-card
-    :img-src="srcImagen"
+    :img-src="srcImagen" border-variant="dark"
     img-alt="Imagen"
     img-top
     style="max-width: 15rem;"
-    class="mb-2 ml-2 mr-2 mt-2 sombreadoProducto"
+    class="mb-2 ml-2 mr-2 mt-2 productoCard"
     img-height="240"
     @click="$emit('mostrar-modal', $props)"
   >
     <b-card-title class="text-left ml-2 mt-1 mb-0" style="font-family: 'OverpassLight';font-size:14px!important;">{{tituloProducto}}</b-card-title>
-    <p class="text-right mr-2" style="font-size:20px!important">
+    <p class="text-right mr-2 mb-1" style="font-size:20px!important">
       <b-badge class="pl-1 pr-1 pt-0 pb-0" style="font-family: 'UbuntuMonoR'; background-color: rgb(185 72 72 / 81%)!important;" variant="dark">{{precioProducto | currency}}</b-badge>
     </p>
   </b-card>
@@ -51,9 +51,9 @@ export default {
   padding: 12px!important;
   padding-bottom: 0px!important;
 }
-.sombreadoProducto{
--webkit-box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.32);
--moz-box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.32);
-box-shadow: 6px 7px 10px -2px rgba(0,0,0,0.32);
+.productoCard {
+-webkit-box-shadow: 6px 6px 8px 1px rgba(0,0,0,0.11);
+-moz-box-shadow: 6px 6px 8px 1px rgba(0,0,0,0.11);
+box-shadow: 6px 6px 8px 1px rgba(0,0,0,0.11);
 }
 </style>

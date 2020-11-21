@@ -4,6 +4,7 @@
           <b-col cols="12" lg="12">
               <Producto v-for="t in productos" :key="t._id"
               :arrayImagenes="t.nombreImagenes"
+              
               :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
               :precioProducto="t.precio"
               :tituloProducto="t.nombre.substr(0, 25)"

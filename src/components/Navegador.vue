@@ -1,19 +1,21 @@
 <template>
   <div>
   <b-navbar toggleable="md" type="dark" fixed="top" id="navegadorArriba">
-    <b-button size="md" class="ml-1 my-sm-0 botonToggler" variant="outline-secondary" v-b-toggle.sidebar-backdrop>
-      <span class="navbar-toggler-icon" style="color:#fff!important;" ></span>
+    <b-button size="md" variant="dark" class="ml-1 my-sm-0 botonToggler"  v-b-toggle.sidebar-backdrop>
+      <b-icon class="pt-1" scale="1.6" icon="list"></b-icon>
+      <!-- <span class="navbar-toggler-icon" style="color:#fff!important;" ></span> -->
     </b-button>
 
-    <b-link @click="traerProductosTodos('')" style="color: #fff;" to="/">
-      <b-icon icon="shop" style=" width:35px!important; height:35px!important;" aria-hidden="true" class="ml-3 botonHome"></b-icon>
+    <b-link @click="traerProductosTodos('')" style="color: #fff!important;" to="/">
+      <!-- <b-icon icon="shop" style=" width:35px!important; height:35px!important;" aria-hidden="true" class="ml-3 botonHome"></b-icon> -->
+      <b-img height="42" right class="mr-4 ml-4" :src="require('../editor/img/categorias/Inicio2.svg')" alt=""></b-img>
     </b-link>
 
     <b-collapse id="nav-collapse mr-2" is-nav>
       <b-navbar-nav class="ml-auto">
         <b-navbar-nav right>
           <div style="margin-top:6px!important;">
-            <b-button size="sm" class="mr-2 my-sm-0 registroIngreso" variant="outline-light" to="/Admin">
+            <b-button size="sm" class="mr-2 my-sm-0 registroIngreso" variant="outline-light" to="/user">
               Ingresar
             </b-button>
           </div>
@@ -35,14 +37,17 @@
       </b-navbar-nav>
     </b-collapse>
 
-    <div class="justify-content-center">
-      <b-link class="carroEnlace" href="#" @click="modalProductos" style="color: #FFC107!important; font-size:14px!important;position:relative;left:22px;bottom:14px;">
-        {{cantidadCarro}}
-      </b-link>
-      <b-icon animation="animation" icon="cart" variant="light" style="width:40px!important; height:40px!important;" shift-h = "-3">
+    <!-- <div style="width:57px;"> -->
+        <div class="text-center" @click="modalProductos">
+        <b-badge variant="dark" class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #343a40!important;position:relative; top:10px; left:34px; font-size:22px!important;font-family:'ubuntuTitleFr';">
+          {{cantidadCarro}}
+        </b-badge>
+        <b-img style="position:relative;" height="38"  :src="require('../editor/img/categorias/BolsaCompra2.svg')" alt=""></b-img></div>
+    
+      <!-- <b-icon animation="animation" icon="bag" variant="light" style="color: #fff!important;width:40px!important; height:40px!important;" shift-h="-3">
 
-      </b-icon>
-    </div>
+      </b-icon> -->
+    <!-- </div> -->
   </b-navbar>
   
   <ModalCarro ref="unModalDeCarro" />
@@ -77,12 +82,6 @@ export default {
 </script>
 
 <style>
-  a.nav-link{
-    color: #f8f9fa!important;
-  }
-  a.nav-link:hover, .carroEnlace:hover{
-    color: white!important;
-  }
   .registroIngreso{
     height: 30px!important;
   }
@@ -90,13 +89,17 @@ export default {
     border-color: rgba(255, 255, 255, 0.1)!important;
     background-color: transparent!important;
   }
-  .botonHome:hover{
-    color: rgb(255, 193, 7) !important;
-  }
-  .carroEnlace:hover{
+  .carroEnlace:hover, .botonHome:hover,a.nav-link, a.nav-link:hover{
     color: #fff!important;
   }
-  #navegadorArriba{
+  #navegadorArriba, .carroEnlace{
     background-color: #ce3333!important;
   }
+  .botonToggler, .botonToggler:hover {
+    border:solid 1px#fff!important;
+    background-color: #ce3333!important;
+}
+.navbar-toggler-icon{
+    color: #000!important;
+}
 </style>

@@ -112,6 +112,6 @@ let url = 'http://localhost:3000/';
     margin-top: 100px!important;
 }
 a.nav-link{
-    color: #FFC107!important;
+    color: #fff!important;
 }
 </style>
