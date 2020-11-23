@@ -1,9 +1,5 @@
 <template>
   <b-navbar class="w-100" style="background:#272727!important;position:absolute;left:0px!important;width:100%!imporant;">
-
-
-
-
     <b-collapse id="nav-collapse mr-1" is-nav>
         <b-navbar-nav class="text-center">
     <b-link  href="https://www.facebook.com" target="_blank">
@@ -23,8 +19,6 @@
     </b-link>
         </b-navbar-nav>
     </b-collapse>
-
-  
   </b-navbar>
 </template>
 
