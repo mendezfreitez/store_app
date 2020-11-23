@@ -38,11 +38,11 @@
     </b-collapse>
 
     <!-- <div style="width:57px;"> -->
-        <div class="text-center" @click="modalProductos">
-        <b-badge variant="dark" class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #343a40!important;position:relative; top:10px; left:34px; font-size:22px!important;font-family:'ubuntuTitleFr';">
+        <div style="width:46px;height:46px;" @click="modalProductos">
+        <b-badge variant="dark" class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #343a40!important;position:relative; top:13px; left:0px; font-size:20px!important;font-family:'ubuntuTitleFr';">
           {{cantidadCarro}}
         </b-badge>
-        <b-img style="position:relative;" height="38"  :src="require('../editor/img/categorias/BolsaCompra2.svg')" alt=""></b-img></div>
+        <b-img style="position:relative; top:-30px;" height="42"  :src="require('../editor/img/categorias/BolsaCompra2.svg')" alt=""></b-img></div>
     
       <!-- <b-icon animation="animation" icon="bag" variant="light" style="color: #fff!important;width:40px!important; height:40px!important;" shift-h="-3">
 

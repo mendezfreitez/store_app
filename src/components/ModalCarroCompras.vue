@@ -15,14 +15,14 @@
       
       <template v-slot:modal-footer class="pb-0">
         <div class="w-100 text-right" style="margin:0px!important;">
-          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="background-color: rgb(185 72 72 / 90%)!important;font-family: 'UbuntuMonoR'; width:50%!important; font-size:18px!important; margin-top:4px!important;">
+          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="background-color: rgb(185 72 72 / 90%)!important;font-family: 'UbuntuMonoR'; width:70%!important; font-size:18px!important; margin-top:4px!important;">
             Total: {{textoTotalCarro | currency}}
           </b-badge>
         </div>
         <div class="w-100 text-center" style="margin:0px!important;">
           <b class="row">
             <b-col class="pl-0 pr-0">
-              <b-button :active="btnActivo" size="lg" squared variant="outline-dark" class="w-100" @click="vaciarCarro" style="height: 48px;font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;">
+              <b-button :active="btnActivo" size="lg" squared variant="warning" class="w-100" @click="vaciarCarro" style="height: 48px;font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;">
                 Vaciar Carro
               </b-button> 
             </b-col>

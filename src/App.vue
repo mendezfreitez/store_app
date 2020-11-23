@@ -3,7 +3,7 @@
     <BarraLateral />
     <Navegador />
     <router-view style="padding-top:65px!important; background-color:ffa!important;" />
-    
+    <!-- <Footer />  -->
   </div>
 </template>
 
@@ -11,11 +11,13 @@
 import 'typeface-dosis'
 import Navegador from './components/Navegador'
 import BarraLateral from './components/BarraLateral'
+import Footer from './components/Footer'
 // import SidebarMenu from './components/BarraLateral'
 export default {
   components:{
     Navegador,
-    BarraLateral
+    BarraLateral,
+    Footer
   }
 }
 </script>

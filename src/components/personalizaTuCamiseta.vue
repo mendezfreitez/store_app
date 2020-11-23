@@ -134,6 +134,10 @@
 					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/2.png">
 					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/3.png">
 					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/4.png">
+					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/5.png">
+					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/6.png">
+					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/7.png">
+					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/8.png">
 				</div>
 			</div>	
 		</b-modal>

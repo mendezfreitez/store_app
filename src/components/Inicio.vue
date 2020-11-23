@@ -1,21 +1,22 @@
 <template>
   <b-container>
-      <div>
-          <b-col cols="12" lg="12">
-              <Producto v-for="t in productos" :key="t._id"
-              :arrayImagenes="t.nombreImagenes"
-              
-              :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
-              :precioProducto="t.precio"
-              :tituloProducto="t.nombre.substr(0, 25)"
-              :textoProducto="t.descripcion.substr(0, 65)"
-              :bodyProducto="t.descripcion"
-              :laCantidad="1"
-              :idProducto="t._id"
-              @mostrar-modal="mostrarModal"/>
-          </b-col>
-      </div>
-      <Modal ref="elModal" :tituloModal="unProducto.tituloProducto" :textoModal="unProducto.bodyProducto" :precio="unProducto.precioProducto"></Modal>
+        <div>
+            <b-col cols="12" lg="12">
+                <Producto v-for="t in productos" :key="t._id"
+                :arrayImagenes="t.nombreImagenes"
+                
+                :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
+                :precioProducto="t.precio"
+                :tituloProducto="t.nombre.substr(0, 25)"
+                :textoProducto="t.descripcion.substr(0, 65)"
+                :bodyProducto="t.descripcion"
+                :laCantidad="1"
+                :idProducto="t._id"
+                @mostrar-modal="mostrarModal"/>
+            </b-col>
+        </div>
+        <Footer />
+        <Modal ref="elModal" :tituloModal="unProducto.tituloProducto" :textoModal="unProducto.bodyProducto" :precio="unProducto.precioProducto"></Modal>
   </b-container>
 </template>
 
@@ -23,6 +24,7 @@
 import Producto from './Producto'
 import Modal from './Modal'
 import axios from 'axios'
+import Footer from './Footer'
 import Galeria from './galeria'
 import { mapMutations, mapState } from 'vuex'
 
@@ -32,7 +34,7 @@ let url = 'https://storeapp-back-end.herokuapp.com/';
 export default {
     name:'Inicio',
     components:{
-        Producto, Modal
+        Producto, Modal, Footer
     },
     data(){
         return{

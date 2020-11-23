@@ -1,8 +1,8 @@
 <template>
 <div>
-    <b-container>
-        <b-badge class="mb-2" variant="dark">
-        <h3 class="mb-0" style="display: inline-block!important;">Productos</h3></b-badge>
+    <b-container class="pl-0 pr-0">
+        <b-badge class="mb-2" variant="dark" style="float:left!important;">
+        <h4 class="mb-0" style="display: inline-block!important;">Productos</h4></b-badge>
         <!-- <b-button size="sm" to="/NuevoProducto" variant="outline-success" style="display: inline-block!important;float:right!important;">
             Nuevo
             <b-icon icon="plus"></b-icon>
@@ -29,11 +29,11 @@
                         <!-- <td nowrap class="text-left">{{Producto.categoria}}</td> -->
                         <td nowrap class="text-right">{{Producto.precio | currency}}</td>
                         <td nowrap class="text-center">
-                            <a href="#" class="papelera" @click="eliminarProducto(Producto._id, Producto.nombre)">
-                                <b-icon icon="trash" variant="primary" style="color: #7952b3;"></b-icon>
+                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera btn btn-danger" @click="eliminarProducto(Producto._id, Producto.nombre)">
+                               ELIMINAR
                             </a>
-                            <a href="#" class="papelera ml-3" @click="editarProducto(Producto._id, Producto)">
-                                <b-icon icon="pencil" variant="primary" style="color: #7952b3;"></b-icon>
+                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera ml-1 btn btn-dark" @click="editarProducto(Producto._id, Producto)">
+                               EDITAR
                             </a>
                         </td>
                     </tr>
@@ -45,9 +45,10 @@
     <Modal ref="modalCategoria" :tituloModal="titulo" :textoModal="texto"></Modal>
     <ModalProducto ref="modalProducto" :ElTituloModal="tituloProductoModal" :producto="unSoloProducto" :idProducto="idProducto"></ModalProducto>
 
-    <b-container>
-        <b-badge class="mb-2" variant="dark">
-        <h3 class="mb-0" style="display: inline-block!important;">Categorías</h3></b-badge>
+    <b-container class="pl-0 pr-0 mt-5">
+        <b-badge class="mb-2" variant="dark" style="float:left!important;">
+            <h4 class="mb-0" style="display: inline-block!important;">Categorías</h4>
+        </b-badge>
         <b-button size="sm" @click="modalCategoria('','')" variant="outline-dark" style="display: inline-block!important;float:right!important;">
             Nuevo
             <b-icon icon="plus"></b-icon>
@@ -66,12 +67,19 @@
                         <td nowrap class="text-left">{{ categoria._id }}</td>
                         <td nowrap class="text-left">{{ categoria.nombre }}</td>
                         <td nowrap class="text-center">
-                            <a href="#" class="papelera" @click="eliminarCategoria(categoria._id, categoria.nombre)">
+                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera btn btn-danger" @click="eliminarCategoria(categoria._id, categoria.nombre)">
+                               ELIMINAR
+                            </a>
+                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera ml-1 btn btn-dark" @click="modalCategoria(categoria._id, categoria.nombre)">
+                               EDITAR
+                            </a>
+
+                            <!-- <a href="#" class="papelera" @click="eliminarCategoria(categoria._id, categoria.nombre)">
                                 <b-icon icon="trash" variant="primary" style="color: #7952b3;"></b-icon>
                             </a>
                             <a href="#" class="papelera ml-3" @click="modalCategoria(categoria._id, categoria.nombre)">
                                 <b-icon icon="pencil" variant="primary" style="color: #7952b3;"></b-icon>
-                            </a>
+                            </a> -->
                         </td>
                     </tr>
                 </tbody>
