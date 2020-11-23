@@ -431,8 +431,7 @@ export default {
 			// } );
 
 			var anchoContenedorCanvas = $('#shirtDiv').width();
-			// console.log(anchoContenedorCanvas);
-			//setup front side canvas 
+			
 			canvas = new fabric.Canvas('tcanvas', {
 			hoverCursor: 'pointer',
 			selection: true,
@@ -445,19 +444,6 @@ export default {
 			});
 			canvas2.renderAll();
 
-			// if(anchoContenedorCanvas > 1000){
-			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 630);
-			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 740);
-			// }
-			// else if(anchoContenedorCanvas >= 500 && anchoContenedorCanvas <= 1000){
-			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (630 * 0.8).toFixed(0));
-			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (740 * 0.8).toFixed(0));
-			// }
-			// else if(anchoContenedorCanvas <= 500){
-			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', (630 * 0.6).toFixed(0));
-			// 	$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height',  (740 * 0.6).toFixed(0));
-			// }
-			
 			canvas.on({
 				'object:moving': function(e) {		  	
 					e.target.opacity = 0.4;
@@ -769,46 +755,10 @@ export default {
 					canvas2.renderAll();
 				});
 			})
-		
-
-
-				// var textSample = new fabric.Text(text, {
-				// 	flipY:false,
-				// 	top:90,
-				// 	lockMovementX: true,
-				// 	hasBorders:true,
-				// 	fontFamily: this.classList[2],
-				// 	centeredScaling: true,
-				// 	stroke: '#fff',
-				// 	strokeWidth: 0,
-				// 	textBackgroundColor: 'transparent',
-				// 	cornerStyle:'circle',
-				// 	cornerSize: 11,
-				// 	padding: 8,
-				// 	cornerStrokeColor:'#004c40',
-				// 	cornerColor: '#48a999',
-				// 	transparentCorners:false,
-				// 	angle: that.angulo,
-				// 	fill: '#000000',
-				// 	lockScalingX: false,
-				// 	lockScalingY: false,
-				// 	minScaleLimit:0.5,
-				// 	//skewX: 18, ///// TORCER EN EL EJE "X"
-				// 	//skewY: -18, ///// TORCER EN EL EJE "Y"(esta bien mierda)
-				// 	scaleX: 0.9,
-				// 	scaleY: 0.9,                                       
-				// 	fontWeight: 'bold',
-				// 	hasRotatingPoint:true
-				// });
-
-
 
 			$(".img-polaroid").click(function (e) {
-				// $("#texteditor").css('display', 'block');
 				var el = e.target;
-				/*temp code*/
 				var offset = 50;
-				//   var left = 210;
 				var left = fabric.util.getRandomInt(140, 290);
 				var top = fabric.util.getRandomInt(50, 450);
 				var angle = fabric.util.getRandomInt(-20, 40);
@@ -860,7 +810,6 @@ export default {
 					}
 				}  
 				
-				// var activeGroup = canvas.getActiveGroup();
 				if (activeObject) {
 					canvas.remove(activeObject);
 					$("#text-string").val("");
@@ -909,7 +858,6 @@ export default {
 						canvas.remove(activeObject);
 					}
 					canvas.add(textSample);
-            		// canvas.item(canvas.item.length-1).hasRotatingPoint = true;  
 					canvas._objects[canvas._objects.length - 1].centerH();
 					canvas.renderAll();
 				}
@@ -1753,10 +1701,6 @@ font-family: 'HighSchoolUSASerif';
 	font-weight:900;
 	font-style:italic;
 }
-
-
-
-
 
 @media  (max-width: 600px) {
 	#shirtDiv, #contenedorColores, #divMamador{
