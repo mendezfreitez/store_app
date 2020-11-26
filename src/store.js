@@ -47,11 +47,10 @@ export default new Vuex.Store({
       });
     },
     traerProductosTodos(state, idCategoria) {
-      
       axios.post(`${state.url}traerTodos`, { id: idCategoria }).then(res => {
             state.productosTodos = res.data;
-        state.productosTodos_ = res.data;
-        console.log(res.data)
+            state.productosTodos_ = res.data;
+            console.log(res.data)
           }
         );
     },

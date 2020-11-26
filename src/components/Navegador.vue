@@ -15,9 +15,9 @@
       <b-navbar-nav class="ml-auto">
         <b-navbar-nav right>
           <div style="margin-top:6px!important;">
-            <b-button size="sm" class="mr-2 my-sm-0 registroIngreso" variant="outline-light" to="/user">
+            <b-link size="sm" class="mr-2 my-sm-0 registroIngreso" variant="outline-light" to="/user">
               Ingresar
-            </b-button>
+            </b-link>
           </div>
         </b-navbar-nav>
 
@@ -39,7 +39,7 @@
 
     <!-- <div style="width:57px;"> -->
         <div style="width:46px;height:46px;" @click="modalProductos">
-        <b-badge variant="dark" class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #343a40!important;position:relative; top:13px; left:0px; font-size:20px!important;font-family:'ubuntuTitleFr';">
+        <b-badge variant="dark" class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:13px; left:0px; font-size:20px!important;font-family:'ubuntuTitleFr';">
           {{cantidadCarro}}
         </b-badge>
         <b-img style="position:relative; top:-30px;" height="42"  :src="require('../editor/img/categorias/BolsaCompra2.svg')" alt=""></b-img></div>
@@ -84,17 +84,21 @@ export default {
 <style>
   .registroIngreso{
     height: 30px!important;
+    color:#FFF!important;
   }
   .botonToggler, .botonToggler:hover{
     border-color: rgba(255, 255, 255, 0.1)!important;
     background-color: transparent!important;
   }
-  .carroEnlace:hover, .botonHome:hover,a.nav-link, a.nav-link:hover{
+  /* .carroEnlace:hover, .botonHome:hover,a.nav-link, a.nav-link:hover{
     color: #fff!important;
   }
-  #navegadorArriba, .carroEnlace{
-    background-color: #ce3333!important;
+  .carroEnlace{
+    background-color: #FFF!important;
   }
+  #navegadorArriba{
+    background-color: #3f3c46!important;
+  } */
   .botonToggler, .botonToggler:hover {
     border:solid 1px#fff!important;
     background-color: #ce3333!important;

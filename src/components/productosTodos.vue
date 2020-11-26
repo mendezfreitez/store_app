@@ -1,13 +1,13 @@
 <template>
 <div>
-    <b-container class="pl-0 pr-0">
+    <b-container class="pl-0 pr-0" style="margin-top:70px!important;">
         <b-badge class="mb-2" variant="dark" style="float:left!important;">
         <h4 class="mb-0" style="display: inline-block!important;">Productos</h4></b-badge>
         <!-- <b-button size="sm" to="/NuevoProducto" variant="outline-success" style="display: inline-block!important;float:right!important;">
             Nuevo
             <b-icon icon="plus"></b-icon>
         </b-button> -->
-        <b-button size="sm" variant="outline-dark" style="display: inline-block!important;float:right!important;" @click="modalProducto('')">
+        <b-button size="sm" variant="dark" style="display: inline-block!important;float:right!important;" @click="modalProducto('')">
             Nuevo
             <b-icon icon="plus"></b-icon>
         </b-button>
@@ -29,10 +29,10 @@
                         <!-- <td nowrap class="text-left">{{Producto.categoria}}</td> -->
                         <td nowrap class="text-right">{{Producto.precio | currency}}</td>
                         <td nowrap class="text-center">
-                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera btn btn-danger" @click="eliminarProducto(Producto._id, Producto.nombre)">
+                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera btn btn-outline-danger" @click="eliminarProducto(Producto._id, Producto.nombre)">
                                ELIMINAR
                             </a>
-                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera ml-1 btn btn-dark" @click="editarProducto(Producto._id, Producto)">
+                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera ml-1 btn btn-outline-dark" @click="editarProducto(Producto._id, Producto)">
                                EDITAR
                             </a>
                         </td>
@@ -49,7 +49,7 @@
         <b-badge class="mb-2" variant="dark" style="float:left!important;">
             <h4 class="mb-0" style="display: inline-block!important;">Categorías</h4>
         </b-badge>
-        <b-button size="sm" @click="modalCategoria('','')" variant="outline-dark" style="display: inline-block!important;float:right!important;">
+        <b-button size="sm" @click="modalCategoria('','')" variant="dark" style="display: inline-block!important;float:right!important;">
             Nuevo
             <b-icon icon="plus"></b-icon>
         </b-button>
@@ -67,10 +67,10 @@
                         <td nowrap class="text-left">{{ categoria._id }}</td>
                         <td nowrap class="text-left">{{ categoria.nombre }}</td>
                         <td nowrap class="text-center">
-                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera btn btn-danger" @click="eliminarCategoria(categoria._id, categoria.nombre)">
+                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera btn btn-outline-danger" @click="eliminarCategoria(categoria._id, categoria.nombre)">
                                ELIMINAR
                             </a>
-                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera ml-1 btn btn-dark" @click="modalCategoria(categoria._id, categoria.nombre)">
+                            <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera ml-1 btn btn-outline-dark" @click="modalCategoria(categoria._id, categoria.nombre)">
                                EDITAR
                             </a>
 
@@ -135,9 +135,7 @@ export default {
             if(elimProd){
                 axios.post(`${url}eliminarProducto`, datos).then(function(result){
                     alert(result.data);
-                    axios.get(`${url}traerTodos`).then(function(res){
-                        this.productosTodos = res.data;
-                    }.bind(this));
+                    this.traerProductosTodos('')
                 }.bind(this));
             }
         },

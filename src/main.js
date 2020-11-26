@@ -13,9 +13,9 @@ import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import 'fabric';
 import 'canvas';
-import VueNumberInput from '@chenfengyuan/vue-number-input';
-
-Vue.use(VueNumberInput);
+import EasySlider from 'vue-easy-slider'
+ 
+Vue.use(EasySlider)
 // Load Dosis typeface
 // require('typeface-dosis')
 // import jquery from 'jquery'npm run serve
@@ -34,12 +34,12 @@ Vue.use(BootstrapVueIcons)
 Vue.use(Numeric)
 Vue.use(VueSidebarMenu)     
 Vue.use(VueCurrencyFilter, {
-  symbol: 'CLP',
+  symbol: '$',
   thousandsSeparator: '.',
   fractionCount: 2,
   fractionSeparator: ',',
-  symbolPosition: 'back',
-  symbolSpacing: true
+  symbolPosition: 'front',
+  symbolSpacing: false
 })
 
 Vue.config.productionTip = false

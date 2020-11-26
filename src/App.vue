@@ -2,7 +2,9 @@
   <div id="app" style="width:100%!importaant;">
     <BarraLateral />
     <Navegador />
-    <router-view style="padding-top:65px!important; background-color:ffa!important;" />
+    
+        <!-- <Deslizador /> -->
+    <router-view style="padding-top:0px!important;" />
     <!-- <Footer />  -->
   </div>
 </template>
@@ -15,9 +17,7 @@ import Footer from './components/Footer'
 // import SidebarMenu from './components/BarraLateral'
 export default {
   components:{
-    Navegador,
-    BarraLateral,
-    Footer
+    Navegador, BarraLateral, Footer
   }
 }
 </script>
@@ -45,9 +45,11 @@ export default {
 }
 body{
   background-color: transparent!important;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
 }
 html{
-  background-color: #f9f9f9cf!important;
+  background-color: #ecececdb!important;
   padding-left: 0px!important;
   padding-right: 0px!important;
   size:20px!important;
@@ -56,5 +58,5 @@ h4, h5{
   font-family: 'OverpassLight'; font-weight:700!important;
   
 }
-/* f9c3c3cf */
+
 </style>

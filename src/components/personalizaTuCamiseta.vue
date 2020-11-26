@@ -226,7 +226,7 @@
 			</div>	
 		</b-modal>
 
-		<b-row class="m-0">
+		<b-row class="m-0" style="padding-top:70px!important;">
 			<b-col xs="12" sm="1" md="1" lg="2" xl="2">
 			</b-col>			
 			
@@ -398,38 +398,6 @@ export default {
 		var frontBack = 'front';
 
 		$(document).ready(function() {
-
-			// fabric.Object.prototype.customiseCornerIcons({
-			// 	settings: {
-			// 		borderColor: 'black',
-			// 		cornerSize: 25,
-			// 		cornerShape: 'rect',
-			// 		cornerBackgroundColor: 'black',
-			// 		cornerPadding: 10
-			// 	},
-			// 	tl: {
-			// 		icon: '../editor/img/rotar_icono.svg'
-			// 	},
-			// 	tr: {
-			// 		icon: '../editor/img/rotar_icono.svg'
-			// 	},
-			// 	bl: {
-			// 		icon: '../editor/img/rotar_icono.svg'
-			// 	},
-			// 	br: {
-			// 		icon: '../editor/img/rotar_icono.svg'
-			// 	},
-			// 	mb: {
-			// 		icon: '../editor/img/rotar_icono.svg'
-			// 	},
-			// 	// only is hasRotatingPoint is not set to false
-			// 	mtr: {
-			// 		icon: 'icons/rotate.svg'
-			// 	},
-			// }, function() {
-			// 	canvas.renderAll();
-			// } );
-
 			var anchoContenedorCanvas = $('#shirtDiv').width();
 			
 			canvas = new fabric.Canvas('tcanvas', {
@@ -496,10 +464,7 @@ export default {
 
 			$(window).on("resize", function(){
 				anchoContenedorCanvas = $(window).width();
-				// $('.miniColors-selector').css('left', ($(window).width() / 4).toFixed(0) - 94)
-				// $('.miniColors-selector').css({top: '20px', left: '20px', position:'absolute'});
-
-				// console.log(anchoContenedorCanvas);
+				
 				if(anchoContenedorCanvas >= 1500){
 					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('width', 530);
 					$("#tcanvas, #tcanvas2, .upper-canvas, .canvas-container").css('height', 630);
@@ -1702,20 +1667,13 @@ font-family: 'HighSchoolUSASerif';
 	font-style:italic;
 }
 
-@media  (max-width: 600px) {
-	#shirtDiv, #contenedorColores, #divMamador{
-		overflow-x: hidden!important;
-	}
-	#avatarlist{
-		height: 120px;
-	}
-}
+
 .card-body{
 	padding: 0px!important;
 }
-@media (min-width: 601px){
+/* @media (min-width: 601px){
 	#shirtDiv{
 		overflow-x: hidden!important;
 	}
-}
+} */
 </style>

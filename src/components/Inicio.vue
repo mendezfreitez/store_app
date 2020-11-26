@@ -1,10 +1,12 @@
 <template>
-  <b-container>
-        <div>
-            <b-col cols="12" lg="12">
+<div>
+  <b-container id="contenedorInicio">
+<Deslizador />
+        <b-row>
+            <b-col md="12" lg="0"></b-col>
+            <b-col md="12" lg="12" class="pl-0 pr-0 mt-1">
                 <Producto v-for="t in productos" :key="t._id"
                 :arrayImagenes="t.nombreImagenes"
-                
                 :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
                 :precioProducto="t.precio"
                 :tituloProducto="t.nombre.substr(0, 25)"
@@ -12,15 +14,20 @@
                 :bodyProducto="t.descripcion"
                 :laCantidad="1"
                 :idProducto="t._id"
+                :aplicaDescuento="t.aplicaDescuento"
+                :descuento="t.descuento"
                 @mostrar-modal="mostrarModal"/>
             </b-col>
-        </div>
+            <b-col md="12" lg="0"></b-col>
+        </b-row>
         <Footer />
         <Modal ref="elModal" :tituloModal="unProducto.tituloProducto" :textoModal="unProducto.bodyProducto" :precio="unProducto.precioProducto"></Modal>
   </b-container>
+  </div>
 </template>
 
 <script>
+import Deslizador from './Deslizador'
 import Producto from './Producto'
 import Modal from './Modal'
 import axios from 'axios'
@@ -34,7 +41,7 @@ let url = 'https://storeapp-back-end.herokuapp.com/';
 export default {
     name:'Inicio',
     components:{
-        Producto, Modal, Footer
+        Producto, Modal, Footer, Deslizador
     },
     data(){
         return{
@@ -99,10 +106,20 @@ export default {
 </script>
 
 <style>
- .container{
-     margin-top: 15px!important;
- }
- .sombreadoProducto{
-  border-width: 0px!important;
+.sombreadoProducto{
+    border-width: 0px!important;
+}
+#contenedorInicio{
+    background: #FFF!important;
+    padding-top: 3px!important;
+}
+.carroEnlace:hover, .botonHome:hover,a.nav-link, a.nav-link:hover{
+    color: #fff!important;
+}
+#navegadorArriba, .carroEnlace{
+    background-color: #3f3c46!important;
+}
+.carroEnlace{
+    color: #FFF!important;
 }
 </style>

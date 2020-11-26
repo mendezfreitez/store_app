@@ -1,5 +1,6 @@
 <template>
   <b-container>
+  <Deslizador />
       <b-row>
           <b-col cols="1" lg="4" md="3" sm="2"></b-col>
           <b-col cols="10" lg="4" md="6" sm="8">

@@ -106,24 +106,29 @@
                   <div :hidden="!form.aplicaDescuento" class="pr-2">
                     <b-card class="pl-2 pr-2 mb-2">
                       <div class="w-50 pr-1" style="display:inline-block;">
+                          <div>
+    
+  </div>
                         <b-form-group id="input-group-5" class="mb-0">
-                          <label class="mb-0 lbl"><i><b>Desde</b></i></label>
-                          <b-form-input
+                          <label class="mb-0 lbl"><i>Fecha Inicio</i></label>
+                          <b-form-datepicker label-no-date-selected="Fecha Inicio" size="sm" name="desde" id="input-desde" v-model="form.descuento.desde" locale="es"></b-form-datepicker>
+                          <!-- <b-form-input
                             class="p-1"
-                            id="input-desde inline-form"
+                            
                             v-model="form.descuento.desde"
                             type="date"
                             style="display:inline-block!important;"
-                            name="desde"
-                            size="sm"
-                          ></b-form-input>
+                           
+                           
+                          ></b-form-input> -->
                         </b-form-group>
                       </div>
 
                       <div class="w-50 pl-1" style="display:inline-block;">
                         <b-form-group id="input-group-6" class="mb-0">
-                          <label class="mb-0 lbl"><i><b>Hasta</b></i></label>
-                          <b-form-input
+                          <label class="mb-0 lbl"><i>Fecha Fin</i></label>
+                          <b-form-datepicker label-no-date-selected="Fecha Fin" size="sm" name="hasta" id="input-hasta" v-model="form.descuento.hasta" locale="es"></b-form-datepicker>
+                          <!-- <b-form-input
                             class="p-1"
                             id="input-hasta"
                             v-model="form.descuento.hasta"
@@ -132,7 +137,7 @@
                             name="hasta" 
                             size="sm"
                             :min="form.descuento.desde"
-                          ></b-form-input>
+                          ></b-form-input> -->
                         </b-form-group>
                       </div>
                     </b-card>
