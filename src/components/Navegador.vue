@@ -36,7 +36,7 @@
         </div>
 
         <div style="width:46px;height:46px;" @click="modalProductos">
-          <b-badge variant="dark" class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:13px; left:0px; font-size:20px!important;font-family:'ubuntuTitleFr';">
+          <b-badge variant="dark" class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:15px; left:0px; font-size:20px!important;font-family:'OverpassLight';">
             {{cantidadCarro}}
           </b-badge>
 

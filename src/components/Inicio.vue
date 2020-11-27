@@ -26,7 +26,7 @@
         <div class="container p-0" >
             <Footer />
         </div>
-        
+
         <Modal ref="elModal" :tituloModal="unProducto.tituloProducto" :textoModal="unProducto.bodyProducto" :precio="unProducto.precioProducto"></Modal>
     </div>
 </template>
@@ -107,9 +107,11 @@ export default {
     .sombreadoProducto{
         border-width: 0px!important;
     }
-    #contenedorInicio{
+    #contenedorInicio, .container {
         background: #FFF!important;
         padding-top: 15px!important;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
     }
     .carroEnlace:hover, .botonHome:hover,a.nav-link, a.nav-link:hover{
         color: #fff!important;

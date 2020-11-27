@@ -7,7 +7,7 @@
     :stopOnHover="false"
     animation="fade"
     :indicators="false"
-    style="margin-top:62px!important;">
+    style="margin-top:58px!important;">
         <slider-item
             v-for="(i, index) in list"
             :key="index"
@@ -63,21 +63,21 @@ export default {
     text-shadow: 4px 4px 9px rgb(122, 122, 122);
 }
 #deslizador{
-    margin-left: 12px!important;
-    margin-right: 12px!important;
+    margin-left: 10px!important;
+    margin-right: 10px!important;
 }
 
 @media(min-width:1200px){
     .productoCard > img {
-        height:270px!important;
-        width: 255px!important;
+        height:277px!important;
+        width: 263px!important;
     }
     .productoCard {
-        width: 257px!important;
+        width: 265px!important;
         margin:10px!important;
     }
     .card-title{
-        font-size: 14px !important;
+        font-size: 16px !important;
     }
     .unPrecio, .etiquetaBajo {
         font-size: 14px!important;
@@ -97,11 +97,11 @@ export default {
 }
 @media(min-width:992px) and (max-width:1199px){
     .productoCard > img {
-        height:230px!important;
-        width: 215px!important;
+        height:240px!important;
+        width: 224px!important;
     }
     .productoCard {
-        width: 217px!important;
+        width: 226px!important;
         margin:6.5px!important;
     }
     .card-title{
@@ -125,12 +125,12 @@ export default {
 }
 @media(min-width:768px) and (max-width:991px){
     .productoCard > img {
-        height:220px!important;
-        width: 205px!important;
+        height:230px!important;
+        width: 217px!important;
     }
     .productoCard {
-        width: 207px!important;
-        margin:11px!important;
+        width: 219px!important;
+        margin:10.5px!important;
     }
     .card-title{
         font-size: 14px !important;
@@ -153,12 +153,12 @@ export default {
 }
 @media(min-width:576px) and (max-width:767px){
     .productoCard > img {
-        height:245px!important;
-        width: 230px!important;
+        height:260px!important;
+        width: 247px!important;
     }
     .productoCard {
-        width: 232px!important;
-        margin:11px!important;
+        width: 249px!important;
+        margin:10.5px!important;
     }
     .card-title{
         font-size: 14px !important;
@@ -181,12 +181,12 @@ export default {
 }
 @media  (min-width:480px) and (max-width: 575px) {
     .productoCard > img {
-        height:200px!important;
-        width: 190!important;
+        height:220px!important;
+        width: 207!important;
     }
     .productoCard {
-        width: 192px!important;
-        margin:11px!important;
+        width: 209px!important;
+        margin:10px!important;
     }
     .card-title{
         font-size: 14px !important;
@@ -212,11 +212,11 @@ export default {
 }
 @media  (min-width:410px) and (max-width: 479px) {
     .productoCard > img {
-        height:192px!important;
-        width: 178!important;
+        height:190px!important;
+        width: 176!important;
     }
     .productoCard {
-        width: 176px!important;
+        width: 178px!important;
         margin:8px!important;
     }
     .card-title{
@@ -247,12 +247,12 @@ export default {
 }
 @media  (min-width:350px) and (max-width: 409px) {
     .productoCard > img {
-        height:146px!important;
-        width: 136px!important;
+        height:166px!important;
+        width: 153px!important;
     }
     .productoCard {
-        width: 138px!important;
-        margin:6px!important;
+        width: 155px!important;
+        margin:5px!important;
     }
     .card-title{
         font-size: 12px !important;
@@ -274,6 +274,41 @@ export default {
     }
     #deslizador{
         height: 190px!important;
+    }
+}
+@media  (max-width:350px) {
+    .productoCard > img {
+        height:170px!important;
+        width: 153px!important;
+    }
+    .productoCard {
+        width: 155px!important;
+        margin:9px!important;
+    }
+    .card-title{
+        font-size: 12px !important;
+    }
+    .unPrecio, .etiquetaBajo {
+        font-size: 12px!important;
+    }
+    .etiquetaBajo {
+        margin-bottom: 4px!important;
+    }
+    #contenedorInicio{
+        width: 100%!important;
+        margin-left: 0px!important;
+        margin-right: 0px!important; 
+    }
+    .tituloImagen{
+        font-size: 14px!important;
+    }
+    .subtituloImagen{
+        font-size: 10px!important;
+    }
+    #deslizador{
+        height: 140px!important;
+        margin-left: 0px!important;
+        margin-right: 0px!important; 
     }
 }
 </style>
