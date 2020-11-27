@@ -231,16 +231,16 @@
 			</b-col>			
 			
 			<b-col xs="12" sm="10" md="10" lg="8" xl="8" class="p-0">
-				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-2 size="sm" variant="outline-dark">Modelo | Color</b-button>
-				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="outline-dark" class="ml-1 mr-1">Imágen</b-button>
-				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-1 size="sm" variant="outline-dark">Tallas</b-button>		    
+				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-2 size="sm" variant="dark">Modelo | Color</b-button>
+				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="dark" class="ml-1 mr-1">Imágen</b-button>
+				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-1 size="sm" variant="dark">Tallas</b-button>		    
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
 
-							<b-button id="modalTextoBtn" style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-4 size="sm" variant="outline-dark">Texto</b-button>
+							<b-button id="modalTextoBtn" style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-4 size="sm" variant="dark">Texto</b-button>
 							
-							<b-button hidden style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-italic" class="btn" data-original-title="Italic" variant="outline-dark" size="sm">
+							<b-button hidden style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-italic" class="btn" data-original-title="Italic" variant="dark" size="sm">
 								<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
 								Italic
 							</b-button>
@@ -1668,9 +1668,9 @@ font-family: 'HighSchoolUSASerif';
 }
 
 
-.card-body{
+/* .card-body{
 	padding: 0px!important;
-}
+} */
 /* @media (min-width: 601px){
 	#shirtDiv{
 		overflow-x: hidden!important;

@@ -106,21 +106,9 @@
                   <div :hidden="!form.aplicaDescuento" class="pr-2">
                     <b-card class="pl-2 pr-2 mb-2">
                       <div class="w-50 pr-1" style="display:inline-block;">
-                          <div>
-    
-  </div>
                         <b-form-group id="input-group-5" class="mb-0">
                           <label class="mb-0 lbl"><i>Fecha Inicio</i></label>
                           <b-form-datepicker label-no-date-selected="Fecha Inicio" size="sm" name="desde" id="input-desde" v-model="form.descuento.desde" locale="es"></b-form-datepicker>
-                          <!-- <b-form-input
-                            class="p-1"
-                            
-                            v-model="form.descuento.desde"
-                            type="date"
-                            style="display:inline-block!important;"
-                           
-                           
-                          ></b-form-input> -->
                         </b-form-group>
                       </div>
 
@@ -128,16 +116,6 @@
                         <b-form-group id="input-group-6" class="mb-0">
                           <label class="mb-0 lbl"><i>Fecha Fin</i></label>
                           <b-form-datepicker label-no-date-selected="Fecha Fin" size="sm" name="hasta" id="input-hasta" v-model="form.descuento.hasta" locale="es"></b-form-datepicker>
-                          <!-- <b-form-input
-                            class="p-1"
-                            id="input-hasta"
-                            v-model="form.descuento.hasta"
-                            type="date"
-                            style="display:inline-block!important;"
-                            name="hasta" 
-                            size="sm"
-                            :min="form.descuento.desde"
-                          ></b-form-input> -->
                         </b-form-group>
                       </div>
                     </b-card>
@@ -156,7 +134,6 @@
                                 Porcentaje
                               </b-form-checkbox>
                               
-
                               <b-form-checkbox
                               v-model="form.descuento.tipoMonto"
                               @change="cambioTipoDescuento"
@@ -200,11 +177,6 @@
                       </b-card>
                   </div>
                 </b-card>
-                <!-- <select id="" class="form-control mt-0 border-top-0 rounded-top-0">
-                    <option v-for="item in form.nombreImags" :key="item.id">
-                    {{ item.name }}
-                    </option>
-                </select> -->
             </b-form>
 
             <Modal ref="elModal" :tituloModal="form.nombre" :textoModal="form.descripcion"></Modal>
@@ -213,10 +185,8 @@
 
         <template v-slot:modal-footer>
             <div class="text-center mt-3">
-                <!-- <b-button to="/productosTodos" variant="success" style="display: inline-block!important;" size="sm" class="mr-2">Volver</b-button> -->
                 <b-button :disabled="activoBtnRegistrar" type="button" @click="vistaPreviaModal" class="mr-2" variant="outline-success" size="sm">Vista Previa</b-button>
                 <b-button @click="onReset" class="mr-1" variant="outline-danger" size="sm">Limpiar</b-button>
-                <!-- <b-button type="reset" class="mr-1" variant="outline-danger" size="sm">Limpiar</b-button> -->
                 <b-button :disabled="activoBtnRegistrar" type="button" @click="onSubmit" class="ml-1" variant="outline-primary" size="sm">Guardar</b-button>
             </div>
         </template>
@@ -289,14 +259,11 @@ export default {
           var datos = this.form;
           axios.post(`${url}NuevoProducto`, datos, { headers: {'content-type':'application/json'} }).then(function (resp) {
             // console.log(this.form);
-          alert(resp.data);  
-              // this.onReset();
-              // this.$bvModal.hide('modalProducto');
+          alert(resp.data);
 
           var formulario = new formData();
           var vaina = document.querySelector('#Imagenes_Array').files;
           for (let t = 0; t < vaina.length; t++) {
-            // console.log(vaina[t].name)
             formulario.append('imagen', vaina[t])
           }
 
@@ -614,7 +581,6 @@ export default {
             this.form.precio = nuevo.precio;
             this.form.cantidad = nuevo.cantidad;
             this.form.nombreImags = nuevo.nombreImags;
-            // this.form.dataImags = nuevo.dataImagenes;
             this.form.idProducto = nuevo._id;
             this.form.aplicaDescuento = nuevo.aplicaDescuento;
             this.form.descuento.desde = nuevo.descuento.desde;
@@ -625,13 +591,11 @@ export default {
             this.form.descuento.porcentajeDescuento = nuevo.descuento.porcentajeDescuento;
             this.arrayImagenes = nuevo.dataImagenes;
             this.activoBtnRegistrar = false;
-            // this.formatNames(nuevo.nombreImags);
         }
     },
     mounted(){
       this.options.push({ 'value':null, 'text':'Categoría'});
       axios.get(`${url}traerCategorias`).then(function(resp){
-        // console.log(resp.data);
         resp.data.map(function(obj){
           this.options.push({ 'value':obj._id, 'text':obj.nombre })
         }.bind(this));

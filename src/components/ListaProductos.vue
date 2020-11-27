@@ -4,17 +4,6 @@
             <b-card :img-src="Producto.imagen" img-alt="Card image" img-right img-height="100" border-variant="secondary" class="margenCard">
                 <h6 style="font-family: 'OverpassLight'; font-size:15px; font-weight:700!important;">{{Producto.tituloProducto}}</h6>
                 <div>
-                    <!-- <vue-numeric-input
-                    :ref="'dato_'"
-                    v-model="Producto.laCantidad"
-                    align="center"
-                    @change="cantidadProductoCarro(Producto.idProducto)"
-                    :min="1"
-                    :max="1000" 
-                    :id="Producto.idProducto"
-                    size="100px">
-                    </vue-numeric-input> -->
-
                     <b-form-spinbutton
                         inline
                         :ref="'dato_'"

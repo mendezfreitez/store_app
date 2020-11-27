@@ -1,13 +1,13 @@
 <template>
     <slider
     id="deslizador"
-    :interval="60000"
+    :interval="6000"
     :speed="2000"
     :control-btn="false"
     :stopOnHover="false"
     animation="fade"
     :indicators="false"
-    style="margin-top:74px!important;">
+    style="margin-top:62px!important;">
         <slider-item
             v-for="(i, index) in list"
             :key="index"
@@ -62,62 +62,11 @@ export default {
 .tituloImagen, .subtituloImagen{
     text-shadow: 4px 4px 9px rgb(122, 122, 122);
 }
-
-
-
-
-/* @media (min-width: 993px) {
-    #deslizador{
-        height: 500px!important;
-    }  
+#deslizador{
+    margin-left: 12px!important;
+    margin-right: 12px!important;
 }
 
-
-
-@media  (min-width:700px) and (max-width: 992px) {
-    .tituloImagen{
-        font-size:3.5rem!important;
-    }
-    .subtituloImagen{
-        font-size:1.6rem!important;
-    }
-    #deslizador, .slider-items, .slider-item, .unaImagen{
-        height: 400px!important;
-    }
-}
-
-
-
-@media  (min-width:400px) and (max-width: 699px) {
-	.tituloImagen{
-        font-size:2rem!important;
-	}
-    .subtituloImagen{
-        font-size:1.1rem!important;
-	}
-     #deslizador, .slider-items, .slider-item, .unaImagen{
-		height: 300px!important;
-	}
-}
-
-
-
-@media  (max-width:399px) {
-	.tituloImagen{
-        font-size:1.4rem!important;
-	}
-    .subtituloImagen{
-        font-size:0.8rem!important;
-	}
-    #deslizador, .slider-items, .slider-item, .unaImagen{
-		height: 200px!important;
-	}
-} */
-
-
-/* .productoCard {
-    margin:14px!important;
-} */
 @media(min-width:1200px){
     .productoCard > img {
         height:270px!important;
@@ -125,7 +74,7 @@ export default {
     }
     .productoCard {
         width: 257px!important;
-        margin:14px!important;
+        margin:10px!important;
     }
     .card-title{
         font-size: 14px !important;
@@ -136,6 +85,15 @@ export default {
     .etiquetaBajo {
         margin-bottom: 0px!important;
     }
+    .tituloImagen{
+        font-size: 40px!important;
+    }
+    .subtituloImagen{
+        font-size: 25px!important;
+    }
+    #deslizador{
+        height: 340px!important;
+    }
 }
 @media(min-width:992px) and (max-width:1199px){
     .productoCard > img {
@@ -144,6 +102,34 @@ export default {
     }
     .productoCard {
         width: 217px!important;
+        margin:6.5px!important;
+    }
+    .card-title{
+        font-size: 14px !important;
+    }
+    .unPrecio, .etiquetaBajo {
+        font-size: 13px!important;
+    }
+    .etiquetaBajo {
+        margin-bottom: 1px!important;
+    }
+    .tituloImagen{
+        font-size: 40px!important;
+    }
+    .subtituloImagen{
+        font-size: 25px!important;
+    }
+    #deslizador{
+        height: 270px!important;
+    }
+}
+@media(min-width:768px) and (max-width:991px){
+    .productoCard > img {
+        height:220px!important;
+        width: 205px!important;
+    }
+    .productoCard {
+        width: 207px!important;
         margin:11px!important;
     }
     .card-title{
@@ -155,34 +141,24 @@ export default {
     .etiquetaBajo {
         margin-bottom: 1px!important;
     }
-}
-@media(min-width:768px) and (max-width:991px){
-    .productoCard > img {
-        height:230px!important;
-        width: 215px!important;
+    .tituloImagen{
+        font-size: 30px!important;
     }
-    .productoCard {
-        width: 217px!important;
-        margin:10px!important;
+    .subtituloImagen{
+        font-size: 18px!important;
     }
-    .card-title{
-        font-size: 14px !important;
-    }
-    .unPrecio, .etiquetaBajo {
-        font-size: 13px!important;
-    }
-    .etiquetaBajo {
-        margin-bottom: 1px!important;
+    #deslizador{
+        height: 270px!important;
     }
 }
 @media(min-width:576px) and (max-width:767px){
     .productoCard > img {
-        height:255px!important;
-        width: 240px!important;
+        height:245px!important;
+        width: 230px!important;
     }
     .productoCard {
-        width: 242px!important;
-        margin:13px!important;
+        width: 232px!important;
+        margin:11px!important;
     }
     .card-title{
         font-size: 14px !important;
@@ -193,15 +169,24 @@ export default {
     .etiquetaBajo {
         margin-bottom: 0px!important;
     }
+    .tituloImagen{
+        font-size: 25px!important;
+    }
+    .subtituloImagen{
+        font-size: 15px!important;
+    }
+    #deslizador{
+        height: 260px!important;
+    }
 }
 @media  (min-width:480px) and (max-width: 575px) {
     .productoCard > img {
-        height:230px!important;
-        width: 215!important;
+        height:200px!important;
+        width: 190!important;
     }
     .productoCard {
-        width: 217px!important;
-        margin:9px!important;
+        width: 192px!important;
+        margin:11px!important;
     }
     .card-title{
         font-size: 14px !important;
@@ -211,16 +196,28 @@ export default {
     }
     .etiquetaBajo {
         margin-bottom: 4px!important;
+    }
+    #contenedorInicio{
+        width: 460px!important;
+    }
+    .tituloImagen{
+        font-size: 22px!important;
+    }
+    .subtituloImagen{
+        font-size: 13px!important;
+    }
+    #deslizador{
+        height: 240px!important;
     }
 }
 @media  (min-width:410px) and (max-width: 479px) {
     .productoCard > img {
-        height:210px!important;
-        width: 185!important;
+        height:192px!important;
+        width: 178!important;
     }
     .productoCard {
-        width: 187px!important;
-        margin:6px!important;
+        width: 176px!important;
+        margin:8px!important;
     }
     .card-title{
         font-size: 14px !important;
@@ -231,15 +228,31 @@ export default {
     .etiquetaBajo {
         margin-bottom: 4px!important;
     }
+    #contenedorInicio{
+        width: 390px!important;
+    }
+    .tituloImagen{
+        font-size: 20px!important;
+    }
+    .subtituloImagen{
+        font-size: 12px!important;
+    }
+    #deslizador{
+        height: 210px!important;
+    }
+    #contenedorInicio, .container{
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
 }
 @media  (min-width:350px) and (max-width: 409px) {
     .productoCard > img {
-        height:170px!important;
-        width: 160px!important;
+        height:146px!important;
+        width: 136px!important;
     }
     .productoCard {
-        width: 162px!important;
-        margin:4px!important;
+        width: 138px!important;
+        margin:6px!important;
     }
     .card-title{
         font-size: 12px !important;
@@ -249,12 +262,18 @@ export default {
     }
     .etiquetaBajo {
         margin-bottom: 4px!important;
-          /* font-family: 'OverpassLight'; */
-  /* font-size: 15px!important; */
-  /* padding-top: 3px!important; */
-  /* width: 50%!important;
-  color:#000!important; */
-  /* margin-bottom: 1px; */
+    }
+    #contenedorInicio{
+        width: 340px!important;
+    }
+    .tituloImagen{
+        font-size: 18px!important;
+    }
+    .subtituloImagen{
+        font-size: 12px!important;
+    }
+    #deslizador{
+        height: 190px!important;
     }
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Styled -->
     <b-form-file class="text-left border-bottom-0"
       @change="$emit('cambio')"
       accept="image/*"
@@ -10,12 +9,6 @@
       placeholder="Selección imágenes"
       drop-placeholder="Drop file here..."
     ></b-form-file>
-
-    <!-- <div class="mt-3 text-left">Imágenes: {{ file ? file.name : '' }}</div> -->
-
-    <!-- Plain mode -->
-    <!-- <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
-    <div class="mt-3">Selected file: {{ file2 ? file2.name : '' }}</div> -->
   </div>
 </template>
 
@@ -32,7 +25,6 @@
       file:{
         deep: true,
         handler:(nuevoValor, valorAnterior) => {
-          // console.log(`el campo archivo es`, nuevoValor, valorAnterior);
           return nuevoValor;
         }
       }
