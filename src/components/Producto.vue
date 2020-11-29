@@ -18,7 +18,7 @@
         <b-badge class="pl-1 pr-1 pb-0 text-right etiquetaBajo" style="margin-left: 50px; float:right; background-color: transparent!important; display:block;">{{precioProducto - descuento.montoDescuento | currency}}</b-badge>
       </div>
     </div>
-    <b-badge v-if="aplicaDescuento" class="etiquetaDescuento" variant="warning" >-{{descuento.porcentajeDescuento}}%</b-badge>
+    <b-badge v-if="aplicaDescuento" class="etiquetaDescuento" variant="warning" >{{descuento.porcentajeDescuento}}% OFF</b-badge>
   </b-card>
 </div>
 </template>
@@ -67,8 +67,11 @@ export default {
     top:0px!important;
     left:0px!important;
     height:25px;
-    width:45px!important;
+    width:auto!important;
+    text-align: center;
+    border-radius: 0px!important;
     padding-left:4px!important;
+    padding-right:4px!important;
     padding-top:7px!important;
   }
   .unPrecio{

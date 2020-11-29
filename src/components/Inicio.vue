@@ -1,12 +1,14 @@
 <template>
     <div class="text-center w-100">
         
-        <div class="container fixed-top p-0" ><Navegador /></div>
+        <div class="container fixed-top p-0" style="padding-top:0px!important;" ><Navegador /></div>
     
         <div class="container" id="contenedorInicio">
             <Deslizador />
-            <div>
-                <!-- <b-col md="12" lg="12" class="pl-0 pr-0 mt-1"> -->
+            <h3 id="textoOfertas" class="mt-4" style="font-family:'OverpassExtraLight';">OFERTAS</h3>
+            <DeslizadorProductos :losProductos="productos" />
+            <div class="mt-3">
+                <!-- <b-col md="12" lg="12" class=" pl-0 pr-0 mt-1"> -->
                     <Producto v-for="t in productos" :key="t._id"
                     :arrayImagenes="t.nombreImagenes"
                     :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
@@ -32,6 +34,7 @@
 </template>
 
 <script>
+import DeslizadorProductos from './DezlizadorProductos'
 import Navegador from './Navegador'
 import Deslizador from './Deslizador'
 import Producto from './Producto'
@@ -47,7 +50,7 @@ let url = 'https://storeapp-back-end.herokuapp.com/';
 export default {
     name:'Inicio',
     components:{
-        Producto, Modal, Footer, Deslizador, Navegador
+        Producto, Modal, Footer, Deslizador, Navegador, DeslizadorProductos
     },
     data(){
         return{
@@ -98,6 +101,13 @@ export default {
     watch:{
         productosTodos(nuevo){
             this.productos = nuevo;
+            var elarray = []
+            nuevo.map(function(el){
+                if(!el.aplicaDescuento){
+                    elarray.push(el)
+                }
+            })
+            this.productos = elarray
         }
     }
 }
@@ -107,9 +117,14 @@ export default {
     .sombreadoProducto{
         border-width: 0px!important;
     }
-    #contenedorInicio, .container {
+    #contenedorInicio {
         background: #FFF!important;
         padding-top: 15px!important;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+    .container {
+        background: #FFF!important;
         padding-left: 0px!important;
         padding-right: 0px!important;
     }

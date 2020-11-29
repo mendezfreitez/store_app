@@ -80,7 +80,7 @@ export default {
   height: 75px!important;
 }
 #sidebar-backdrop{
-  width:260px!important;
+  width:290px!important;
 }
 .b-sidebar-header > button{
   padding: 10px!important;

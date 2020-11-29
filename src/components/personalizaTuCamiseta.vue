@@ -245,7 +245,7 @@
 								Italic
 							</b-button>
 
-							<b-dropdown size="sm" right text="Color Texto" title="Tipografía" variant="outline-dark">
+							<b-dropdown size="sm" right text="Color Texto" title="Tipografía" variant="dark">
 								<b-dropdown-item @click="clickColor">
 									<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-dark">
 										<label class="mb-0 mr-2" for="" style="font-size: 17px !important; font-family: Dosis; font-weight: 800 !important;">Color</label>
@@ -260,7 +260,7 @@
 									</b-button>	
 								</b-dropdown-item>
 							</b-dropdown>
-							<b-button size="sm" style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
+							<b-button size="sm" style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="dark">
 								<b-icon icon="trash" scale="1.1" aria-hidden="true"></b-icon>
 							</b-button>
 						</div>							  

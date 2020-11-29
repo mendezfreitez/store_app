@@ -14,7 +14,9 @@ import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import 'fabric';
 import 'canvas';
 import EasySlider from 'vue-easy-slider'
- 
+import Carousel3d from 'vue-carousel-3d';
+
+Vue.use(Carousel3d);
 Vue.use(EasySlider)
 // Load Dosis typeface
 // require('typeface-dosis')
