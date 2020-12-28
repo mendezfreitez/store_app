@@ -226,26 +226,28 @@
 			</div>	
 		</b-modal>
 
+		<div class="container fixed-top w-100" style="padding-top:0px!important;" ><Navegador /></div>
+	
 		<b-row class="m-0" style="padding-top:70px!important;">
 			<b-col xs="12" sm="1" md="1" lg="2" xl="2">
 			</b-col>			
 			
 			<b-col xs="12" sm="10" md="10" lg="8" xl="8" class="p-0">
-				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-2 size="sm" variant="dark">Modelo | Color</b-button>
-				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="dark" class="ml-1 mr-1">Imágen</b-button>
-				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-1 size="sm" variant="dark">Tallas</b-button>		    
+				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-2 size="sm" variant="outline-dark">Modelo | Color</b-button>
+				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-3 size="sm" variant="outline-dark" class="ml-1 mr-1">Imágen</b-button>
+				<b-button style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-1 size="sm" variant="outline-dark">Tallas</b-button>		    
 				<div id="contenedorControles" align="center" style="min-height: 32px;">
 					<div class="clearfix mt-1 mb-1">
 						<div class="btn-group inline pull-left" id="texteditor">
 
-							<b-button id="modalTextoBtn" style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-4 size="sm" variant="dark">Texto</b-button>
+							<b-button id="modalTextoBtn" style="font-size:17px!important;font-family:'Dosis';font-weight:800!important;" v-b-modal.modal-4 size="sm" variant="outline-dark">Texto</b-button>
 							
-							<b-button hidden style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-italic" class="btn" data-original-title="Italic" variant="dark" size="sm">
+							<b-button hidden style="font-size:17px!important;font-family:'Dosis';font-weight:700!important;" id="text-italic" class="btn" data-original-title="Italic" variant="outline-dark" size="sm">
 								<b-icon icon="type-italic" scale="1.2" aria-hidden="true"></b-icon>
 								Italic
 							</b-button>
 
-							<b-dropdown size="sm" right text="Color Texto" title="Tipografía" variant="dark">
+							<b-dropdown size="sm" right text="Color Texto" title="Tipografía" variant="outline-dark">
 								<b-dropdown-item @click="clickColor">
 									<b-button class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color" variant="outline-dark">
 										<label class="mb-0 mr-2" for="" style="font-size: 17px !important; font-family: Dosis; font-weight: 800 !important;">Color</label>
@@ -260,7 +262,7 @@
 									</b-button>	
 								</b-dropdown-item>
 							</b-dropdown>
-							<b-button size="sm" style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="dark">
+							<b-button size="sm" style="font-size:18px!important;font-family:'Dosis';font-weight:900!important;" id="remove-selected" class="btn" title="Eliminar Texto o Imágen seleccionado" variant="outline-dark">
 								<b-icon icon="trash" scale="1.1" aria-hidden="true"></b-icon>
 							</b-button>
 						</div>							  
@@ -301,7 +303,11 @@
 import '../editor/js/jquery.js';
 import '../editor/js/bootstrap.min.js';
 import '../editor/js/jquery.miniColors.min.js';
+import Navegador from './Navegador'
 export default {
+	components:{
+		Navegador
+	},
 	data(){
 		return{
 			angulo:0,

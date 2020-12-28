@@ -2,12 +2,12 @@
     <slider
     id="deslizador"
     :interval="6000"
-    :speed="2000"
+    :speed="1000"
     :control-btn="false"
     :stopOnHover="false"
     animation="fade"
     :indicators="false"
-    style="margin-top:58px!important;">
+    style="margin-top:47px!important;">
         <slider-item
             v-for="(i, index) in list"
             :key="index"
@@ -63,8 +63,19 @@ export default {
     text-shadow: 4px 4px 9px rgb(122, 122, 122);
 }
 #deslizador{
-    margin-left: 10px!important;
-    margin-right: 10px!important;
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+}
+.card-img,
+.productoCard,
+#modal_2___BV_modal_content_,
+#modal_2___BV_modal_header_,
+#modal_1___BV_modal_content_,
+#modal_1___BV_modal_header_,
+#ModalCarroCompras___BV_modal_content_,
+#ModalCarroCompras___BV_modal_header_,
+.card-img-top {
+    border-radius: 0px!important;
 }
 
 @media(min-width:1200px){
@@ -208,6 +219,13 @@ export default {
     }
     #deslizador{
         height: 240px!important;
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+    }
+    #contenedorInicio{
+        width: 100%!important;
+        margin-left: 0px!important;
+        margin-right: 0px!important; 
     }
 }
 @media  (min-width:410px) and (max-width: 479px) {
@@ -237,12 +255,19 @@ export default {
     .subtituloImagen{
         font-size: 12px!important;
     }
-    #deslizador{
-        height: 210px!important;
-    }
     #contenedorInicio, .container{
         padding-left: 0px!important;
         padding-right: 0px!important;
+    }
+    #deslizador{
+        height: 210px!important;
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+    }
+    #contenedorInicio{
+        width: 100%!important;
+        margin-left: 0px!important;
+        margin-right: 0px!important; 
     }
 }
 @media  (min-width:350px) and (max-width: 409px) {
@@ -274,6 +299,13 @@ export default {
     }
     #deslizador{
         height: 190px!important;
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+    }
+    #contenedorInicio{
+        width: 100%!important;
+        margin-left: 0px!important;
+        margin-right: 0px!important; 
     }
 }
 @media  (max-width:350px) {

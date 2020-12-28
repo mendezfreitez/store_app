@@ -149,7 +149,7 @@ export default {
             this.onReset();
         }.bind(this));
       },
-      onReset(evt) {
+      onReset(evt) { 
         // evt.preventDefault();
         this.form.nombre = ''
         this.form.descripcion = ''

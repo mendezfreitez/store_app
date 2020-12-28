@@ -7,6 +7,7 @@
             <Deslizador />
             <h3 id="textoOfertas" class="mt-4" style="font-family:'OverpassExtraLight';">OFERTAS</h3>
             <DeslizadorProductos :losProductos="productos" />
+            <h3 id="textoNuevo" class="mt-4" style="font-family:'OverpassExtraLight';">NUEVO</h3>
             <div class="mt-3">
                 <!-- <b-col md="12" lg="12" class=" pl-0 pr-0 mt-1"> -->
                     <Producto v-for="t in productos" :key="t._id"
@@ -74,11 +75,6 @@ export default {
             this.modificarCarro(productosLocales);
             this.modifPuraCantidad(this.cantidadCarro);            
         }
-        // window.addEventListener('resize', function(){
-        //     var vainaaaa = document.width
-        //     console.log(vainaaaa);
-        // });
- 
     },
     methods:{
         ...mapMutations(['modifCantProducto','modifPuraCantidad','modificarCarro', 'traerProductosStore','traerProductosTodos']),

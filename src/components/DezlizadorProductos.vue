@@ -1,33 +1,39 @@
 <template>
-    <carousel-3d
-    ref="mycarousel"
-    :disable3d="true"
-    :controls-visible="false"
-    :space="espacio"
-    :autoplay="true"
-    :autoplay-timeout="6000"
-    :pauseOnHover="false"
-    :clickable="true"
-    :display="cantidadItems"
-    >
-        <slide v-for="(t, index) in productos" :key="t._id"  :index="index">
-            <Producto
-            :arrayImagenes="t.nombreImagenes"
-            :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
-            :precioProducto="t.precio"
-            :tituloProducto="t.nombre.substr(0, 25)"
-            :textoProducto="t.descripcion.substr(0, 65)"
-            :bodyProducto="t.descripcion"
-            :laCantidad="1"
-            :idProducto="t._id"
-            :aplicaDescuento="t.aplicaDescuento"
-            :descuento="t.descuento"/>
-        </slide>
-    </carousel-3d>
+    <div>
+        <Modal2 ref="elModal2" :tituloModal="unProducto.tituloProducto" :textoModal="unProducto.bodyProducto" :precio="unProducto.precioProducto"></Modal2>
+        <carousel-3d
+        ref="mycarousel"
+        :disable3d="true"
+        :controls-visible="false"
+        :space="espacio"
+        :autoplay="true"
+        :autoplay-timeout="6000"
+        :pauseOnHover="false"
+        :clickable="false"
+        :display="5"
+        :count="productos.length"
+        >
+            <slide v-for="(t, index) in productos" :key="t._id"  :index="index">
+                <Productoo
+                :arrayImagenes="t.nombreImagenes"
+                :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
+                :precioProducto="t.precio"
+                :tituloProducto="t.nombre.substr(0, 25)"
+                :textoProducto="t.descripcion.substr(0, 65)"
+                :bodyProducto="t.descripcion"
+                :laCantidad="1"
+                :idProducto="t._id"
+                :aplicaDescuento="t.aplicaDescuento"
+                :descuento="t.descuento"
+                @mostrar-modal="mostrarModal"/>
+            </slide>        
+        </carousel-3d>
+    </div>
 </template>
 
 <script>
-import Producto from './Producto'
+import Productoo from './Producto'
+import Modal2 from './ModalDescuentos'
 import { Carousel3d, Slide } from 'vue-carousel-3d';
 import { mapMutations, mapState } from 'vuex'
 
@@ -35,13 +41,13 @@ export default {
     data(){
         return{
             espacio:undefined,
-            cantidadItems: 5,
+            unProducto:{},
             productos: [],
             urlImagen:'https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes'
         }
     },
     components: {
-        Carousel3d, Slide, Producto
+        Carousel3d, Slide, Productoo, Modal2
     },
     computed:{
         ...mapState(['productosTodos'])
@@ -54,68 +60,84 @@ export default {
                     elarray.push(el)
                 }
             })
+            console.log(elarray)
             this.productos = elarray
         }
     },
     methods:{
+        mostrarModal: function(props){
+            var vaina = [];
+            this.$refs.elModal2.producto = props;
+            this.unProducto = props;
+            console.log(this.unProducto);
+            for (let index = 0; index < this.unProducto.arrayImagenes.length; index++) {
+                console.log(`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`)
+                vaina.push({ id:index , src:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`, thumbnail:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}` });
+            }
+            this.arregloFinal = vaina;
+            console.log(this.arregloFinal);
+            this.$refs.elModal2.arrayImagenes = this.arregloFinal;
+            this.$bvModal.show("modal_2");
+        }
     },
     mounted(){
-        var ancho
-
-        window.addEventListener('resize', e =>{
-            console.log(e.target.innerWidth)
-            ancho = e.target.innerWidth
+        let that = this
+        window.addEventListener('resize', function(e){
+            var ancho = e.target.innerWidth
+            // console.log(ancho)
             if(ancho > 1200){
-                this.espacio = 280
+                that.espacio = 280
             }
             else if(ancho >= 992 && ancho <= 1199){
-                this.espacio = 240
+                that.espacio = 240
             }
             else if(ancho >= 768 && ancho < 991){
-                this.espacio = 237
+                that.espacio = 237
             }
             else if(ancho >= 576 && ancho < 767){
-                this.espacio = 260
+                that.espacio = 260
             }
             else if(ancho >= 480 && ancho < 575){
-                this.espacio = 220
+                that.espacio = 220
             }
             else if(ancho >= 410 && ancho < 479){
-                this.espacio = 190
+                that.espacio = 190
             }
             else if(ancho >= 346 && ancho < 409){
-                this.espacio = 170
+                that.espacio = 170
             }
             else if(ancho < 346){
-                this.espacio = 280
+                that.espacio = 160
             }
         })
 
-        ancho = window.innerWidth
+        var ancho = window.innerWidth
+        
         if(ancho > 1200){
-            this.espacio = 280
+            that.espacio = 280
         }
         else if(ancho >= 992 && ancho <= 1199){
-            this.espacio = 240
+            that.espacio = 240
         }
         else if(ancho >= 768 && ancho < 991){
-            this.espacio = 237
+            that.espacio = 237
         }
         else if(ancho >= 576 && ancho < 767){
-            this.espacio = 260
+            that.espacio = 260
         }
         else if(ancho >= 480 && ancho < 575){
-            this.espacio = 220
+            that.espacio = 220
         }
         else if(ancho >= 410 && ancho < 479){
-            this.espacio = 190
+            that.espacio = 190
         }
         else if(ancho >= 346 && ancho < 409){
-            this.espacio = 170
+            that.espacio = 170
         }
         else if(ancho < 346){
-            this.espacio = 280
+            that.espacio = 160
         }
+        // document.getElementById('navegadorArriba').click()
     }
 }
 </script>
@@ -136,7 +158,7 @@ export default {
     .carousel-3d-container, .carousel-3d-slide{
         height: 370px!important;
     }
-    #textoOfertas{
+    #textoOfertas, #textoNuevo{
         font-size: 50px!important;
     }
 }
@@ -148,7 +170,7 @@ export default {
     .carousel-3d-container, .carousel-3d-slide{
         height: 325px!important;
     }
-    #textoOfertas{
+    #textoOfertas, #textoNuevo{
         font-size: 40px!important;
     }
 }
@@ -160,7 +182,7 @@ export default {
     .carousel-3d-container, .carousel-3d-slide{
         height: 323px!important;
     }
-    #textoOfertas{
+    #textoOfertas, #textoNuevo{
         font-size: 35px!important;
     }
 }
@@ -172,7 +194,7 @@ export default {
     .carousel-3d-container, .carousel-3d-slide{
         height: 353px!important;
     }
-    #textoOfertas{
+    #textoOfertas, #textoNuevo{
         font-size: 30px!important;
     }
 }
@@ -184,7 +206,7 @@ export default {
     .carousel-3d-container, .carousel-3d-slide{
         height: 312px!important;
     }
-    #textoOfertas{
+    #textoOfertas, #textoNuevo{
         font-size: 30px!important;
     }
 }
@@ -196,7 +218,7 @@ export default {
     .carousel-3d-container, .carousel-3d-slide{
         height: 278px!important;
     }
-    #textoOfertas{
+    #textoOfertas, #textoNuevo{
         font-size: 30px!important;
     }
 }
@@ -208,7 +230,7 @@ export default {
     .carousel-3d-container, .carousel-3d-slide{
         height: 248px!important;
     }
-    #textoOfertas{
+    #textoOfertas, #textoNuevo{
         font-size: 25px!important;
     }
 }
@@ -220,7 +242,7 @@ export default {
     .carousel-3d-container, .carousel-3d-slide{
         height: 260px!important;
     }
-    #textoOfertas{
+    #textoOfertas, #textoNuevo{
         font-size: 25px!important;
     }
 }

@@ -17,11 +17,11 @@
       </b-nav-form>
       
       <b-navbar-nav class="text-left color-light" text-variant="light">
-        <b-nav-item v-b-toggle.sidebar-backdrop href="#" to="/" @click="traerProductosTodos('')" class="pl-2 ddd" style="font-size:18px!important;font-family:'OverpassLight';font-weight:700!important;">
+        <b-nav-item v-b-toggle.sidebar-backdrop href="#" to="/" @click="traerporCategorias('')" class="pl-2 ddd" style="font-size:18px!important;font-family:'OverpassLight';font-weight:700!important;">
           Inicio<b-img height="40" right class="mr-4" :src="require('../editor/img/categorias/Inicio2.svg')" alt=""></b-img>
         </b-nav-item>
 
-        <b-nav-item v-b-toggle.sidebar-backdrop v-for="categoria in categoriasTodas" :key="categoria._id" href="#" @click="traerProductosTodos(categoria._id)" class="pl-2 pt-1 ddd" style="font-size:18px!important;font-family:'OverpassLight';font-weight:400!important;">
+        <b-nav-item v-b-toggle.sidebar-backdrop v-for="categoria in categoriasTodas" :key="categoria._id" href="#" @click="traerporCategorias(categoria._id, categoria.nombre)" class="pl-2 pt-1 ddd" style="font-size:18px!important;font-family:'OverpassLight';font-weight:400!important;">
           {{ categoria.nombre }}
           <b-img height="42" right class="mr-4" :src="require('../editor/img/categorias/' + categoria.nombre + '.svg')" alt=""></b-img>
         </b-nav-item>
@@ -66,7 +66,16 @@ export default {
     }.bind(this));
   },
   methods:{
-    ...mapMutations(['traerProductosTodos'])
+    ...mapMutations(['traerProductosTodos']),
+    traerporCategorias: function(idCategoria, nombreCategoria){
+      this.traerProductosTodos(idCategoria)
+      if(idCategoria === ''){
+        document.querySelector('#textoOfertas').textContent = 'OFERTAS'
+      }
+      else{
+        document.querySelector('#textoOfertas').textContent = `OFERTAS EN ${nombreCategoria.toUpperCase()}`
+      }
+    }
   }
 }
 </script>
