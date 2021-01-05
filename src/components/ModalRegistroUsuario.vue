@@ -12,7 +12,6 @@
       <div>
         <div class="p-3">
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-
             <b-form-group id="input-group-1">
               <b-form-input
                 id="input-1"
@@ -23,7 +22,6 @@
                 placeholder="Usuario"
               ></b-form-input>
             </b-form-group>
-
             <b-form-group id="input-group-2">
               <b-form-input
                 id="input-2"
@@ -33,7 +31,6 @@
                 type="password"
               ></b-form-input>
             </b-form-group>
-            
             <b-form-group id="input-group-3">
               <b-input
                 id="input-3"
@@ -48,13 +45,11 @@
                 <b-form-valid-feedback :state="contrasenias">Contraseña Correcta</b-form-valid-feedback>
               </div>
             </b-form-group>
-
             <b-form-group id="input-group-4">
               <b-form-checkbox-group class="text-left" v-model="form.checked" id="checkboxes-4">
                 <b-form-checkbox v-model="form.TerminosCondiciones" required >Acepto los <b-link to="/TerminosCondiciones">Términos y condiciones</b-link></b-form-checkbox>
               </b-form-checkbox-group>
             </b-form-group>
-
             <div class="text-right mb-3">
               <b-button type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
               <b-button :disabled="estado" type="submit" class="ml-2" variant="outline-dark">Registrar</b-button>
@@ -94,11 +89,7 @@
           alert("Antes debe aceptar los 'Términos y Condiciones'.");
         }
         else{
-          // this.form.contrasenia = btoa(this.form.contrasenia);
           console.log(this.form);
-
-
-
           var datos = this.form;
           const config = {
             headers: {'content-type': 'application/json'}
@@ -114,8 +105,6 @@
               alert("Error al crear usuario.");
             }
         });
-
-
         }
       },
       onReset(evt) {
