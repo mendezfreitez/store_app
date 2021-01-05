@@ -9,10 +9,9 @@
     hide-footer
     cancel-title="Cerrar"
     centered>
-      <b-row class="p-3">
-          <b-col cols="12" lg="12" md="1" sm="1"></b-col>
-          <b-col cols="12" lg="12" md="10" sm="10">
-            <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <div>
+        <div class="p-3">
+          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
 
             <b-form-group id="input-group-1">
               <b-form-input
@@ -43,7 +42,7 @@
                 required
                 placeholder="Repetir Contraseña"
                 type="password"
-              ></b-input>
+              ></b-input> 
               <div class="text-left">
                 <b-form-invalid-feedback :state="contrasenias">Contraseñas no coinciden</b-form-invalid-feedback>
                 <b-form-valid-feedback :state="contrasenias">Contraseña Correcta</b-form-valid-feedback>
@@ -61,9 +60,8 @@
               <b-button :disabled="estado" type="submit" class="ml-2" variant="outline-dark">Registrar</b-button>
             </div>
           </b-form>
-          </b-col>
-          <b-col cols="12" lg="12" md="1" sm="1"></b-col>
-      </b-row>
+        </div>
+      </div>
     </b-modal>
   </div>
 </template>
@@ -185,7 +183,6 @@
   }
   .modal-header{
     border-bottom: 0px!important;
-    /* background-color: #ce3333!important; */
     background-color:#272727!important;
   }
   #modal_registro___BV_modal_content_{

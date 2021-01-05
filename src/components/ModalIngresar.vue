@@ -11,42 +11,40 @@
     hide-footer
     cancel-title="Cerrar"
     centered>
-      <b-row class="p-3">
-          <b-col cols="12" lg="12" md="1" sm="1"></b-col>
-          <b-col cols="12" lg="12" md="10" sm="10">
-            <b-form @submit="onSubmit" @reset="onReset">
-            <b-form-group id="input-group-1">
-              <b-form-input
-                id="input-1"
-                v-model="form.usuario"
-                type="text" 
-                required
-                placeholder="Usuario"
-              ></b-form-input>
-            </b-form-group>
+      <div>
+        <div class="p-3">
+          <b-form @submit="onSubmit" @reset="onReset">
+                  <b-form-group id="input-group-1">
+                    <b-form-input
+                      id="input-1"
+                      v-model="form.usuario"
+                      type="text" 
+                      required
+                      placeholder="Usuario"
+                    ></b-form-input>
+                  </b-form-group>
 
-            <b-form-group id="input-group-2">
-              <b-form-input
-                id="input-2"
-                v-model="form.contrasenia"
-                required
-                placeholder="Contraseña"
-                type="password"
-              ></b-form-input>
-            </b-form-group>
+                  <b-form-group id="input-group-2">
+                    <b-form-input
+                      id="input-2"
+                      v-model="form.contrasenia"
+                      required
+                      placeholder="Contraseña"
+                      type="password"
+                    ></b-form-input>
+                  </b-form-group>
 
-            <div class="text-right mb-3">
-              <b-button type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
-              <b-button type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
-            </div>
+                  <div class="text-right mb-3">
+                    <b-button type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
+                    <b-button type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
+                  </div>
 
-            <div class="text-left" style="font-size:15px!important;">
-              <span>Aún no estás registrado? <b-link @click="modalRegistro">Regístrate</b-link></span>
-            </div>
+                  <div class="text-left" style="font-size:15px!important;">
+                    <span>Aún no estás registrado? <b-link @click="modalRegistro">Regístrate</b-link></span>
+                  </div>
           </b-form>
-          </b-col>
-          <b-col cols="12" lg="12" md="1" sm="1"></b-col>
-      </b-row>
+        </div>
+      </div>
     </b-modal>
   </div>
 </template>

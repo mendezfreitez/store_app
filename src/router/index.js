@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Inicio from '../components/Inicio'
-import Admin from '../components/Admin'
 import NuevoProducto from '../components/NuevoProducto'
 import ListaProductos from '../components/ListaProductos'
-import Registro from '../components/Registro'
 import TerminosCondiciones from '../components/TerminosCondiciones'
 import productosTodos from '../components/productosTodos'
 import editarProducto from '../components/EditarProducto'
@@ -19,19 +17,9 @@ Vue.use(VueRouter)
     component: Inicio
   },
   {
-    path: '/Registro',
-    name: 'Registro',
-    component: Registro
-  },
-  {
     path: '/TerminosCondiciones',
     name: 'TerminosCondiciones',
     component: TerminosCondiciones
-  },
-  {
-    path: '/user',
-    name: 'user',
-    component: Admin
   },
   {
     path: '/NuevoProducto',
