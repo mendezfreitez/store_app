@@ -128,7 +128,7 @@ export default {
         color: #fff!important;
     }
     #navegadorArriba, .carroEnlace{
-        background-color: #3f3c46!important;
+        background-color: #272727!important;
     }
     .carroEnlace{
     color: #FFF!important;

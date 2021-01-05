@@ -11,24 +11,24 @@
       backdrop
       style="font-family:'OverpassLight';font-weight:900!important;"
     >
-      <b-nav-form class="pl-2 pt-1 pb-1"> 
+      <!-- <b-nav-form class="pl-2 pt-1 pb-1"> 
         <b-form-input size="sm" class="mr-1 ml-0 w-50" placeholder="Búsqueda"></b-form-input>
         <b-button size="sm" class="ml-1" variant="dark">Buscar</b-button>
-      </b-nav-form>
+      </b-nav-form> -->
       
       <b-navbar-nav class="text-left color-light" text-variant="light">
-        <b-nav-item v-b-toggle.sidebar-backdrop href="#" to="/" @click="traerporCategorias('')" class="pl-2 ddd" style="font-size:18px!important;font-family:'OverpassLight';font-weight:700!important;">
+        <b-nav-item v-b-toggle.sidebar-backdrop href="#" to="/" @click="traerporCategorias('')" class="pl-2 ddd pt-1" style="font-size:25px!important;font-family:'OverpassLight';font-weight:700!important;">
           Inicio<b-img height="40" right class="mr-4" :src="require('../editor/img/categorias/Inicio2.svg')" alt=""></b-img>
         </b-nav-item>
 
-        <b-nav-item v-b-toggle.sidebar-backdrop v-for="categoria in categoriasTodas" :key="categoria._id" href="#" @click="traerporCategorias(categoria._id, categoria.nombre)" class="pl-2 pt-1 ddd" style="font-size:18px!important;font-family:'OverpassLight';font-weight:400!important;">
+        <b-nav-item v-b-toggle.sidebar-backdrop v-for="categoria in categoriasTodas" :key="categoria._id" href="#" @click="traerporCategorias(categoria._id, categoria.nombre)" class="pl-2 pt-1 ddd" style="font-size:25px!important;font-family:'OverpassLight';font-weight:400!important;">
           {{ categoria.nombre }}
-          <b-img height="42" right class="mr-4" :src="require('../editor/img/categorias/' + categoria.nombre + '.svg')" alt=""></b-img>
+          <b-img height="40" right class="mr-4" :src="require('../editor/img/categorias/' + categoria.nombre + '.svg')" alt=""></b-img>
         </b-nav-item>
 
-        <b-nav-item href="#" to="/personalizado" class="pl-2 pt-1 ddd" style="font-size:18px!important;font-family:'OverpassLight';font-weight:700!important;">
+        <b-nav-item href="#" to="/personalizado" class="pl-2 pt-1 ddd" style="font-size:25px!important;font-family:'OverpassLight';font-weight:700!important;">
           Personalizado
-          <b-img height="38" right class="mr-4" :src="require('../editor/img/categorias/Personalizar2.svg')" alt=""></b-img>
+          <b-img height="36" right class="mr-4" :src="require('../editor/img/categorias/Personalizar2.svg')" alt=""></b-img>
         </b-nav-item>
       </b-navbar-nav>
 
@@ -82,25 +82,35 @@ export default {
 
 <style>
 .ddd:hover{
-  background: #343a40 !important;
+  background: #272727 !important;
+  border-bottom: 1px solid #e0e40e;
 }
 .b-sidebar-header{
-  background:#343a40 !important;
-  height: 75px!important;
+  background:#272727 !important;
+  height: 66px!important;
+  padding-right: 5px!important;
+  padding-left: 7px!important;
 }
 #sidebar-backdrop{
   width:290px!important;
 }
 .b-sidebar-header > button{
   padding: 10px!important;
-  margin-left: 68px!important;
   border:solid 0px #ce3333!important;
-  border-radius: 4px;
+  float:right!important;
 }
 .b-sidebar-body{
   background:#b13535 !important;
 }
-
+.ddd > a {
+  height:60px;
+  display: block!important;
+  align-items: center!important;
+}
+.ddd{
+  transition: all .5s ease 0s; 
+  -webkit-transition: all .5s ease 0s;
+}
 /* .b-sidebar-header {
     background-color: #ce3333!important;
 } */

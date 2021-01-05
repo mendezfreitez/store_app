@@ -110,7 +110,9 @@ export default {
   }
   .modal-header{
     border-bottom: 0px!important;
-    background-color: #ce3333!important;
+    /* background-color: #ce3333!important; */
+    background-color:#272727!important;
+    border-bottom: 4px solid #ce3333!important;
   }
   #modal_1___BV_modal_content_{
     border-width: 0px!important;

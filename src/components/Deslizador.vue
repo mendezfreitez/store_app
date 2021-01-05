@@ -41,7 +41,7 @@ export default {
     },
     methods:{
         hello(){
-            alert('HELLO')
+            // alert('HELLO')
         }
     }
 }
@@ -71,7 +71,11 @@ export default {
 #modal_2___BV_modal_content_,
 #modal_2___BV_modal_header_,
 #modal_1___BV_modal_content_,
+#modal_ingreso___BV_modal_content_,
+#modal_registro___BV_modal_content_,
 #modal_1___BV_modal_header_,
+#modal_ingreso___BV_modal_header_,
+#modal_registro___BV_modal_header_,
 #ModalCarroCompras___BV_modal_content_,
 #ModalCarroCompras___BV_modal_header_,
 .card-img-top {

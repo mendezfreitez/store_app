@@ -1,8 +1,8 @@
 <template>
   <div id="contenedorDeNavegador">
-  <b-navbar type="dark"  id="navegadorArriba">
-    <b-button size="md" variant="dark" class="ml-1 my-sm-0 botonToggler"  v-b-toggle.sidebar-backdrop>
-      <b-icon class="pt-1" scale="1.6" icon="list"></b-icon>
+  <b-navbar type="dark"  id="navegadorArriba" style="background-color:#272727!important; border-bottom:4px solid #ce3333!important;">
+    <b-button size="md" variant="transparent" class="ml-1 my-sm-0 botonToggler" style="border:solid 0px#fff!important; background-color: #ce3333!important;" v-b-toggle.sidebar-backdrop>
+      <b-icon style="color:#272727!important;" class="pt-1" scale="1.7" icon="list"></b-icon>
     </b-button>
 
     <b-link @click="traerProductosTodos('')" style="color: #fff!important;" to="/">
@@ -30,13 +30,13 @@
 
 
         <div style="margin-top:6px!important;">
-          <b-link size="sm" class="mr-4 my-sm-0 registroIngreso" variant="outline-light" to="/user" style="font-family: 'OverpassLight'; font-size:18px!important;">
+          <b-link size="sm" class="mr-4 my-sm-0 registroIngreso" variant="outline-light" @click="modalIngresar" style="font-family: 'OverpassLight'; font-size:18px!important;">
             Ingresar
           </b-link>
         </div>
 
         <div style="width:46px;height:46px;" @click="modalProductos">
-          <b-badge variant="dark" class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:15px; left:0px; font-size:20px!important;font-family:'OverpassLight';">
+          <b-badge class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:15px; left:0px; font-size:20px!important;font-family:'OverpassLight';">
             {{cantidadCarro}}
           </b-badge>
 
@@ -45,6 +45,7 @@
   </b-navbar>
   
   <ModalCarro ref="unModalDeCarro" />
+  <ModalIngresar/>
 
 </div>  
 </template>
@@ -52,10 +53,11 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import ModalCarro from './ModalCarroCompras'
+import ModalIngresar from './ModalIngresar'
 export default {
     name:'Navegador',
     components:{
-      ModalCarro
+      ModalCarro, ModalIngresar
     },
     data(){
       return{
@@ -68,6 +70,9 @@ export default {
       ...mapMutations(['traerProductosTodos']),
       modalProductos(){
         this.$bvModal.show('ModalCarroCompras');
+      },
+      modalIngresar(){
+        this.$bvModal.show('modal_ingreso');
       }
     },
     mounted(){
@@ -79,14 +84,6 @@ export default {
   .registroIngreso{
     height: 30px!important;
     color:#FFF!important;
-  }
-  .botonToggler, .botonToggler:hover{
-    border-color: rgba(255, 255, 255, 0.1)!important;
-    background-color: transparent!important;
-  }
-  .botonToggler, .botonToggler:hover {
-    border:solid 1px#fff!important;
-    background-color: #ce3333!important;
   }
   .navbar-toggler-icon{
       color: #000!important;

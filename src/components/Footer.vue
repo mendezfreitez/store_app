@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="w-100" style="background:#272727!important;width:100%!imporant;">
+  <b-navbar class="w-100" style="background:#272727!important;width:100%!imporant; border-top:4px solid #ce3333!important;">
     <b-collapse id="nav-collapse mr-1" is-nav>
         <b-navbar-nav class="text-center">
     <b-link  href="https://www.facebook.com" target="_blank">

@@ -15,7 +15,7 @@
       
       <template v-slot:modal-footer class="pb-0">
         <div class="w-100 text-right" style="margin:0px!important;">
-          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="background-color: rgb(185 72 72 / 90%)!important;font-family: 'UbuntuMonoR'; width:70%!important; font-size:18px!important; margin-top:4px!important;">
+          <b-badge variant="dark" class="text-right mb-2" id="footerModal" style="background-color: #343a40!important; border-bottom:2px solid #ce3333!important; font-family: 'UbuntuMonoR'; width:70%!important; font-size:18px!important; margin-top:4px!important;">
             Total: {{textoTotalCarro | currency}}
           </b-badge>
         </div>

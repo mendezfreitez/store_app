@@ -2,7 +2,7 @@
     <div>
         <div v-for="Producto in ProductosCarro" :key="Producto.idProducto" class="mb-2 mt-1 ml-2 mr-2">
             <b-card :img-src="Producto.imagen" img-alt="Card image" img-right img-height="100" border-variant="secondary" class="margenCard">
-                <h6 style="font-family: 'OverpassLight'; font-size:15px; font-weight:700!important;">{{Producto.tituloProducto}}</h6>
+                <h6 style="font-family: 'OverpassLight'; font-size:16px; font-weight:700!important;" class="mb-0 mt-1">{{Producto.tituloProducto}}</h6>
                 <div>
                     <b-form-spinbutton
                         inline
@@ -16,7 +16,7 @@
                 </div>
                 
                 <div>
-                    <b-badge class="text-right" variant="dark" style="background-color: rgb(185 72 72 / 90%)!important;display:inline-block!important;font-family: 'UbuntuMonoR'; font-weight:700!important; font-size:13px; width:130px!important;">
+                    <b-badge class="text-right" variant="dark" style="background-color: #343a40!important; border-bottom:2px solid #ce3333!important; display:inline-block!important;font-family: 'UbuntuMonoR'; font-weight:700!important; font-size:13px; width:130px!important;">
                         {{Producto.precio * Producto.laCantidad | currency}}
                     </b-badge>
                 </div>
