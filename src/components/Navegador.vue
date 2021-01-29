@@ -28,25 +28,24 @@
       </b-navbar-nav>
     </b-collapse>
 
+    <div style="margin-top:6px!important;">
+      <b-link size="sm" class="mr-4 my-sm-0 registroIngreso" variant="outline-light" @click="modalIngresar" style="font-family: 'OverpassLight'; font-size:18px!important;">
+        Ingresar
+      </b-link>
+    </div>
 
-        <div style="margin-top:6px!important;">
-          <b-link size="sm" class="mr-4 my-sm-0 registroIngreso" variant="outline-light" @click="modalIngresar" style="font-family: 'OverpassLight'; font-size:18px!important;">
-            Ingresar
-          </b-link>
-        </div>
+    <div style="width:46px;height:46px;" @click="modalProductos">
+      <b-badge class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:15px; left:0px; font-size:20px!important;font-family:'OverpassLight';">
+        {{cantidadCarro}}
+      </b-badge>
 
-        <div style="width:46px;height:46px;" @click="modalProductos">
-          <b-badge class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:15px; left:0px; font-size:20px!important;font-family:'OverpassLight';">
-            {{cantidadCarro}}
-          </b-badge>
-
-          <b-img style="position:relative; top:-30px;" height="42"  :src="require('../editor/img/categorias/BolsaCompra2.svg')" alt=""></b-img>
-        </div>
+      <b-img style="position:relative; top:-30px;" height="42"  :src="require('../editor/img/categorias/BolsaCompra2.svg')" alt=""></b-img>
+    </div>
   </b-navbar>
-  
+
   <ModalCarro ref="unModalDeCarro" />
   <ModalIngresar/>
-
+  
 </div>  
 </template>
 
