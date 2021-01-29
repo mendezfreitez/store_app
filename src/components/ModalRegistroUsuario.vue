@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ModalTerminosCondiciones ref="ModalTerminosCondiciones"></ModalTerminosCondiciones>
     <b-modal id="modal_registro"
     style="border: 0px solid rgba(0, 0, 0, 0.2)!important;"
     title="Registro Usuario"
@@ -47,12 +48,12 @@
             </b-form-group>
             <b-form-group id="input-group-4">
               <b-form-checkbox-group class="text-left" v-model="form.checked" id="checkboxes-4">
-                <b-form-checkbox v-model="form.TerminosCondiciones" required >Acepto los <b-link to="/TerminosCondiciones">Términos y condiciones</b-link></b-form-checkbox>
+                <b-form-checkbox v-model="form.TerminosCondiciones" required >Acepto los <b-link @click="modalTerminosCondiciones">Términos y condiciones</b-link></b-form-checkbox>
               </b-form-checkbox-group>
             </b-form-group>
-            <div class="text-right mb-3">
-              <b-button type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
-              <b-button :disabled="estado" type="submit" class="ml-2" variant="outline-dark">Registrar</b-button>
+            <div class="text-right">
+              <b-button size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
+              <b-button size="sm" :disabled="estado" type="submit" class="ml-2" variant="outline-dark">Registrar</b-button>
             </div>
           </b-form>
         </div>
@@ -62,12 +63,16 @@
 </template>
 
 <script>
+import ModalTerminosCondiciones from './ModalTerminosCondiciones'
   let url = 'http://localhost:3000/';
   import axios from 'axios';
   export default {
     name:'Registro',
     props:{
       desactivado: true
+    },
+    components:{
+      ModalTerminosCondiciones
     },
     data() {
       return {
@@ -135,6 +140,9 @@
           console.log(vaina);
         });
         return vaina; 
+      },
+      modalTerminosCondiciones(){
+        this.$bvModal.show('ModalTerminosCondiciones')
       }
     },
     computed:{

@@ -35,18 +35,18 @@
                   </b-form-group>
 
                   <div class="text-right mb-3">
-                    <b-button type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
-                    <b-button type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
+                    <b-button size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
+                    <b-button size="sm" type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
                   </div>
 
                   <div class="text-left" style="font-size:15px!important;">
-                    <span>Aún no estás registrado? <b-link @click="modalRegistro">Regístrate</b-link></span>
+                    <span>Aún no estás registrado? <b-link class="ml-2" @click="modalRegistro">Regístrate</b-link></span>
                   </div>
           </b-form>
         </div>
       </div>
     </b-modal>
-  </div>
+  </div> 
 </template>
 
 <script>
@@ -98,6 +98,7 @@ export default {
     },
     modalRegistro(){
       this.$bvModal.show('modal_registro')
+      this.$bvModal.hide('modal_ingreso')
     }
   }
 }

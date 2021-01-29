@@ -1,8 +1,8 @@
 <template>
   <div id="contenedorDeNavegador">
   <b-navbar type="dark"  id="navegadorArriba" style="background-color:#272727!important; border-bottom:4px solid #ce3333!important;">
-    <b-button size="md" variant="transparent" class="ml-1 my-sm-0 botonToggler" style="border:solid 0px#fff!important; background-color: #ce3333!important;" v-b-toggle.sidebar-backdrop>
-      <b-icon style="color:#272727!important;" class="pt-1" scale="1.7" icon="list"></b-icon>
+    <b-button size="md" variant="transparent" class="ml-1 my-sm-0 botonToggler" style="border:solid 0px#fff!important; background-color: #ce3333!important; border-radius:0px!important;" v-b-toggle.sidebar-backdrop>
+      <b-icon style="color:#272727!important;" class="pt-1" scale="1.8" icon="list"></b-icon>
     </b-button>
 
     <b-link @click="traerProductosTodos('')" style="color: #fff!important;" to="/">

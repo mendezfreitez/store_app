@@ -66,10 +66,13 @@ export default {
     margin-left: 0px!important;
     margin-right: 0px!important;
 }
+/* ModalTerminosCondiciones */
 .card-img,
 .productoCard,
 #modal_2___BV_modal_content_,
 #modal_2___BV_modal_header_,
+#ModalTerminosCondiciones___BV_modal_content_,
+#ModalTerminosCondiciones___BV_modal_header_,
 #modal_1___BV_modal_content_,
 #modal_ingreso___BV_modal_content_,
 #modal_registro___BV_modal_content_,
