@@ -149,8 +149,7 @@ export default {
             this.onReset();
         }.bind(this));
       },
-      onReset(evt) { 
-        // evt.preventDefault();
+      onReset(evt) {
         this.form.nombre = ''
         this.form.descripcion = ''
         this.form.categoria = null
@@ -175,12 +174,6 @@ export default {
             that.form.dataImags = that.$refs.inputFoto.file;
 
             console.log(this.arrayImagenes);
-            // this.form.nombreImags = this.$refs.inputFoto.file.map(()=>{
-            //   texto = this.$refs.inputFoto.file[index].name;
-            //   // this.propsImg.id = this.$refs.inputFoto.file[index].name;
-            //   index += 1; 
-            //   return texto;
-            // });
 
             const toBase64 = file => new Promise((resolve, reject) => {
               const reader = new FileReader();

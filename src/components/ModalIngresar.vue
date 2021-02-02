@@ -15,46 +15,46 @@
       <div>
         <div class="pt-1 pl-3 pr-3 pb-3">
           <b-form @submit="onSubmit" class="mt-4 mb-4">
-                  <b-form-group id="input-group-1">
-                    <p :hidden="mensajeUsuario" class="mb-0" style="font-size:12px!important; color:red">
-                      <b>
-                        {{texto}}
-                      </b>
-                    </p>
-                    <input
-                     class="form-control"
-                      id="input-1"
-                      v-model="form.usuario"
-                      type="text" 
-                      required
-                      placeholder="Usuario"
-                    >
-                  </b-form-group>
+            <b-form-group id="input-group-1">
+              <p :hidden="mensajeUsuario" class="mb-0" style="font-size:12px!important; color:red">
+                <b>
+                  {{texto}}
+                </b>
+              </p>
+              <input
+                class="form-control"
+                id="input-1"
+                v-model="form.usuario"
+                type="text" 
+                required
+                placeholder="Usuario"
+              >
+            </b-form-group>
 
-                  <b-form-group id="input-group-2">
-                    <p :hidden="mensajeClave" class="mb-0" style="font-size:12px!important; color:red">
-                      <b>
-                        {{texto}}
-                      </b>
-                    </p>
-                    <input
-                     class="form-control"
-                      id="input-2"
-                      v-model="form.contrasenia"
-                      required
-                      placeholder="Contraseña"
-                      type="password"
-                    >
-                  </b-form-group>
+            <b-form-group id="input-group-2">
+              <p :hidden="mensajeClave" class="mb-0" style="font-size:12px!important; color:red">
+                <b>
+                  {{texto}}
+                </b>
+              </p>
+              <input
+                class="form-control"
+                id="input-2"
+                v-model="form.contrasenia"
+                required
+                placeholder="Contraseña"
+                type="password"
+              >
+            </b-form-group>
 
-                  <div class="text-right mb-3">
-                    <b-button size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
-                    <b-button size="sm" type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
-                  </div>
+            <div class="text-right mb-3">
+              <b-button size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
+              <b-button size="sm" type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
+            </div>
 
-                  <div class="text-left">
-                   <p style="font-size:12px!important; display:inline-block!important;margin-bottom:0px!important;margin-top:0px!important;">Aún no estás registrado?</p> <b-button variant="outline-primary" size="sm" style="padding-top: 0px; padding-bottom: 1px; padding-right: 4px; padding-left: 4px; margin-left: 0px;" class="ml-1" @click="modalRegistro">Regístrate</b-button>
-                  </div>
+            <div class="text-left">
+              <p style="font-size:12px!important; display:inline-block!important;margin-bottom:0px!important;margin-top:0px!important;">Aún no estás registrado?</p> <b-button variant="outline-primary" size="sm" style="padding-top: 0px; padding-bottom: 1px; padding-right: 4px; padding-left: 4px; margin-left: 0px;" class="ml-1" @click="modalRegistro">Regístrate</b-button>
+            </div>
           </b-form>
         </div>
       </div>
@@ -107,9 +107,7 @@ export default {
     },
     onSubmit(evt) {
       evt.preventDefault();
-      // sessionStorage.setItem('token','1')
-      // this.mutarVisible({ 'estado': false, 'usuario':this.form.usuario, 'listaDeseos':[], 'carro': [] })
-      // return
+      
       var datos = this.form;
       const config = {
         headers: {'content-type': 'application/json'}
@@ -120,7 +118,6 @@ export default {
           sessionStorage.setItem("token", resp.data.token)
           this.Reset()
           this.$bvModal.hide('modal_ingreso')
-          // sessionStorage.setItem("session", "1")
           this.mutarVisible(resp.data)
         }
         else{

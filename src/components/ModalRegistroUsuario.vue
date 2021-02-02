@@ -171,7 +171,6 @@ let url = 'https://storeapp-back-end.herokuapp.com/';
       },
     },
     mounted(){
-      // console.log("contraseña:   " + this.form.contrasenia)
         if(this.form.contrasenia != ''){
           this.estado = true;
         }
@@ -183,7 +182,7 @@ let url = 'https://storeapp-back-end.herokuapp.com/';
       'form.usuario': function(nv, ov){
         nv = nv.toLowerCase()
         var codigoAscii = nv.substr(nv.length - 1, 1).charCodeAt()
-        // console.log(codigoAscii)
+        
         if(codigoAscii < 97 || codigoAscii > 122){
           if(codigoAscii < 48 || codigoAscii > 57){
             nv = nv.substr(0, nv.length - 1)

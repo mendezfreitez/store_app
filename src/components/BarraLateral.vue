@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- <b-button v-b-toggle.sidebar-backdrop>Toggle Sidebar</b-button> -->
-
     <b-sidebar
       id="sidebar-backdrop"
       title="Categorías"
@@ -11,11 +9,6 @@
       backdrop
       style="font-family:'OverpassLight';font-weight:900!important;"
     >
-      <!-- <b-nav-form class="pl-2 pt-1 pb-1"> 
-        <b-form-input size="sm" class="mr-1 ml-0 w-50" placeholder="Búsqueda"></b-form-input>
-        <b-button size="sm" class="ml-1" variant="dark">Buscar</b-button>
-      </b-nav-form> -->
-      
       <b-navbar-nav class="text-left color-light" text-variant="light">
         <b-nav-item v-b-toggle.sidebar-backdrop href="#" to="/" @click="traerporCategorias('')" class="pl-2 ddd pt-1" style="font-size:25px!important;font-family:'OverpassLight';font-weight:700!important;">
           Inicio<b-img height="40" right class="mr-4" :src="require('../editor/img/categorias/Inicio2.svg')" alt=""></b-img>
@@ -111,7 +104,4 @@ export default {
   transition: all .3s ease 0s; 
   -webkit-transition: all .3s ease 0s;
 }
-/* .b-sidebar-header {
-    background-color: #ce3333!important;
-} */
 </style>

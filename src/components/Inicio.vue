@@ -68,15 +68,6 @@ export default {
     created: function(){
         this.traerProductosTodos('')
     },
-    mounted(){
-        // const token = sessionStorage.getItem("token")
-        // this.cantidadCarro = localStorage.getItem('cantProductosCarro');
-        // var productosLocales =JSON.parse(localStorage.getItem('productosCarro'));
-        // if(productosLocales != null){
-        //     this.modificarCarro(productosLocales);
-        //     this.modifPuraCantidad(this.cantidadCarro);            
-        // }
-    },
     methods:{
         ...mapMutations(['modifCantProducto','modifPuraCantidad','modificarCarro', 'traerProductosStore','traerProductosTodos']),
         mostrarModal: function(props){

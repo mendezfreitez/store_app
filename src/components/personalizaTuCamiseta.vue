@@ -115,21 +115,6 @@
 			</template>
 			<div class="well">
 				<div id="avatarlist">
-					<!-- <img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/1.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/2.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/3.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/4.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/5.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/6.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/7.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/8.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/9.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/10.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/11.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/12.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/13.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/14.png">
-					<img style="cursor:pointer;" class="img-polaroid" src="../editor/img/Tripulante/15.png"> -->
 					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/1.png">
 					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/2.png">
 					<img style="cursor:pointer;" class="img-polaroid" width="150" src="../editor/img/Astronauta/3.png">
@@ -959,82 +944,81 @@ export default {
 				}
 			});	  
 
-				$('#inputRangoValor').change(function(e){
-					e.preventDefault();
-					if(that.frontBack === 'back'){
-						var activeObject = canvas.getActiveObject();				
-					}
-					else{
-						var activeObject = canvas2.getActiveObject();
-					}
-					if (activeObject && activeObject.type === 'text') {
-						activeObject.strokeWidth = that.rangoValor;
-					}	
-					$("#text-italic").click();
-					$("#text-italic").click();
-				});
-
-			$('#text-bgcolor').miniColors({
-				change: function(hex, rgb) {
-				var activeObject = canvas.getActiveObject();
+			$('#inputRangoValor').change(function(e){
+				e.preventDefault();
+				if(that.frontBack === 'back'){
+					var activeObject = canvas.getActiveObject();				
+				}
+				else{
+					var activeObject = canvas2.getActiveObject();
+				}
 				if (activeObject && activeObject.type === 'text') {
-					activeObject.backgroundColor = this.value;
-					canvas.renderAll();
-				}
-				},
-				open: function(hex, rgb) {
-					//
-				},
-				close: function(hex, rgb) {
-					//
-				}
-			});		
-			$('#text-fontcolor').miniColors({
-				change: function(hex, rgb) {
-					if(that.frontBack === 'back'){
-						var activeObject = canvas.getActiveObject();				
-					}
-					else{
-						var activeObject = canvas2.getActiveObject();
-					}
-					if (activeObject && activeObject.type === 'text') {
-						activeObject.fill = this.value;
-					}	
-					$("#text-italic").click();
-					$("#text-italic").click();
-				},
-				open: function(hex, rgb) {
-					//
-				},
-				close: function(hex, rgb) {
-					//
-				}
+					activeObject.strokeWidth = that.rangoValor;
+				}	
+				$("#text-italic").click();
+				$("#text-italic").click();
 			});
-			$('#text-strokecolor').miniColors({
-				change: function(hex, rgb) {
-					if(that.frontBack === 'back'){
-						var activeObject = canvas.getActiveObject();				
-					}
-					else{
-						var activeObject = canvas2.getActiveObject();
-					}
-					if (activeObject && activeObject.type === 'text') {
-						activeObject.strokeWidth = 2;
-						activeObject.stroke = this.value;
-						// activeObject.strokeStyle = '#000';
-					}	
-					$("#text-italic").click();
-					$("#text-italic").click();
-				},
-				open: function(hex, rgb) {
-					//
-				},
-				close: function(hex, rgb) {
-					//
+
+		$('#text-bgcolor').miniColors({
+			change: function(hex, rgb) {
+			var activeObject = canvas.getActiveObject();
+			if (activeObject && activeObject.type === 'text') {
+				activeObject.backgroundColor = this.value;
+				canvas.renderAll();
+			}
+			},
+			open: function(hex, rgb) {
+				//
+			},
+			close: function(hex, rgb) {
+				//
+			}
+		});		
+		$('#text-fontcolor').miniColors({
+			change: function(hex, rgb) {
+				if(that.frontBack === 'back'){
+					var activeObject = canvas.getActiveObject();				
 				}
-			});
+				else{
+					var activeObject = canvas2.getActiveObject();
+				}
+				if (activeObject && activeObject.type === 'text') {
+					activeObject.fill = this.value;
+				}	
+				$("#text-italic").click();
+				$("#text-italic").click();
+			},
+			open: function(hex, rgb) {
+				//
+			},
+			close: function(hex, rgb) {
+				//
+			}
+		});
+		$('#text-strokecolor').miniColors({
+			change: function(hex, rgb) {
+				if(that.frontBack === 'back'){
+					var activeObject = canvas.getActiveObject();				
+				}
+				else{
+					var activeObject = canvas2.getActiveObject();
+				}
+				if (activeObject && activeObject.type === 'text') {
+					activeObject.strokeWidth = 2;
+					activeObject.stroke = this.value;
+					// activeObject.strokeStyle = '#000';
+				}	
+				$("#text-italic").click();
+				$("#text-italic").click();
+			},
+			open: function(hex, rgb) {
+				//
+			},
+			close: function(hex, rgb) {
+				//
+			}
+		});
 		
-			//canvas.add(new fabric.fabric.Object({hasBorders:true,hasControls:false,hasRotatingPoint:false,selectable:false,type:'rect'}));
 		$("#drawingArea").hover(
 				function() { 	        	
 					canvas.add(line1);
@@ -1050,9 +1034,7 @@ export default {
 					canvas.remove(line4);
 					canvas.renderAll();
 				}
-			);
-		
-
+		);
 		
 		$('#flip').click(
 			function() {			   
@@ -1672,14 +1654,4 @@ font-family: 'HighSchoolUSASerif';
 	font-weight:900;
 	font-style:italic;
 }
-
-
-/* .card-body{
-	padding: 0px!important;
-} */
-/* @media (min-width: 601px){
-	#shirtDiv{
-		overflow-x: hidden!important;
-	}
-} */
 </style>

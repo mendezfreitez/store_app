@@ -32,27 +32,10 @@
 </template>
 
 <style>
-  /* .modal-body{
-    padding: 0px!important;
-  }
-  .close{
-    opacity:1!important;
-    font-weight: 900!important;
-    font-size: 40px!important;
-    padding-top:9px!important; 
-    background-color: transparent!important;
-  }
-  .modal-header{
-    border-bottom: 0px!important;
-    background-color:#272727!important;
-  }*/
   #ModalTerminosCondiciones___BV_modal_content_{
     border-width: 0px!important;
   }
   #ModalTerminosCondiciones___BV_modal_title_{
     padding-top: 5px!important;
   }
-  /*.custom-checkbox, .custom-checkbox > label.custom-control-label{
-    width: 100%!important;
-  } */
 </style>

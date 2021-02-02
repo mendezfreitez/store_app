@@ -11,7 +11,6 @@
     cancel-title="Cerrar"
     @ok="agregarAlCarro"
     centered>
-    
       <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arrayImagenes"/>
         <template v-slot:modal-footer>
         <div class="w-100" style="margin:0px!important;">
@@ -29,10 +28,6 @@
               {{producto.precioProducto - producto.descuento.montoDescuento | currency}}
             </b-badge>
           </div>
-
-          <!-- <b-button variant="outline-danger" size="sm" class="float-right" @click="cerrarmodal">
-            Cerrar
-          </b-button> -->
         </div>
       </template>
     </b-modal>
@@ -58,9 +53,6 @@ export default {
       }
     }
   },
-  components:{
-    // Lingallery
-  },
   props:{
         tituloModal:String,
         textoModal:String,
@@ -85,22 +77,8 @@ export default {
       });
       if(suma){
         this.ProductosCarro.push({ 'tituloProducto':this.producto.tituloProducto, 'textoProducto':this.producto.textoProducto, 'idProducto':this.producto.idProducto, 'laCantidad':this.producto.laCantidad, 'precio':this.producto.precioProducto, 'imagen':`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/${this.producto.idProducto}/${this.producto.arrayImagenes[0]}` });
-        
-        // console.log(this.ProductosCarro);
-        // console.log(document.getElementsByClassName('carroEnlace')[0]);
-        this.modificarCarro(this.ProductosCarro);        
+        this.modificarCarro(this.ProductosCarro);
       }
-
-      // const token = sessionStorage.getItem('token')
-
-      // if(token){
-      //   sessionStorage.setItem("carroUsuario", JSON.stringify(this.ProductosCarro))
-      // }
-      // else{
-      //   localStorage.setItem("cantProductosCarro", this.ProductosCarro.length);
-      //   localStorage.setItem("productosCarro", JSON.stringify(this.ProductosCarro));
-      // }
-
       this.$bvModal.hide('modal_1');
     },
     cerrarmodal(){

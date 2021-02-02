@@ -29,10 +29,6 @@
               {{producto.precioProducto - producto.descuento.montoDescuento | currency}}
             </b-badge>
           </div>
-
-          <!-- <b-button variant="outline-danger" size="sm" class="float-right" @click="cerrarmodal">
-            Cerrar
-          </b-button> -->
         </div>
       </template>
     </b-modal>
@@ -40,7 +36,6 @@
 </template>
 
 <script>
-import galeria from 'lingallery'
 import { mapMutations, mapState } from 'vuex';
 export default {
   data(){
@@ -58,9 +53,6 @@ export default {
         id:String
       }
     }
-  },
-  components:{
-    // Lingallery
   },
   props:{
         tituloModal:String,

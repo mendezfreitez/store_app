@@ -1,7 +1,6 @@
 <template>
   <div id="app" style="width:100%!importaant;">
     <BarraLateral />
-    <!-- <Navegador /> -->
     <router-view style="padding-top:0px!important;" />
   </div>
 </template>
@@ -20,7 +19,6 @@ export default {
     ...mapMutations(['getUsuario'])
   },
   mounted(){
-    // localStorage.setItem("productosCarro", [])
     this.getUsuario()
   }
 }

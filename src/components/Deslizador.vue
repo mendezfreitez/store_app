@@ -38,11 +38,6 @@ export default {
                 { backgroundColor: '#b71c1c', width: '100%', height: '100%', titulo: 'Entregas en todo Santiago', subtitulo: 'Posibilidad de entrega en todo Santiago' }
             ],
         }
-    },
-    methods:{
-        hello(){
-            // alert('HELLO')
-        }
     }
 }
 </script>

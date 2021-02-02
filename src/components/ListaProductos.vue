@@ -30,7 +30,7 @@
                     </b-badge>
                 </div>
 
-                <b-link style="position:absolute; bottom:5px!important;font-family: 'OverpassLight'; font-weight:600!important; right:105px!important; padding-top:1px!important;" class="btn btn-sm btn-outline-secondary papelera" title="Eliminar Producto de Carro" href="#"  @click="removerDeCarro(Producto.idProducto, Producto.tituloProducto)">
+                <b-link style="position:absolute; bottom:4px!important;font-family: 'OverpassLight'; font-weight:600!important; right:105px!important; padding-top:1px!important;" class="btn btn-sm btn-outline-secondary papelera" title="Eliminar Producto de Carro" href="#"  @click="removerDeCarro(Producto.idProducto, Producto.tituloProducto)">
                     Eliminar
                 </b-link>
             </b-card>
@@ -87,20 +87,16 @@
                     else{
                         this.Total += e.precio * e.laCantidad;
                     }
-                    // console.log(`Precio: ${e.precio} // Cantidad: ${e.laCantidad} // Total: ${e.precio*e.laCantidad}`);
                 }.bind(this));
                 this.modifTextoTotalCarro(this.Total)
-                // document.getElementById('footerModal').innerHTML = this.Total;
-                // alert(numeral(this.Total).format('0,0'));
             },
             comprar(){
                 alert(`El total a pagar es: ${document.querySelector('#textoTotal').textContent}`);
             }
         },
         mounted(){
-
             // console.log(this.ProductosCarro)
-            
+
             // const token = sessionStorage.getItem("token")
             // var productos = []
             // if(token){
@@ -132,12 +128,12 @@
     border-radius: 0px!important;
     font-family:'OverpassLight';
     position: absolute;
-    font-size:13px!important;
-    padding-top:4px!important;
-    padding-bottom:4px!important;
-    height:19px!important;
-    right:105px!important;
-    width:65px!important;
+    font-size:12px!important;
+    padding-top:2px!important;
+    padding-bottom:3px!important;
+    height:15px!important;
+    right:0px!important;
+    width:56px!important;
     top:0px!important;
 }
     #btnCompra{
@@ -174,5 +170,11 @@
     }
     div.b-form-spinbutton{
         height: 19px !important;
+    }
+    div.margenCard{
+        border-radius: 0px!important;
+    }
+    ul.dropdown-menu{
+        border: 0px!important;
     }
 </style>

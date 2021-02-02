@@ -8,7 +8,6 @@ import './editor/css/jquery.miniColors.css';
 import './editor/css/jquery.simplecolorpicker.css';
 import VueCurrencyFilter from 'vue-currency-filter'
 import Numeric from '../src/ArchivosJavaScript/jquery.numeric-min'
-// import 'typeface-dosis'
 import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import 'fabric';
@@ -18,18 +17,7 @@ import Carousel3d from 'vue-carousel-3d';
 
 Vue.use(Carousel3d);
 Vue.use(EasySlider)
-// Load Dosis typeface
-// require('typeface-dosis')
-// import jquery from 'jquery'npm run serve
-// Vue.use(jquery)
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-// import './editor/js/caseEditor.js';
-// import './editor/js/excanvas.js';
-// import './editor/js/jquery.js';
 import './editor/js/bootstrap.js';
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
 import store from './store'
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)

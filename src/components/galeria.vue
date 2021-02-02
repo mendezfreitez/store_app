@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import galeria from 'lingallery'
 export default {
     data(){
         return{

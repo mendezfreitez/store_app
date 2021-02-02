@@ -66,7 +66,6 @@
                   ></b-form-select>
                 </b-form-group>
 
-
                 <b-form-group id="input-group-4">
                   <b-form-input
                     @keydown="cambioUnInput"
@@ -94,9 +93,6 @@
                   ></b-form-input>
                 </b-form-group>
 
-
-
-                
                 <b-card class="mb-3 pb-2 pl-2">
                    <b-form-group class="mb-2">
                     <b-form-checkbox :disabled="descuentoHabilitado" v-model="form.aplicaDescuento" @change="cambioAplicaDescuento" name="check-button" switch size="lg" class=" mt-1">
@@ -172,7 +168,6 @@
                                     ></b-form-input>
                                   </b-input-group>
                                 </b-form-group>
-                            
                           </div>
                       </b-card>
                   </div>

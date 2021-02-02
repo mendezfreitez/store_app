@@ -1,8 +1,5 @@
 <template>
   <div id="contenedorDeNavegador">
-    <!-- <div style="width:100%!important; height:35px!important; background:#171616!important;">
-      <p class="mb-0 pt-1" style="color:#FFF;">Encuentranos en Av. Libertador Valbuena con calle 45, al lado del Llano Mall</p>
-    </div> -->
   <b-navbar type="dark"  id="navegadorArriba" style="background-color:#272727!important; border-bottom:4px solid #ce3333!important;">
     <b-button size="md" variant="transparent" class="ml-1 my-sm-0 botonToggler" style="border:solid 0px#fff!important; background-color: #ce3333!important;" v-b-toggle.sidebar-backdrop>
       <b-icon style="color:#272727!important;" class="pt-1" scale="1.8" icon="list"></b-icon>
@@ -31,7 +28,7 @@
       </b-navbar-nav>
     </b-collapse>
 
-    <div style="margin-top:6px!important;">
+    <div style="margin-top:5px!important;">
       <b-link :hidden="!esVisible" size="sm" class="mr-4 my-sm-0 registroIngreso" variant="outline-light" @click="modalIngresar" style="font-family: 'OverpassLight'; font-size:16px!important;">
         Ingresar
       </b-link> 
@@ -42,8 +39,6 @@
             Cerrar Sessión
             <b-img style="position:relative; margin-bottom:3px!important;" class="pl-1 mr-2" height="18"  :src="require('../assets/off.png')" alt=""></b-img>
           </b-dropdown-item>
-          <!-- <b-dropdown-item href="#">Another action</b-dropdown-item>
-          <b-dropdown-item href="#">Something else here</b-dropdown-item> -->
         </b-dropdown>
       </div>
     </div>
@@ -68,33 +63,26 @@ import { mapState, mapMutations } from 'vuex'
 import ModalCarro from './ModalCarroCompras'
 import ModalIngresar from './ModalIngresar'
 export default {
-    name:'Navegador',
-    components:{
-      ModalCarro, ModalIngresar
+  name:'Navegador',
+  components:{
+    ModalCarro, ModalIngresar
+  },
+  data(){
+    return{
+    }
+  },
+  computed:{
+    ...mapState(['cantidadCarro', 'esVisible', 'sesionUsuario'])
+  },
+  methods:{
+    ...mapMutations(['traerProductosTodos', 'dropUsuario']),
+    modalProductos(){
+      this.$bvModal.show('ModalCarroCompras');
     },
-    data(){
-      return{
-      }
-    },
-    computed:{
-      ...mapState(['cantidadCarro', 'esVisible', 'sesionUsuario'])
-    },
-    methods:{
-      ...mapMutations(['traerProductosTodos', 'dropUsuario']),
-      modalProductos(){
-        this.$bvModal.show('ModalCarroCompras');
-      },
-      modalIngresar(){
-        this.$bvModal.show('modal_ingreso');
-      }
-    },
-    // mounted(){
-    //   var usuario = sessionStorage.getItem('token')
-    //   if(usuario != null){
-    //     this.sesionUsuario = usuario
-    //   }
-    //   console.log(`USUARIO::: ${usuario}`)
-    // }
+    modalIngresar(){
+      this.$bvModal.show('modal_ingreso');
+    }
+  }
 }
 </script>
 
@@ -112,10 +100,10 @@ export default {
   #sessionItem{
     color:#FFF!important;
     font-size: 13px!important;
+    padding-top: 7px!important;
   }
   #sessionItem:hover{
     background-color: #2c3e50;
-    
     font-size: 13px!important;
   }
   #dropdown-right__BV_toggle_{
@@ -124,7 +112,4 @@ export default {
     padding-bottom: 0px!important;
     padding-top: 1px!important;
   }
-  /* #dropdown-right__BV_toggle_:hover{
-    text-decoration-line: underline!important;
-  } */
 </style>

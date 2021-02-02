@@ -3,10 +3,6 @@
     <b-container class="pl-0 pr-0" style="margin-top:70px!important;">
         <b-badge class="mb-2" variant="dark" style="float:left!important;">
         <h4 class="mb-0" style="display: inline-block!important;">Productos</h4></b-badge>
-        <!-- <b-button size="sm" to="/NuevoProducto" variant="outline-success" style="display: inline-block!important;float:right!important;">
-            Nuevo
-            <b-icon icon="plus"></b-icon>
-        </b-button> -->
         <b-button size="sm" variant="dark" style="display: inline-block!important;float:right!important;" @click="modalProducto('')">
             Nuevo
             <b-icon icon="plus"></b-icon>
@@ -16,8 +12,6 @@
                 <thead>
                     <tr>
                         <th scope="col">Producto</th>
-                        <!-- <th scope="col">Descripción</th> -->
-                        <!-- <th scope="col">Categoría</th> -->
                         <th scope="col">Precio</th>
                         <th scope="col">Acción</th>
                     </tr>
@@ -25,8 +19,6 @@
                 <tbody>
                     <tr v-for="Producto in productosTodos" :key="Producto.idProducto">
                         <td nowrap class="text-left">{{Producto.nombre}}</td>
-                        <!-- <td nowrap class="text-left">{{Producto.descripcion.substr(0,50)}}</td> -->
-                        <!-- <td nowrap class="text-left">{{Producto.categoria}}</td> -->
                         <td nowrap class="text-right">{{Producto.precio | currency}}</td>
                         <td nowrap class="text-center">
                             <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera btn btn-outline-danger" @click="eliminarProducto(Producto._id, Producto.nombre)">
@@ -73,13 +65,6 @@
                             <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera ml-1 btn btn-outline-dark" @click="modalCategoria(categoria._id, categoria.nombre)">
                                EDITAR
                             </a>
-
-                            <!-- <a href="#" class="papelera" @click="eliminarCategoria(categoria._id, categoria.nombre)">
-                                <b-icon icon="trash" variant="primary" style="color: #7952b3;"></b-icon>
-                            </a>
-                            <a href="#" class="papelera ml-3" @click="modalCategoria(categoria._id, categoria.nombre)">
-                                <b-icon icon="pencil" variant="primary" style="color: #7952b3;"></b-icon>
-                            </a> -->
                         </td>
                     </tr>
                 </tbody>
@@ -147,7 +132,6 @@ export default {
             this.$bvModal.show('modalProducto')
         },
         modalCategoria(id, nombre){
-            // alert(`'${nombre}'`)
             if(id != ''){
                 this.titulo = `Editar Categoría`;
                 this.$refs.modalCategoria.form.nombre = nombre;
@@ -172,7 +156,6 @@ export default {
                         esto.categoriasTodas = resp.data;
                         // console.log(resp.data);
                     });
-                    // esto.categoriasTodas = esto.categorias;
                 });
             }
         }
@@ -190,7 +173,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

@@ -14,7 +14,3 @@ export default {
     name:'TerminosCondiciones'
 }
 </script>
-
-<style>
-
-</style>
