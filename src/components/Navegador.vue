@@ -1,12 +1,15 @@
 <template>
   <div id="contenedorDeNavegador">
+    <!-- <div style="width:100%!important; height:35px!important; background:#171616!important;">
+      <p class="mb-0 pt-1" style="color:#FFF;">Encuentranos en Av. Libertador Valbuena con calle 45, al lado del Llano Mall</p>
+    </div> -->
   <b-navbar type="dark"  id="navegadorArriba" style="background-color:#272727!important; border-bottom:4px solid #ce3333!important;">
-    <b-button size="md" variant="transparent" class="ml-1 my-sm-0 botonToggler" style="border:solid 0px#fff!important; background-color: #ce3333!important; border-radius:0px!important;" v-b-toggle.sidebar-backdrop>
+    <b-button size="md" variant="transparent" class="ml-1 my-sm-0 botonToggler" style="border:solid 0px#fff!important; background-color: #ce3333!important;" v-b-toggle.sidebar-backdrop>
       <b-icon style="color:#272727!important;" class="pt-1" scale="1.8" icon="list"></b-icon>
     </b-button>
 
     <b-link @click="traerProductosTodos('')" style="color: #fff!important;" to="/">
-      <b-img height="42" right class="mr-4 ml-4" :src="require('../editor/img/categorias/Inicio2.svg')" alt=""></b-img>
+      <b-img height="38" right class="mr-4 ml-4" :src="require('../editor/img/categorias/Inicio2.svg')" alt=""></b-img>
     </b-link>
 
     <b-collapse id="nav-collapse mr-2" is-nav>
@@ -29,9 +32,20 @@
     </b-collapse>
 
     <div style="margin-top:6px!important;">
-      <b-link size="sm" class="mr-4 my-sm-0 registroIngreso" variant="outline-light" @click="modalIngresar" style="font-family: 'OverpassLight'; font-size:18px!important;">
+      <b-link :hidden="!esVisible" size="sm" class="mr-4 my-sm-0 registroIngreso" variant="outline-light" @click="modalIngresar" style="font-family: 'OverpassLight'; font-size:16px!important;">
         Ingresar
-      </b-link>
+      </b-link> 
+
+      <div :hidden="esVisible">
+        <b-dropdown id="dropdown-right" right :text="sesionUsuario" variant="dark" class="m-0 mr-3">
+          <b-dropdown-item class="text-right" id="sessionItem" style="background-color:#1d2124; font-family:OverpassLight!important;" variant="dark" href="#" @click="dropUsuario">
+            Cerrar Sessión
+            <b-img style="position:relative; margin-bottom:3px!important;" class="pl-1 mr-2" height="18"  :src="require('../assets/off.png')" alt=""></b-img>
+          </b-dropdown-item>
+          <!-- <b-dropdown-item href="#">Another action</b-dropdown-item>
+          <b-dropdown-item href="#">Something else here</b-dropdown-item> -->
+        </b-dropdown>
+      </div>
     </div>
 
     <div style="width:46px;height:46px;" @click="modalProductos">
@@ -45,7 +59,7 @@
 
   <ModalCarro ref="unModalDeCarro" />
   <ModalIngresar/>
-  
+
 </div>  
 </template>
 
@@ -63,10 +77,10 @@ export default {
       }
     },
     computed:{
-      ...mapState(['cantidadCarro'])
+      ...mapState(['cantidadCarro', 'esVisible', 'sesionUsuario'])
     },
     methods:{
-      ...mapMutations(['traerProductosTodos']),
+      ...mapMutations(['traerProductosTodos', 'dropUsuario']),
       modalProductos(){
         this.$bvModal.show('ModalCarroCompras');
       },
@@ -74,8 +88,13 @@ export default {
         this.$bvModal.show('modal_ingreso');
       }
     },
-    mounted(){
-    }
+    // mounted(){
+    //   var usuario = sessionStorage.getItem('token')
+    //   if(usuario != null){
+    //     this.sesionUsuario = usuario
+    //   }
+    //   console.log(`USUARIO::: ${usuario}`)
+    // }
 }
 </script>
 
@@ -90,4 +109,22 @@ export default {
   #contenedorDeNavegador{
     text-align: center!important;
   }
+  #sessionItem{
+    color:#FFF!important;
+    font-size: 13px!important;
+  }
+  #sessionItem:hover{
+    background-color: #2c3e50;
+    
+    font-size: 13px!important;
+  }
+  #dropdown-right__BV_toggle_{
+    font-family: 'OverpassLight'!important;
+    color: #FFF;
+    padding-bottom: 0px!important;
+    padding-top: 1px!important;
+  }
+  /* #dropdown-right__BV_toggle_:hover{
+    text-decoration-line: underline!important;
+  } */
 </style>

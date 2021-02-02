@@ -56,9 +56,9 @@ export default {
     padding-bottom: 0px!important;
   }
   .productoCard {
-  -webkit-box-shadow: 6px 6px 8px 1px rgba(0,0,0,0.11);
-  -moz-box-shadow: 6px 6px 8px 1px rgba(0,0,0,0.11);
-  box-shadow: 6px 6px 8px 1px rgba(0,0,0,0.11);
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.11);
+  -moz-box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.11);
+  box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.1);
   }
   .etiquetaDescuento {
     font-family:'OverpassLight';

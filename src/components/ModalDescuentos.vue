@@ -15,17 +15,17 @@
       <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arrayImagenes"/>
         <template v-slot:modal-footer>
         <div class="w-100" style="margin:0px!important;">
-          <b-button variant="outline-dark" size="md" class="float-left ml-1" style=" padding-left:8px;font-family: 'OverpassLight';font-weight:800!important;" @click="agregarAlCarro">
+          <b-button variant="outline-dark" size="sm" class="float-left ml-1" style=" padding-left:8px;font-family: 'OverpassLight';font-weight:800!important;" @click="agregarAlCarro">
             Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
           </b-button>
           <b-badge v-if="!producto.aplicaDescuento" variant="dark" class="float-right text-right pl-1 pr-1 pt-3 pb-0" id="footerModal" style=" color:#000!important;background-color:transparent!important;font-family: 'OverpassLight';width:170px!important; font-size:18px!important;">
             {{producto.precioProducto | currency}}
           </b-badge>
           <div class="w-50 float-right">
-            <b-badge v-if="producto.aplicaDescuento" variant="dark" class="text-right float-right pl-1  pt-1 pb-0" id="footerModal" style="padding-right:4px!important; display:block; color:#000!important; background-color:transparent!important;font-family: 'OverpassLight';width:170px!important; font-size:18px!important; text-decoration-line:line-through;">
+            <b-badge v-if="producto.aplicaDescuento" variant="dark" class="text-right float-right pl-1  pt-1 pb-0" id="footerModal" style="padding-right:4px!important; display:block; color:#000!important; background-color:transparent!important;font-family: 'OverpassLight';width:170px!important; font-size:16px!important; text-decoration-line:line-through;">
               {{producto.precioProducto | currency}}
             </b-badge>
-            <b-badge v-if="producto.aplicaDescuento" variant="dark" class="text-right float-right pl-1 pr-1 pt-1 pb-0" id="footerModal" style=" display:block; color:#000!important; background-color:transparent!important;font-family: 'OverpassLight';width:170px!important; font-size:18px!important; margin-top:2px!important;">
+            <b-badge v-if="producto.aplicaDescuento" variant="dark" class="text-right float-right pl-1 pr-1 pt-1 pb-0" id="footerModal" style=" display:block; color:#000!important; background-color:transparent!important;font-family: 'OverpassLight';width:170px!important; font-size:16px!important; margin-top:2px!important;">
               {{producto.precioProducto - producto.descuento.montoDescuento | currency}}
             </b-badge>
           </div>
@@ -82,12 +82,9 @@ export default {
         }
        });
       if(suma === true){
-        this.ProductosCarro.push({ 'tituloProducto':this.producto.tituloProducto, 'textoProducto':this.producto.textoProducto, 'idProducto':this.producto.idProducto, 'laCantidad':this.producto.laCantidad, 'precio':this.producto.precioProducto, 'imagen':`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/${this.producto.idProducto}/${this.producto.arrayImagenes[0]}` });
-        console.log(this.ProductosCarro);
-        console.log(document.getElementsByClassName('carroEnlace')[0]);
+        this.ProductosCarro.push({ 'tituloProducto':this.producto.tituloProducto, 'textoProducto':this.producto.textoProducto, 'idProducto':this.producto.idProducto, 'laCantidad':this.producto.laCantidad, 'precio':this.producto.precioProducto, 'imagen':`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/${this.producto.idProducto}/${this.producto.arrayImagenes[0]}`, 'descuento':this.producto.descuento });
         this.modificarCarro(this.ProductosCarro);        
       }
-      // console.log(this.ProductosCarro);
       this.$bvModal.hide('modal_2');
     },
     cerrarmodal(){
@@ -114,10 +111,10 @@ export default {
     background-color:#272727!important;
     border-bottom: 4px solid #ce3333!important;
   }
-  #modal_1___BV_modal_content_{
+  #modal_2___BV_modal_content_{
     border-width: 0px!important;
   }
-  #modal_1___BV_modal_title_{
-    padding-top: 5px!important;
+  #modal_2___BV_modal_title_{
+    padding-top: 6px!important;
   }
 </style>

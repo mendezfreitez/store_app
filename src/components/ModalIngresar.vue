@@ -1,6 +1,7 @@
 <template>
   <div>
     <ModalRegistro></ModalRegistro>
+    <ModalMensaje :titulo="titulo" :texto="texto"></ModalMensaje>
     <b-modal id="modal_ingreso"
     size="sm"
     style="border: 0px solid rgba(0, 0, 0, 0.2)!important;"
@@ -12,26 +13,38 @@
     cancel-title="Cerrar"
     centered>
       <div>
-        <div class="p-3">
-          <b-form @submit="onSubmit" @reset="onReset">
+        <div class="pt-1 pl-3 pr-3 pb-3">
+          <b-form @submit="onSubmit" class="mt-4 mb-4">
                   <b-form-group id="input-group-1">
-                    <b-form-input
+                    <p :hidden="mensajeUsuario" class="mb-0" style="font-size:12px!important; color:red">
+                      <b>
+                        {{texto}}
+                      </b>
+                    </p>
+                    <input
+                     class="form-control"
                       id="input-1"
                       v-model="form.usuario"
                       type="text" 
                       required
                       placeholder="Usuario"
-                    ></b-form-input>
+                    >
                   </b-form-group>
 
                   <b-form-group id="input-group-2">
-                    <b-form-input
+                    <p :hidden="mensajeClave" class="mb-0" style="font-size:12px!important; color:red">
+                      <b>
+                        {{texto}}
+                      </b>
+                    </p>
+                    <input
+                     class="form-control"
                       id="input-2"
                       v-model="form.contrasenia"
                       required
                       placeholder="Contraseña"
                       type="password"
-                    ></b-form-input>
+                    >
                   </b-form-group>
 
                   <div class="text-right mb-3">
@@ -39,8 +52,8 @@
                     <b-button size="sm" type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
                   </div>
 
-                  <div class="text-left" style="font-size:15px!important;">
-                    <span>Aún no estás registrado? <b-link class="ml-2" @click="modalRegistro">Regístrate</b-link></span>
+                  <div class="text-left">
+                   <p style="font-size:12px!important; display:inline-block!important;margin-bottom:0px!important;margin-top:0px!important;">Aún no estás registrado?</p> <b-button variant="outline-primary" size="sm" style="padding-top: 0px; padding-bottom: 1px; padding-right: 4px; padding-left: 4px; margin-left: 0px;" class="ml-1" @click="modalRegistro">Regístrate</b-button>
                   </div>
           </b-form>
         </div>
@@ -50,11 +63,19 @@
 </template>
 
 <script>
+import axios from 'axios'
+// let url = 'http://localhost:3000/';
+let url = 'https://storeapp-back-end.herokuapp.com/';
 import ModalRegistro from './ModalRegistroUsuario'
+import ModalMensaje from '../components/Categorias/modalMensaje'
 import { mapMutations, mapState } from 'vuex';
 export default {
   data(){
     return{
+      mensajeClave:true,
+      mensajeUsuario:true,
+      titulo:'',
+      texto:'',
       form:{
         usuario:'',
         contrasenia:''
@@ -62,7 +83,7 @@ export default {
     }
   },
   components:{
-    ModalRegistro
+    ModalRegistro, ModalMensaje
   },
   props:{
         tituloModal:String,
@@ -73,32 +94,72 @@ export default {
     ...mapState(['ProductosCarro'])
   },
   methods:{
-    ...mapMutations(['modificarCarro','modifPuraCantidad']),
-    onReset(evt) {
-      evt.preventDefault()
+    ...mapMutations(['modificarCarro','modifPuraCantidad', 'mutarVisible']),
+    Reset(evt) {
       this.form.usuario = ''
       this.form.contrasenia = ''
+      this.texto = ''
+      this.mensajeClave = true
+      this.mensajeUsuario = true
     },
     cerrarmodal(){
       this.$bvModal.hide('modal_1');
     },
     onSubmit(evt) {
       evt.preventDefault();
+      // sessionStorage.setItem('token','1')
+      // this.mutarVisible({ 'estado': false, 'usuario':this.form.usuario, 'listaDeseos':[], 'carro': [] })
+      // return
       var datos = this.form;
       const config = {
         headers: {'content-type': 'application/json'}
       }
-      let that = this;
-      axios.post(`${url}Acceso`, datos, config).then(function(resp){
-        console.log(resp.data.usuario[0]);
-        if(resp.data.resul === true){
-          that.sesion_({'resul':resp.data.resul, 'usuar':resp.data.usuario[0]})
+      axios.post(`${url}Login`, datos, config).then(function(resp){
+        console.log(resp.data)
+        if(resp.data.titulo === "Listo!"){
+          sessionStorage.setItem("token", resp.data.token)
+          this.Reset()
+          this.$bvModal.hide('modal_ingreso')
+          // sessionStorage.setItem("session", "1")
+          this.mutarVisible(resp.data)
         }
-      });
+        else{
+          switch (resp.data.titulo) {
+            case 'Problema!':
+              this.mensajeUsuario = false
+              break;
+            case 'clave':
+              this.mensajeClave = false
+              break;
+          
+            default:
+              break;
+          }
+          this.texto = resp.data.texto
+        }
+      }.bind(this));
     },
     modalRegistro(){
       this.$bvModal.show('modal_registro')
       this.$bvModal.hide('modal_ingreso')
+    }
+  },
+  watch:{
+    'form.usuario': function(nv, ov){
+      this.mensajeUsuario = true
+      this.mensajeClave = true
+      nv = nv.toLowerCase()
+      var codigoAscii = nv.substr(nv.length - 1, 1).charCodeAt()
+      if(codigoAscii < 97 || codigoAscii > 122){
+        if(codigoAscii < 48 || codigoAscii > 57){
+          nv = nv.substr(0, nv.length - 1)
+        }
+      }
+      this.form.usuario = nv.split('').join('')
+    },
+    'form.contrasenia': function(nv, ov){
+      this.mensajeUsuario = true
+      this.mensajeClave = true
     }
   }
 }

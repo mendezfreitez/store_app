@@ -15,10 +15,10 @@
       <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arrayImagenes"/>
         <template v-slot:modal-footer>
         <div class="w-100" style="margin:0px!important;">
-          <b-button variant="outline-dark" size="md" class="float-left ml-1" style=" padding-left:8px;font-family: 'OverpassLight';font-weight:800!important;" @click="agregarAlCarro">
+          <b-button variant="outline-dark" size="sm" class="float-left ml-1" style=" padding-left:8px;font-family: 'OverpassLight';font-weight:800!important;" @click="agregarAlCarro">
             Agregar al Carro <b-icon scale="1" icon="cart-check" aria-hidden="true"></b-icon>
           </b-button>
-          <b-badge v-if="!producto.aplicaDescuento" variant="dark" class="float-right text-right pl-1 pr-1 pt-3 pb-0" id="footerModal" style=" color:#000!important;background-color:transparent!important;font-family: 'OverpassLight';width:170px!important; font-size:18px!important;">
+          <b-badge v-if="!producto.aplicaDescuento" variant="dark" class="float-right text-right pl-1 pr-1 pt-2 pb-0" id="footerModal" style=" color:#000!important;background-color:transparent!important;font-family: 'OverpassLight';width:170px!important; font-size:18px!important;">
             {{producto.precioProducto | currency}}
           </b-badge>
           <div class="w-50 float-right">
@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import galeria from 'lingallery'
 import { mapMutations, mapState } from 'vuex';
 export default {
   data(){
@@ -75,19 +74,33 @@ export default {
     agregarAlCarro(){
       let that = this;
       let suma = true;
+      
+      console.log(this.ProductosCarro)
+
       this.ProductosCarro.map(function(elemento){
         if(elemento.idProducto === that.producto.idProducto){
           suma = false;
           return;
         }
-       });
-      if(suma === true){
+      });
+      if(suma){
         this.ProductosCarro.push({ 'tituloProducto':this.producto.tituloProducto, 'textoProducto':this.producto.textoProducto, 'idProducto':this.producto.idProducto, 'laCantidad':this.producto.laCantidad, 'precio':this.producto.precioProducto, 'imagen':`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/${this.producto.idProducto}/${this.producto.arrayImagenes[0]}` });
-        console.log(this.ProductosCarro);
-        console.log(document.getElementsByClassName('carroEnlace')[0]);
+        
+        // console.log(this.ProductosCarro);
+        // console.log(document.getElementsByClassName('carroEnlace')[0]);
         this.modificarCarro(this.ProductosCarro);        
       }
-      // console.log(this.ProductosCarro);
+
+      // const token = sessionStorage.getItem('token')
+
+      // if(token){
+      //   sessionStorage.setItem("carroUsuario", JSON.stringify(this.ProductosCarro))
+      // }
+      // else{
+      //   localStorage.setItem("cantProductosCarro", this.ProductosCarro.length);
+      //   localStorage.setItem("productosCarro", JSON.stringify(this.ProductosCarro));
+      // }
+
       this.$bvModal.hide('modal_1');
     },
     cerrarmodal(){

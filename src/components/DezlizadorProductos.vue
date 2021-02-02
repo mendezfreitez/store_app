@@ -60,7 +60,7 @@ export default {
                     elarray.push(el)
                 }
             })
-            console.log(elarray)
+            // console.log(elarray)
             this.productos = elarray
         }
     },
@@ -69,13 +69,13 @@ export default {
             var vaina = [];
             this.$refs.elModal2.producto = props;
             this.unProducto = props;
-            console.log(this.unProducto);
+            // console.log(this.unProducto);
             for (let index = 0; index < this.unProducto.arrayImagenes.length; index++) {
-                console.log(`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`)
+                // console.log(`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`)
                 vaina.push({ id:index , src:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`, thumbnail:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}` });
             }
             this.arregloFinal = vaina;
-            console.log(this.arregloFinal);
+            // console.log(this.arregloFinal);
             this.$refs.elModal2.arrayImagenes = this.arregloFinal;
             this.$bvModal.show("modal_2");
         }

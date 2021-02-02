@@ -108,8 +108,8 @@ export default {
   align-items: center!important;
 }
 .ddd{
-  transition: all .5s ease 0s; 
-  -webkit-transition: all .5s ease 0s;
+  transition: all .3s ease 0s; 
+  -webkit-transition: all .3s ease 0s;
 }
 /* .b-sidebar-header {
     background-color: #ce3333!important;

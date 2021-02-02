@@ -8,17 +8,29 @@
 
 <script>
 import 'typeface-dosis'
+import { mapMutations } from 'vuex'
 import Navegador from './components/Navegador'
 import BarraLateral from './components/BarraLateral'
 import Footer from './components/Footer'
 export default {
   components:{
     Navegador, BarraLateral, Footer
+  },
+  methods:{
+    ...mapMutations(['getUsuario'])
+  },
+  mounted(){
+    // localStorage.setItem("productosCarro", [])
+    this.getUsuario()
   }
 }
 </script>
 
 <style>
+html::-webkit-scrollbar {   
+  display: none; 
+}
+
   #app {
     width: 100%!important;
     font-family: Avenir, Helvetica, Arial, sans-serif;

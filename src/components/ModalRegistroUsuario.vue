@@ -14,46 +14,58 @@
         <div class="p-3">
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <b-form-group id="input-group-1">
-              <b-form-input
+              <input
+                class="form-control"
                 id="input-1"
                 v-model="form.usuario"
                 type="text" 
                 required
-                @keyup="validarUsuario()"
                 placeholder="Usuario"
-              ></b-form-input>
+              >
+            </b-form-group>
+            <b-form-group id="input-group-4">
+              <input
+                class="form-control"
+                id="input-correo"
+                v-model="form.correo"
+                type="email" 
+                required
+                placeholder="Correo"
+              >
             </b-form-group>
             <b-form-group id="input-group-2">
-              <b-form-input
+              <input
+                class="form-control"
                 id="input-2"
                 v-model="form.contrasenia"
                 required
                 placeholder="Contraseña"
                 type="password"
-              ></b-form-input>
+              >
             </b-form-group>
             <b-form-group id="input-group-3">
-              <b-input
+              <input
+                class="form-control"
                 id="input-3"
                 v-model="form.contraseniaRepeat"
                 :state="contrasenias"
                 required
                 placeholder="Repetir Contraseña"
                 type="password"
-              ></b-input> 
+              > 
               <div class="text-left">
                 <b-form-invalid-feedback :state="contrasenias">Contraseñas no coinciden</b-form-invalid-feedback>
                 <b-form-valid-feedback :state="contrasenias">Contraseña Correcta</b-form-valid-feedback>
               </div>
             </b-form-group>
-            <b-form-group id="input-group-4">
+            <b-form-group id="input-group-5">
               <b-form-checkbox-group class="text-left" v-model="form.checked" id="checkboxes-4">
-                <b-form-checkbox v-model="form.TerminosCondiciones" required >Acepto los <b-link @click="modalTerminosCondiciones">Términos y condiciones</b-link></b-form-checkbox>
+                <b-form-checkbox @change="btnTerminos=!btnTerminos" v-model="form.TerminosCondiciones" required >Acepto los <b-link @click="modalTerminosCondiciones">Términos y condiciones</b-link></b-form-checkbox>
               </b-form-checkbox-group>
             </b-form-group>
             <div class="text-right">
               <b-button size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
-              <b-button size="sm" :disabled="estado" type="submit" class="ml-2" variant="outline-dark">Registrar</b-button>
+              <b-button :disabled="!btnTerminos" size="sm" type="submit" class="ml-2" variant="outline-dark">Registrar</b-button>
             </div>
           </b-form>
         </div>
@@ -64,10 +76,11 @@
 
 <script>
 import ModalTerminosCondiciones from './ModalTerminosCondiciones'
-  let url = 'http://localhost:3000/';
+let url = 'https://storeapp-back-end.herokuapp.com/';
+  // let url = 'http://localhost:3000/';
   import axios from 'axios';
   export default {
-    name:'Registro',
+    name:'Registro', 
     props:{
       desactivado: true
     },
@@ -76,9 +89,11 @@ import ModalTerminosCondiciones from './ModalTerminosCondiciones'
     },
     data() {
       return {
+        btnTerminos:false,
         form: {
           usuario: '',
           contrasenia: '',
+          correo:'',
           contraseniaRepeat:'',
           TerminosCondiciones:[false],
           carro:[]
@@ -94,7 +109,7 @@ import ModalTerminosCondiciones from './ModalTerminosCondiciones'
           alert("Antes debe aceptar los 'Términos y Condiciones'.");
         }
         else{
-          console.log(this.form);
+          // console.log(this.form);
           var datos = this.form;
           const config = {
             headers: {'content-type': 'application/json'}
@@ -102,13 +117,13 @@ import ModalTerminosCondiciones from './ModalTerminosCondiciones'
         const that = this;
         axios.post(`${url}Registro`, datos, config).then(function (resp) {
             console.log(resp.data);  
-            if(resp.data === 1){
-              that.onReset(evt);
-              alert("Usuario creado con éxito.");
-            }
-            else{
-              alert("Error al crear usuario.");
-            }
+            // if(resp.data.titulo === "Listo!"){
+            //   that.onReset(evt);
+            //   alert("Usuario creado con éxito.");
+            // }
+            // else{
+            //   alert("Error al crear usuario.");
+            // }
         });
         }
       },
@@ -156,13 +171,54 @@ import ModalTerminosCondiciones from './ModalTerminosCondiciones'
       },
     },
     mounted(){
-      console.log("contraseña:   " + this.form.contrasenia)
+      // console.log("contraseña:   " + this.form.contrasenia)
         if(this.form.contrasenia != ''){
           this.estado = true;
         }
         else{
           this.estado = false;
         }
+    },
+    watch: {
+      'form.usuario': function(nv, ov){
+        nv = nv.toLowerCase()
+        var codigoAscii = nv.substr(nv.length - 1, 1).charCodeAt()
+        // console.log(codigoAscii)
+        if(codigoAscii < 97 || codigoAscii > 122){
+          if(codigoAscii < 48 || codigoAscii > 57){
+            nv = nv.substr(0, nv.length - 1)
+          }
+        }
+        this.form.usuario = nv.split('').join('');
+      },
+      'form.contrasenia': function(nv, ov){
+        nv = nv.toLowerCase()
+        var codigoAscii = nv.substr(nv.length - 1, 1).charCodeAt()
+        if(codigoAscii < 97 || codigoAscii > 122){
+          if(codigoAscii < 48 || codigoAscii > 57){
+            if(codigoAscii < 65 || codigoAscii > 90){
+              if(codigoAscii != 95 && codigoAscii != 196 && codigoAscii != 250){
+                nv = nv.substr(0, nv.length - 1)
+              }
+            }
+          }
+        }
+        this.form.contrasenia = nv.split('').join('');
+      },
+      'form.contraseniaRepeat': function(nv, ov){
+        nv = nv.toLowerCase()
+        var codigoAscii = nv.substr(nv.length - 1, 1).charCodeAt()
+        if(codigoAscii < 97 || codigoAscii > 122){
+          if(codigoAscii < 48 || codigoAscii > 57){
+            if(codigoAscii < 65 || codigoAscii > 90){
+              if(codigoAscii != 95 && codigoAscii != 196 && codigoAscii != 250){
+                nv = nv.substr(0, nv.length - 1)
+              }
+            }
+          }
+        }
+        this.form.contraseniaRepeat = nv.split('').join('');
+      }
     }
   }
 </script>

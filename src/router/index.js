@@ -7,6 +7,7 @@ import TerminosCondiciones from '../components/TerminosCondiciones'
 import productosTodos from '../components/productosTodos'
 import editarProducto from '../components/EditarProducto'
 import Personalizar from '../components/personalizaTuCamiseta'
+import Login from '../views/Login'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ Vue.use(VueRouter)
       path: '/personalizado',
       name: 'personalizado',
       component: Personalizar      
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login 
     }
 ]
 

@@ -67,11 +67,16 @@ export default {
   methods:{
     ...mapMutations(['modificarCarro']),
     procesarPago(){
-        console.log(this.ProductosCarro);
+      alert("En desarrollo")
+        // console.log(this.ProductosCarro);
     },
     vaciarCarro(){
-      localStorage.removeItem("cantProductosCarro")
-      localStorage.removeItem("productosCarro")
+      var token = sessionStorage.getItem('token')
+      if(!token){
+        // this.ProductosCarro = [];
+        localStorage.removeItem("cantProductosCarro")
+        localStorage.removeItem("productosCarro")
+      }
       this.modificarCarro([])
       this.$bvModal.hide('ModalCarroCompras')
     }

@@ -22,111 +22,14 @@
         asperiores nisi, aliquid modi libero placeat vitae exercitationem amet magnam ex est adipisci!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus neque repudiandae possimus ipsum ad eius voluptate doloribus,
         asperiores nisi, aliquid modi libero placeat vitae exercitationem amet magnam ex est adipisci!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus neque repudiandae possimus ipsum ad eius voluptate doloribus,
+        asperiores nisi, aliquid modi libero placeat vitae exercitationem amet magnam ex est adipisci!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus neque repudiandae possimus ipsum ad eius voluptate doloribus,
+        asperiores nisi, aliquid modi libero placeat vitae exercitationem amet magnam ex est adipisci!</p>
       </div>
     </div>
   </b-modal>
 </template>
-
-<script>
-  // let url = 'http://localhost:3000/';
-  // import axios from 'axios';
-  // export default {
-  //   name:'Registro',
-  //   props:{
-  //     desactivado: true
-  //   },
-  //   data() {
-  //     return {
-  //       form: {
-  //         usuario: '',
-  //         contrasenia: '',
-  //         contraseniaRepeat:'',
-  //         TerminosCondiciones:[false],
-  //         carro:[]
-  //       },
-  //       show: true,
-  //       estado:Boolean
-  //     }
-  //   },
-  //   methods: {
-  //     onSubmit(evt) {
-  //       evt.preventDefault();
-  //       if(this.form.TerminosCondiciones[0] == false){
-  //         alert("Antes debe aceptar los 'Términos y Condiciones'.");
-  //       }
-  //       else{
-  //         console.log(this.form);
-  //         var datos = this.form;
-  //         const config = {
-  //           headers: {'content-type': 'application/json'}
-  //         }
-  //       const that = this;
-  //       axios.post(`${url}Registro`, datos, config).then(function (resp) {
-  //           console.log(resp.data);  
-  //           if(resp.data === 1){
-  //             that.onReset(evt);
-  //             alert("Usuario creado con éxito.");
-  //           }
-  //           else{
-  //             alert("Error al crear usuario.");
-  //           }
-  //       });
-  //       }
-  //     },
-  //     onReset(evt) {
-  //       evt.preventDefault();
-  //       // Reset our form values
-  //       this.form.usuario = ''
-  //       this.form.contrasenia = ''
-  //       this.form.contraseniaRepeat = ''
-  //       this.$nextTick(() => {
-  //         this.show = true
-  //       })
-  //     },
-  //     validarUsuario(){
-  //       const config = {
-  //         headers: {'content-type': 'application/json'}
-  //       }
-  //       var vaina;
-  //       let that = this;
-  //       axios.post(`${url}disponibleUsuario`, that.form, config).then(function (resp) {
-  //           if(resp.data != '1'){
-  //             vaina = false;
-  //             that.estado = false;
-  //           }
-  //           else{
-  //             vaina = true;
-  //             that.estado = true;
-  //           }
-  //         console.log(vaina);
-  //       });
-  //       return vaina; 
-  //     },
-  //     modalTerminosCondiciones(){
-        
-  //     }
-  //   },
-  //   computed:{
-  //     contrasenias(){
-  //       if (this.form.contrasenia === this.form.contraseniaRepeat) {
-  //         this.estado = false;
-  //       } else {
-  //         this.estado = true;
-  //       }
-  //       return this.form.contrasenia === this.form.contraseniaRepeat;
-  //     },
-  //   },
-  //   mounted(){
-  //     console.log("contraseña:   " + this.form.contrasenia)
-  //       if(this.form.contrasenia != ''){
-  //         this.estado = true;
-  //       }
-  //       else{
-  //         this.estado = false;
-  //       }
-  //   }
-  // }
-</script>
 
 <style>
   /* .modal-body{

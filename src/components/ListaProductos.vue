@@ -3,6 +3,7 @@
         <div v-for="Producto in ProductosCarro" :key="Producto.idProducto" class="mb-2 mt-1 ml-2 mr-2">
             <b-card :img-src="Producto.imagen" img-alt="Card image" img-right img-height="100" border-variant="secondary" class="margenCard">
                 <h6 style="font-family: 'OverpassLight'; font-size:16px; font-weight:700!important;" class="mb-0 mt-1">{{Producto.tituloProducto}}</h6>
+                <b-badge v-if="Producto.descuento"  class="etiquetaDescuento2" variant="warning" >{{Producto.descuento.porcentajeDescuento}}% OFF</b-badge>
                 <div>
                     <b-form-spinbutton
                         inline
@@ -15,8 +16,16 @@
                     </b-form-spinbutton>
                 </div>
                 
-                <div>
-                    <b-badge class="text-right" variant="dark" style="background-color: #343a40!important; border-bottom:2px solid #ce3333!important; display:inline-block!important;font-family: 'UbuntuMonoR'; font-weight:700!important; font-size:13px; width:130px!important;">
+                <div v-if="Producto.descuento">
+                    <b-badge class="text-right" variant="transparent" style="text-decoration: line-through!important;background-color: transparent!important; border-bottom:0px solid #ce3333!important; display:inline-block!important;font-family: 'UbuntuMonoR'; font-weight:700!important; font-size:14px; width:130px!important;">
+                        {{Producto.precio * Producto.laCantidad | currency}}
+                    </b-badge>
+                    <b-badge class="text-right" variant="dark" style="background-color: #343a40!important; border-bottom:2px solid #ce3333!important; display:block!important;font-family: 'UbuntuMonoR'; font-weight:700!important; font-size:14px; width:130px!important;">
+                        {{Producto.precio * Producto.laCantidad - (Producto.descuento.montoDescuento * Producto.laCantidad) | currency}}
+                    </b-badge>
+                </div>
+                <div v-else>
+                    <b-badge class="text-right" variant="dark" style="background-color: #343a40!important; border-bottom:2px solid #ce3333!important; display:inline-block!important;font-family: 'UbuntuMonoR'; font-weight:700!important; font-size:14px; width:130px!important;">
                         {{Producto.precio * Producto.laCantidad | currency}}
                     </b-badge>
                 </div>
@@ -35,8 +44,8 @@
         name:'ListaProductos',
         data(){
             return{
-                losProductos: Array,
-                Total: Number,
+                losProductos: [],
+                Total: 0,
                 elTotal:''
             }
         },
@@ -65,15 +74,22 @@
             cantidadProductoCarro(dato){
                 let cantidad = document.getElementById(dato).value;
                 this.modificarCarro(this.ProductosCarro);       /////////////////////////////////////////////////////////////////////
-                this.Total = 0;
+                // this.Total = 0;
                 this.calculoTotalCarro();
             },
             calculoTotalCarro(){
+                this.Total = 0
                 this.ProductosCarro.map(function(e){
-                    this.Total += e.precio * e.laCantidad;
+                    // console.log(e)
+                    if(e.descuento){
+                        this.Total += (e.precio - e.descuento.montoDescuento) * e.laCantidad;
+                    }
+                    else{
+                        this.Total += e.precio * e.laCantidad;
+                    }
                     // console.log(`Precio: ${e.precio} // Cantidad: ${e.laCantidad} // Total: ${e.precio*e.laCantidad}`);
                 }.bind(this));
-                
+                this.modifTextoTotalCarro(this.Total)
                 // document.getElementById('footerModal').innerHTML = this.Total;
                 // alert(numeral(this.Total).format('0,0'));
             },
@@ -82,10 +98,24 @@
             }
         },
         mounted(){
-            var productosLocales = JSON.parse(localStorage.getItem('productosCarro'));
-            this.modificarCarro(productosLocales);
-            this.Total = 0;
+
+            // console.log(this.ProductosCarro)
             
+            // const token = sessionStorage.getItem("token")
+            // var productos = []
+            // if(token){
+            //     if(sessionStorage.getItem('carroUsuario')){
+            //         productos = JSON.parse(sessionStorage.getItem('carroUsuario'));
+            //     }
+            // }
+            // else{
+            //     if(localStorage.getItem('productosCarro')){
+            //         productos = JSON.parse(localStorage.getItem('productosCarro'));
+            //     }
+            // }
+
+            // this.modificarCarro(productos);
+            // this.Total = 0
             this.calculoTotalCarro();
         },
         watch:{
@@ -97,6 +127,19 @@
 </script>
 
 <style>
+.etiquetaDescuento2{
+    /* margin-top: 4px; */
+    border-radius: 0px!important;
+    font-family:'OverpassLight';
+    position: absolute;
+    font-size:13px!important;
+    padding-top:4px!important;
+    padding-bottom:4px!important;
+    height:19px!important;
+    right:105px!important;
+    width:65px!important;
+    top:0px!important;
+}
     #btnCompra{
         height: 23px!important;
         padding-top: 0px!important;

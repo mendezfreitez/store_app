@@ -71,6 +71,8 @@ export default {
 .productoCard,
 #modal_2___BV_modal_content_,
 #modal_2___BV_modal_header_,
+#modal-mensaje___BV_modal_content_,
+#modal-mensaje___BV_modal_header_,
 #ModalTerminosCondiciones___BV_modal_content_,
 #ModalTerminosCondiciones___BV_modal_header_,
 #modal_1___BV_modal_content_,
