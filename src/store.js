@@ -22,7 +22,6 @@ export default new Vuex.Store({
       state.cantidadCarro = productos.length
       state.ProductosCarro = productos
 
-      // const token = sessionStorage.getItem('token')
       const token = sessionStorage.getItem('token')
       if (token) {
         sessionStorage.setItem("carroUsuario", JSON.stringify(productos))
@@ -31,9 +30,6 @@ export default new Vuex.Store({
         // localStorage.setItem("cantProductosCarro", productos.length);
         localStorage.setItem("productosCarro", JSON.stringify(productos));
       }
-
-      // localStorage.setItem("cantProductosCarro", productos.length);
-      // localStorage.setItem("productosCarro", JSON.stringify(productos));
     },
     modifCantProducto(state, { id, cantidad }) {
       // console.log("PRIMERO UNA PRUEBA")
@@ -64,8 +60,6 @@ export default new Vuex.Store({
       state.productosTodos_ = productos;
     },
     mutarVisible(state, datos) {
-      // console.log(datos)
-      // return
       const token = sessionStorage.getItem('token')
       if (token != null) {
         state.esVisible = false
@@ -88,11 +82,9 @@ export default new Vuex.Store({
         state.sesionUsuario = sessionStorage.getItem("session")
 
         if (sessionStorage.getItem("carroUsuario")) {
-          // console.log(sessionStorage.getItem("carroUsuario"))
           var vaine = JSON.parse(sessionStorage.getItem("carroUsuario"))
           state.ProductosCarro = vaine
           state.cantidadCarro = (state.ProductosCarro).length
-          // console.log(state.ProductosCarro.length)
         }
         
         state.esVisible = false
@@ -118,8 +110,6 @@ export default new Vuex.Store({
       if (carroUsuario === null) {
         carroUsuario = []
       }
-      // console.log(carroUsuario)
-      // return
       axios.post(`${state.url}guardarCarroUsuario`, carroUsuario, config).then(function (resp) {
         if (resp.status === 200) {
           sessionStorage.clear()

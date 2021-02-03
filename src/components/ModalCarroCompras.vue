@@ -22,13 +22,13 @@
         <div class="w-100 text-center" style="margin:0px!important;">
           <b class="row">
             <b-col class="pl-0 pr-0">
-              <b-button :active="btnActivo" size="lg" squared variant="warning" class="w-100" @click="vaciarCarro" style="height: 48px;font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;">
+              <b-button :active="btnActivo" size="lg" squared variant="warning" class="w-100" @click="vaciarCarro" style="height:48px; font-size:19px!important; font-family:'OverpassLight'; font-weight:600!important; padding-left:30px!important; padding-top:11px!important;">
                 Vaciar Carro
               </b-button> 
             </b-col>
             <b-col class="pl-0 pr-0">
               <b-button size="lg" squared :active="btnActivo" variant="dark" class="w-100" style="height: 48px;font-size:19px!important;font-family: 'OverpassLight'; font-weight:600!important;padding-left:9px;" @click="procesarPago">
-                Pagar <b-icon scale="1.3" icon="credit-card" aria-hidden="true" class="ml-2"></b-icon>
+                Pagar <b-icon scale="1.5" style="padding-top:2px!important;" icon="credit-card" aria-hidden="true" class="ml-2"></b-icon>
               </b-button>
             </b-col>
           </b>

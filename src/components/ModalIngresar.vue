@@ -13,7 +13,7 @@
     cancel-title="Cerrar"
     centered>
       <div>
-        <div class="pt-1 pl-3 pr-3 pb-3">
+        <div class="pt-1 pl-3 pr-3 pb-1">
           <b-form @submit="onSubmit" class="mt-4 mb-4">
             <b-form-group id="input-group-1">
               <p :hidden="mensajeUsuario" class="mb-0" style="font-size:12px!important; color:red">
@@ -48,12 +48,12 @@
             </b-form-group>
 
             <div class="text-right mb-3">
-              <b-button size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
-              <b-button size="sm" type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
+              <b-button style="padding-left:12px!important; padding-right:12px!important;" size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
+              <b-button style="padding-left:12px!important; padding-right:12px!important;" size="sm" type="submit" class="ml-2" variant="outline-dark">Ingresar</b-button>
             </div>
 
-            <div class="text-left">
-              <p style="font-size:12px!important; display:inline-block!important;margin-bottom:0px!important;margin-top:0px!important;">Aún no estás registrado?</p> <b-button variant="outline-primary" size="sm" style="padding-top: 0px; padding-bottom: 1px; padding-right: 4px; padding-left: 4px; margin-left: 0px;" class="ml-1" @click="modalRegistro">Regístrate</b-button>
+            <div class="text-right">
+              <p style="font-size:14px!important; display:inline-block!important;margin-bottom:0px!important;margin-top:3px!important;">Aún no estás registrado?</p> <b-button variant="dark" size="sm" style="padding-top: 2px; padding-bottom: 3px; margin-left: 0px;" class="ml-2 mb-1 pl-3 pr-3" @click="modalRegistro">Regístrate</b-button>
             </div>
           </b-form>
         </div>
@@ -113,7 +113,6 @@ export default {
         headers: {'content-type': 'application/json'}
       }
       axios.post(`${url}Login`, datos, config).then(function(resp){
-        console.log(resp.data)
         if(resp.data.titulo === "Listo!"){
           sessionStorage.setItem("token", resp.data.token)
           this.Reset()

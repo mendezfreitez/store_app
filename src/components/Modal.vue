@@ -66,8 +66,6 @@ export default {
     agregarAlCarro(){
       let that = this;
       let suma = true;
-      
-      console.log(this.ProductosCarro)
 
       this.ProductosCarro.map(function(elemento){
         if(elemento.idProducto === that.producto.idProducto){

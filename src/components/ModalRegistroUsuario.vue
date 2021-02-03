@@ -64,8 +64,8 @@
               </b-form-checkbox-group>
             </b-form-group>
             <div class="text-right">
-              <b-button size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
-              <b-button :disabled="!btnTerminos" size="sm" type="submit" class="ml-2" variant="outline-dark">Registrar</b-button>
+              <b-button style="padding-left:12px!important; padding-right:12px!important;" size="sm" type="reset" class="mr-2" variant="outline-danger">Limpiar</b-button>
+              <b-button style="padding-left:12px!important; padding-right:12px!important;" :disabled="!btnTerminos" size="sm" type="submit" class="ml-2" variant="outline-dark">Registrar</b-button>
             </div>
           </b-form>
         </div>
