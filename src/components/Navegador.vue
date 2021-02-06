@@ -114,4 +114,7 @@ export default {
     padding-bottom: 0px!important;
     padding-top: 1px!important;
   }
+  .carroEnlace{
+    padding-left: 0px!important; padding-right: 0px!important;
+  }
 </style>
