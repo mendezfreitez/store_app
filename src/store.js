@@ -22,9 +22,9 @@ export default new Vuex.Store({
       state.cantidadCarro = productos.length
       state.ProductosCarro = productos
 
-      const token = sessionStorage.getItem('token')
+      const token = localStorage.getItem('token')
       if (token) {
-        sessionStorage.setItem("carroUsuario", JSON.stringify(productos))
+        localStorage.setItem("carroUsuario", JSON.stringify(productos))
       }
       else {
         // localStorage.setItem("cantProductosCarro", productos.length);
@@ -60,15 +60,15 @@ export default new Vuex.Store({
       state.productosTodos_ = productos;
     },
     mutarVisible(state, datos) {
-      const token = sessionStorage.getItem('token')
+      const token = localStorage.getItem('token')
       if (token != null) {
         state.esVisible = false
         state.sesionUsuario = datos.dataUsuario[0].usuario
         state.ProductosCarro = datos.dataUsuario[0].carro
         state.cantidadCarro = datos.dataUsuario[0].carro.length
-        sessionStorage.setItem("session", datos.dataUsuario[0].usuario)
+        localStorage.setItem("session", datos.dataUsuario[0].usuario)
         if (datos.dataUsuario[0].carro.length > 0) {
-          sessionStorage.setItem("carroUsuario", JSON.stringify(datos.dataUsuario[0].carro))
+          localStorage.setItem("carroUsuario", JSON.stringify(datos.dataUsuario[0].carro))
         }
       }
       else {
@@ -77,12 +77,12 @@ export default new Vuex.Store({
       }
     },
     getUsuario(state) {
-      const token = sessionStorage.getItem('token')
+      const token = localStorage.getItem('token')
       if (token != null) {
-        state.sesionUsuario = sessionStorage.getItem("session")
+        state.sesionUsuario = localStorage.getItem("session")
 
-        if (sessionStorage.getItem("carroUsuario")) {
-          var vaine = JSON.parse(sessionStorage.getItem("carroUsuario"))
+        if (localStorage.getItem("carroUsuario")) {
+          var vaine = JSON.parse(localStorage.getItem("carroUsuario"))
           state.ProductosCarro = vaine
           state.cantidadCarro = (state.ProductosCarro).length
         }
@@ -103,19 +103,30 @@ export default new Vuex.Store({
       const config = {
         'Content-Type': 'application/json',
         headers: {
-          'x-access-token': sessionStorage.getItem("token")
+          'x-access-token': localStorage.getItem("token")
         }
       }
-      var carroUsuario = JSON.parse(sessionStorage.getItem("carroUsuario"))
+      var carroUsuario = JSON.parse(localStorage.getItem("carroUsuario"))
+
       if (carroUsuario === null) {
         carroUsuario = []
       }
+
       axios.post(`${state.url}guardarCarroUsuario`, carroUsuario, config).then(function (resp) {
         if (resp.status === 200) {
           sessionStorage.clear()
+          localStorage.removeItem("token")
+          localStorage.removeItem("session")
+          localStorage.removeItem("carroUsuario")
           state.sesionUsuario = ""
           state.esVisible = true
-          state.ProductosCarro = JSON.parse(localStorage.getItem("productosCarro"))
+          console.log()
+          if (localStorage.getItem("productosCarro") === null) {
+            state.ProductosCarro = []
+          }
+          else {
+            state.ProductosCarro = JSON.parse(localStorage.getItem("productosCarro"))
+          }
           state.cantidadCarro = (state.ProductosCarro).length
         }
       })

@@ -114,7 +114,7 @@ export default {
       }
       axios.post(`${url}Login`, datos, config).then(function(resp){
         if(resp.data.titulo === "Listo!"){
-          sessionStorage.setItem("token", resp.data.token)
+          localStorage.setItem("token", resp.data.token)
           this.Reset()
           this.$bvModal.hide('modal_ingreso')
           this.mutarVisible(resp.data)

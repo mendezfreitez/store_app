@@ -71,12 +71,15 @@ export default {
         // console.log(this.ProductosCarro);
     },
     vaciarCarro(){
-      var token = sessionStorage.getItem('token')
-      if(!token){
-        // this.ProductosCarro = [];
-        localStorage.removeItem("cantProductosCarro")
-        localStorage.removeItem("productosCarro")
-      }
+      // var token = localStorage.getItem('token')
+      // if(!token){
+      //   // this.ProductosCarro = [];
+      //   localStorage.removeItem("cantProductosCarro")
+      //   localStorage.removeItem("productosCarro")
+      // }
+      // else{
+      //   localStorage.removeItem("carroUsuario")
+      // }
       this.modificarCarro([])
       this.$bvModal.hide('ModalCarroCompras')
     }
@@ -95,7 +98,7 @@ export default {
   border-width: 0px!important;
 }
 #ModalCarroCompras___BV_modal_title_{
-  padding-top: 3px!important;
+  padding-top: 6px!important;
 }
 #ModalCarroCompras___BV_modal_footer_{
   padding-bottom: 0px!important;

@@ -1,5 +1,5 @@
 <template>
-  <div style="display:inline-block; position:relative;">
+  <div style="display:inline-block; position:relative; cursor:pointer!important;">
                     
   <b-card
     :img-src="srcImagen"

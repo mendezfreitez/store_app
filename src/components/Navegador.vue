@@ -43,8 +43,8 @@
       </div>
     </div>
 
-    <div style="width:46px;height:46px;" @click="modalProductos">
-      <b-badge class="carroEnlace" href="#" style="width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:15px; left:0px; font-size:20px!important;font-family:'OverpassLight';">
+    <div style="width:46px; height:46px; cursor:pointer!important;" @click="modalProductos">
+      <b-badge class="carroEnlace" href="#" style="cursor:pointer!important; width:30px; text-align:center; display:inline-block!important;color: #FFF!important;position:relative; top:15px; left:0px; font-size:20px!important;font-family:'OverpassLight';">
         {{cantidadCarro}}
       </b-badge>
 
@@ -72,15 +72,17 @@ export default {
     }
   },
   computed:{
-    ...mapState(['cantidadCarro', 'esVisible', 'sesionUsuario'])
+    ...mapState(['cantidadCarro', 'esVisible', 'sesionUsuario', 'ProductosCarro'])
   },
   methods:{
     ...mapMutations(['traerProductosTodos', 'dropUsuario']),
     modalProductos(){
-      this.$bvModal.show('ModalCarroCompras');
+      if(this.ProductosCarro.length > 0){
+        this.$bvModal.show('ModalCarroCompras')
+      }
     },
     modalIngresar(){
-      this.$bvModal.show('modal_ingreso');
+      this.$bvModal.show('modal_ingreso')
     }
   }
 }

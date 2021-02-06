@@ -491,14 +491,14 @@ export default {
         }
         else{
           this.form.descuento.montoDescuento = (this.form.precio * (this.form.descuento.porcentajeDescuento / 100)).toFixed(1)
-          console.log(this.form)
+          // console.log(this.form)
         }
 
         
-        console.log('desde:  ' + this.form.descuento.desde)
-        console.log('hasta:  ' + this.form.descuento.hasta)
-        console.log('monto:  ' + this.form.descuento.montoDescuento)
-        console.log('porce:  ' + this.form.descuento.porcentajeDescuento)
+        // console.log('desde:  ' + this.form.descuento.desde)
+        // console.log('hasta:  ' + this.form.descuento.hasta)
+        // console.log('monto:  ' + this.form.descuento.montoDescuento)
+        // console.log('porce:  ' + this.form.descuento.porcentajeDescuento)
 
 
         if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' && this.form.descuento.porcentajeDescuento != '' ){
@@ -522,10 +522,10 @@ export default {
           this.form.descuento.porcentajeDescuento = ((this.form.precio - (this.form.precio - this.form.descuento.montoDescuento)) / this.form.precio) * 100
           console.log(this.form)
         }
-        console.log('desde:  ' + this.form.descuento.desde)
-        console.log('hasta:  ' + this.form.descuento.hasta)
-        console.log('monto:  ' + this.form.descuento.montoDescuento)
-        console.log('porce:  ' + this.form.descuento.porcentajeDescuento)
+        // console.log('desde:  ' + this.form.descuento.desde)
+        // console.log('hasta:  ' + this.form.descuento.hasta)
+        // console.log('monto:  ' + this.form.descuento.montoDescuento)
+        // console.log('porce:  ' + this.form.descuento.porcentajeDescuento)
 
 
         if(this.form.nombre != '' && this.form.descripcion != '' && this.form.precio != '' && this.form.categoria != null && this.form.cantidad != '' && this.form.descuento.montoDescuento != ''){

@@ -123,6 +123,10 @@
 </script>
 
 <style>
+.card-img-right{
+border-radius: 0px!important;
+}
+
 .etiquetaDescuento2{
     /* margin-top: 4px; */
     border-radius: 0px!important;

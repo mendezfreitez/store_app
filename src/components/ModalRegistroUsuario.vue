@@ -1,6 +1,7 @@
 <template>
   <div>
     <ModalTerminosCondiciones ref="ModalTerminosCondiciones"></ModalTerminosCondiciones>
+    <ModalMensaje :titulo="titulo" :texto="texto" ref="ModalMensaje"></ModalMensaje>
     <b-modal id="modal_registro"
     style="border: 0px solid rgba(0, 0, 0, 0.2)!important;"
     title="Registro Usuario"
@@ -76,6 +77,7 @@
 
 <script>
 import ModalTerminosCondiciones from './ModalTerminosCondiciones'
+import ModalMensaje from './Categorias/modalMensaje'
 let url = 'https://storeapp-back-end.herokuapp.com/';
   // let url = 'http://localhost:3000/';
   import axios from 'axios';
@@ -85,10 +87,12 @@ let url = 'https://storeapp-back-end.herokuapp.com/';
       desactivado: true
     },
     components:{
-      ModalTerminosCondiciones
+      ModalTerminosCondiciones, ModalMensaje
     },
     data() {
       return {
+        titulo:'',
+        texto:'',
         btnTerminos:false,
         form: {
           usuario: '',
@@ -109,22 +113,23 @@ let url = 'https://storeapp-back-end.herokuapp.com/';
           alert("Antes debe aceptar los 'Términos y Condiciones'.");
         }
         else{
-          // console.log(this.form);
           var datos = this.form;
           const config = {
             headers: {'content-type': 'application/json'}
           }
-        const that = this;
-        axios.post(`${url}Registro`, datos, config).then(function (resp) {
-            console.log(resp.data);  
-            // if(resp.data.titulo === "Listo!"){
-            //   that.onReset(evt);
-            //   alert("Usuario creado con éxito.");
-            // }
-            // else{
-            //   alert("Error al crear usuario.");
-            // }
-        });
+          axios.post(`${url}Registro`, datos, config).then(function (resp) {
+              this.titulo = resp.data.titulo
+              this.texto = resp.data.texto
+              this.$bvModal.hide('modal_registro')
+              this.$bvModal.show('modal-mensaje')
+              // if(resp.data.titulo === "Listo!"){
+              //   that.onReset(evt);
+              //   alert("Usuario creado con éxito.");
+              // }
+              // else{
+              //   alert("Error al crear usuario.");
+              // }
+          }.bind(this));
         }
       },
       onReset(evt) {
