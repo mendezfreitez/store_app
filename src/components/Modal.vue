@@ -46,10 +46,10 @@ export default {
       arrayNuevo:[],
       producto: '',
       prod:{
-        nom:String,
-        cuer:String,
-        cant:String,
-        id:String
+        nom:'',
+        cuer:'',
+        cant:'',
+        id:''
       }
     }
   },

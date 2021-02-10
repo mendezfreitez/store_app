@@ -1,13 +1,20 @@
 <template>
 <div>
-    <b-container class="pl-0 pr-0" style="margin-top:70px!important;">
-        <b-badge class="mb-2" variant="dark" style="float:left!important;">
-        <h4 class="mb-0" style="display: inline-block!important;">Productos</h4></b-badge>
-        <b-button size="sm" variant="dark" style="display: inline-block!important;float:right!important;" @click="modalProducto('')">
+    <b-container class="pt-2 pb-2 text-left">
+        <b-button size="sm" variant="dark" @click="seleccionarPestana(0)" class="mr-2 ml-3">
+            PRODUCTOS
+        </b-button>
+        <b-button size="sm" variant="dark" @click="seleccionarPestana(1)">
+            CATEGORIAS
+        </b-button>
+    </b-container>
+    <b-container class="pl-1 pr-1 pb-1" :hidden="pestanaProductos">
+        <h4 class="mt-2 mb-2" style="display: inline-block!important;padding-top:3px!important;">Productos</h4>
+        <b-button class="mt-2 mb-2 mr-2" size="sm" variant="outline-dark" style="display: inline-block!important;float:right!important;" @click="modalProducto('')">
             Nuevo
             <b-icon icon="plus"></b-icon>
         </b-button>
-        <div class="table-responsive">
+        <div class="table-responsive mb-0">
             <table class="table table-sm table-bordered table-hover">
                 <thead>
                     <tr>
@@ -37,27 +44,25 @@
     <Modal ref="modalCategoria" :tituloModal="titulo" :textoModal="texto"></Modal>
     <ModalProducto ref="modalProducto" :ElTituloModal="tituloProductoModal" :producto="unSoloProducto" :idProducto="idProducto"></ModalProducto>
 
-    <b-container class="pl-0 pr-0 mt-5">
-        <b-badge class="mb-2" variant="dark" style="float:left!important;">
-            <h4 class="mb-0" style="display: inline-block!important;">Categorías</h4>
-        </b-badge>
-        <b-button size="sm" @click="modalCategoria('','')" variant="dark" style="display: inline-block!important;float:right!important;">
+    <b-container class="pl-1 pr-1 pb-1" :hidden="pestanaCategorias">
+        <h4 class="mt-2 mb-2" style="display: inline-block!important;padding-top:3px!important;">Categorías</h4>
+        <b-button class="mt-2 mb-2 mr-2" size="sm" @click="modalCategoria('','')" variant="outline-dark" style="display: inline-block!important;float:right!important;">
             Nuevo
             <b-icon icon="plus"></b-icon>
         </b-button>
-                <div class="table-responsive">
+                <div class="table-responsive mb-0">
             <table class="table table-sm table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">Nombre Categoría</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="categoria in categoriasTodas" :key="categoria._id">
-                        <td nowrap class="text-left">{{ categoria._id }}</td>
                         <td nowrap class="text-left">{{ categoria.nombre }}</td>
+                        <td nowrap class="text-left">{{ categoria._id }}</td>
                         <td nowrap class="text-center">
                             <a href="#" style="font-size:12px; height:19px!important; width:64px!important;" class="papelera btn btn-outline-danger" @click="eliminarCategoria(categoria._id, categoria.nombre)">
                                ELIMINAR
@@ -96,7 +101,9 @@ export default {
             Total:Number,
             titulo:'',
             tituloProductoModal:'',
-            texto:''
+            texto:'',
+            pestanaProductos:false,
+            pestanaCategorias:true
         }
     },
     computed:{
@@ -108,9 +115,68 @@ export default {
     },
     methods:{
         ...mapMutations(['traerCategorias','traerProductosTodos']),
+        seleccionarPestana(dato){
+            switch (dato) {
+                case 0:
+                    this.pestanaProductos = false
+                    this.pestanaCategorias = true
+                    break;
+                case 1:
+                    this.pestanaProductos = true
+                    this.pestanaCategorias = false
+                    break;
+            }
+        },
         modalProducto(producto){
             this.tituloProductoModal = 'Nuevo Producto'
-            this.$bvModal.show('modalProducto');
+            this.unSoloProducto = {
+                nombre: '',
+                descripcion: '',
+                categoria: '',
+                precio: '',
+                cantidad: '',
+                nombreImags: '',
+                nombreImagenes: [],
+                aplicaDescuento: false,
+                idProducto:'',
+                descuento:{
+                    desde: '',
+                    hasta:'',
+                    tipoPorcentaje:true,
+                    tipoMonto:false,
+                    montoDescuento:'',
+                    porcentajeDescuento:''
+                }
+            }
+            // this.$refs.modalProducto.form = {
+            //     nombre: '',
+            //     descripcion: '',
+            //     categoria: '',
+            //     precio: '',
+            //     cantidad: '',
+            //     nombreImags: '',
+            //     aplicaDescuento: false,
+            //     idProducto:'',
+            //     descuento:{
+            //         desde: '',
+            //         hasta:'',
+            //         tipoPorcentaje:true,
+            //         tipoMonto:false,
+            //         montoDescuento:'',
+            //         porcentajeDescuento:''
+            //     }
+            // }
+            this.$refs.modalProducto.arrayImagenes = []
+            this.$refs.modalProducto.arrayImagenes_ = []
+            this.$refs.modalProducto.show = true
+            this.$refs.modalProducto.activoVer = true
+            this.$refs.modalProducto.activoBtnRegistrar = true
+            this.$refs.modalProducto.descuentoHabilitado = true
+            // this.$refs.modalProducto.options = []
+            this.$refs.modalProducto.RegistroEdicion = ''
+            // this.unSoloProducto = producto
+            // this.idProducto = id
+            this.$bvModal.show('modalProducto')
         },
         eliminarProducto(id, titulo){
             var elimProd = confirm(`¿Esta seguro de eliminar el producto '${titulo}'?`);
@@ -125,7 +191,7 @@ export default {
             }
         },
         editarProducto(id, producto){
-            console.log(producto)
+            // console.log(producto)
             this.tituloProductoModal = 'Editar Producto'
             this.unSoloProducto = producto
             this.idProducto = id
@@ -164,7 +230,7 @@ export default {
         categorias(nuevo){
             this.categoriasTodas = nuevo;
             // alert(this.categoriasTodas.length);
-        console.log(nuevo);
+        // console.log(nuevo);
         
         },
         productosTodos_(nuevo){

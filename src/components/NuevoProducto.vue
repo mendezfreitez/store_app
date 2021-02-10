@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container id="contNuevoProducto">
       <b-row>
           <b-col cols="1" lg="4" md="3" sm="2"></b-col>
           <b-col cols="10" lg="4" md="6" sm="8">
@@ -81,7 +81,7 @@
               </select>
               
               <div class="text-center mt-3">
-                <b-button to="/productosTodos" variant="success" style="display: inline-block!important;" size="sm" class="mr-2">Volver</b-button>
+                <b-button to="/admin" variant="success" style="display: inline-block!important;" size="sm" class="mr-2">Volver</b-button>
                 <b-button :disabled="activoBtnRegistrar" type="button" @click="vistaPreviaModal" class="mr-2" variant="outline-success" size="sm">Vista Previa</b-button>
                 <b-button @click="onReset" class="mr-1" variant="outline-danger" hidden size="sm">Limpiar</b-button>
                 <b-button type="reset" class="mr-1" variant="outline-danger" size="sm">Limpiar</b-button>
@@ -295,6 +295,8 @@ export default {
 </script>
 
 <style>
-
+#contNuevoProducto, html, #app, body{
+  height: 100%!important;
+}
 </style>
 

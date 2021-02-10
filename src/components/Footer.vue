@@ -2,19 +2,19 @@
   <b-navbar class="w-100" style="background:#272727!important;width:100%!imporant; border-top:4px solid #ce3333!important;">
     <b-collapse id="nav-collapse mr-1" is-nav>
         <b-navbar-nav class="text-center">
-    <b-link  href="https://www.facebook.com" target="_blank">
+    <b-link class="menuFooter" href="https://www.facebook.com" target="_blank">
       <b-img height="30" right class="mr-3" :src="require('../editor/img/Redes/Facebook.svg')" alt=""></b-img>
     </b-link>
-    <b-link href="https://www.instagram.com" target="_blank">
+    <b-link class="menuFooter" href="https://www.instagram.com" target="_blank">
       <b-img height="30" right class="mr-3 ml-1" :src="require('../editor/img/Redes/Instagram2.svg')" alt=""></b-img>
     </b-link>
-    <b-link>
+    <b-link class="menuFooter">
       <b-img height="30" right class="mr-3 ml-1" :src="require('../editor/img/Redes/WhatsApp.svg')" alt=""></b-img>
     </b-link>
-    <b-link href="https://www.pinterest.com" target="_blank">
+    <b-link class="menuFooter" href="https://www.pinterest.com" target="_blank">
       <b-img height="30" right class="mr-3 ml-1" :src="require('../editor/img/Redes/Pinterest.svg')" alt=""></b-img>
     </b-link>
-    <b-link >
+    <b-link class="menuFooter" >
       <b-img height="30" right class="mr-1 ml-1" :src="require('../editor/img/Redes/Telefono.svg')" alt=""></b-img>
     </b-link>
         </b-navbar-nav>
@@ -49,6 +49,8 @@ export default {
 </script>
 
 <style>
+.menuFooter { transition: all .1s ease-in-out; }
+.menuFooter:hover { transform: scale(1.3); }
   .registroIngreso{
     height: 30px!important;
   }

@@ -196,6 +196,7 @@ import InputFotos from './InputFotos'
 import axios from 'axios'
 import { mapMutations, mapState } from 'vuex';
 // let url = 'http://localhost:3000/';
+var urlImagen = 'https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes'
 let url = 'https://storeapp-back-end.herokuapp.com/';
 var arregloImagenes = [];
 export default {
@@ -224,6 +225,7 @@ export default {
           }
         },
         arrayImagenes:[],
+        arrayImagenes_:[],
         show: true,
         activoVer:true,
         activoBtnRegistrar: true,
@@ -243,13 +245,15 @@ export default {
         },
         arregloFinal: Array,
         producto: undefined,
-        idProducto :'',
+        // idProducto :'',
         ElTituloModal: String
     }, 
     methods: {
       ...mapMutations(['updateProductosTodos']),
       onSubmit(evt) {        
-
+        
+          console.log(this.form)
+          return
 
           var datos = this.form;
           axios.post(`${url}NuevoProducto`, datos, { headers: {'content-type':'application/json'} }).then(function (resp) {
@@ -325,12 +329,9 @@ export default {
         });
       },
       vistaPreviaModal(){
-        console.log(this.$refs.elModal.arrayImagenes);
-        if((this.form.dataImags != undefined) && (this.form.dataImags != null)){
-          this.$refs.elModal.arrayImagenes = this.form.dataImags;
-          this.$bvModal.show("modal_1");
-          console.log(this.$refs.elModal.arrayImagenes);
-        }
+        console.log(this.arrayImagenes_)
+        this.$refs.elModal.arrayImagenes = this.arrayImagenes_
+        this.$bvModal.show("modal_1");
       },
       formatNames(files) {
           // console.log(files);
@@ -557,26 +558,39 @@ export default {
       }
     },
     watch:{
-      arrayImagenes: function (nuevoArray, viejoArray) {
-        var arregloNombres = [];
-        var archivos = document.querySelector('#Imagenes_Array').files;
+      arrayImagenes: function (nv, ov) {
+        if(nv.length > 0){
+          var arregloImagenes = []
+          var convertido;
+          const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+          });
 
-        for(var t = 0; t < archivos.length; t++){
-          arregloNombres.push(archivos[t].name.replace(/ /g,'_'));
+          async function convert_Base64(){
+            for(var t = 0; t < nv.length; t++){
+              convertido = (await toBase64(nv[t]));
+              arregloImagenes.push({ id:nv[t].name, src:convertido, thumbnail:convertido })
+            }
+          }
+          
+          convert_Base64()
+          this.arrayImagenes_ = arregloImagenes  
+          // console.log(arregloImagenes)
         }
-
-        this.form.nombreImags = arregloNombres;
       },
-        producto(nuevo){
-            this.descuentoHabilitado = false;
-
-            this.form.nombre = nuevo.nombre;
-            this.form.descripcion = nuevo.descripcion;
-            this.form.categoria = nuevo.categoria;
-            this.form.precio = nuevo.precio;
-            this.form.cantidad = nuevo.cantidad;
-            this.form.nombreImags = nuevo.nombreImags;
-            this.form.idProducto = nuevo._id;
+      producto(nuevo){
+          this.descuentoHabilitado = false;
+          this.form.nombre = nuevo.nombre;
+          this.form.descripcion = nuevo.descripcion;
+          this.form.categoria = nuevo.categoria;
+          this.form.precio = nuevo.precio;
+          this.form.cantidad = nuevo.cantidad;
+          this.form.nombreImags = nuevo.nombreImagenes;
+          this.form.idProducto = nuevo._id;
+          if(nuevo.aplicaDescuento){
             this.form.aplicaDescuento = nuevo.aplicaDescuento;
             this.form.descuento.desde = nuevo.descuento.desde;
             this.form.descuento.hasta = nuevo.descuento.hasta;
@@ -584,9 +598,29 @@ export default {
             this.form.descuento.tipoMonto = nuevo.descuento.tipoMonto;
             this.form.descuento.montoDescuento = nuevo.descuento.montoDescuento;
             this.form.descuento.porcentajeDescuento = nuevo.descuento.porcentajeDescuento;
-            this.arrayImagenes = nuevo.dataImagenes;
+          }
+          else{
+            this.form.aplicaDescuento = false;
+            this.form.descuento.desde = ''
+            this.form.descuento.hasta = ''
+            this.form.descuento.tipoPorcentaje = true
+            this.form.descuento.tipoMonto = false
+            this.form.descuento.montoDescuento = ''
+            this.form.descuento.porcentajeDescuento = ''
+          }
+          ////////////////////////////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////////////////////////////
+          this.arrayImagenes_ = []
+          this.form.nombreImags.map(function(e){
+            this.arrayImagenes_.push({ id:e, src:`${urlImagen}/${this.form.idProducto}/${e}`, thumbnail:`${urlImagen}/${this.form.idProducto}/${e}` })
+          }.bind(this))
+          // this.arrayImagenes_ = nuevo.dataImagenes;
+          ////////////////////////////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////////////////////////////
+          if(this.form.nombre != ''){
             this.activoBtnRegistrar = false;
-        }
+          }
+      }
     },
     mounted(){
       this.options.push({ 'value':null, 'text':'Categoría'});
