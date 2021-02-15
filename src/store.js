@@ -14,7 +14,8 @@ export default new Vuex.Store({
     categorias: [],
     productosTodos_: [],
     productosTodos: [],
-    url: 'https://storeapp-back-end.herokuapp.com/',
+    url: 'https://cosmic-envoy-301012.rj.r.appspot.com/',
+    // url: 'https://storeapp-back-end.herokuapp.com/',
     // url: 'http://localhost:3000/'
   },
   mutations: {
@@ -50,12 +51,10 @@ export default new Vuex.Store({
     },
     traerProductosTodos(state, idCategoria) {
       axios.post(`${state.url}traerTodos`, { id: idCategoria }).then(res => {
-            state.productosTodos = res.data;
+        state.productosTodos = res.data;
         state.productosTodos_ = res.data;
-        // console.log("estos sonlos prods")
-            // console.log(res.data)
-          }
-        );
+        console.log(res.data[res.data.length - 1]._id)
+      });
     },
     updateProductosTodos(state, productos) {
       state.productosTodos_ = productos;

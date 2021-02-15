@@ -104,7 +104,8 @@ import Modal from './Modal'
 import InputFotos from './InputFotos'
 import axios from 'axios' 
 // let url = 'http://localhost:3000/';
-let url = 'https://storeapp-back-end.herokuapp.com/';
+// let url = 'https://storeapp-back-end.herokuapp.com/';
+let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 var arregloImagenes = [];
 export default {
     name:'NuevoProducto',

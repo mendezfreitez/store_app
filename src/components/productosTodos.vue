@@ -85,7 +85,8 @@ import Modal from '../components/Categorias/ModalNuevaCategoria'
 import ModalProducto from '../components/modalProducto'
 import { mapMutations, mapState } from 'vuex';
 // let url = 'http://localhost:3000/';
-let url = 'https://storeapp-back-end.herokuapp.com/';
+// let url = 'https://storeapp-back-end.herokuapp.com/';
+let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 export default {
     name:'productosTodos',
     components:{
@@ -148,34 +149,13 @@ export default {
                     porcentajeDescuento:''
                 }
             }
-            // this.$refs.modalProducto.form = {
-            //     nombre: '',
-            //     descripcion: '',
-            //     categoria: '',
-            //     precio: '',
-            //     cantidad: '',
-            //     nombreImags: '',
-            //     aplicaDescuento: false,
-            //     idProducto:'',
-            //     descuento:{
-            //         desde: '',
-            //         hasta:'',
-            //         tipoPorcentaje:true,
-            //         tipoMonto:false,
-            //         montoDescuento:'',
-            //         porcentajeDescuento:''
-            //     }
-            // }
             this.$refs.modalProducto.arrayImagenes = []
             this.$refs.modalProducto.arrayImagenes_ = []
             this.$refs.modalProducto.show = true
             this.$refs.modalProducto.activoVer = true
             this.$refs.modalProducto.activoBtnRegistrar = true
             this.$refs.modalProducto.descuentoHabilitado = true
-            // this.$refs.modalProducto.options = []
             this.$refs.modalProducto.RegistroEdicion = ''
-            // this.unSoloProducto = producto
-            // this.idProducto = id
             this.$bvModal.show('modalProducto')
         },
         eliminarProducto(id, titulo){
@@ -191,7 +171,6 @@ export default {
             }
         },
         editarProducto(id, producto){
-            // console.log(producto)
             this.tituloProductoModal = 'Editar Producto'
             this.unSoloProducto = producto
             this.idProducto = id
@@ -228,13 +207,10 @@ export default {
     },
     watch:{
         categorias(nuevo){
-            this.categoriasTodas = nuevo;
-            // alert(this.categoriasTodas.length);
-        // console.log(nuevo);
-        
+            this.categoriasTodas = nuevo
         },
         productosTodos_(nuevo){
-            this.productosTodos = nuevo;
+            this.productosTodos = nuevo
         }
     }
 }

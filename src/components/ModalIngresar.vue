@@ -65,7 +65,8 @@
 <script>
 import axios from 'axios'
 // let url = 'http://localhost:3000/';
-let url = 'https://storeapp-back-end.herokuapp.com/';
+// let url = 'https://storeapp-back-end.herokuapp.com/';
+let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 import ModalRegistro from './ModalRegistroUsuario'
 import ModalMensaje from '../components/Categorias/modalMensaje'
 import { mapMutations, mapState } from 'vuex';

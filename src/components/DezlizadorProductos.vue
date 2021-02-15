@@ -4,11 +4,11 @@
         <carousel-3d
         ref="mycarousel"
         :disable3d="true"
-        :controls-visible="false"
+        :controls-visible="true"
         :space="espacio"
         :autoplay="true"
-        :autoplay-timeout="6000"
-        :pauseOnHover="false"
+        :autoplay-timeout="7000"
+        :startIndex="2"
         :clickable="false"
         :display="5"
         :count="productos.length"
@@ -57,7 +57,9 @@ export default {
             var elarray = []
             nuevo.map(function(el){
                 if(el.aplicaDescuento){
-                    elarray.push(el)
+                    if(((new Date(el.descuento.desde).getTime()) / 1000).toFixed(0) < ((new Date().getTime()) / 1000).toFixed(0)  &&  ((new Date().getTime()) / 1000).toFixed(0) < ((new Date(el.descuento.hasta).getTime()) / 1000).toFixed(0)){
+                        elarray.push(el)
+                    }
                 }
             })
             this.productos = elarray
@@ -79,6 +81,7 @@ export default {
     },
     mounted(){
         let that = this
+        document.getElementsByClassName('carousel-3d-controls')[0].getElementsByTagName('a')[0].click()
         window.addEventListener('resize', function(e){
             var ancho = e.target.innerWidth
             // console.log(ancho)

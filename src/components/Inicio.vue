@@ -45,9 +45,9 @@ import Footer from './Footer'
 import Galeria from './galeria'
 import { mapMutations, mapState } from 'vuex'
 
-// let urlImagenes = 'http://127.0.0.1:8887/imagenes';
 // let url = 'http://localhost:3000/';
-let url = 'https://storeapp-back-end.herokuapp.com/';
+// let url = 'https://storeapp-back-end.herokuapp.com/';
+let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 export default {
     name:'Inicio',
     components:{
@@ -86,14 +86,23 @@ export default {
     },
     watch:{
         productosTodos(nuevo){
-            this.productos = nuevo;
-            var elarray = []
+            this.productos = []
             nuevo.map(function(el){
                 if(!el.aplicaDescuento){
-                    elarray.push(el)
+                    this.productos.push(el)
                 }
-            })
-            this.productos = elarray
+                else if(el.aplicaDescuento && !(((new Date(el.descuento.desde).getTime()) / 1000).toFixed(0) < ((new Date().getTime()) / 1000).toFixed(0)  &&  ((new Date().getTime()) / 1000).toFixed(0) < ((new Date(el.descuento.hasta).getTime()) / 1000).toFixed(0))){
+                    el.aplicaDescuento = false
+                    el.descuento.desde = ''
+                    el.descuento.hasta = ''
+                    el.descuento.montoDescuento = ''
+                    el.descuento.porcentajeDescuento = ''
+                    el.descuento.tipoPorcentaje = true
+                    el.descuento.tipoMonto = false
+
+                    this.productos.push(el)
+                }
+            }.bind(this))
         }
     }
 }

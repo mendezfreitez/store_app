@@ -25,9 +25,13 @@ export default {
 </script>
 
 <style>
-html::-webkit-scrollbar {   
-  display: none; 
-}
+  html::-webkit-scrollbar {   
+    display: none; 
+  }
+
+  .btn, .btn-sm{
+    border-radius: 0px!important;
+  }
 
   #app {
     width: 100%!important;

@@ -31,7 +31,8 @@
 
 <script>
 // let url = 'http://localhost:3000/';
-let url = 'https://storeapp-back-end.herokuapp.com/';
+// let url = 'https://storeapp-back-end.herokuapp.com/';
+let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 import axios from 'axios';
 import { mapMutations } from 'vuex';
 export default {

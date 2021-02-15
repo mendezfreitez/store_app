@@ -190,14 +190,30 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 import formData from 'form-data'
 import Modal from './Modal'
 import InputFotos from './InputFotos'
 import axios from 'axios'
 import { mapMutations, mapState } from 'vuex';
+
+var firebaseConfig = {
+  apiKey: "AIzaSyDIXGU3z6fJ9a5ZeJDvU8Xf5e0crQE6pp8",
+  authDomain: "storeappfront-465d5.firebaseapp.com",
+  databaseURL: "https://storeappfront-465d5.firebaseio.com",
+  projectId: "storeappfront-465d5",
+  storageBucket: "storeappfront-465d5.appspot.com",
+  messagingSenderId: "848968631781",
+  appId: "1:848968631781:web:cb89a966c6d63eaa521b0c",
+  measurementId: "G-ELJPFXFTRV"
+};
+
+firebase.initializeApp(firebaseConfig)
+
 // let url = 'http://localhost:3000/';
 var urlImagen = 'https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes'
-let url = 'https://storeapp-back-end.herokuapp.com/';
+// let url = 'https://storeapp-back-end.herokuapp.com/';
+let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 var arregloImagenes = [];
 export default {
     name:'NuevoProducto',
@@ -250,30 +266,17 @@ export default {
     }, 
     methods: {
       ...mapMutations(['updateProductosTodos']),
-      onSubmit(evt) {        
-        
-          console.log(this.form)
-          return
+      onSubmit(evt) {
+        console.log(this.form)
+        return
+        if (this.form.idProducto === undefined) { this.form.idProducto = '' }
 
-          var datos = this.form;
-          axios.post(`${url}NuevoProducto`, datos, { headers: {'content-type':'application/json'} }).then(function (resp) {
-            // console.log(this.form);
+        axios.post(`${url}NuevoProducto`, this.form, { headers: {'content-type':'application/json'} }).then(function (resp) {
           alert(resp.data);
-
-          var formulario = new formData();
-          var vaina = document.querySelector('#Imagenes_Array').files;
-          for (let t = 0; t < vaina.length; t++) {
-            formulario.append('imagen', vaina[t])
-          }
-
-          axios.post(`${url}ImagenesNuevoProducto`, formulario, { headers: {'content-type':'multipart/form-data'} }).then(function (resp) {
-            this.$bvModal.hide('modalProducto');
-          }.bind(this));
-          axios.post(`${url}traerTodos`).then(function(res){
-              // this.productosTodos_ = res.data;
-              // console.log(res.data);
-              this.updateProductosTodos(res.data);
-              // console.log(this.productosTodos_);
+          axios.post(`${url}traerTodos`,{ id:'' }).then(function(res){
+            console.log(res.data)
+            this.guardarImagenes(this.arrayImagenes_, this.arrayImagenes, res.data[res.data.length - 1]._id)
+            this.updateProductosTodos(res.data)
           }.bind(this));
         }.bind(this));
       },
@@ -555,6 +558,25 @@ export default {
         else{
           this.activoBtnRegistrar = true; //DISABLED="FALSE" --> BTN DESHABILITADO
         }
+      },
+      guardarImagenes(imagenes, archivos, nombreArchivo){
+        for(var t = 0; t < imagenes.length; t++){
+          const storageRef = firebase.storage().ref(`/productos/${nombreArchivo.replace(/ /g,'_')}/${imagenes[t].id}`)
+          const task = storageRef.put(archivos[t])
+          task.on('state_changed',
+          function(snapshot){
+            //NADA AUN
+          }, 
+          function(error){
+              console.log(error.message)
+          },
+          function(){
+            //NADA AUN
+            task.snapshot.ref.getDownloadURL().then(function(url){
+              console.log(url)
+            })
+          })
+        }
       }
     },
     watch:{
@@ -623,12 +645,37 @@ export default {
       }
     },
     mounted(){
-      this.options.push({ 'value':null, 'text':'Categoría'});
+      this.options.push({ 'value':null, 'text':'Categoría'})
       axios.get(`${url}traerCategorias`).then(function(resp){
         resp.data.map(function(obj){
           this.options.push({ 'value':obj._id, 'text':obj.nombre })
-        }.bind(this));
-      }.bind(this));
+        }.bind(this))
+      }.bind(this))
+
+
+
+    var storageRef = firebase.storage().ref(`/productos/60272887d2ae650017b8fc38/`)
+
+    // Now we get the references of these images
+    storageRef.listAll().then(function(result) {
+      result.items.forEach(function(imageRef) {
+        // And finally display them
+        console.log(result.items)
+        displayImage(imageRef);
+      });
+    }).catch(function(error) {
+      // Handle any errors
+    });
+
+    function displayImage(imageRef) {
+      imageRef.getDownloadURL().then(function(url) {
+        // TODO: Display the image on the UI
+        console.log(url)
+      }).catch(function(error) {
+        // Handle any errors
+      })
+    }
+
     }
 }
 </script>

@@ -36,7 +36,8 @@ import axios from 'axios';
 import galeria from 'lingallery';
 import { mapMutations, mapState } from 'vuex';
 // let url = 'http://localhost:3000/';
-let url = 'https://storeapp-back-end.herokuapp.com/';
+// let url = 'https://storeapp-back-end.herokuapp.com/';
+let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 export default {
   data(){
     return{

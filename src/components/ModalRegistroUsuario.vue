@@ -78,7 +78,8 @@
 <script>
 import ModalTerminosCondiciones from './ModalTerminosCondiciones'
 import ModalMensaje from './Categorias/modalMensaje'
-let url = 'https://storeapp-back-end.herokuapp.com/';
+let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
+// let url = 'https://storeapp-back-end.herokuapp.com/';
   // let url = 'http://localhost:3000/';
   import axios from 'axios';
   export default {
