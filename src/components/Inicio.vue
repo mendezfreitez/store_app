@@ -12,7 +12,7 @@
                 <!-- <b-col md="12" lg="12" class=" pl-0 pr-0 mt-1"> -->
                     <Producto v-for="t in productos" :key="t._id"
                     :arrayImagenes="t.nombreImagenes"
-                    :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
+                    :srcImagen="urlProductos + t.nombreImagenes[0]"
                     :precioProducto="t.precio"
                     :tituloProducto="t.nombre.substr(0, 25)"
                     :textoProducto="t.descripcion.substr(0, 65)"
@@ -63,7 +63,7 @@ export default {
         }
     },
     computed:{
-        ...mapState(['productosTodos'])
+        ...mapState(['productosTodos', 'urlProductos'])
     },
     created: function(){
         this.traerProductosTodos('')
@@ -75,9 +75,9 @@ export default {
             this.$refs.elModal.producto = props;
             this.unProducto = props;
             // console.log(this.unProducto);
-            for (let index = 0; index < this.unProducto.arrayImagenes.length; index++) {
-                // console.log(`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`)
-                arregloImagenes.push({ id:index , src:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`, thumbnail:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}` });
+            for (let t = 0; t < this.unProducto.arrayImagenes.length; t++) {
+                // console.log(`${this.urlProductos}${this.unProducto.arrayImagenes[t]}`)
+                arregloImagenes.push({ id:t , src:`${this.urlProductos}${this.unProducto.arrayImagenes[t]}`, thumbnail:`${this.urlProductos}${this.unProducto.arrayImagenes[t]}` });
             } 
 
             this.$refs.elModal.arrayImagenes = arregloImagenes;

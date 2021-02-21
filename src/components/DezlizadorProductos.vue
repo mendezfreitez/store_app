@@ -4,7 +4,7 @@
         <carousel-3d
         ref="mycarousel"
         :disable3d="true"
-        :controls-visible="true"
+        :controls-visible="false"
         :space="espacio"
         :autoplay="true"
         :autoplay-timeout="7000"
@@ -16,7 +16,7 @@
             <slide v-for="(t, index) in productos" :key="t._id"  :index="index">
                 <Productoo
                 :arrayImagenes="t.nombreImagenes"
-                :srcImagen="urlImagen + '/' + t._id + '/' + t.nombreImagenes[0]"
+                :srcImagen="urlProductos + t.nombreImagenes[0]"
                 :precioProducto="t.precio"
                 :tituloProducto="t.nombre.substr(0, 25)"
                 :textoProducto="t.descripcion.substr(0, 65)"
@@ -50,7 +50,7 @@ export default {
         Carousel3d, Slide, Productoo, Modal2
     },
     computed:{
-        ...mapState(['productosTodos'])
+        ...mapState(['productosTodos', 'urlProductos'])
     },
     watch:{
         productosTodos(nuevo){
@@ -71,8 +71,8 @@ export default {
             this.$refs.elModal2.producto = props;
             this.unProducto = props;
             
-            for (let index = 0; index < this.unProducto.arrayImagenes.length; index++) {
-                vaina.push({ id:index , src:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}`, thumbnail:`${this.urlImagen}/${this.unProducto.idProducto}/${this.unProducto.arrayImagenes[index]}` });
+            for (let t = 0; t < this.unProducto.arrayImagenes.length; t++) {
+                vaina.push({ id:t , src:`${this.urlProductos}${this.unProducto.arrayImagenes[t]}`, thumbnail:`${this.urlProductos}${this.unProducto.arrayImagenes[t]}` });
             }
             this.arregloFinal = vaina;
             this.$refs.elModal2.arrayImagenes = this.arregloFinal;
@@ -81,10 +81,8 @@ export default {
     },
     mounted(){
         let that = this
-        document.getElementsByClassName('carousel-3d-controls')[0].getElementsByTagName('a')[0].click()
         window.addEventListener('resize', function(e){
             var ancho = e.target.innerWidth
-            // console.log(ancho)
             if(ancho > 1200){
                 that.espacio = 280
             }

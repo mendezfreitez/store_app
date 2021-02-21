@@ -250,7 +250,6 @@ export default {
 
       this.options.push({ 'value':null, 'text':'Categoría'});
       axios.get(`${url}traerCategorias`).then(function(resp){
-        // console.log(resp.data);
         resp.data.map(function(obj){
           this.options.push({ 'value':obj._id, 'text':obj.nombre })
         }.bind(this));

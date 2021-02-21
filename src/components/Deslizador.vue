@@ -38,6 +38,11 @@ export default {
                 { backgroundColor: '#b71c1c', width: '100%', height: '100%', titulo: 'Entregas en todo Santiago', subtitulo: 'Posibilidad de entrega en todo Santiago' }
             ],
         }
+    },
+    methods:{
+        hello(){
+            // COÑO MANO SOY EL TU DEL PASADO, DEJA DE BORRAR LA MALPARIA FUNCION VALE, QUE TIENE UTILIDAD... QUE PEO CONTIGO NO JODA...
+        }
     }
 }
 </script>

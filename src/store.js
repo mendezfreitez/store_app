@@ -15,6 +15,7 @@ export default new Vuex.Store({
     productosTodos_: [],
     productosTodos: [],
     url: 'https://cosmic-envoy-301012.rj.r.appspot.com/',
+    urlProductos: 'https://firebasestorage.googleapis.com/v0/b/storeappfront-465d5.appspot.com/o/productos%2F'
     // url: 'https://storeapp-back-end.herokuapp.com/',
     // url: 'http://localhost:3000/'
   },
@@ -53,7 +54,7 @@ export default new Vuex.Store({
       axios.post(`${state.url}traerTodos`, { id: idCategoria }).then(res => {
         state.productosTodos = res.data;
         state.productosTodos_ = res.data;
-        console.log(res.data[res.data.length - 1]._id)
+        // console.log(res.data)
       });
     },
     updateProductosTodos(state, productos) {

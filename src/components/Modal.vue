@@ -11,7 +11,7 @@
     cancel-title="Cerrar"
     @ok="agregarAlCarro"
     centered>
-      <lingallery :iid.sync="currentId" :width="600" :height="400" :items="arrayImagenes"/>
+      <lingallery class="imgGaleria" :addons="{ enableLargeView: false }" :showControls="false" :iid.sync="currentId" :width="500" :height="350" :items="arrayImagenes"/>
         <template v-slot:modal-footer>
         <div class="w-100" style="margin:0px!important;">
           <b-button variant="outline-dark" size="sm" class="float-left ml-1" style=" padding-left:8px;font-family: 'OverpassLight';font-weight:800!important;" @click="agregarAlCarro">
@@ -59,7 +59,7 @@ export default {
         precio:Number
   },
   computed:{
-    ...mapState(['ProductosCarro'])
+    ...mapState(['ProductosCarro', 'urlProductos'])
   },
   methods:{
     ...mapMutations(['modificarCarro','modifPuraCantidad']),
@@ -74,7 +74,7 @@ export default {
         }
       });
       if(suma){
-        this.ProductosCarro.push({ 'tituloProducto':this.producto.tituloProducto, 'textoProducto':this.producto.textoProducto, 'idProducto':this.producto.idProducto, 'laCantidad':this.producto.laCantidad, 'precio':this.producto.precioProducto, 'imagen':`https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes/${this.producto.idProducto}/${this.producto.arrayImagenes[0]}` });
+        this.ProductosCarro.push({ 'tituloProducto':this.producto.tituloProducto, 'textoProducto':this.producto.textoProducto, 'idProducto':this.producto.idProducto, 'laCantidad':this.producto.laCantidad, 'precio':this.producto.precioProducto, 'imagen':`${this.urlProductos}${this.producto.arrayImagenes[0]}` });
         this.modificarCarro(this.ProductosCarro);
       }
       this.$bvModal.hide('modal_1');
@@ -108,4 +108,5 @@ export default {
   #modal_1___BV_modal_title_{
     padding-top: 6px!important;
   }
+
 </style>

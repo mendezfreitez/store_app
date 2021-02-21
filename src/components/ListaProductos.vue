@@ -57,11 +57,9 @@
             removerDeCarro(idProducto,tituloProducto){
                 var eliminar = confirm(`Está seguro de eliminar el producto '${tituloProducto}' de su carro?`)
                 if(eliminar){
-                    // console.log(this.ProductosCarro);
                     let index = 0;
                     this.ProductosCarro.forEach(element => {
                         if(idProducto === element.idProducto){
-                            // console.log(`${idProducto} === ${element.idProducto}`)
                             this.ProductosCarro.splice(index, 1);
                             this.modificarCarro(this.ProductosCarro)  
                         }
@@ -72,15 +70,12 @@
                 }
             },
             cantidadProductoCarro(dato){
-                let cantidad = document.getElementById(dato).value;
                 this.modificarCarro(this.ProductosCarro);       /////////////////////////////////////////////////////////////////////
-                // this.Total = 0;
                 this.calculoTotalCarro();
             },
             calculoTotalCarro(){
                 this.Total = 0
                 this.ProductosCarro.map(function(e){
-                    // console.log(e)
                     if(e.descuento){
                         this.Total += (e.precio - e.descuento.montoDescuento) * e.laCantidad;
                     }
@@ -95,23 +90,6 @@
             }
         },
         mounted(){
-            // console.log(this.ProductosCarro)
-
-            // const token = sessionStorage.getItem("token")
-            // var productos = []
-            // if(token){
-            //     if(sessionStorage.getItem('carroUsuario')){
-            //         productos = JSON.parse(sessionStorage.getItem('carroUsuario'));
-            //     }
-            // }
-            // else{
-            //     if(localStorage.getItem('productosCarro')){
-            //         productos = JSON.parse(localStorage.getItem('productosCarro'));
-            //     }
-            // }
-
-            // this.modificarCarro(productos);
-            // this.Total = 0
             this.calculoTotalCarro();
         },
         watch:{

@@ -104,14 +104,30 @@
                       <div class="w-50 pr-1" style="display:inline-block;">
                         <b-form-group id="input-group-5" class="mb-0">
                           <label class="mb-0 lbl"><i>Fecha Inicio</i></label>
-                          <b-form-datepicker label-no-date-selected="Fecha Inicio" size="sm" name="desde" id="input-desde" v-model="form.descuento.desde" locale="es"></b-form-datepicker>
+                          <b-form-datepicker
+                          label-no-date-selected="Fecha Inicio"
+                          size="sm"
+                          name="desde"
+                          id="input-desde"
+                          v-model="form.descuento.desde"
+                          locale="es"
+                          :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }">
+                          </b-form-datepicker>
                         </b-form-group>
                       </div>
 
                       <div class="w-50 pl-1" style="display:inline-block;">
                         <b-form-group id="input-group-6" class="mb-0">
                           <label class="mb-0 lbl"><i>Fecha Fin</i></label>
-                          <b-form-datepicker label-no-date-selected="Fecha Fin" size="sm" name="hasta" id="input-hasta" v-model="form.descuento.hasta" locale="es"></b-form-datepicker>
+                          <b-form-datepicker
+                            label-no-date-selected="Fecha Fin"
+                            size="sm"
+                            name="hasta"
+                            id="input-hasta"
+                            v-model="form.descuento.hasta"
+                            locale="es"
+                            :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }">
+                            </b-form-datepicker>
                         </b-form-group>
                       </div>
                     </b-card>
@@ -179,10 +195,14 @@
         </div>
 
         <template v-slot:modal-footer>
-            <div class="text-center mt-3">
-                <b-button :disabled="activoBtnRegistrar" type="button" @click="vistaPreviaModal" class="mr-2" variant="outline-success" size="sm">Vista Previa</b-button>
+            <div :hidden="!oculto" class="text-center mt-3">
+                <!-- <b-button :disabled="activoBtnRegistrar" type="button" @click="vistaPreviaModal" class="mr-2" variant="outline-success" size="sm">Vista Previa</b-button> -->
                 <b-button @click="onReset" class="mr-1" variant="outline-danger" size="sm">Limpiar</b-button>
                 <b-button :disabled="activoBtnRegistrar" type="button" @click="onSubmit" class="ml-1" variant="outline-primary" size="sm">Guardar</b-button>
+
+            </div>
+            <div :hidden="oculto" class="mt-3 mb-1" style=" width:100%!important; height:46px!important;">
+              <div class="preloader"></div>
             </div>
         </template>
     </b-modal>
@@ -191,7 +211,6 @@
 
 <script>
 import firebase from 'firebase';
-import formData from 'form-data'
 import Modal from './Modal'
 import InputFotos from './InputFotos'
 import axios from 'axios'
@@ -208,12 +227,12 @@ var firebaseConfig = {
   measurementId: "G-ELJPFXFTRV"
 };
 
-firebase.initializeApp(firebaseConfig)
+// firebase.initializeApp(firebaseConfig)
 
-// let url = 'http://localhost:3000/';
+let url = 'http://localhost:3000/';
 var urlImagen = 'https://raw.githubusercontent.com/mendezfreitez/StoreApp_BackEnd/master/imagenes'
 // let url = 'https://storeapp-back-end.herokuapp.com/';
-let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
+// let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 var arregloImagenes = [];
 export default {
     name:'NuevoProducto',
@@ -228,7 +247,7 @@ export default {
           categoria: '',
           precio: '',
           cantidad: '',
-          nombreImags: '',
+          nombreImags: [],
           aplicaDescuento: false,
           idProducto:'',
           descuento:{
@@ -242,16 +261,18 @@ export default {
         },
         arrayImagenes:[],
         arrayImagenes_:[],
+        enlacesUrl:[],
         show: true,
         activoVer:true,
         activoBtnRegistrar: true,
         descuentoHabilitado:true,
         options: [],
-        RegistroEdicion:''
+        RegistroEdicion:'',
+        oculto:true
       }
     },
     computed:{
-        ...mapState(['productosTodos_'])
+        ...mapState(['productosTodos_', 'urlProductos'])
     },
     props:{
         propsImg:{
@@ -267,15 +288,10 @@ export default {
     methods: {
       ...mapMutations(['updateProductosTodos']),
       onSubmit(evt) {
-        console.log(this.form)
-        return
         if (this.form.idProducto === undefined) { this.form.idProducto = '' }
-
         axios.post(`${url}NuevoProducto`, this.form, { headers: {'content-type':'application/json'} }).then(function (resp) {
-          alert(resp.data);
+          this.guardarImagenes(this.arrayImagenes_, this.arrayImagenes, resp.data.id)
           axios.post(`${url}traerTodos`,{ id:'' }).then(function(res){
-            console.log(res.data)
-            this.guardarImagenes(this.arrayImagenes_, this.arrayImagenes, res.data[res.data.length - 1]._id)
             this.updateProductosTodos(res.data)
           }.bind(this));
         }.bind(this));
@@ -289,6 +305,7 @@ export default {
         this.form.nombreImags = null
         this.activoBtnRegistrar = true
         this.arrayImagenes = []
+        // this.enlacesUrl = []
         this.show = false
         this.form.descuento.desde = ''
         this.form.descuento.hasta = ''
@@ -560,25 +577,39 @@ export default {
         }
       },
       guardarImagenes(imagenes, archivos, nombreArchivo){
-        for(var t = 0; t < imagenes.length; t++){
-          const storageRef = firebase.storage().ref(`/productos/${nombreArchivo.replace(/ /g,'_')}/${imagenes[t].id}`)
-          const task = storageRef.put(archivos[t])
-          task.on('state_changed',
-          function(snapshot){
-            //NADA AUN
-          }, 
-          function(error){
-              console.log(error.message)
-          },
-          function(){
-            //NADA AUN
-            task.snapshot.ref.getDownloadURL().then(function(url){
-              console.log(url)
+        var mountainsRef = firebase.storage().ref().child(`/productos/${nombreArchivo}`)
+        // this.idProducto = nombreArchivo
+        var that = this
+        mountainsRef.listAll()
+        .then(function (result) {
+          if(result.items.length > 0){
+            result.items.forEach(function (file) {
+              file.delete()
             })
+          } 
+        })
+        .then(async function guardado() {
+          var arregloUrls = []
+          for (let index = 0; index < imagenes.length; index++) {
+            const dato = await firebase.storage().ref(`/productos/${nombreArchivo.replace(/ /g,'_')}/${imagenes[index].id}`).put(archivos[index])
+            var getToken = await axios.get(`https://firebasestorage.googleapis.com/v0/b/storeappfront-465d5.appspot.com/o/${dato.metadata.fullPath.replace(/\//g,'%2F')}`)
+            arregloUrls.push(`${nombreArchivo}%2F${dato.ref.name}?alt=media&token=${getToken.data.downloadTokens}`)
+          }
+
+          var data =  { idProducto: nombreArchivo, imagenes:arregloUrls }
+
+          axios.post(`${url}guardarImagenes`, data, { headers: {'content-type':'application/json'} }).then(function(resp, err){
+            that.$bvModal.hide('modalProducto')
+            if(!err){
+              that.enlacesUrl = []
+            }
+            else{
+              console.log(err)
+            }
           })
-        }
+        })
       }
-    },
+    }, 
     watch:{
       arrayImagenes: function (nv, ov) {
         if(nv.length > 0){
@@ -590,17 +621,14 @@ export default {
             reader.onload = () => resolve(reader.result);
             reader.onerror = error => reject(error);
           });
-
           async function convert_Base64(){
             for(var t = 0; t < nv.length; t++){
               convertido = (await toBase64(nv[t]));
               arregloImagenes.push({ id:nv[t].name, src:convertido, thumbnail:convertido })
             }
           }
-          
           convert_Base64()
           this.arrayImagenes_ = arregloImagenes  
-          // console.log(arregloImagenes)
         }
       },
       producto(nuevo){
@@ -651,36 +679,32 @@ export default {
           this.options.push({ 'value':obj._id, 'text':obj.nombre })
         }.bind(this))
       }.bind(this))
-
-
-
-    var storageRef = firebase.storage().ref(`/productos/60272887d2ae650017b8fc38/`)
-
-    // Now we get the references of these images
-    storageRef.listAll().then(function(result) {
-      result.items.forEach(function(imageRef) {
-        // And finally display them
-        console.log(result.items)
-        displayImage(imageRef);
-      });
-    }).catch(function(error) {
-      // Handle any errors
-    });
-
-    function displayImage(imageRef) {
-      imageRef.getDownloadURL().then(function(url) {
-        // TODO: Display the image on the UI
-        console.log(url)
-      }).catch(function(error) {
-        // Handle any errors
-      })
-    }
-
     }
 }
 </script>
 
 <style>
+    .preloader {
+      position: relative!important;
+      width: 46px;
+      height: 46px;
+      border: 8px solid #eee;
+      border-top: 8px solid #047857;
+      border-radius: 50%;
+      left: 340px!important;
+      animation-name: girar;
+      animation-duration: 1.5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+  }
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
   .container{
     margin-top: 0px!important;
   }

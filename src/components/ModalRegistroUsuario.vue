@@ -80,7 +80,7 @@ import ModalTerminosCondiciones from './ModalTerminosCondiciones'
 import ModalMensaje from './Categorias/modalMensaje'
 let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
 // let url = 'https://storeapp-back-end.herokuapp.com/';
-  // let url = 'http://localhost:3000/';
+// let url = 'http://localhost:3000/';
   import axios from 'axios';
   export default {
     name:'Registro', 
@@ -123,13 +123,6 @@ let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
               this.texto = resp.data.texto
               this.$bvModal.hide('modal_registro')
               this.$bvModal.show('modal-mensaje')
-              // if(resp.data.titulo === "Listo!"){
-              //   that.onReset(evt);
-              //   alert("Usuario creado con éxito.");
-              // }
-              // else{
-              //   alert("Error al crear usuario.");
-              // }
           }.bind(this));
         }
       },

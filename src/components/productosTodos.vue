@@ -80,13 +80,35 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import axios from 'axios'
 import Modal from '../components/Categorias/ModalNuevaCategoria'
 import ModalProducto from '../components/modalProducto'
 import { mapMutations, mapState } from 'vuex';
-// let url = 'http://localhost:3000/';
+// var firebase = require('../assets/js/FirebaseConfig')
+let url = 'http://localhost:3000/';
 // let url = 'https://storeapp-back-end.herokuapp.com/';
-let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
+
+
+
+
+// let url = 'https://cosmic-envoy-301012.rj.r.appspot.com/';
+var firebaseConfig = {
+  apiKey: "AIzaSyDIXGU3z6fJ9a5ZeJDvU8Xf5e0crQE6pp8",
+  authDomain: "storeappfront-465d5.firebaseapp.com",
+  databaseURL: "https://storeappfront-465d5.firebaseio.com",
+  projectId: "storeappfront-465d5",
+  storageBucket: "storeappfront-465d5.appspot.com",
+  messagingSenderId: "848968631781",
+  appId: "1:848968631781:web:cb89a966c6d63eaa521b0c",
+  measurementId: "G-ELJPFXFTRV"
+};
+
+firebase.initializeApp(firebaseConfig)
+
+
+
+
 export default {
     name:'productosTodos',
     components:{
@@ -164,9 +186,18 @@ export default {
                 _id:id
             }
             if(elimProd){
+                // console.log(`ID::: ${id}`)
+                // return
                 axios.post(`${url}eliminarProducto`, datos).then(function(result){
-                    alert(result.data);
                     this.traerProductosTodos('')
+                        var mountainsRef = firebase.storage().ref().child(`/productos/${id}`);
+                        mountainsRef.listAll().then(function (result) {
+                        if(result.items.length > 0){
+                            result.items.forEach(function (file) {
+                                file.delete();
+                            })
+                        } 
+                    });
                 }.bind(this));
             }
         },
@@ -179,14 +210,14 @@ export default {
         modalCategoria(id, nombre){
             if(id != ''){
                 this.titulo = `Editar Categoría`;
-                this.$refs.modalCategoria.form.nombre = nombre;
-                this.$refs.modalCategoria.form.idCategoria = id;
-                this.$refs.modalCategoria.desactivado = false;                            
+                this.$refs.modalCategoria.form.nombre = nombre
+                this.$refs.modalCategoria.form.idCategoria = id
+                this.$refs.modalCategoria.desactivado = false                     
             }
             else{
                 this.titulo = `Nueva Categoría`;
-                this.$refs.modalCategoria.form.nombre = '';
-                this.$refs.modalCategoria.desactivado = true;
+                this.$refs.modalCategoria.form.nombre = ''
+                this.$refs.modalCategoria.desactivado = true
             }
             
             this.$bvModal.show("modalNuevaCategoria");
@@ -194,14 +225,11 @@ export default {
         eliminarCategoria(id, nombre){
             var confirmar = confirm(`¿Está seguro de eliminar la categoría ${nombre} de sistema?`);
             if(confirmar){
-                let esto = this;
                 axios.post(`${url}eliminarCategoria`, { id:id }).then(function(resp){
-                    alert(resp.data);
                     axios.get(`${url}traerCategorias`).then(function (resp) {
-                        esto.categoriasTodas = resp.data;
-                        // console.log(resp.data);
-                    });
-                });
+                        this.categoriasTodas = resp.data
+                    }.bind(this));
+                }.bind(this));
             }
         }
     },
