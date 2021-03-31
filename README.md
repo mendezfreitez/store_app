@@ -1,24 +1,5 @@
 # store_app
+Proyecto de tienda e-commerce para el cual se implemento VueJS, Bootstrap, MongoDB y NodeJS
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Posee Registro de usuario, login, registro de productos, registro de categoría de productos y carrito de compras...
+Cabe mencionar que el botón de pago no posee funcionalidad aún...
